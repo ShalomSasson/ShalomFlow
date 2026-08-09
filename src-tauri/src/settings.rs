@@ -3988,9 +3988,16 @@ mod tests {
     #[test]
     fn provider_key_policy_is_conservative_and_complete_for_shipped_providers() {
         for provider in default_post_process_providers() {
+            // Keyless by design: the local engines, a user-supplied endpoint,
+            // Apple Intelligence, and the Claude Code CLI (which authenticates
+            // through the user's own `claude` login, never a stored key).
             let should_require = !matches!(
                 provider.id.as_str(),
-                "builtin" | "local" | "custom" | APPLE_INTELLIGENCE_PROVIDER_ID
+                "builtin"
+                    | "local"
+                    | "custom"
+                    | APPLE_INTELLIGENCE_PROVIDER_ID
+                    | CLAUDE_CODE_PROVIDER_ID
             );
             assert_eq!(
                 post_process_provider_requires_api_key(&provider.id),
