@@ -1102,7 +1102,17 @@
         "finderAction": "モデルを探す",
         "huggingFaceTitle": "あなたのモデル",
         "huggingFaceDescription": "ダウンロード済みのモデルと、Hugging Faceから追加したモデル。",
-        "catalogEmpty": "現在、おすすめのローカルモデルはありません。"
+        "catalogEmpty": "現在、おすすめのローカルモデルはありません。",
+        "claudeCodeTitle": "Use Claude Code instead",
+        "claudeCodeDescription": "Already have Claude Code installed? Run the assistant through it on your existing Claude plan — no download, no API key.",
+        "claudeCodeCardTitle": "Claude Code CLI",
+        "claudeCodeCardDescription": "Runs through your local Claude Code login. Prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeUseAction": "Use",
+        "claudeCodeActiveBadge": "In use",
+        "claudeCodeSubscriptionBadge": "Uses your Claude plan",
+        "claudeCodeDetected": "Detected v{{version}}",
+        "claudeCodeMissingDescription": "Install Claude Code, or make sure the `claude` command is on this machine's PATH, then check again.",
+        "claudeCodeRecheckAction": "Check again"
       },
       "subpages": {
         "profilesCaption": "アシスタントの名前、役割、性格を切り替えます。",
@@ -1141,6 +1151,14 @@
         "builtinEnginePreparing": "ローカルエンジンをダウンロード中…",
         "builtinEngineExtracting": "ローカルエンジンをインストール中…",
         "builtinEngineReady": "ローカルエンジンの準備が完了しました。",
+        "claudeCodeModelLabel": "Claude model",
+        "claudeCodeModelDescription": "Which Claude model the CLI should use for replies.",
+        "claudeCodeNotice": "Runs through your local Claude Code login — prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeModels": {
+          "sonnet": "Sonnet (recommended)",
+          "opus": "Opus (most capable)",
+          "haiku": "Haiku (fastest)"
+        },
         "contextSizeLabel": "コンテキストウィンドウ",
         "contextSizeDescription": "ローカルモデルが一度に把握できる量です — システムの指示、チャット履歴、スクリーンショット（画像1枚で大きく消費します）、そして回答が含まれます。大きくすると多くを保持でき、画面認識やウェブ検索も安定しますが、メモリの使用量が増えます。既定は8192で、RAMに余裕があれば16384が良い一段上の選択です。メモリを節約するために、後から下げることもできます。",
         "unloadTimeoutLabel": "メモリから解放するまでの時間",

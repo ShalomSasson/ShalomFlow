@@ -1102,7 +1102,17 @@
         "finderAction": "查找模型",
         "huggingFaceTitle": "我的模型",
         "huggingFaceDescription": "已下载的模型，以及您从 Hugging Face 添加的模型。",
-        "catalogEmpty": "当前没有可用的推荐本地模型。"
+        "catalogEmpty": "当前没有可用的推荐本地模型。",
+        "claudeCodeTitle": "Use Claude Code instead",
+        "claudeCodeDescription": "Already have Claude Code installed? Run the assistant through it on your existing Claude plan — no download, no API key.",
+        "claudeCodeCardTitle": "Claude Code CLI",
+        "claudeCodeCardDescription": "Runs through your local Claude Code login. Prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeUseAction": "Use",
+        "claudeCodeActiveBadge": "In use",
+        "claudeCodeSubscriptionBadge": "Uses your Claude plan",
+        "claudeCodeDetected": "Detected v{{version}}",
+        "claudeCodeMissingDescription": "Install Claude Code, or make sure the `claude` command is on this machine's PATH, then check again.",
+        "claudeCodeRecheckAction": "Check again"
       },
       "subpages": {
         "profilesCaption": "切换助手的名称、定位和性格。",
@@ -1141,6 +1151,14 @@
         "builtinEnginePreparing": "正在下载本地引擎…",
         "builtinEngineExtracting": "正在安装本地引擎…",
         "builtinEngineReady": "本地引擎已就绪。",
+        "claudeCodeModelLabel": "Claude model",
+        "claudeCodeModelDescription": "Which Claude model the CLI should use for replies.",
+        "claudeCodeNotice": "Runs through your local Claude Code login — prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeModels": {
+          "sonnet": "Sonnet (recommended)",
+          "opus": "Opus (most capable)",
+          "haiku": "Haiku (fastest)"
+        },
         "contextSizeLabel": "上下文窗口",
         "contextSizeDescription": "本地模型一次能同时记住多少内容——系统指令、您的聊天记录、任何屏幕截图（一张图片就可能占掉一大块），以及它的回复。窗口越大能容纳的内容越多，屏幕视觉和网络搜索也更可靠，但内存占用更高。默认为 8192；如果您的电脑内存充裕，16384 是不错的提升。之后也可以调低以节省内存。",
         "unloadTimeoutLabel": "多久后从内存卸载",

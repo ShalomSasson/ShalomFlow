@@ -1102,7 +1102,17 @@
         "finderAction": "Najít model",
         "huggingFaceTitle": "Vaše modely",
         "huggingFaceDescription": "Stažené modely a modely, které jste přidali z Hugging Face.",
-        "catalogEmpty": "Právě teď nejsou dostupné žádné doporučené místní modely."
+        "catalogEmpty": "Právě teď nejsou dostupné žádné doporučené místní modely.",
+        "claudeCodeTitle": "Use Claude Code instead",
+        "claudeCodeDescription": "Already have Claude Code installed? Run the assistant through it on your existing Claude plan — no download, no API key.",
+        "claudeCodeCardTitle": "Claude Code CLI",
+        "claudeCodeCardDescription": "Runs through your local Claude Code login. Prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeUseAction": "Use",
+        "claudeCodeActiveBadge": "In use",
+        "claudeCodeSubscriptionBadge": "Uses your Claude plan",
+        "claudeCodeDetected": "Detected v{{version}}",
+        "claudeCodeMissingDescription": "Install Claude Code, or make sure the `claude` command is on this machine's PATH, then check again.",
+        "claudeCodeRecheckAction": "Check again"
       },
       "subpages": {
         "profilesCaption": "Přepněte jméno, roli a osobnost asistenta.",
@@ -1141,6 +1151,14 @@
         "builtinEnginePreparing": "Stahuji místní jádro…",
         "builtinEngineExtracting": "Instaluji místní jádro…",
         "builtinEngineReady": "Místní jádro je připravené.",
+        "claudeCodeModelLabel": "Claude model",
+        "claudeCodeModelDescription": "Which Claude model the CLI should use for replies.",
+        "claudeCodeNotice": "Runs through your local Claude Code login — prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeModels": {
+          "sonnet": "Sonnet (recommended)",
+          "opus": "Opus (most capable)",
+          "haiku": "Haiku (fastest)"
+        },
         "contextSizeLabel": "Kontextové okno",
         "contextSizeDescription": "Kolik si místní model dokáže naráz pamatovat — systémové instrukce, historii chatu, případný snímek obrazovky (jediný obrázek dokáže spolknout velký kus) a svou odpověď. Větší okno pojme více a udrží zobrazení obrazovky i vyhledávání na webu spolehlivé, ale zabere více paměti. Výchozí hodnota je 8192; 16384 je dobrý krok nahoru, pokud má váš počítač RAM navíc. Později ji můžete snížit a ušetřit paměť.",
         "unloadTimeoutLabel": "Uvolnit z paměti po",

@@ -1102,7 +1102,17 @@
         "finderAction": "Trova un modello",
         "huggingFaceTitle": "I tuoi modelli",
         "huggingFaceDescription": "I modelli scaricati e quelli che hai aggiunto da Hugging Face.",
-        "catalogEmpty": "Al momento non è disponibile alcun modello locale consigliato."
+        "catalogEmpty": "Al momento non è disponibile alcun modello locale consigliato.",
+        "claudeCodeTitle": "Use Claude Code instead",
+        "claudeCodeDescription": "Already have Claude Code installed? Run the assistant through it on your existing Claude plan — no download, no API key.",
+        "claudeCodeCardTitle": "Claude Code CLI",
+        "claudeCodeCardDescription": "Runs through your local Claude Code login. Prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeUseAction": "Use",
+        "claudeCodeActiveBadge": "In use",
+        "claudeCodeSubscriptionBadge": "Uses your Claude plan",
+        "claudeCodeDetected": "Detected v{{version}}",
+        "claudeCodeMissingDescription": "Install Claude Code, or make sure the `claude` command is on this machine's PATH, then check again.",
+        "claudeCodeRecheckAction": "Check again"
       },
       "subpages": {
         "profilesCaption": "Cambia nome, ruolo e personalità dell'assistente.",
@@ -1141,6 +1151,14 @@
         "builtinEnginePreparing": "Download del motore locale…",
         "builtinEngineExtracting": "Installazione del motore locale…",
         "builtinEngineReady": "Motore locale pronto.",
+        "claudeCodeModelLabel": "Claude model",
+        "claudeCodeModelDescription": "Which Claude model the CLI should use for replies.",
+        "claudeCodeNotice": "Runs through your local Claude Code login — prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeModels": {
+          "sonnet": "Sonnet (recommended)",
+          "opus": "Opus (most capable)",
+          "haiku": "Haiku (fastest)"
+        },
         "contextSizeLabel": "Finestra di contesto",
         "contextSizeDescription": "Quanto il modello locale può tenere a mente contemporaneamente: le istruzioni di sistema, la cronologia della chat, eventuali schermate (una sola immagine può occuparne una buona parte) e la sua risposta. Un valore più grande contiene di più e rende affidabili la visione dello schermo e la ricerca web, ma consuma più memoria. Il valore predefinito è 8192; 16384 è un buon passo avanti se il tuo computer ha RAM da dedicarci. Puoi ridurlo in seguito per risparmiare memoria.",
         "unloadTimeoutLabel": "Rilascia dalla memoria dopo",

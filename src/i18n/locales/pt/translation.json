@@ -1102,7 +1102,17 @@
         "finderAction": "Encontrar um modelo",
         "huggingFaceTitle": "Seus modelos",
         "huggingFaceDescription": "Modelos baixados e modelos que você adicionou do Hugging Face.",
-        "catalogEmpty": "Nenhum modelo local recomendado está disponível agora."
+        "catalogEmpty": "Nenhum modelo local recomendado está disponível agora.",
+        "claudeCodeTitle": "Use Claude Code instead",
+        "claudeCodeDescription": "Already have Claude Code installed? Run the assistant through it on your existing Claude plan — no download, no API key.",
+        "claudeCodeCardTitle": "Claude Code CLI",
+        "claudeCodeCardDescription": "Runs through your local Claude Code login. Prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeUseAction": "Use",
+        "claudeCodeActiveBadge": "In use",
+        "claudeCodeSubscriptionBadge": "Uses your Claude plan",
+        "claudeCodeDetected": "Detected v{{version}}",
+        "claudeCodeMissingDescription": "Install Claude Code, or make sure the `claude` command is on this machine's PATH, then check again.",
+        "claudeCodeRecheckAction": "Check again"
       },
       "subpages": {
         "profilesCaption": "Troque o nome, o papel e a personalidade do assistente.",
@@ -1141,6 +1151,14 @@
         "builtinEnginePreparing": "Baixando o motor local…",
         "builtinEngineExtracting": "Instalando o motor local…",
         "builtinEngineReady": "Motor local pronto.",
+        "claudeCodeModelLabel": "Claude model",
+        "claudeCodeModelDescription": "Which Claude model the CLI should use for replies.",
+        "claudeCodeNotice": "Runs through your local Claude Code login — prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeModels": {
+          "sonnet": "Sonnet (recommended)",
+          "opus": "Opus (most capable)",
+          "haiku": "Haiku (fastest)"
+        },
         "contextSizeLabel": "Janela de contexto",
         "contextSizeDescription": "Quanto o modelo local consegue manter em mente de uma vez — as instruções de sistema, seu histórico de conversa, qualquer captura de tela (uma única imagem pode consumir uma boa fatia) e a resposta dele. Maior guarda mais e mantém a visão de tela e a busca na web confiáveis, mas usa mais memória. O padrão é 8192; 16384 é um bom passo acima se a sua máquina tiver RAM sobrando. Você pode reduzir depois para economizar memória.",
         "unloadTimeoutLabel": "Descarregar da memória após",

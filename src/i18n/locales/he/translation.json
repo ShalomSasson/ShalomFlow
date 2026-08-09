@@ -1102,7 +1102,17 @@
         "finderAction": "מצא מודל",
         "huggingFaceTitle": "המודלים שלך",
         "huggingFaceDescription": "מודלים שהורדת ומודלים שהוספת מ-Hugging Face.",
-        "catalogEmpty": "אין כרגע מודלים מקומיים מומלצים זמינים."
+        "catalogEmpty": "אין כרגע מודלים מקומיים מומלצים זמינים.",
+        "claudeCodeTitle": "Use Claude Code instead",
+        "claudeCodeDescription": "Already have Claude Code installed? Run the assistant through it on your existing Claude plan — no download, no API key.",
+        "claudeCodeCardTitle": "Claude Code CLI",
+        "claudeCodeCardDescription": "Runs through your local Claude Code login. Prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeUseAction": "Use",
+        "claudeCodeActiveBadge": "In use",
+        "claudeCodeSubscriptionBadge": "Uses your Claude plan",
+        "claudeCodeDetected": "Detected v{{version}}",
+        "claudeCodeMissingDescription": "Install Claude Code, or make sure the `claude` command is on this machine's PATH, then check again.",
+        "claudeCodeRecheckAction": "Check again"
       },
       "subpages": {
         "profilesCaption": "החלף את השם, התפקיד והאישיות של העוזר.",
@@ -1141,6 +1151,14 @@
         "builtinEnginePreparing": "מוריד את המנוע המקומי…",
         "builtinEngineExtracting": "מתקין את המנוע המקומי…",
         "builtinEngineReady": "המנוע המקומי מוכן.",
+        "claudeCodeModelLabel": "Claude model",
+        "claudeCodeModelDescription": "Which Claude model the CLI should use for replies.",
+        "claudeCodeNotice": "Runs through your local Claude Code login — prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeModels": {
+          "sonnet": "Sonnet (recommended)",
+          "opus": "Opus (most capable)",
+          "haiku": "Haiku (fastest)"
+        },
         "contextSizeLabel": "חלון הקשר",
         "contextSizeDescription": "כמה המודל המקומי יכול להחזיק בראש בו-זמנית — הוראות המערכת, היסטוריית השיחה שלך, כל צילום מסך (תמונה אחת יכולה לתפוס חלק גדול) והתשובה שלו. חלון גדול יותר מחזיק יותר ושומר על ראיית המסך והחיפוש באינטרנט אמינים, אבל צורך יותר זיכרון. ברירת המחדל היא 8192; 16384 היא שדרוג טוב אם יש למחשב שלך מספיק זיכרון פנוי. אפשר להקטין אותו מאוחר יותר כדי לחסוך בזיכרון.",
         "unloadTimeoutLabel": "פרוק מהזיכרון אחרי",

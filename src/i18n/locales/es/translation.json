@@ -1102,7 +1102,17 @@
         "finderAction": "Buscar un modelo",
         "huggingFaceTitle": "Tus modelos",
         "huggingFaceDescription": "Los modelos descargados y los que añadiste desde Hugging Face.",
-        "catalogEmpty": "Ahora mismo no hay modelos locales recomendados disponibles."
+        "catalogEmpty": "Ahora mismo no hay modelos locales recomendados disponibles.",
+        "claudeCodeTitle": "Use Claude Code instead",
+        "claudeCodeDescription": "Already have Claude Code installed? Run the assistant through it on your existing Claude plan — no download, no API key.",
+        "claudeCodeCardTitle": "Claude Code CLI",
+        "claudeCodeCardDescription": "Runs through your local Claude Code login. Prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeUseAction": "Use",
+        "claudeCodeActiveBadge": "In use",
+        "claudeCodeSubscriptionBadge": "Uses your Claude plan",
+        "claudeCodeDetected": "Detected v{{version}}",
+        "claudeCodeMissingDescription": "Install Claude Code, or make sure the `claude` command is on this machine's PATH, then check again.",
+        "claudeCodeRecheckAction": "Check again"
       },
       "subpages": {
         "profilesCaption": "Cambia el nombre, el rol y la personalidad del asistente.",
@@ -1141,6 +1151,14 @@
         "builtinEnginePreparing": "Descargando el motor local…",
         "builtinEngineExtracting": "Instalando el motor local…",
         "builtinEngineReady": "Motor local listo.",
+        "claudeCodeModelLabel": "Claude model",
+        "claudeCodeModelDescription": "Which Claude model the CLI should use for replies.",
+        "claudeCodeNotice": "Runs through your local Claude Code login — prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeModels": {
+          "sonnet": "Sonnet (recommended)",
+          "opus": "Opus (most capable)",
+          "haiku": "Haiku (fastest)"
+        },
         "contextSizeLabel": "Ventana de contexto",
         "contextSizeDescription": "Cuánto puede tener en cuenta el modelo local a la vez: las instrucciones del sistema, tu historial de chat, cualquier captura de pantalla (una sola imagen puede ocupar una buena parte) y su respuesta. Cuanto mayor sea, más abarca y más fiables serán la visión de pantalla y la búsqueda web, pero usa más memoria. El valor por defecto es 8192; 16384 es un buen salto si a tu equipo le sobra RAM. Puedes reducirla más adelante para ahorrar memoria.",
         "unloadTimeoutLabel": "Descargar de la memoria tras",

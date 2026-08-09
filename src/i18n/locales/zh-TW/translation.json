@@ -1102,7 +1102,17 @@
         "finderAction": "尋找模型",
         "huggingFaceTitle": "我的模型",
         "huggingFaceDescription": "已下載的模型，以及您從 Hugging Face 新增的模型。",
-        "catalogEmpty": "目前沒有可用的推薦本機模型。"
+        "catalogEmpty": "目前沒有可用的推薦本機模型。",
+        "claudeCodeTitle": "Use Claude Code instead",
+        "claudeCodeDescription": "Already have Claude Code installed? Run the assistant through it on your existing Claude plan — no download, no API key.",
+        "claudeCodeCardTitle": "Claude Code CLI",
+        "claudeCodeCardDescription": "Runs through your local Claude Code login. Prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeUseAction": "Use",
+        "claudeCodeActiveBadge": "In use",
+        "claudeCodeSubscriptionBadge": "Uses your Claude plan",
+        "claudeCodeDetected": "Detected v{{version}}",
+        "claudeCodeMissingDescription": "Install Claude Code, or make sure the `claude` command is on this machine's PATH, then check again.",
+        "claudeCodeRecheckAction": "Check again"
       },
       "subpages": {
         "profilesCaption": "切換助理的名稱、身分與個性。",
@@ -1141,6 +1151,14 @@
         "builtinEnginePreparing": "正在下載本機引擎…",
         "builtinEngineExtracting": "正在安裝本機引擎…",
         "builtinEngineReady": "本機引擎已就緒。",
+        "claudeCodeModelLabel": "Claude model",
+        "claudeCodeModelDescription": "Which Claude model the CLI should use for replies.",
+        "claudeCodeNotice": "Runs through your local Claude Code login — prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeModels": {
+          "sonnet": "Sonnet (recommended)",
+          "opus": "Opus (most capable)",
+          "haiku": "Haiku (fastest)"
+        },
         "contextSizeLabel": "上下文視窗",
         "contextSizeDescription": "本機模型一次能記住多少內容——包含系統指令、您的對話紀錄、任何螢幕截圖（單張圖片就可能佔掉一大塊），以及它的回覆。設得越大能容納越多，也讓螢幕視覺與網路搜尋更可靠，但會用掉更多記憶體。預設為 8192；若您的電腦記憶體充裕，16384 是不錯的升級。之後也可以調低以節省記憶體。",
         "unloadTimeoutLabel": "多久後從記憶體卸載",

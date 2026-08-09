@@ -1102,7 +1102,17 @@
         "finderAction": "Hitta en modell",
         "huggingFaceTitle": "Dina modeller",
         "huggingFaceDescription": "Nedladdade modeller och modeller du lagt till från Hugging Face.",
-        "catalogEmpty": "Inga rekommenderade lokala modeller är tillgängliga just nu."
+        "catalogEmpty": "Inga rekommenderade lokala modeller är tillgängliga just nu.",
+        "claudeCodeTitle": "Use Claude Code instead",
+        "claudeCodeDescription": "Already have Claude Code installed? Run the assistant through it on your existing Claude plan — no download, no API key.",
+        "claudeCodeCardTitle": "Claude Code CLI",
+        "claudeCodeCardDescription": "Runs through your local Claude Code login. Prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeUseAction": "Use",
+        "claudeCodeActiveBadge": "In use",
+        "claudeCodeSubscriptionBadge": "Uses your Claude plan",
+        "claudeCodeDetected": "Detected v{{version}}",
+        "claudeCodeMissingDescription": "Install Claude Code, or make sure the `claude` command is on this machine's PATH, then check again.",
+        "claudeCodeRecheckAction": "Check again"
       },
       "subpages": {
         "profilesCaption": "Byt assistentens namn, roll och personlighet.",
@@ -1141,6 +1151,14 @@
         "builtinEnginePreparing": "Laddar ner den lokala motorn…",
         "builtinEngineExtracting": "Installerar den lokala motorn…",
         "builtinEngineReady": "Den lokala motorn är klar.",
+        "claudeCodeModelLabel": "Claude model",
+        "claudeCodeModelDescription": "Which Claude model the CLI should use for replies.",
+        "claudeCodeNotice": "Runs through your local Claude Code login — prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeModels": {
+          "sonnet": "Sonnet (recommended)",
+          "opus": "Opus (most capable)",
+          "haiku": "Haiku (fastest)"
+        },
         "contextSizeLabel": "Kontextfönster",
         "contextSizeDescription": "Hur mycket den lokala modellen kan hålla i huvudet samtidigt — systeminstruktionerna, din chatthistorik, eventuella skärmbilder (en enda bild kan ta en stor del) och dess svar. Ett större fönster rymmer mer och håller skärmvisning och webbsökning tillförlitliga, men använder mer minne. Standard är 8192; 16384 är ett bra steg upp om din dator har RAM att avvara. Du kan sänka det senare för att spara minne.",
         "unloadTimeoutLabel": "Avlasta från minnet efter",

@@ -1102,7 +1102,17 @@
         "finderAction": "ابحث عن نموذج",
         "huggingFaceTitle": "نماذجك",
         "huggingFaceDescription": "النماذج المنزَّلة والنماذج التي أضفتها من Hugging Face.",
-        "catalogEmpty": "لا توجد نماذج محلية موصى بها في الوقت الحالي."
+        "catalogEmpty": "لا توجد نماذج محلية موصى بها في الوقت الحالي.",
+        "claudeCodeTitle": "Use Claude Code instead",
+        "claudeCodeDescription": "Already have Claude Code installed? Run the assistant through it on your existing Claude plan — no download, no API key.",
+        "claudeCodeCardTitle": "Claude Code CLI",
+        "claudeCodeCardDescription": "Runs through your local Claude Code login. Prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeUseAction": "Use",
+        "claudeCodeActiveBadge": "In use",
+        "claudeCodeSubscriptionBadge": "Uses your Claude plan",
+        "claudeCodeDetected": "Detected v{{version}}",
+        "claudeCodeMissingDescription": "Install Claude Code, or make sure the `claude` command is on this machine's PATH, then check again.",
+        "claudeCodeRecheckAction": "Check again"
       },
       "subpages": {
         "profilesCaption": "غيّر اسم المساعد ودوره وشخصيته.",
@@ -1141,6 +1151,14 @@
         "builtinEnginePreparing": "جارٍ تنزيل المحرّك المحلي…",
         "builtinEngineExtracting": "جارٍ تثبيت المحرّك المحلي…",
         "builtinEngineReady": "المحرّك المحلي جاهز.",
+        "claudeCodeModelLabel": "Claude model",
+        "claudeCodeModelDescription": "Which Claude model the CLI should use for replies.",
+        "claudeCodeNotice": "Runs through your local Claude Code login — prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeModels": {
+          "sonnet": "Sonnet (recommended)",
+          "opus": "Opus (most capable)",
+          "haiku": "Haiku (fastest)"
+        },
         "contextSizeLabel": "نافذة السياق",
         "contextSizeDescription": "مقدار ما يستطيع النموذج المحلي استحضاره في وقت واحد — تعليمات النظام وسجل محادثتك وأي لقطة شاشة (الصورة الواحدة قد تستهلك جزءًا كبيرًا) وردّه. النافذة الأكبر تستوعب أكثر وتجعل رؤية الشاشة والبحث في الويب أكثر موثوقية، لكنها تستهلك ذاكرة أكبر. القيمة الافتراضية 8192؛ و16384 خطوة جيدة للأعلى إذا كانت ذاكرة جهازك تسمح بذلك. ويمكنك تقليلها لاحقًا لتوفير الذاكرة.",
         "unloadTimeoutLabel": "إلغاء التحميل من الذاكرة بعد",

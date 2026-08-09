@@ -1102,7 +1102,17 @@
         "finderAction": "모델 찾기",
         "huggingFaceTitle": "내 모델",
         "huggingFaceDescription": "다운로드한 모델과 Hugging Face에서 직접 추가한 모델입니다.",
-        "catalogEmpty": "지금은 사용할 수 있는 추천 로컬 모델이 없습니다."
+        "catalogEmpty": "지금은 사용할 수 있는 추천 로컬 모델이 없습니다.",
+        "claudeCodeTitle": "Use Claude Code instead",
+        "claudeCodeDescription": "Already have Claude Code installed? Run the assistant through it on your existing Claude plan — no download, no API key.",
+        "claudeCodeCardTitle": "Claude Code CLI",
+        "claudeCodeCardDescription": "Runs through your local Claude Code login. Prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeUseAction": "Use",
+        "claudeCodeActiveBadge": "In use",
+        "claudeCodeSubscriptionBadge": "Uses your Claude plan",
+        "claudeCodeDetected": "Detected v{{version}}",
+        "claudeCodeMissingDescription": "Install Claude Code, or make sure the `claude` command is on this machine's PATH, then check again.",
+        "claudeCodeRecheckAction": "Check again"
       },
       "subpages": {
         "profilesCaption": "어시스턴트의 이름, 역할, 성격을 바꿉니다.",
@@ -1141,6 +1151,14 @@
         "builtinEnginePreparing": "로컬 엔진 다운로드 중…",
         "builtinEngineExtracting": "로컬 엔진 설치 중…",
         "builtinEngineReady": "로컬 엔진 준비 완료.",
+        "claudeCodeModelLabel": "Claude model",
+        "claudeCodeModelDescription": "Which Claude model the CLI should use for replies.",
+        "claudeCodeNotice": "Runs through your local Claude Code login — prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeModels": {
+          "sonnet": "Sonnet (recommended)",
+          "opus": "Opus (most capable)",
+          "haiku": "Haiku (fastest)"
+        },
         "contextSizeLabel": "컨텍스트 창",
         "contextSizeDescription": "로컬 모델이 한 번에 기억할 수 있는 양입니다 — 시스템 지시사항, 대화 기록, 스크린샷(이미지 한 장이 큰 부분을 차지할 수 있습니다), 그리고 모델의 답변까지 포함됩니다. 크게 하면 더 많이 담을 수 있어 화면 인식과 웹 검색이 안정적으로 작동하지만 메모리를 더 씁니다. 기본값은 8192이며, RAM에 여유가 있다면 16384가 적당한 다음 단계입니다. 나중에 낮춰서 메모리를 아낄 수도 있습니다.",
         "unloadTimeoutLabel": "메모리에서 언로드하기까지",

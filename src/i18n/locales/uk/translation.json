@@ -1102,7 +1102,17 @@
         "finderAction": "Знайти модель",
         "huggingFaceTitle": "Ваші моделі",
         "huggingFaceDescription": "Завантажені моделі та моделі, які ви додали з Hugging Face.",
-        "catalogEmpty": "Зараз немає доступних рекомендованих локальних моделей."
+        "catalogEmpty": "Зараз немає доступних рекомендованих локальних моделей.",
+        "claudeCodeTitle": "Use Claude Code instead",
+        "claudeCodeDescription": "Already have Claude Code installed? Run the assistant through it on your existing Claude plan — no download, no API key.",
+        "claudeCodeCardTitle": "Claude Code CLI",
+        "claudeCodeCardDescription": "Runs through your local Claude Code login. Prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeUseAction": "Use",
+        "claudeCodeActiveBadge": "In use",
+        "claudeCodeSubscriptionBadge": "Uses your Claude plan",
+        "claudeCodeDetected": "Detected v{{version}}",
+        "claudeCodeMissingDescription": "Install Claude Code, or make sure the `claude` command is on this machine's PATH, then check again.",
+        "claudeCodeRecheckAction": "Check again"
       },
       "subpages": {
         "profilesCaption": "Змінюйте ім'я, роль і характер асистента.",
@@ -1141,6 +1151,14 @@
         "builtinEnginePreparing": "Завантаження локального рушія…",
         "builtinEngineExtracting": "Встановлення локального рушія…",
         "builtinEngineReady": "Локальний рушій готовий.",
+        "claudeCodeModelLabel": "Claude model",
+        "claudeCodeModelDescription": "Which Claude model the CLI should use for replies.",
+        "claudeCodeNotice": "Runs through your local Claude Code login — prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeModels": {
+          "sonnet": "Sonnet (recommended)",
+          "opus": "Opus (most capable)",
+          "haiku": "Haiku (fastest)"
+        },
         "contextSizeLabel": "Контекстне вікно",
         "contextSizeDescription": "Скільки локальна модель може тримати в голові одночасно — системні інструкції, історію чату, будь-який знімок екрана (одне зображення може займати значну частину) і свою відповідь. Більше вікно вміщує більше й робить перегляд екрана та пошук в інтернеті надійнішими, але потребує більше пам'яті. Стандартне значення — 8192; 16384 буде добрим наступним кроком, якщо у вашого комп'ютера є вільна RAM. Пізніше його можна зменшити, щоб зекономити пам'ять.",
         "unloadTimeoutLabel": "Вивантажувати з пам'яті через",

@@ -1102,7 +1102,17 @@
         "finderAction": "Tìm một mô hình",
         "huggingFaceTitle": "Mô hình của bạn",
         "huggingFaceDescription": "Các mô hình đã tải và các mô hình bạn thêm từ Hugging Face.",
-        "catalogEmpty": "Hiện không có mô hình cục bộ được đề xuất nào."
+        "catalogEmpty": "Hiện không có mô hình cục bộ được đề xuất nào.",
+        "claudeCodeTitle": "Use Claude Code instead",
+        "claudeCodeDescription": "Already have Claude Code installed? Run the assistant through it on your existing Claude plan — no download, no API key.",
+        "claudeCodeCardTitle": "Claude Code CLI",
+        "claudeCodeCardDescription": "Runs through your local Claude Code login. Prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeUseAction": "Use",
+        "claudeCodeActiveBadge": "In use",
+        "claudeCodeSubscriptionBadge": "Uses your Claude plan",
+        "claudeCodeDetected": "Detected v{{version}}",
+        "claudeCodeMissingDescription": "Install Claude Code, or make sure the `claude` command is on this machine's PATH, then check again.",
+        "claudeCodeRecheckAction": "Check again"
       },
       "subpages": {
         "profilesCaption": "Đổi tên, vai trò và tính cách của trợ lý.",
@@ -1141,6 +1151,14 @@
         "builtinEnginePreparing": "Đang tải công cụ cục bộ…",
         "builtinEngineExtracting": "Đang cài đặt công cụ cục bộ…",
         "builtinEngineReady": "Công cụ cục bộ đã sẵn sàng.",
+        "claudeCodeModelLabel": "Claude model",
+        "claudeCodeModelDescription": "Which Claude model the CLI should use for replies.",
+        "claudeCodeNotice": "Runs through your local Claude Code login — prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeModels": {
+          "sonnet": "Sonnet (recommended)",
+          "opus": "Opus (most capable)",
+          "haiku": "Haiku (fastest)"
+        },
         "contextSizeLabel": "Cửa sổ ngữ cảnh",
         "contextSizeDescription": "Lượng thông tin mô hình cục bộ có thể ghi nhớ cùng lúc — hướng dẫn hệ thống, lịch sử trò chuyện của bạn, ảnh màn hình nếu có (một ảnh có thể chiếm phần khá lớn) và câu trả lời của nó. Cửa sổ lớn hơn chứa được nhiều hơn và giúp khả năng xem màn hình cùng tìm kiếm web đáng tin cậy, nhưng dùng nhiều bộ nhớ hơn. Mặc định là 8192; 16384 là bước nâng tốt nếu máy của bạn còn dư RAM. Bạn có thể giảm lại sau để tiết kiệm bộ nhớ.",
         "unloadTimeoutLabel": "Giải phóng khỏi bộ nhớ sau",

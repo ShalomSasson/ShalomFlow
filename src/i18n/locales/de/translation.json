@@ -1102,7 +1102,17 @@
         "finderAction": "Modell finden",
         "huggingFaceTitle": "Deine Modelle",
         "huggingFaceDescription": "Heruntergeladene Modelle und Modelle, die du von Hugging Face hinzugefügt hast.",
-        "catalogEmpty": "Derzeit sind keine empfohlenen lokalen Modelle verfügbar."
+        "catalogEmpty": "Derzeit sind keine empfohlenen lokalen Modelle verfügbar.",
+        "claudeCodeTitle": "Use Claude Code instead",
+        "claudeCodeDescription": "Already have Claude Code installed? Run the assistant through it on your existing Claude plan — no download, no API key.",
+        "claudeCodeCardTitle": "Claude Code CLI",
+        "claudeCodeCardDescription": "Runs through your local Claude Code login. Prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeUseAction": "Use",
+        "claudeCodeActiveBadge": "In use",
+        "claudeCodeSubscriptionBadge": "Uses your Claude plan",
+        "claudeCodeDetected": "Detected v{{version}}",
+        "claudeCodeMissingDescription": "Install Claude Code, or make sure the `claude` command is on this machine's PATH, then check again.",
+        "claudeCodeRecheckAction": "Check again"
       },
       "subpages": {
         "profilesCaption": "Wechsle Name, Rolle und Persönlichkeit des Assistenten.",
@@ -1141,6 +1151,14 @@
         "builtinEnginePreparing": "Lokale Engine wird heruntergeladen…",
         "builtinEngineExtracting": "Lokale Engine wird installiert…",
         "builtinEngineReady": "Lokale Engine bereit.",
+        "claudeCodeModelLabel": "Claude model",
+        "claudeCodeModelDescription": "Which Claude model the CLI should use for replies.",
+        "claudeCodeNotice": "Runs through your local Claude Code login — prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeModels": {
+          "sonnet": "Sonnet (recommended)",
+          "opus": "Opus (most capable)",
+          "haiku": "Haiku (fastest)"
+        },
         "contextSizeLabel": "Kontextfenster",
         "contextSizeDescription": "Wie viel das lokale Modell gleichzeitig im Blick behalten kann — die Systemanweisungen, dein Chatverlauf, ein etwaiger Screenshot (ein einzelnes Bild kann viel Platz belegen) und die Antwort. Größer behält mehr und hält Bildschirmansicht und Websuche zuverlässig, braucht aber mehr Speicher. Standard ist 8192; 16384 ist ein guter Schritt nach oben, wenn dein Rechner den RAM übrig hat. Du kannst den Wert später senken, um Speicher zu sparen.",
         "unloadTimeoutLabel": "Aus dem Speicher entladen nach",

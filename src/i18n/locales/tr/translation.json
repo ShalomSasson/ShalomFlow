@@ -1102,7 +1102,17 @@
         "finderAction": "Model bul",
         "huggingFaceTitle": "Modelleriniz",
         "huggingFaceDescription": "İndirdiğiniz modeller ve Hugging Face'ten eklediğiniz modeller.",
-        "catalogEmpty": "Şu anda önerilen bir yerel model yok."
+        "catalogEmpty": "Şu anda önerilen bir yerel model yok.",
+        "claudeCodeTitle": "Use Claude Code instead",
+        "claudeCodeDescription": "Already have Claude Code installed? Run the assistant through it on your existing Claude plan — no download, no API key.",
+        "claudeCodeCardTitle": "Claude Code CLI",
+        "claudeCodeCardDescription": "Runs through your local Claude Code login. Prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeUseAction": "Use",
+        "claudeCodeActiveBadge": "In use",
+        "claudeCodeSubscriptionBadge": "Uses your Claude plan",
+        "claudeCodeDetected": "Detected v{{version}}",
+        "claudeCodeMissingDescription": "Install Claude Code, or make sure the `claude` command is on this machine's PATH, then check again.",
+        "claudeCodeRecheckAction": "Check again"
       },
       "subpages": {
         "profilesCaption": "Asistanın adını, rolünü ve kişiliğini değiştirin.",
@@ -1141,6 +1151,14 @@
         "builtinEnginePreparing": "Yerel motor indiriliyor…",
         "builtinEngineExtracting": "Yerel motor kuruluyor…",
         "builtinEngineReady": "Yerel motor hazır.",
+        "claudeCodeModelLabel": "Claude model",
+        "claudeCodeModelDescription": "Which Claude model the CLI should use for replies.",
+        "claudeCodeNotice": "Runs through your local Claude Code login — prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeModels": {
+          "sonnet": "Sonnet (recommended)",
+          "opus": "Opus (most capable)",
+          "haiku": "Haiku (fastest)"
+        },
         "contextSizeLabel": "Bağlam penceresi",
         "contextSizeDescription": "Yerel modelin bir seferde akılda tutabileceği miktar — sistem talimatları, sohbet geçmişiniz, varsa ekran görüntüsü (tek bir görüntü büyük bir bölümü yiyebilir) ve modelin yanıtı. Daha büyüğü daha fazlasını tutar, ekran görüşünü ve web aramasını güvenilir kılar, ancak daha fazla bellek kullanır. Varsayılan 8192'dir; makinenizin ayıracak RAM'i varsa 16384 iyi bir üst adımdır. Bellekten tasarruf etmek için sonradan düşürebilirsiniz.",
         "unloadTimeoutLabel": "Şu süre sonra bellekten boşalt",

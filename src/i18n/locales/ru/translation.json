@@ -1102,7 +1102,17 @@
         "finderAction": "Найти модель",
         "huggingFaceTitle": "Ваши модели",
         "huggingFaceDescription": "Загруженные модели и модели, добавленные вами с Hugging Face.",
-        "catalogEmpty": "Сейчас нет доступных рекомендованных локальных моделей."
+        "catalogEmpty": "Сейчас нет доступных рекомендованных локальных моделей.",
+        "claudeCodeTitle": "Use Claude Code instead",
+        "claudeCodeDescription": "Already have Claude Code installed? Run the assistant through it on your existing Claude plan — no download, no API key.",
+        "claudeCodeCardTitle": "Claude Code CLI",
+        "claudeCodeCardDescription": "Runs through your local Claude Code login. Prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeUseAction": "Use",
+        "claudeCodeActiveBadge": "In use",
+        "claudeCodeSubscriptionBadge": "Uses your Claude plan",
+        "claudeCodeDetected": "Detected v{{version}}",
+        "claudeCodeMissingDescription": "Install Claude Code, or make sure the `claude` command is on this machine's PATH, then check again.",
+        "claudeCodeRecheckAction": "Check again"
       },
       "subpages": {
         "profilesCaption": "Меняйте имя, роль и характер ассистента.",
@@ -1141,6 +1151,14 @@
         "builtinEnginePreparing": "Загрузка локального движка…",
         "builtinEngineExtracting": "Установка локального движка…",
         "builtinEngineReady": "Локальный движок готов.",
+        "claudeCodeModelLabel": "Claude model",
+        "claudeCodeModelDescription": "Which Claude model the CLI should use for replies.",
+        "claudeCodeNotice": "Runs through your local Claude Code login — prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeModels": {
+          "sonnet": "Sonnet (recommended)",
+          "opus": "Opus (most capable)",
+          "haiku": "Haiku (fastest)"
+        },
         "contextSizeLabel": "Окно контекста",
         "contextSizeDescription": "Сколько локальная модель может держать в голове одновременно — системные инструкции, историю чата, снимок экрана (одно изображение может занять большую часть) и её ответ. Больше окно — больше вмещается, просмотр экрана и поиск в интернете работают надёжнее, но памяти уходит больше. По умолчанию 8192; 16384 — хороший следующий шаг, если у компьютера есть свободное ОЗУ. Позже значение можно уменьшить, чтобы сэкономить память.",
         "unloadTimeoutLabel": "Выгружать из памяти через",

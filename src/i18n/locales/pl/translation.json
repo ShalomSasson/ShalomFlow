@@ -1102,7 +1102,17 @@
         "finderAction": "Znajdź model",
         "huggingFaceTitle": "Twoje modele",
         "huggingFaceDescription": "Pobrane modele i modele dodane przez Ciebie z Hugging Face.",
-        "catalogEmpty": "Obecnie nie ma dostępnych polecanych modeli lokalnych."
+        "catalogEmpty": "Obecnie nie ma dostępnych polecanych modeli lokalnych.",
+        "claudeCodeTitle": "Use Claude Code instead",
+        "claudeCodeDescription": "Already have Claude Code installed? Run the assistant through it on your existing Claude plan — no download, no API key.",
+        "claudeCodeCardTitle": "Claude Code CLI",
+        "claudeCodeCardDescription": "Runs through your local Claude Code login. Prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeUseAction": "Use",
+        "claudeCodeActiveBadge": "In use",
+        "claudeCodeSubscriptionBadge": "Uses your Claude plan",
+        "claudeCodeDetected": "Detected v{{version}}",
+        "claudeCodeMissingDescription": "Install Claude Code, or make sure the `claude` command is on this machine's PATH, then check again.",
+        "claudeCodeRecheckAction": "Check again"
       },
       "subpages": {
         "profilesCaption": "Zmień imię, rolę i osobowość asystenta.",
@@ -1141,6 +1151,14 @@
         "builtinEnginePreparing": "Pobieranie lokalnego silnika…",
         "builtinEngineExtracting": "Instalowanie lokalnego silnika…",
         "builtinEngineReady": "Lokalny silnik gotowy.",
+        "claudeCodeModelLabel": "Claude model",
+        "claudeCodeModelDescription": "Which Claude model the CLI should use for replies.",
+        "claudeCodeNotice": "Runs through your local Claude Code login — prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeModels": {
+          "sonnet": "Sonnet (recommended)",
+          "opus": "Opus (most capable)",
+          "haiku": "Haiku (fastest)"
+        },
         "contextSizeLabel": "Okno kontekstu",
         "contextSizeDescription": "Ile lokalny model może mieć na uwadze naraz — instrukcje systemowe, historię rozmowy, ewentualny zrzut ekranu (jeden obraz potrafi zająć spory kawałek) i własną odpowiedź. Większe pomieści więcej i sprawi, że podgląd ekranu oraz wyszukiwanie w sieci będą działać pewniej, ale zużywa więcej pamięci. Domyślna wartość to 8192; 16384 to dobry kolejny krok, jeśli Twój komputer ma zapas pamięci RAM. Później możesz ją zmniejszyć, aby oszczędzić pamięć.",
         "unloadTimeoutLabel": "Zwolnij z pamięci po",

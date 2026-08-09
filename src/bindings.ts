@@ -823,6 +823,14 @@ async checkAppleIntelligenceAvailable() : Promise<boolean> {
     return await TAURI_INVOKE("check_apple_intelligence_available");
 },
 /**
+ * Report whether the Claude Code CLI is available on this machine.
+ * Called by the settings UI to decide between offering the CLI brain and
+ * showing install guidance.
+ */
+async claudeCodeStatus() : Promise<ClaudeCodeStatus> {
+    return await TAURI_INVOKE("claude_code_status");
+},
+/**
  * Try to initialize Enigo (keyboard/mouse simulation).
  * On macOS, this will return an error if accessibility permissions are not granted.
  */
@@ -2605,6 +2613,11 @@ export type ChatMessage = { role: string; content: string;
  * (and text-only turns) simply have an empty list.
  */
 images?: string[] }
+/**
+ * What the settings UI needs to decide between offering this provider and
+ * telling the user how to install it.
+ */
+export type ClaudeCodeStatus = { installed: boolean; path: string | null; version: string | null }
 export type ClipboardHandling = "dont_modify" | "copy_to_clipboard"
 /**
  * What happens when the user closes the main window.

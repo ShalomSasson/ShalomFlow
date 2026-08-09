@@ -1102,7 +1102,17 @@
         "finderAction": "Намиране на модел",
         "huggingFaceTitle": "Вашите модели",
         "huggingFaceDescription": "Изтеглени модели и модели, които сте добавили от Hugging Face.",
-        "catalogEmpty": "В момента няма налични препоръчани локални модели."
+        "catalogEmpty": "В момента няма налични препоръчани локални модели.",
+        "claudeCodeTitle": "Use Claude Code instead",
+        "claudeCodeDescription": "Already have Claude Code installed? Run the assistant through it on your existing Claude plan — no download, no API key.",
+        "claudeCodeCardTitle": "Claude Code CLI",
+        "claudeCodeCardDescription": "Runs through your local Claude Code login. Prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeUseAction": "Use",
+        "claudeCodeActiveBadge": "In use",
+        "claudeCodeSubscriptionBadge": "Uses your Claude plan",
+        "claudeCodeDetected": "Detected v{{version}}",
+        "claudeCodeMissingDescription": "Install Claude Code, or make sure the `claude` command is on this machine's PATH, then check again.",
+        "claudeCodeRecheckAction": "Check again"
       },
       "subpages": {
         "profilesCaption": "Сменяйте името, ролята и характера на асистента.",
@@ -1141,6 +1151,14 @@
         "builtinEnginePreparing": "Изтегляне на локалното ядро…",
         "builtinEngineExtracting": "Инсталиране на локалното ядро…",
         "builtinEngineReady": "Локалното ядро е готово.",
+        "claudeCodeModelLabel": "Claude model",
+        "claudeCodeModelDescription": "Which Claude model the CLI should use for replies.",
+        "claudeCodeNotice": "Runs through your local Claude Code login — prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeModels": {
+          "sonnet": "Sonnet (recommended)",
+          "opus": "Opus (most capable)",
+          "haiku": "Haiku (fastest)"
+        },
         "contextSizeLabel": "Контекстен прозорец",
         "contextSizeDescription": "Колко може да държи наум локалният модел наведнъж — системните инструкции, историята на разговора, всяка снимка на екрана (едно изображение може да заеме голяма част) и отговора му. По-големият държи повече и запазва надеждни видимостта на екрана и търсенето в интернет, но използва повече памет. По подразбиране е 8192; 16384 е добра стъпка напред, ако машината ви разполага с достатъчно RAM. По-късно можете да го намалите, за да спестите памет.",
         "unloadTimeoutLabel": "Разтоварване от паметта след",

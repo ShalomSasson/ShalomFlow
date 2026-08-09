@@ -51,6 +51,15 @@ import ScreenRecordingPermission from "@/components/ScreenRecordingPermission";
 /** The built-in (local) llama.cpp provider id, mirrored from the backend. */
 const BUILTIN_PROVIDER_ID = "builtin";
 
+/** The Claude Code CLI provider id, mirrored from the backend. */
+const CLAUDE_CODE_PROVIDER_ID = "claude_code";
+
+/**
+ * Model aliases accepted by the CLI's `--model` flag. Kept in sync with
+ * `MODEL_ALIASES` in `src-tauri/src/claude_code.rs`.
+ */
+const CLAUDE_CODE_MODELS = ["sonnet", "opus", "haiku"] as const;
+
 const KOKORO_DTYPES = [
   { value: "fp32", label: "fp32 (best quality, WebGPU)" },
   { value: "fp16", label: "fp16 (half precision)" },
@@ -184,6 +193,10 @@ export const AssistantSettings: React.FC<AssistantSettingsProps> = ({
   // Built-in (local) provider: model is chosen from downloaded LLM models and
   // there is no API key. The engine is the bundled llama.cpp sidecar.
   const isBuiltin = selectedProviderId === BUILTIN_PROVIDER_ID;
+  const isClaudeCode = selectedProviderId === CLAUDE_CODE_PROVIDER_ID;
+  // Both local brains live behind the "On my device" door, but only the
+  // built-in engine has a llama.cpp process to configure.
+  const isOnDeviceBrain = isBuiltin || isClaudeCode;
   const { models } = useModelStore();
   const llmModels = useMemo(
     () =>
@@ -704,6 +717,7 @@ export const AssistantSettings: React.FC<AssistantSettingsProps> = ({
   const handleProviderSelect = (providerId: string) => {
     const isValidTarget =
       providerId === BUILTIN_PROVIDER_ID ||
+      providerId === CLAUDE_CODE_PROVIDER_ID ||
       cloudProviderOptions.some((option) => option.value === providerId);
     if (!isValidTarget) {
       showProviderSwitchError();
@@ -742,13 +756,15 @@ export const AssistantSettings: React.FC<AssistantSettingsProps> = ({
   // Segmented brain picker: "On my device" is the built-in provider; "Cloud
   // provider" is any other supported provider. Switching restores the user's
   // last valid cloud choice rather than a hidden/stale provider.
-  const brainMode: "device" | "cloud" = isBuiltin ? "device" : "cloud";
+  const brainMode: "device" | "cloud" = isOnDeviceBrain ? "device" : "cloud";
   const handleBrainModeChange = (mode: "device" | "cloud") => {
     if (mode === "device") {
-      if (!isBuiltin) handleProviderSelect(BUILTIN_PROVIDER_ID);
+      // Already on a device brain (built-in or the CLI) — leave the user's
+      // choice alone instead of forcing them back to llama.cpp.
+      if (!isOnDeviceBrain) handleProviderSelect(BUILTIN_PROVIDER_ID);
       return;
     }
-    if (!isBuiltin) return;
+    if (!isOnDeviceBrain) return;
 
     const target = cloudProviderOptions.some(
       (option) => option.value === lastCloudProviderId,
@@ -1071,6 +1087,69 @@ export const AssistantSettings: React.FC<AssistantSettingsProps> = ({
     </>
   );
 
+  // Claude Code CLI form. No API key, no base URL, and none of the llama.cpp
+  // engine controls — there is no local engine to size or unload. The notice is
+  // deliberate: this brain is local only in the sense that the CLI runs here.
+  const claudeCodeProviderForm = (
+    <>
+      <SettingContainer
+        title={t("settings.assistant.provider.claudeCodeModelLabel")}
+        info={t("settings.assistant.provider.claudeCodeModelDescription")}
+        layout="horizontal"
+        grouped={true}
+      >
+        <div className="flex flex-col items-end gap-1.5">
+          <Dropdown
+            options={CLAUDE_CODE_MODELS.map((alias) => ({
+              value: alias,
+              label: t(`settings.assistant.provider.claudeCodeModels.${alias}`),
+            }))}
+            selectedValue={model || "sonnet"}
+            onSelect={(alias) => {
+              setModel(alias);
+              void setAndRefresh(
+                commands.changeAssistantModelSetting(
+                  CLAUDE_CODE_PROVIDER_ID,
+                  alias,
+                ),
+              );
+            }}
+            className="min-w-[200px]"
+          />
+          <p className="max-w-[360px] text-end text-[11px] leading-relaxed text-muted">
+            {t("settings.assistant.provider.claudeCodeNotice")}
+          </p>
+        </div>
+      </SettingContainer>
+
+      <div className="px-4 py-3">
+        <button
+          type="button"
+          onClick={onOpenLlmCatalog}
+          className="flex w-full items-center gap-3 rounded-xl border border-hairline bg-surface-strong/55 px-3.5 py-3 text-start transition-colors cursor-pointer hover:border-hairline-strong hover:bg-surface-strong"
+        >
+          <span
+            className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ${TONE_TILE.teal}`}
+          >
+            <Download size={17} />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block text-[13px] font-medium text-ink">
+              {t("settings.assistant.brain.downloadModel")}
+            </span>
+            <span className="mt-0.5 block text-xs text-muted">
+              {t("settings.assistant.brain.downloadModelDescription")}
+            </span>
+          </span>
+          <span className="flex shrink-0 items-center gap-1 text-xs font-medium text-accent">
+            {t("settings.assistant.brain.downloadModelAction")}
+            <ChevronRight width={15} height={15} />
+          </span>
+        </button>
+      </div>
+    </>
+  );
+
   return (
     <div className="max-w-3xl w-full mx-auto space-y-8">
       {/* Hotkeys ---------------------------------------------------------- */}
@@ -1110,7 +1189,11 @@ export const AssistantSettings: React.FC<AssistantSettingsProps> = ({
             disabled={isProviderSwitching}
           />
         </SettingContainer>
-        {brainMode === "device" ? deviceProviderForm : cloudProviderForm}
+        {brainMode === "device"
+          ? isClaudeCode
+            ? claudeCodeProviderForm
+            : deviceProviderForm
+          : cloudProviderForm}
       </SettingsGroup>
 
       {/* Voice output ----------------------------------------------------- */}
