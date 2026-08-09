@@ -10,6 +10,11 @@ use tauri_plugin_store::StoreExt;
 pub const APPLE_INTELLIGENCE_PROVIDER_ID: &str = "apple_intelligence";
 pub const APPLE_INTELLIGENCE_DEFAULT_MODEL_ID: &str = "Apple Intelligence";
 
+/// The Claude Code CLI provider id. Generation is delegated to the user's
+/// locally installed `claude` binary running on their own login, so this
+/// provider has no base URL and never stores an API key.
+pub const CLAUDE_CODE_PROVIDER_ID: &str = "claude_code";
+
 #[derive(Serialize, Debug, Clone, Copy, PartialEq, Eq, Type)]
 #[serde(rename_all = "lowercase")]
 pub enum LogLevel {
@@ -1579,6 +1584,18 @@ fn default_post_process_providers() -> Vec<PostProcessProvider> {
         base_url: "http://127.0.0.1:11435/v1".to_string(),
         allow_base_url_edit: false,
         models_endpoint: Some("/models".to_string()),
+        supports_structured_output: false,
+    });
+
+    // Claude Code CLI. Not an HTTP endpoint: requests are fulfilled by spawning
+    // the user's `claude` binary in headless print mode against their existing
+    // subscription login. `base_url` stays empty because nothing dials it.
+    providers.push(PostProcessProvider {
+        id: CLAUDE_CODE_PROVIDER_ID.to_string(),
+        label: "Claude Code CLI".to_string(),
+        base_url: String::new(),
+        allow_base_url_edit: false,
+        models_endpoint: None,
         supports_structured_output: false,
     });
 
@@ -3440,6 +3457,31 @@ mod tests {
 
     fn default_settings_json() -> serde_json::Value {
         serde_json::to_value(get_default_settings()).unwrap()
+    }
+
+    #[test]
+    fn claude_code_provider_is_registered_and_keyless() {
+        let providers = default_post_process_providers();
+        let claude = providers
+            .iter()
+            .find(|p| p.id == CLAUDE_CODE_PROVIDER_ID)
+            .expect("claude_code should be a default provider");
+
+        assert_eq!(claude.label, "Claude Code CLI");
+        // Generation goes through a subprocess, so there is no HTTP endpoint to
+        // edit and no model list to fetch.
+        assert!(!claude.allow_base_url_edit);
+        assert!(claude.models_endpoint.is_none());
+        // The CLI has no OpenAI-style structured-output mode; callers must fall
+        // back to prompt + lenient JSON parsing.
+        assert!(!claude.supports_structured_output);
+        // Auth comes from the user's existing CLI login, never from a stored key.
+        assert!(!post_process_provider_requires_api_key(
+            CLAUDE_CODE_PROVIDER_ID
+        ));
+        // The conversational assistant must accept it (unlike Apple Intelligence,
+        // which is cleanup-only).
+        assert!(assistant_provider_is_supported(CLAUDE_CODE_PROVIDER_ID));
     }
 
     #[test]

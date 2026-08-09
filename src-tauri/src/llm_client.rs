@@ -1,4 +1,4 @@
-use crate::settings::PostProcessProvider;
+use crate::settings::{PostProcessProvider, CLAUDE_CODE_PROVIDER_ID};
 use futures_util::StreamExt;
 use log::debug;
 use once_cell::sync::Lazy;
@@ -459,6 +459,16 @@ pub(crate) async fn send_chat_completion_with_schema_typed(
     reasoning_effort: Option<String>,
     reasoning: Option<ReasoningConfig>,
 ) -> Result<Option<String>, ChatCompletionError> {
+    // Structured output is unavailable here (hence
+    // `supports_structured_output: false`), so any schema is ignored and callers
+    // rely on prompt + lenient parsing.
+    if provider.id == CLAUDE_CODE_PROVIDER_ID {
+        return crate::claude_code::complete(model, &user_content, system_prompt.as_deref())
+            .await
+            .map(Some)
+            .map_err(ChatCompletionError::Transport);
+    }
+
     let base_url = effective_base_url(provider);
     let url = format!("{}/chat/completions", base_url);
 
@@ -842,6 +852,11 @@ pub async fn send_chat_stream(
     reasoning: Option<ReasoningConfig>,
     on_token: impl FnMut(&str),
 ) -> Result<String, String> {
+    // Subprocess provider: no HTTP, no API key. Reasoning options don't apply.
+    if provider.id == CLAUDE_CODE_PROVIDER_ID {
+        return crate::claude_code::stream_chat(model, &messages, on_token).await;
+    }
+
     let base_url = effective_base_url(provider);
     let url = format!("{}/chat/completions", base_url);
 
@@ -900,6 +915,19 @@ pub async fn send_chat_stream_with_tools(
     reasoning: Option<ReasoningConfig>,
     on_token: impl FnMut(&str),
 ) -> Result<ToolStreamOutcome, String> {
+    // The assistant offers tools to every provider, so this is reachable here.
+    // The CLI path can't do OpenAI-style tool calling, so stream a plain reply
+    // and report no tool calls — `tool_round_policy` treats that as the final
+    // response, and the turn completes without web search or agent-decided
+    // screen capture.
+    if provider.id == CLAUDE_CODE_PROVIDER_ID {
+        let text = crate::claude_code::stream_chat(model, &messages, on_token).await?;
+        return Ok(ToolStreamOutcome {
+            text,
+            tool_calls: Vec::new(),
+        });
+    }
+
     let base_url = effective_base_url(provider);
     let url = format!("{}/chat/completions", base_url);
     let client = create_client(provider, &api_key)?;
@@ -964,6 +992,15 @@ pub async fn fetch_models(
     provider: &PostProcessProvider,
     api_key: String,
 ) -> Result<Vec<String>, String> {
+    // The CLI has no /models endpoint; the alias list is fixed. Kept in sync
+    // with the picker in `AssistantSettings.tsx`.
+    if provider.id == CLAUDE_CODE_PROVIDER_ID {
+        return Ok(crate::claude_code::MODEL_ALIASES
+            .iter()
+            .map(|alias| alias.to_string())
+            .collect());
+    }
+
     let base_url = effective_base_url(provider);
     let url = format!("{}/models", base_url);
 
@@ -1040,6 +1077,17 @@ mod tests {
             models_endpoint: Some("/models".to_string()),
             supports_structured_output: true,
         }
+    }
+
+    #[tokio::test]
+    async fn claude_code_model_list_is_static_and_needs_no_network() {
+        // base_url is intentionally empty: nothing should try to dial it.
+        let claude = provider(CLAUDE_CODE_PROVIDER_ID, "");
+        let models = fetch_models(&claude, String::new())
+            .await
+            .expect("the CLI provider must list models without an HTTP call");
+
+        assert_eq!(models, vec!["sonnet", "opus", "haiku"]);
     }
 
     #[test]

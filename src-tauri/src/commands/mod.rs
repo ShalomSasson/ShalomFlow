@@ -166,6 +166,15 @@ pub fn check_apple_intelligence_available() -> bool {
     }
 }
 
+/// Report whether the Claude Code CLI is available on this machine.
+/// Called by the settings UI to decide between offering the CLI brain and
+/// showing install guidance.
+#[specta::specta]
+#[tauri::command]
+pub fn claude_code_status() -> crate::claude_code::ClaudeCodeStatus {
+    crate::claude_code::status()
+}
+
 /// Try to initialize Enigo (keyboard/mouse simulation).
 /// On macOS, this will return an error if accessibility permissions are not granted.
 #[specta::specta]
