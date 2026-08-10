@@ -9,7 +9,7 @@ use tauri::{AppHandle, Manager};
 
 use crate::actions::ACTION_MAP;
 use crate::managers::audio::AudioRecordingManager;
-use crate::settings::get_settings;
+use crate::settings::{get_settings, transform_id_from_binding};
 use crate::transcription_coordinator::{is_transcribe_binding, recording_mode, LOCK_SUFFIX};
 use crate::TranscriptionCoordinator;
 
@@ -60,6 +60,22 @@ pub fn handle_shortcut_event(
         return;
     }
 
+    // Transform bindings use dynamic ids (`transform.<id>`) so user-created
+    // transforms work like the built-ins; ACTION_MAP is static and cannot hold
+    // them. This must come BEFORE the ACTION_MAP lookup or every transform
+    // press would fall through to the "no action defined" warning.
+    if let Some(transform_id) = transform_id_from_binding(base_id) {
+        // One-shot action: fire on press, ignore the release.
+        if is_pressed {
+            let app_handle = app.clone();
+            let id = transform_id.to_string();
+            tauri::async_runtime::spawn(async move {
+                crate::transforms::run_transform(app_handle, id).await;
+            });
+        }
+        return;
+    }
+
     let Some(action) = ACTION_MAP.get(base_id) else {
         warn!(
             "No action defined in ACTION_MAP for shortcut ID '{}'. Shortcut: '{}', Pressed: {}",
@@ -77,7 +93,10 @@ pub fn handle_shortcut_event(
             .try_state::<crate::assistant::AssistantConversation>()
             .map_or(false, |c| c.is_busy());
         let flow_busy = crate::flow::is_generation_active();
-        if is_pressed && (audio_manager.is_recording() || assistant_busy || flow_busy) {
+        let transform_busy = crate::transforms::is_transform_active();
+        if is_pressed
+            && (audio_manager.is_recording() || assistant_busy || flow_busy || transform_busy)
+        {
             action.start(app, base_id, hotkey_string);
         }
         return;

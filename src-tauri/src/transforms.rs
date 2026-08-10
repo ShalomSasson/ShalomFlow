@@ -123,6 +123,31 @@ pub(crate) fn plan_transform(settings: &AppSettings, transform_id: &str) -> Tran
     }
 }
 
+/// Run `f` on the main thread and await its result.
+///
+/// `capture_selection` and `clipboard::paste_with_behavior` synthesize Enigo
+/// key chords. Every other production call site that fires an Enigo paste
+/// chord (`actions.rs:1241`, `actions.rs:1358`) dispatches it through
+/// `run_on_main_thread` for reliability on macOS, while calls in those same
+/// functions that only touch the overlay/tray (e.g. `actions.rs:1069`) run
+/// straight off the tokio task with no hop at all — in this codebase the
+/// dividing line is "does it drive Enigo", not "is it UI-adjacent". A
+/// transform's copy/paste chords follow the same rule instead of firing from
+/// a tokio worker thread, which the rest of the app never does.
+async fn on_main_thread<T, F>(app: &AppHandle, f: F) -> Result<T, String>
+where
+    T: Send + 'static,
+    F: FnOnce() -> T + Send + 'static,
+{
+    let (tx, rx) = tokio::sync::oneshot::channel();
+    app.run_on_main_thread(move || {
+        let _ = tx.send(f());
+    })
+    .map_err(|e| format!("failed to schedule main-thread work: {e}"))?;
+    rx.await
+        .map_err(|_| "main-thread task ended without a result".to_string())
+}
+
 /// Run one transform end to end: capture the selection, rewrite it, paste it
 /// back over the selection.
 ///
@@ -154,10 +179,20 @@ pub async fn run_transform(app: AppHandle, transform_id: String) {
         return;
     };
 
-    let selection = match crate::selection::capture_selection(&app) {
-        Ok(text) => text,
-        Err(crate::selection::SelectionError::NoSelection) => {
+    let capture_app = app.clone();
+    let selection = match on_main_thread(&app, move || {
+        crate::selection::capture_selection(&capture_app)
+    })
+    .await
+    {
+        Ok(Ok(text)) => text,
+        Ok(Err(crate::selection::SelectionError::NoSelection)) => {
             crate::utils::show_overlay_notice(&app, "transformNoSelection");
+            return;
+        }
+        Ok(Err(err)) => {
+            error!("transforms: could not read the selection: {err}");
+            crate::utils::show_overlay_notice(&app, "transformFailed");
             return;
         }
         Err(err) => {
@@ -219,14 +254,20 @@ pub async fn run_transform(app: AppHandle, transform_id: String) {
     // The selection is still active, so a paste replaces it. Like Flow, a
     // transform must never submit or append anything on the user's behalf —
     // it replaces the selection and stops.
-    if let Err(err) = crate::clipboard::paste_with_behavior(
-        clean,
-        app.clone(),
-        crate::clipboard::PasteBehavior {
-            allow_trailing_space: false,
-            allow_auto_submit: false,
-        },
-    ) {
+    let paste_app = app.clone();
+    let paste_result = on_main_thread(&app, move || {
+        crate::clipboard::paste_with_behavior(
+            clean,
+            paste_app,
+            crate::clipboard::PasteBehavior {
+                allow_trailing_space: false,
+                allow_auto_submit: false,
+            },
+        )
+    })
+    .await;
+
+    if let Ok(Err(err)) | Err(err) = paste_result {
         error!("transforms: paste failed: {err}");
         crate::utils::show_overlay_notice(&app, "transformFailed");
     }
