@@ -59,68 +59,79 @@ pub(crate) fn classify(sentinel: &str, observed: Option<&str>) -> Outcome {
     Outcome::Captured(text.trim().to_string())
 }
 
-/// What arming the sentinel produced: the clipboard's previous contents (so
-/// `capture_selection` can restore them), the sentinel value written (for
-/// `classify`), and whether the copy chord itself fired successfully.
-struct ArmedProbe {
-    original: Option<String>,
-    probe: String,
-    copy_result: Result<(), String>,
+/// What to write back to the clipboard once a probe is done: the user's
+/// original content, or a clear when the clipboard had none. A pure decision
+/// so it is unit-testable without a live clipboard — this is the exact seam
+/// that was missing when the "leave the sentinel behind on an empty
+/// clipboard" bug shipped.
+#[derive(Debug, PartialEq, Eq)]
+enum RestoreAction {
+    Write(String),
+    Clear,
 }
 
-/// Remember the clipboard, write the sentinel, and fire the copy chord — the
-/// only Enigo-driven part of a capture, and so the only part that needs the
-/// main thread (see `input::on_main_thread`). Resolving Enigo *before* the
-/// clipboard is touched is deliberate: both steps below are fallible, and if
-/// either failed after the sentinel was already written, there would be no
-/// `restore` in scope yet to put the user's clipboard back, permanently
-/// discarding it. Ordering it this way makes that class of bug unreachable
-/// rather than merely unlikely.
-fn arm_selection_probe(app: &AppHandle) -> ArmedProbe {
-    let clipboard = app.clipboard();
-    let original = clipboard.read_text().ok();
-    let probe = sentinel();
-
-    let copy_result = (|| -> Result<(), String> {
-        let enigo_state = app
-            .try_state::<EnigoState>()
-            .ok_or_else(|| "input not initialized".to_string())?;
-        let mut enigo = enigo_state.0.lock().map_err(|_| "input busy".to_string())?;
-        clipboard
-            .write_text(probe.as_str())
-            .map_err(|e| e.to_string())?;
-        send_copy(&mut enigo)
-    })();
-
-    ArmedProbe {
-        original,
-        probe,
-        copy_result,
+fn restore_action(original: Option<&str>) -> RestoreAction {
+    match original {
+        Some(text) => RestoreAction::Write(text.to_string()),
+        None => RestoreAction::Clear,
     }
+}
+
+/// Fire the copy chord for the sentinel already written to the clipboard —
+/// the only Enigo-driven part of a capture, and so the only part that needs
+/// the main thread (see `input::on_main_thread`).
+fn arm_selection_probe(app: &AppHandle, probe: &str) -> Result<(), String> {
+    let enigo_state = app
+        .try_state::<EnigoState>()
+        .ok_or_else(|| "input not initialized".to_string())?;
+    let mut enigo = enigo_state.0.lock().map_err(|_| "input busy".to_string())?;
+    app.clipboard()
+        .write_text(probe)
+        .map_err(|e| e.to_string())?;
+    send_copy(&mut enigo)
 }
 
 /// Read the user's current selection from the focused application.
 ///
 /// Saves and restores the user's clipboard around the probe, so running a
-/// transform never costs them what they had copied. Only the copy chord
+/// transform never costs them what they had copied. The original content is
+/// read here — on the calling task, BEFORE the main-thread hop below, not
+/// inside it — so `restore` always has it in scope no matter what happens on
+/// the main thread, including a panic there. That is the invariant this
+/// function guarantees: by any return path, it never leaves the sentinel
+/// sitting in the user's clipboard. (It also sidesteps a real risk: the
+/// clipboard-manager plugin's own docs warn `read_text` "should not be used
+/// on the main thread" — it could deadlock on Linux.) Only the copy chord
 /// itself needs the main thread; polling the clipboard and restoring it
 /// afterward are plain I/O with no Enigo involved, so they run directly on
 /// the calling task instead of blocking the main thread for the whole
 /// `CAPTURE_TIMEOUT` window.
 pub(crate) async fn capture_selection(app: &AppHandle) -> Result<String, SelectionError> {
-    let arm_app = app.clone();
-    let ArmedProbe {
-        original,
-        probe,
-        copy_result,
-    } = crate::input::on_main_thread(app, move || arm_selection_probe(&arm_app))
-        .await
-        .map_err(SelectionError::Clipboard)?;
-
     let clipboard = app.clipboard();
+    let original = clipboard.read_text().ok();
+    let probe = sentinel();
+
     let restore = |clipboard: &tauri_plugin_clipboard_manager::Clipboard<tauri::Wry>| {
-        if let Some(text) = original.as_deref() {
-            let _ = clipboard.write_text(text);
+        match restore_action(original.as_deref()) {
+            RestoreAction::Write(text) => {
+                let _ = clipboard.write_text(text);
+            }
+            RestoreAction::Clear => {
+                let _ = clipboard.clear();
+            }
+        }
+    };
+
+    let arm_app = app.clone();
+    let arm_probe = probe.clone();
+    let copy_result =
+        crate::input::on_main_thread(app, move || arm_selection_probe(&arm_app, &arm_probe)).await;
+
+    let copy_result = match copy_result {
+        Ok(result) => result,
+        Err(e) => {
+            restore(&clipboard);
+            return Err(SelectionError::Clipboard(e));
         }
     };
 
@@ -202,5 +213,22 @@ mod tests {
             classify(SENTINEL, Some(&text)),
             Outcome::Captured(text.trim().to_string())
         );
+    }
+
+    #[test]
+    fn restore_action_writes_back_the_original_when_present() {
+        assert_eq!(
+            restore_action(Some("hello")),
+            RestoreAction::Write("hello".to_string())
+        );
+    }
+
+    #[test]
+    fn restore_action_clears_when_the_clipboard_started_out_empty() {
+        // `None` means the clipboard was empty or unreadable before the probe
+        // touched it. Writing nothing back — the old behavior — left our
+        // sentinel sitting in the user's clipboard forever; this is the exact
+        // bug the clearing branch fixes.
+        assert_eq!(restore_action(None), RestoreAction::Clear);
     }
 }
