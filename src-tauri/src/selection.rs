@@ -69,21 +69,28 @@ pub(crate) fn capture_selection(app: &AppHandle) -> Result<String, SelectionErro
     let clipboard = app.clipboard();
     let original = clipboard.read_text().ok();
 
-    let probe = sentinel();
-    clipboard
-        .write_text(probe.as_str())
-        .map_err(|e| SelectionError::Clipboard(e.to_string()))?;
+    // Resolve Enigo *before* the clipboard is touched. Both steps below are
+    // fallible; if either failed after the sentinel was already written,
+    // there would be no `restore` in scope yet to put the user's clipboard
+    // back, permanently discarding it. Ordering it this way makes that class
+    // of bug unreachable rather than merely unlikely.
+    let enigo_state = app
+        .try_state::<EnigoState>()
+        .ok_or_else(|| SelectionError::Clipboard("input not initialized".to_string()))?;
+    let mut enigo = enigo_state
+        .0
+        .lock()
+        .map_err(|_| SelectionError::Clipboard("input busy".to_string()))?;
 
-    let copy_result = {
-        let enigo_state = app
-            .try_state::<EnigoState>()
-            .ok_or_else(|| SelectionError::Clipboard("input not initialized".to_string()))?;
-        let mut enigo = enigo_state
-            .0
-            .lock()
-            .map_err(|_| SelectionError::Clipboard("input busy".to_string()))?;
-        send_copy(&mut enigo)
-    };
+    let probe = sentinel();
+    let copy_result = clipboard
+        .write_text(probe.as_str())
+        .map_err(|e| e.to_string())
+        .and_then(|_| send_copy(&mut enigo));
+
+    // The copy chord is done (or failed); release Enigo before the poll loop
+    // below, which only touches the clipboard and needn't hold the lock.
+    drop(enigo);
 
     let restore = |clipboard: &tauri_plugin_clipboard_manager::Clipboard<tauri::Wry>| {
         if let Some(text) = original.as_deref() {
