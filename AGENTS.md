@@ -59,7 +59,7 @@ For detailed platform-specific build setup, see [BUILD.md](BUILD.md).
 
 ## Architecture Overview
 
-SpeakoFlow is a cross-platform desktop voice assistant (dictation, AI chat panel, screen vision, and a local-first personal memory) built with Tauri 2.x (Rust backend + React/TypeScript frontend). It started as a fork of [Handy](https://github.com/cjpais/Handy) by CJ Pais; the local dictation core (Whisper/Parakeet pipeline, VAD, overlay, settings architecture) traces back to that project. See [README.md](README.md#credits--license) for full attribution.
+ShalomFlow is a cross-platform desktop voice assistant (dictation, AI chat panel, screen vision, and a local-first personal memory) built with Tauri 2.x (Rust backend + React/TypeScript frontend). It started as a fork of [Handy](https://github.com/cjpais/Handy) by CJ Pais; the local dictation core (Whisper/Parakeet pipeline, VAD, overlay, settings architecture) traces back to that project. See [README.md](README.md#credits--license) for full attribution.
 
 ### Backend Structure (src-tauri/src/)
 
@@ -202,7 +202,7 @@ For translation contribution guidelines, see [CONTRIBUTING_TRANSLATIONS.md](CONT
 
 ## CLI Parameters
 
-SpeakoFlow supports command-line parameters on all platforms for integration with scripts, window managers, and autostart configurations.
+ShalomFlow supports command-line parameters on all platforms for integration with scripts, window managers, and autostart configurations.
 
 **Implementation:** `cli.rs` (definitions), `main.rs` (parsing), `lib.rs` (applying), `signal_handle.rs` (shared logic)
 

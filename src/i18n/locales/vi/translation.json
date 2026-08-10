@@ -57,7 +57,7 @@
       "ready": "Sẵn sàng"
     },
     "speechToText": {
-      "title": "SpeakoFlow nên nghe bạn thế nào?",
+      "title": "ShalomFlow nên nghe bạn thế nào?",
       "subtitle": "Phần này biến giọng nói của bạn thành văn bản, ngay trên máy của bạn. Chọn một mô hình, đổi bất cứ lúc nào.",
       "cards": {
         "fast": {
@@ -113,7 +113,7 @@
       "downloadingVoice": "Mô hình giọng nói đang cập bến. Đã được {{percentage}}%.",
       "downloadingGeneric": "Vẫn đang tải xuống. Đã được {{percentage}}%.",
       "signOff": "Vậy là xong. Nói gì đi nào.",
-      "openApp": "Mở SpeakoFlow"
+      "openApp": "Mở ShalomFlow"
     },
     "errors": {
       "selectModel": "Không thể chọn mô hình đó. Vui lòng thử lại.",
@@ -245,7 +245,7 @@
     },
     "permissions": {
       "title": "Cần cấp quyền",
-      "description": "SpeakoFlow cần một số quyền để hoạt động bình thường.",
+      "description": "ShalomFlow cần một số quyền để hoạt động bình thường.",
       "microphone": {
         "title": "Quyền truy cập Micrô",
         "description": "Cần thiết để nghe giọng nói của bạn để chuyển đổi."
@@ -598,15 +598,15 @@
       },
       "autostart": {
         "label": "Khởi động cùng hệ thống",
-        "description": "Tự động khởi động SpeakoFlow khi bạn đăng nhập vào máy tính."
+        "description": "Tự động khởi động ShalomFlow khi bạn đăng nhập vào máy tính."
       },
       "showTrayIcon": {
         "label": "Hiển thị biểu tượng khay",
-        "description": "Hiển thị biểu tượng SpeakoFlow trong khay hệ thống."
+        "description": "Hiển thị biểu tượng ShalomFlow trong khay hệ thống."
       },
       "closeBehavior": {
         "label": "Thoát khi tôi đóng cửa sổ",
-        "description": "Khi tắt, đóng cửa sổ vẫn giữ SpeakoFlow chạy trong khay hệ thống để phím tắt của bạn tiếp tục hoạt động. Khi bật, đóng cửa sổ sẽ thoát hẳn ứng dụng."
+        "description": "Khi tắt, đóng cửa sổ vẫn giữ ShalomFlow chạy trong khay hệ thống để phím tắt của bạn tiếp tục hoạt động. Khi bật, đóng cửa sổ sẽ thoát hẳn ứng dụng."
       },
       "overlayStyle": {
         "title": "Lớp phủ",
@@ -686,8 +686,8 @@
       },
       "customWords": {
         "title": "Từ tùy chỉnh",
-        "description": "Tên riêng, sản phẩm và cụm từ mà SpeakoFlow nên viết theo cách của bạn.",
-        "info": "Ví dụ: thêm “Kokoro” nếu SpeakoFlow viết thành “Coco row.”",
+        "description": "Tên riêng, sản phẩm và cụm từ mà ShalomFlow nên viết theo cách của bạn.",
+        "info": "Ví dụ: thêm “Kokoro” nếu ShalomFlow viết thành “Coco row.”",
         "placeholder": "Thêm tên riêng, thuật ngữ hoặc cụm từ ngắn",
         "add": "Thêm",
         "empty": "Chưa có từ tùy chỉnh nào.",
@@ -698,7 +698,7 @@
         "title": "Thay thế văn bản",
         "description": "Thay một cụm từ trong bản chuyển đổi bằng đoạn văn bản bạn hay dùng. Ví dụ: “email của tôi” thành “alex@example.com”.",
         "rulesTitle": "Quy tắc thay thế",
-        "rulesHint": "Chọn điều SpeakoFlow nghe được và điều nó nên chèn vào.",
+        "rulesHint": "Chọn điều ShalomFlow nghe được và điều nó nên chèn vào.",
         "empty": "Hãy tạo một quy tắc cho cụm từ bạn thường nói.",
         "addFirst": "Tạo quy tắc đầu tiên",
         "addRule": "Thêm thay thế",
@@ -965,7 +965,7 @@
       },
       "updateChecks": {
         "label": "Kiểm tra cập nhật",
-        "description": "Tự động kiểm tra phiên bản mới của SpeakoFlow"
+        "description": "Tự động kiểm tra phiên bản mới của ShalomFlow"
       },
       "soundTheme": {
         "label": "Chủ đề âm thanh",
@@ -1035,7 +1035,7 @@
       "title": "Giới thiệu",
       "version": {
         "title": "Phiên bản",
-        "description": "Phiên bản hiện tại của SpeakoFlow"
+        "description": "Phiên bản hiện tại của ShalomFlow"
       },
       "updates": {
         "title": "Cập nhật",
@@ -1047,7 +1047,7 @@
       },
       "appDataDirectory": {
         "title": "Thư mục dữ liệu ứng dụng",
-        "description": "Vị trí SpeakoFlow lưu trữ dữ liệu"
+        "description": "Vị trí ShalomFlow lưu trữ dữ liệu"
       },
       "sourceCode": {
         "title": "Mã nguồn",
@@ -1056,12 +1056,12 @@
       },
       "license": {
         "title": "Giấy phép",
-        "description": "SpeakoFlow là mã nguồn mở theo Giấy phép MIT, dựa trên Handy (cũng MIT) của CJ Pais.",
+        "description": "ShalomFlow là mã nguồn mở theo Giấy phép MIT, dựa trên Handy (cũng MIT) của CJ Pais.",
         "button": "Xem giấy phép"
       },
       "supportDevelopment": {
         "title": "Hỗ trợ phát triển",
-        "description": "Giúp chúng tôi tiếp tục xây dựng SpeakoFlow",
+        "description": "Giúp chúng tôi tiếp tục xây dựng ShalomFlow",
         "button": "Quyên góp"
       }
     },
@@ -1098,7 +1098,7 @@
         "finderSectionTitle": "Thêm mô hình chạy trên thiết bị",
         "finderSectionDescription": "Tìm trên Hugging Face khi bạn cần một mô hình có kích thước hoặc khả năng khác.",
         "finderTitle": "Xem trên Hugging Face",
-        "finderDescription": "Tìm trong hàng nghìn mô hình GGUF và tải một mô hình trực tiếp vào SpeakoFlow.",
+        "finderDescription": "Tìm trong hàng nghìn mô hình GGUF và tải một mô hình trực tiếp vào ShalomFlow.",
         "finderAction": "Tìm một mô hình",
         "huggingFaceTitle": "Mô hình của bạn",
         "huggingFaceDescription": "Các mô hình đã tải và các mô hình bạn thêm từ Hugging Face.",
@@ -1263,7 +1263,7 @@
           }
         },
         "screenRecording": {
-          "description": "Khả năng xem màn hình cần quyền Ghi màn hình của macOS. Hãy cấp quyền trong Cài đặt Hệ thống, rồi khởi động lại SpeakoFlow để có hiệu lực.",
+          "description": "Khả năng xem màn hình cần quyền Ghi màn hình của macOS. Hãy cấp quyền trong Cài đặt Hệ thống, rồi khởi động lại ShalomFlow để có hiệu lực.",
           "grant": "Mở Cài đặt Hệ thống"
         }
       },
@@ -1341,7 +1341,7 @@
         "testButton": "Thử giọng",
         "testing": "Đang thử…",
         "testOk": "Đã phát ✓",
-        "testPhrase": "Xin chào! Đây là bản thử đầu ra giọng nói của SpeakoFlow.",
+        "testPhrase": "Xin chào! Đây là bản thử đầu ra giọng nói của ShalomFlow.",
         "downloadStart": "Đang tải giọng Kokoro…",
         "downloadProgress": "Đang tải giọng Kokoro… {{progress}}%",
         "downloadReady": "Giọng Kokoro đã sẵn sàng ✓",
@@ -1444,7 +1444,7 @@
   },
   "accessibility": {
     "permissionsRequired": "Cần quyền truy cập",
-    "permissionsDescription": "SpeakoFlow cần quyền truy cập để gõ văn bản đã chuyển đổi.",
+    "permissionsDescription": "ShalomFlow cần quyền truy cập để gõ văn bản đã chuyển đổi.",
     "openSettings": "Mở Cài đặt Hệ thống",
     "dismiss": "Bỏ qua"
   },
@@ -1468,7 +1468,7 @@
   },
   "appLanguage": {
     "title": "Ngôn ngữ ứng dụng",
-    "description": "Thay đổi ngôn ngữ giao diện của SpeakoFlow"
+    "description": "Thay đổi ngôn ngữ giao diện của ShalomFlow"
   },
   "overlay": {
     "preparing": "Đang chuẩn bị micrô…",

@@ -88,7 +88,7 @@ const TTS_SPEED_PRESETS = [0.5, 1, 1.5, 2, 3];
  *  These are intentionally not translated — they're meme sample lines. */
 const TEST_PHRASES = [
   "Wagwan brother.",
-  "Hi! This is a test of SpeakoFlow's voice output.",
+  "Hi! This is a test of ShalomFlow's voice output.",
   "Ayo, is this thing on?",
   "Greetings, human. Your voice assistant has entered the chat.",
   "Testing, testing, one two... yeah we good.",

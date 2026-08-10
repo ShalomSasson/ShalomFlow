@@ -1,7 +1,7 @@
 {
   "theme": "maple",
-  "name": "SpeakoFlow",
-  "description": "Documentation for SpeakoFlow, the free and open-source local voice layer for your desktop: dictation, Generate with Flow, AI cleanup, the assistant, screen vision, memory, profiles, settings, and shortcuts for Windows, macOS, and Linux.",
+  "name": "ShalomFlow",
+  "description": "Documentation for ShalomFlow, the free and open-source local voice layer for your desktop: dictation, Generate with Flow, AI cleanup, the assistant, screen vision, memory, profiles, settings, and shortcuts for Windows, macOS, and Linux.",
   "colors": {
     "primary": "#0A7A70",
     "light": "#2DD4BF",
@@ -42,7 +42,7 @@
     },
     "links": [
       {
-        "header": "SpeakoFlow",
+        "header": "ShalomFlow",
         "items": [
           { "label": "Download", "href": "https://www.speakoflow.com" },
           { "label": "Releases", "href": "https://github.com/AbhishekBarali/SpeakoFlow/releases" },
@@ -69,13 +69,13 @@
     "indexing": "navigable",
     "metatags": {
       "canonical": "https://www.speakoflow.com/docs",
-      "og:site_name": "SpeakoFlow Documentation",
+      "og:site_name": "ShalomFlow Documentation",
       "og:type": "website",
       "og:url": "https://www.speakoflow.com/docs",
       "twitter:card": "summary_large_image"
     },
     "organization": {
-      "name": "SpeakoFlow",
+      "name": "ShalomFlow",
       "url": "https://www.speakoflow.com",
       "logo": "https://www.speakoflow.com/assets/img/logo/lockup.svg",
       "sameAs": ["https://github.com/AbhishekBarali/SpeakoFlow"]

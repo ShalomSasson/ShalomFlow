@@ -1,14 +1,14 @@
 ---
 title: "Troubleshooting"
-description: "Fixes for the most common SpeakoFlow problems: the macOS damaged-app message, blocked microphone or accessibility permissions, text that will not type, Linux hotkey permissions and the floating overlay, and clipped or wrong pastes."
+description: "Fixes for the most common ShalomFlow problems: the macOS damaged-app message, blocked microphone or accessibility permissions, text that will not type, Linux hotkey permissions and the floating overlay, and clipped or wrong pastes."
 icon: "life-ring"
 ---
 
 Find your symptom and open it.
 
 <AccordionGroup>
-  <Accordion title="macOS says SpeakoFlow is damaged and I should move it to the Trash" icon="apple">
-    The download is fine. Do not delete it. macOS shows that message for any app it cannot trace to a paid Apple Developer account, and SpeakoFlow is not signed yet.
+  <Accordion title="macOS says ShalomFlow is damaged and I should move it to the Trash" icon="apple">
+    The download is fine. Do not delete it. macOS shows that message for any app it cannot trace to a paid Apple Developer account, and ShalomFlow is not signed yet.
 
     One Terminal command clears it, once per version you install:
 
@@ -25,7 +25,7 @@ Find your symptom and open it.
     Install the `.deb` instead on Debian, Ubuntu 24.04+, Mint 22+, Pop!\_OS, or Tuxedo OS. A helper like Gear Lever or AppImageLauncher also adds the integration. Details in [Install](/start/install).
   </Accordion>
 
-  <Accordion title="SpeakoFlow cannot hear my microphone" icon="microphone-slash">
+  <Accordion title="ShalomFlow cannot hear my microphone" icon="microphone-slash">
     Microphone access is blocked at the OS level. Grant it, then restart the app.
 
     - **Windows**. *Settings → Privacy & security → Microphone*, including desktop-app access.
@@ -34,11 +34,11 @@ Find your symptom and open it.
   </Accordion>
 
   <Accordion title="Nothing gets typed after I dictate (macOS)" icon="keyboard">
-    SpeakoFlow needs Accessibility permission to type into other apps. Grant it in *System Settings → Privacy & Security → Accessibility*, then restart the app.
+    ShalomFlow needs Accessibility permission to type into other apps. Grant it in *System Settings → Privacy & Security → Accessibility*, then restart the app.
   </Accordion>
 
   <Accordion title="Screen vision does nothing (macOS)" icon="eye-slash">
-    Grant Screen Recording permission in *System Settings → Privacy & Security → Screen Recording*, then restart SpeakoFlow for it to take effect.
+    Grant Screen Recording permission in *System Settings → Privacy & Security → Screen Recording*, then restart ShalomFlow for it to take effect.
   </Accordion>
 
   <Accordion title="The recording overlay will not stay on top of other windows (Linux)" icon="window-restore">
@@ -46,14 +46,14 @@ Find your symptom and open it.
 
     **Native GNOME/Wayland supports neither.** Mutter deliberately does not implement `wlr-layer-shell`, and Wayland gives apps no way to raise themselves above others.
 
-    SpeakoFlow handles this automatically. When it detects GNOME on Wayland it runs under XWayland, where "keep above" works and the overlay floats normally. This is on by default and needs no setup. X11 sessions and KDE or wlroots Wayland already work out of the box and are left on native Wayland.
+    ShalomFlow handles this automatically. When it detects GNOME on Wayland it runs under XWayland, where "keep above" works and the overlay floats normally. This is on by default and needs no setup. X11 sessions and KDE or wlroots Wayland already work out of the box and are left on native Wayland.
 
     Two escape hatches, if you need them:
 
     - **Force native Wayland anyway**, accepting that the overlay may not stay on top: launch with `SPEAKOFLOW_ALLOW_WAYLAND=1`.
     - **Disable layer shell**, if the overlay misbehaves under a layer-shell compositor: `SPEAKOFLOW_NO_GTK_LAYER_SHELL=1`.
 
-    Setting `GDK_BACKEND` yourself always wins. SpeakoFlow never overrides an explicit choice.
+    Setting `GDK_BACKEND` yourself always wins. ShalomFlow never overrides an explicit choice.
   </Accordion>
 
   <Accordion title="My hotkeys do nothing and the log repeats PermissionDenied (Linux)" icon="key">
@@ -73,7 +73,7 @@ Find your symptom and open it.
   <Accordion title="The app crashes when I pinch-to-zoom on my touchpad (Linux)" icon="hand">
     On some Linux setups a trackpad pinch-to-zoom gesture crashes the window, with `Received invalid message: 'DrawingArea_CommitTransientZoom'` in the logs.
 
-    This is a bug in **WebKitGTK**, the Linux web engine Tauri uses, not in SpeakoFlow. It affects many WebKitGTK-based apps and is tracked upstream in [tauri#13115](https://github.com/tauri-apps/tauri/issues/13115) and [wry#544](https://github.com/tauri-apps/wry/issues/544).
+    This is a bug in **WebKitGTK**, the Linux web engine Tauri uses, not in ShalomFlow. It affects many WebKitGTK-based apps and is tracked upstream in [tauri#13115](https://github.com/tauri-apps/tauri/issues/13115) and [wry#544](https://github.com/tauri-apps/wry/issues/544).
 
     Until there is an upstream fix, avoid pinch-to-zoom inside the app window. Updating your system's `webkit2gtk-4.1` packages can also help, since newer releases handle the gesture more gracefully.
   </Accordion>

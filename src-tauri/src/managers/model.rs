@@ -2101,7 +2101,7 @@ impl ModelManager {
     /// downloader retries and resumes automatically.
     ///
     /// To activate a mirror: upload the exact model file as a GitHub release
-    /// asset on the SpeakoFlow repo, then return its `browser_download_url`
+    /// asset on the ShalomFlow repo, then return its `browser_download_url`
     /// here. Until then this returns `None` and the canonical URL is used.
     // Intentional template: the match is a placeholder for per-model mirror
     // arms that maintainers uncomment once assets are uploaded, so keep it even
@@ -2142,7 +2142,7 @@ impl ModelManager {
         // the request. Redirects (HF → CDN) are followed by default.
         let client = reqwest::Client::builder()
             .connect_timeout(Duration::from_secs(30))
-            .user_agent(concat!("SpeakoFlow/", env!("CARGO_PKG_VERSION")))
+            .user_agent(concat!("ShalomFlow/", env!("CARGO_PKG_VERSION")))
             .build()?;
 
         let mut request = client.get(url);

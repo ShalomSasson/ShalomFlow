@@ -1,10 +1,10 @@
 ---
-title: "Install SpeakoFlow"
-description: "How to install SpeakoFlow on Windows, macOS, or Linux, including which Linux package to pick and the one-time Terminal command that clears the macOS \"app is damaged\" message on unsigned builds."
+title: "Install ShalomFlow"
+description: "How to install ShalomFlow on Windows, macOS, or Linux, including which Linux package to pick and the one-time Terminal command that clears the macOS \"app is damaged\" message on unsigned builds."
 icon: "download"
 ---
 
-Download SpeakoFlow for your operating system from the [Releases page](https://github.com/AbhishekBarali/SpeakoFlow/releases), then follow the section for your platform.
+Download ShalomFlow for your operating system from the [Releases page](https://github.com/AbhishekBarali/SpeakoFlow/releases), then follow the section for your platform.
 
 | Platform | Files |
 | --- | --- |
@@ -23,7 +23,7 @@ Run the `.exe` installer. Use the `.msi` instead if you deploy with one.
 ## macOS
 
 <Steps>
-  <Step title="Drag SpeakoFlow into Applications">
+  <Step title="Drag ShalomFlow into Applications">
     Open the `.dmg` and drag the app across, as usual.
   </Step>
 
@@ -46,7 +46,7 @@ You do this once per version you install, not once per launch.
   <Accordion title="Why macOS says the app is damaged">
     **The app is not damaged.** That wording is what macOS shows for any app it can't trace to a paid Apple Developer account. Signing costs $99/year, which this project doesn't have yet.
 
-    The `xattr` command removes the "downloaded from the internet" tag macOS puts on the file. SpeakoFlow can't auto-update while unsigned, so you repeat the command each time you download a new version.
+    The `xattr` command removes the "downloaded from the internet" tag macOS puts on the file. ShalomFlow can't auto-update while unsigned, so you repeat the command each time you download a new version.
 
     There is no button to click instead. macOS 15 and later removed the old right-click → *Open* bypass, and "damaged" is the one case where no *Open Anyway* button appears in *System Settings → Privacy & Security*. Apple code signing and notarization is on the roadmap and removes this step entirely.
   </Accordion>
@@ -84,7 +84,7 @@ Prefer the `.deb` where there is one. It registers the app icon and menu entry, 
   </Accordion>
 
   <Accordion title="Why the AppImage has no icon or menu entry">
-    That's normal AppImage behavior, not a SpeakoFlow bug. The icon appears once the app is running, and the file in your file manager stays generic. Gear Lever or AppImageLauncher adds a menu entry if you want one.
+    That's normal AppImage behavior, not a ShalomFlow bug. The icon appears once the app is running, and the file in your file manager stays generic. Gear Lever or AppImageLauncher adds a menu entry if you want one.
   </Accordion>
 </AccordionGroup>
 

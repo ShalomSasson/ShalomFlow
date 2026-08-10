@@ -57,7 +57,7 @@
       "ready": "Усе готово"
     },
     "speechToText": {
-      "title": "Як SpeakoFlow має вас чути?",
+      "title": "Як ShalomFlow має вас чути?",
       "subtitle": "Перетворює ваш голос на текст просто на вашому комп'ютері. Виберіть одну, змінити можна будь-коли.",
       "cards": {
         "fast": {
@@ -113,7 +113,7 @@
       "downloadingVoice": "Ваша голосова модель майже тут. Готово {{percentage}}%.",
       "downloadingGeneric": "Завантаження триває. Готово {{percentage}}%.",
       "signOff": "Ось і все. Скажіть щось.",
-      "openApp": "Відкрити SpeakoFlow"
+      "openApp": "Відкрити ShalomFlow"
     },
     "errors": {
       "selectModel": "Не вдалося вибрати цю модель. Будь ласка, спробуйте ще раз.",
@@ -245,7 +245,7 @@
     },
     "permissions": {
       "title": "Потрібні дозволи",
-      "description": "SpeakoFlow потребує деяких дозволів для коректної роботи.",
+      "description": "ShalomFlow потребує деяких дозволів для коректної роботи.",
       "microphone": {
         "title": "Доступ до мікрофона",
         "description": "Потрібен для прослуховування вашого голосу для транскрипції."
@@ -598,15 +598,15 @@
       },
       "autostart": {
         "label": "Запуск при старті системи",
-        "description": "Автоматично запускати SpeakoFlow при вході в систему"
+        "description": "Автоматично запускати ShalomFlow при вході в систему"
       },
       "showTrayIcon": {
         "label": "Показати значок у треї",
-        "description": "Відображати значок SpeakoFlow у системному треї."
+        "description": "Відображати значок ShalomFlow у системному треї."
       },
       "closeBehavior": {
         "label": "Виходити, коли я закриваю вікно",
-        "description": "Коли вимкнено, закриття вікна залишає SpeakoFlow у треї, тож ваші гарячі клавіші продовжують працювати. Коли увімкнено, закриття вікна повністю завершує застосунок."
+        "description": "Коли вимкнено, закриття вікна залишає ShalomFlow у треї, тож ваші гарячі клавіші продовжують працювати. Коли увімкнено, закриття вікна повністю завершує застосунок."
       },
       "overlayStyle": {
         "title": "Оверлей",
@@ -686,8 +686,8 @@
       },
       "customWords": {
         "title": "Власні слова",
-        "description": "Імена, продукти та фрази, які SpeakoFlow має писати так, як вам потрібно.",
-        "info": "Приклад: додайте «Kokoro», якщо SpeakoFlow пише «Coco row».",
+        "description": "Імена, продукти та фрази, які ShalomFlow має писати так, як вам потрібно.",
+        "info": "Приклад: додайте «Kokoro», якщо ShalomFlow пише «Coco row».",
         "placeholder": "Додайте ім'я, термін або коротку фразу",
         "add": "Додати",
         "empty": "Власних слів поки немає.",
@@ -698,7 +698,7 @@
         "title": "Заміни тексту",
         "description": "Замінюйте фразу у транскрипції на текст, який ви часто використовуєте. Приклад: «моя пошта» стає «alex@example.com».",
         "rulesTitle": "Правила заміни",
-        "rulesHint": "Виберіть, що чує SpeakoFlow і що він має вставити.",
+        "rulesHint": "Виберіть, що чує ShalomFlow і що він має вставити.",
         "empty": "Створіть правило для фрази, яку ви часто говорите.",
         "addFirst": "Створити перше правило",
         "addRule": "Додати заміну",
@@ -965,7 +965,7 @@
       },
       "updateChecks": {
         "label": "Перевірка оновлень",
-        "description": "Автоматично перевіряти наявність нових версій SpeakoFlow"
+        "description": "Автоматично перевіряти наявність нових версій ShalomFlow"
       },
       "soundTheme": {
         "label": "Звукова тема",
@@ -1035,7 +1035,7 @@
       "title": "Інфо",
       "version": {
         "title": "Версія",
-        "description": "Поточна версія SpeakoFlow"
+        "description": "Поточна версія ShalomFlow"
       },
       "updates": {
         "title": "Оновлення",
@@ -1047,7 +1047,7 @@
       },
       "appDataDirectory": {
         "title": "Папка даних програми",
-        "description": "Розташування даних SpeakoFlow"
+        "description": "Розташування даних ShalomFlow"
       },
       "sourceCode": {
         "title": "Вихідний код",
@@ -1056,12 +1056,12 @@
       },
       "license": {
         "title": "Ліцензія",
-        "description": "SpeakoFlow — програма з відкритим кодом за ліцензією MIT, створена на основі Handy (також MIT) від CJ Pais.",
+        "description": "ShalomFlow — програма з відкритим кодом за ліцензією MIT, створена на основі Handy (також MIT) від CJ Pais.",
         "button": "Переглянути ліцензію"
       },
       "supportDevelopment": {
         "title": "Підтримати розробку",
-        "description": "Допоможіть нам продовжувати розвивати SpeakoFlow",
+        "description": "Допоможіть нам продовжувати розвивати ShalomFlow",
         "button": "Підтримати"
       }
     },
@@ -1098,7 +1098,7 @@
         "finderSectionTitle": "Більше моделей для пристрою",
         "finderSectionDescription": "Шукайте в Hugging Face, якщо потрібен інший розмір моделі або інші можливості.",
         "finderTitle": "Огляд Hugging Face",
-        "finderDescription": "Шукайте серед тисяч моделей GGUF і завантажуйте їх безпосередньо у SpeakoFlow.",
+        "finderDescription": "Шукайте серед тисяч моделей GGUF і завантажуйте їх безпосередньо у ShalomFlow.",
         "finderAction": "Знайти модель",
         "huggingFaceTitle": "Ваші моделі",
         "huggingFaceDescription": "Завантажені моделі та моделі, які ви додали з Hugging Face.",
@@ -1263,7 +1263,7 @@
           }
         },
         "screenRecording": {
-          "description": "Перегляд екрана потребує дозволу macOS на запис екрана. Надайте його в Системних налаштуваннях, а потім перезапустіть SpeakoFlow, щоб зміни набули чинності.",
+          "description": "Перегляд екрана потребує дозволу macOS на запис екрана. Надайте його в Системних налаштуваннях, а потім перезапустіть ShalomFlow, щоб зміни набули чинності.",
           "grant": "Відкрити Системні налаштування"
         }
       },
@@ -1341,7 +1341,7 @@
         "testButton": "Перевірити голос",
         "testing": "Перевірка…",
         "testOk": "Відтворено ✓",
-        "testPhrase": "Привіт! Це перевірка голосового виводу SpeakoFlow.",
+        "testPhrase": "Привіт! Це перевірка голосового виводу ShalomFlow.",
         "downloadStart": "Завантаження голосу Kokoro…",
         "downloadProgress": "Завантаження голосу Kokoro… {{progress}}%",
         "downloadReady": "Голос Kokoro готовий ✓",
@@ -1444,7 +1444,7 @@
   },
   "accessibility": {
     "permissionsRequired": "Потрібні права доступу",
-    "permissionsDescription": "SpeakoFlow потребує дозволи доступності для введення транскрибованого тексту.",
+    "permissionsDescription": "ShalomFlow потребує дозволи доступності для введення транскрибованого тексту.",
     "openSettings": "Відкрити Системні налаштування",
     "dismiss": "Закрити"
   },
@@ -1468,7 +1468,7 @@
   },
   "appLanguage": {
     "title": "Мова інтерфейсу",
-    "description": "Змінити мову інтерфейсу SpeakoFlow"
+    "description": "Змінити мову інтерфейсу ShalomFlow"
   },
   "overlay": {
     "preparing": "Готуємо мікрофон…",

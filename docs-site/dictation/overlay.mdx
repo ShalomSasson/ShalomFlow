@@ -1,10 +1,10 @@
 ---
 title: "The recording overlay"
-description: "The small on-screen indicator that shows SpeakoFlow is listening. This page covers the Auto, None, Minimal, and Live styles, the per-platform position defaults, and why the overlay is hidden by default on Linux."
+description: "The small on-screen indicator that shows ShalomFlow is listening. This page covers the Auto, None, Minimal, and Live styles, the per-platform position defaults, and why the overlay is hidden by default on Linux."
 icon: "window-maximize"
 ---
 
-A small on-screen indicator that shows SpeakoFlow is listening, so you are never guessing whether it heard you. It appears on the monitor your mouse cursor is on.
+A small on-screen indicator that shows ShalomFlow is listening, so you are never guessing whether it heard you. It appears on the monitor your mouse cursor is on.
 
 ## Overlay style
 
@@ -70,7 +70,7 @@ Linux defaults to `None` because a native GNOME/Wayland session gives an app no 
   <Accordion title="Linux: keeping the overlay on top">
     On a native GNOME/Wayland session the overlay cannot stay above other windows. Mutter does not implement `wlr-layer-shell`, and Wayland gives apps no way to raise themselves.
 
-    SpeakoFlow detects GNOME on Wayland and runs under XWayland, where "keep above" works. That is automatic and needs no setup. X11 and KDE/wlroots Wayland sessions already work.
+    ShalomFlow detects GNOME on Wayland and runs under XWayland, where "keep above" works. That is automatic and needs no setup. X11 and KDE/wlroots Wayland sessions already work.
 
     To force native Wayland anyway, launch with `SPEAKOFLOW_ALLOW_WAYLAND=1`. To disable GTK layer shell under a layer-shell compositor, use `SPEAKOFLOW_NO_GTK_LAYER_SHELL=1`. More in [Troubleshooting](/reference/troubleshooting).
   </Accordion>

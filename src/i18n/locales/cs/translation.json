@@ -57,7 +57,7 @@
       "ready": "Připraveno"
     },
     "speechToText": {
-      "title": "Jak vás má SpeakoFlow slyšet?",
+      "title": "Jak vás má ShalomFlow slyšet?",
       "subtitle": "Tohle převádí váš hlas na text, přímo na vašem počítači. Vyberte si jeden, kdykoli jej můžete změnit.",
       "cards": {
         "fast": {
@@ -113,7 +113,7 @@
       "downloadingVoice": "Váš hlasový model přistává. Hotovo {{percentage}}%.",
       "downloadingGeneric": "Stále se stahuje. Hotovo {{percentage}}%.",
       "signOff": "A to je vše. Jděte něco říct.",
-      "openApp": "Otevřít SpeakoFlow"
+      "openApp": "Otevřít ShalomFlow"
     },
     "errors": {
       "selectModel": "Tento model se nepodařilo vybrat. Zkuste to prosím znovu.",
@@ -245,7 +245,7 @@
     },
     "permissions": {
       "title": "Vyžadována oprávnění",
-      "description": "SpeakoFlow potřebuje několik oprávnění pro správné fungování.",
+      "description": "ShalomFlow potřebuje několik oprávnění pro správné fungování.",
       "microphone": {
         "title": "Přístup k mikrofonu",
         "description": "Potřebný pro zachycení vašeho hlasu k přepisu."
@@ -598,15 +598,15 @@
       },
       "autostart": {
         "label": "Spouštět při startu",
-        "description": "Automaticky spustit SpeakoFlow po přihlášení do počítače."
+        "description": "Automaticky spustit ShalomFlow po přihlášení do počítače."
       },
       "showTrayIcon": {
         "label": "Zobrazit ikonu v systémové liště",
-        "description": "Zobrazit ikonu SpeakoFlow v systémové liště."
+        "description": "Zobrazit ikonu ShalomFlow v systémové liště."
       },
       "closeBehavior": {
         "label": "Ukončit aplikaci při zavření okna",
-        "description": "Když je vypnuto, zavřením okna zůstane SpeakoFlow běžet v systémové liště a vaše zkratky dál fungují. Když je zapnuto, zavřením okna se aplikace úplně ukončí."
+        "description": "Když je vypnuto, zavřením okna zůstane ShalomFlow běžet v systémové liště a vaše zkratky dál fungují. Když je zapnuto, zavřením okna se aplikace úplně ukončí."
       },
       "overlayStyle": {
         "title": "Překryv",
@@ -686,8 +686,8 @@
       },
       "customWords": {
         "title": "Vlastní slova",
-        "description": "Jména, produkty a fráze, které má SpeakoFlow psát po vašem.",
-        "info": "Příklad: přidejte „Kokoro“, pokud SpeakoFlow napíše „Coco row“.",
+        "description": "Jména, produkty a fráze, které má ShalomFlow psát po vašem.",
+        "info": "Příklad: přidejte „Kokoro“, pokud ShalomFlow napíše „Coco row“.",
         "placeholder": "Přidejte jméno, termín nebo krátkou frázi",
         "add": "Přidat",
         "empty": "Zatím žádná vlastní slova.",
@@ -698,7 +698,7 @@
         "title": "Náhrady textu",
         "description": "Nahraďte v přepisu určitou frázi textem, který používáte často. Příklad: z „můj e-mail“ se stane „alex@example.com“.",
         "rulesTitle": "Pravidla náhrad",
-        "rulesHint": "Určete, co SpeakoFlow slyší a co má vložit.",
+        "rulesHint": "Určete, co ShalomFlow slyší a co má vložit.",
         "empty": "Vytvořte pravidlo pro frázi, kterou často říkáte.",
         "addFirst": "Vytvořit první pravidlo",
         "addRule": "Přidat náhradu",
@@ -965,7 +965,7 @@
       },
       "updateChecks": {
         "label": "Kontrolovat aktualizace",
-        "description": "Automaticky kontrolovat nové verze SpeakoFlow"
+        "description": "Automaticky kontrolovat nové verze ShalomFlow"
       },
       "soundTheme": {
         "label": "Zvukový motiv",
@@ -1035,7 +1035,7 @@
       "title": "O aplikaci",
       "version": {
         "title": "Verze",
-        "description": "Aktuální verze SpeakoFlow"
+        "description": "Aktuální verze ShalomFlow"
       },
       "updates": {
         "title": "Aktualizace",
@@ -1047,7 +1047,7 @@
       },
       "appDataDirectory": {
         "title": "Adresář dat aplikace",
-        "description": "Umístění, kde SpeakoFlow ukládá data"
+        "description": "Umístění, kde ShalomFlow ukládá data"
       },
       "sourceCode": {
         "title": "Zdrojový kód",
@@ -1056,12 +1056,12 @@
       },
       "license": {
         "title": "Licence",
-        "description": "SpeakoFlow je open source pod licencí MIT a staví na projektu Handy (také MIT) od CJ Paise.",
+        "description": "ShalomFlow je open source pod licencí MIT a staví na projektu Handy (také MIT) od CJ Paise.",
         "button": "Zobrazit licenci"
       },
       "supportDevelopment": {
         "title": "Podpořte vývoj",
-        "description": "Pomozte nám pokračovat ve vývoji SpeakoFlow",
+        "description": "Pomozte nám pokračovat ve vývoji ShalomFlow",
         "button": "Přispět"
       }
     },
@@ -1098,7 +1098,7 @@
         "finderSectionTitle": "Další modely na zařízení",
         "finderSectionDescription": "Když potřebujete jinou velikost nebo schopnost modelu, prohledejte Hugging Face.",
         "finderTitle": "Procházet Hugging Face",
-        "finderDescription": "Prohledejte tisíce modelů GGUF a stáhněte si jeden přímo do SpeakoFlow.",
+        "finderDescription": "Prohledejte tisíce modelů GGUF a stáhněte si jeden přímo do ShalomFlow.",
         "finderAction": "Najít model",
         "huggingFaceTitle": "Vaše modely",
         "huggingFaceDescription": "Stažené modely a modely, které jste přidali z Hugging Face.",
@@ -1263,7 +1263,7 @@
           }
         },
         "screenRecording": {
-          "description": "Zobrazení obrazovky vyžaduje na macOS oprávnění k nahrávání obrazovky. Udělte ho v Nastavení systému a pak SpeakoFlow restartujte, aby se změna projevila.",
+          "description": "Zobrazení obrazovky vyžaduje na macOS oprávnění k nahrávání obrazovky. Udělte ho v Nastavení systému a pak ShalomFlow restartujte, aby se změna projevila.",
           "grant": "Otevřít Nastavení systému"
         }
       },
@@ -1341,7 +1341,7 @@
         "testButton": "Otestovat hlas",
         "testing": "Testuji…",
         "testOk": "Přehráno ✓",
-        "testPhrase": "Ahoj! Toto je test hlasového výstupu SpeakoFlow.",
+        "testPhrase": "Ahoj! Toto je test hlasového výstupu ShalomFlow.",
         "downloadStart": "Stahuji hlas Kokoro…",
         "downloadProgress": "Stahuji hlas Kokoro… {{progress}}%",
         "downloadReady": "Hlas Kokoro je připravený ✓",
@@ -1444,7 +1444,7 @@
   },
   "accessibility": {
     "permissionsRequired": "Vyžadována oprávnění usnadnění přístupu",
-    "permissionsDescription": "SpeakoFlow potřebuje oprávnění usnadnění přístupu, aby mohlo psát přepsaný text.",
+    "permissionsDescription": "ShalomFlow potřebuje oprávnění usnadnění přístupu, aby mohlo psát přepsaný text.",
     "openSettings": "Otevřít Nastavení systému",
     "dismiss": "Zavřít"
   },
@@ -1468,7 +1468,7 @@
   },
   "appLanguage": {
     "title": "Jazyk aplikace",
-    "description": "Změňte jazyk rozhraní SpeakoFlow"
+    "description": "Změňte jazyk rozhraní ShalomFlow"
   },
   "overlay": {
     "preparing": "Připravuji mikrofon…",

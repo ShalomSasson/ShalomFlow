@@ -96,7 +96,7 @@ fn prefer_xwayland_for_overlay_on_gnome_wayland() {
         // Log init hasn't run yet, so print directly. Visible for terminal
         // launches; harmless otherwise.
         eprintln!(
-            "SpeakoFlow: GNOME/Wayland detected — running under XWayland so the \
+            "ShalomFlow: GNOME/Wayland detected — running under XWayland so the \
              recording overlay can float above other apps. Set \
              SPEAKOFLOW_ALLOW_WAYLAND=1 to keep native Wayland (the overlay may \
              not stay on top there)."

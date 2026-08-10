@@ -2,7 +2,7 @@
 
 **Effective date:** July 19, 2026
 
-SpeakoFlow is a free, open-source desktop voice assistant for Windows, macOS, and
+ShalomFlow is a free, open-source desktop voice assistant for Windows, macOS, and
 Linux. It is designed to be **local-first**: your voice is processed on your own
 computer, and the app works without an account, sign-in, or any tracking.
 
@@ -14,22 +14,22 @@ your device. If anything here is unclear, please open an issue on our
 
 ## The short version
 
-- **We do not collect any of your data.** SpeakoFlow has no analytics, no
+- **We do not collect any of your data.** ShalomFlow has no analytics, no
   telemetry, no tracking, no advertising, and no user accounts.
 - **Your voice is transcribed on your device** and is never uploaded to us or to
   anyone else.
 - **We do not operate any servers that receive your content.** There is no
-  "SpeakoFlow cloud."
+  "ShalomFlow cloud."
 - The app only makes a network connection in a few clearly-defined situations,
   described below — and the features that send your content to a third party are
   **off by default** and only ever use a provider **you** choose and configure.
 
 ---
 
-## Information SpeakoFlow does **not** collect
+## Information ShalomFlow does **not** collect
 
 We want to be explicit, because "we don't collect data" is easy to say and
-harder to prove. SpeakoFlow contains **no** analytics or telemetry libraries and
+harder to prove. ShalomFlow contains **no** analytics or telemetry libraries and
 sends **no** usage data, crash reports, device identifiers, or behavioral data to
 the developer. Specifically, we never collect or transmit to ourselves:
 
@@ -71,7 +71,7 @@ The following is stored **locally on your computer** and never sent to us:
 
 ## Optional network connections
 
-SpeakoFlow connects to the internet only in the situations below. Some are
+ShalomFlow connects to the internet only in the situations below. Some are
 standard app maintenance; the ones that send your content are **optional,
 off by default, and routed to a provider you choose** — never through us.
 
@@ -79,11 +79,11 @@ off by default, and routed to a provider you choose** — never through us.
 To tell you when a new version is available, the app checks a file published on
 our GitHub Releases page. This is a normal file download; as with any web
 request, the server (GitHub) can see your IP address and general request
-metadata. No personal data is sent by SpeakoFlow. You can ignore or disable
+metadata. No personal data is sent by ShalomFlow. You can ignore or disable
 update checks in Settings.
 
 ### 2. Downloading models and engines
-When you choose to download a speech, language, or voice model, SpeakoFlow
+When you choose to download a speech, language, or voice model, ShalomFlow
 fetches the model file from its host — typically Hugging Face, or a mirror on
 GitHub. The local AI engine (llama.cpp) may likewise be fetched from GitHub. These
 are plain file downloads of publicly available software; no personal data or
@@ -99,12 +99,12 @@ control which provider that is:
 - a **cloud provider you choose** (e.g. OpenAI, Anthropic, Azure, OpenRouter,
   and others) using **your own API key**.
 
-SpeakoFlow does not proxy or copy this traffic — it goes directly from your
+ShalomFlow does not proxy or copy this traffic — it goes directly from your
 machine to the provider you selected. What that provider does with the data is
 governed by **their** privacy policy.
 
 ### 4. Screen vision (optional, on request)
-When you explicitly ask the assistant about your screen, SpeakoFlow captures a
+When you explicitly ask the assistant about your screen, ShalomFlow captures a
 screenshot and includes it with that request to your chosen AI provider. It only
 captures when you ask, and — like all assistant traffic — it goes only to the
 provider you configured. If you use the offline built-in model, the screenshot
@@ -126,17 +126,17 @@ own key, to fetch current information. This is off until you turn it on.
 ## Third-party providers
 
 The optional cloud features above rely on services you choose and authenticate
-with your own credentials. SpeakoFlow is not affiliated with these providers and
+with your own credentials. ShalomFlow is not affiliated with these providers and
 has no visibility into the data you exchange with them. When you use such a
 service, its own terms and privacy policy apply. If you prefer that nothing ever
-leaves your machine, you can run SpeakoFlow with only local models and keep every
+leaves your machine, you can run ShalomFlow with only local models and keep every
 optional cloud feature disabled.
 
 ---
 
 ## Children's privacy
 
-SpeakoFlow is a general-purpose productivity tool and is not directed at
+ShalomFlow is a general-purpose productivity tool and is not directed at
 children. We do not knowingly collect information from anyone, including
 children.
 
@@ -146,11 +146,11 @@ API keys are stored in your operating system's secure credential store rather
 than in plain-text files, and are never written to logs. Because your content is
 processed locally and not stored on any server we control, there is no central
 database of user data that could be breached. As with any software, keep your
-operating system and SpeakoFlow up to date.
+operating system and ShalomFlow up to date.
 
 ## Open source
 
-SpeakoFlow is open source under the MIT license. You can inspect exactly what the
+ShalomFlow is open source under the MIT license. You can inspect exactly what the
 app does — including every network call — in the source code at
 <https://github.com/AbhishekBarali/SpeakoFlow>.
 
@@ -163,9 +163,9 @@ full history of this document is publicly visible.
 ## Contact
 
 Questions about privacy? Please open an issue on the
-[SpeakoFlow GitHub repository](https://github.com/AbhishekBarali/SpeakoFlow).
+[ShalomFlow GitHub repository](https://github.com/AbhishekBarali/SpeakoFlow).
 
 ---
 
-_SpeakoFlow is a local-first, open-source project. It began as a fork of
+_ShalomFlow is a local-first, open-source project. It began as a fork of
 [Handy](https://github.com/cjpais/Handy) (MIT)._

@@ -57,7 +57,7 @@
       "ready": "一切就绪"
     },
     "speechToText": {
-      "title": "SpeakoFlow 该怎么听您说话？",
+      "title": "ShalomFlow 该怎么听您说话？",
       "subtitle": "这会直接在您的设备上把语音变成文字。先选一个，随时可以更换。",
       "cards": {
         "fast": {
@@ -113,7 +113,7 @@
       "downloadingVoice": "您的语音模型即将就位。已完成 {{percentage}}%。",
       "downloadingGeneric": "仍在下载。已完成 {{percentage}}%。",
       "signOff": "就是这样。去说点什么吧。",
-      "openApp": "打开 SpeakoFlow"
+      "openApp": "打开 ShalomFlow"
     },
     "errors": {
       "selectModel": "无法选择该模型。请重试。",
@@ -245,7 +245,7 @@
     },
     "permissions": {
       "title": "需要权限",
-      "description": "SpeakoFlow 需要一些权限才能正常工作。",
+      "description": "ShalomFlow 需要一些权限才能正常工作。",
       "microphone": {
         "title": "麦克风访问",
         "description": "需要听取您的语音进行转录。"
@@ -598,15 +598,15 @@
       },
       "autostart": {
         "label": "开机启动",
-        "description": "登录计算机时自动启动 SpeakoFlow。"
+        "description": "登录计算机时自动启动 ShalomFlow。"
       },
       "showTrayIcon": {
         "label": "显示托盘图标",
-        "description": "在系统托盘中显示 SpeakoFlow 图标。"
+        "description": "在系统托盘中显示 ShalomFlow 图标。"
       },
       "closeBehavior": {
         "label": "关闭窗口时退出应用",
-        "description": "关闭此项时，关闭窗口只会让 SpeakoFlow 继续在托盘中运行，快捷键依然有效。开启后，关闭窗口会彻底退出应用。"
+        "description": "关闭此项时，关闭窗口只会让 ShalomFlow 继续在托盘中运行，快捷键依然有效。开启后，关闭窗口会彻底退出应用。"
       },
       "overlayStyle": {
         "title": "悬浮窗",
@@ -686,8 +686,8 @@
       },
       "customWords": {
         "title": "自定义词汇",
-        "description": "希望 SpeakoFlow 按您的写法拼写的人名、产品和短语。",
-        "info": "例如：如果 SpeakoFlow 把“Kokoro”写成“Coco row”，就把它加进来。",
+        "description": "希望 ShalomFlow 按您的写法拼写的人名、产品和短语。",
+        "info": "例如：如果 ShalomFlow 把“Kokoro”写成“Coco row”，就把它加进来。",
         "placeholder": "添加人名、术语或短语",
         "add": "添加",
         "empty": "还没有自定义词汇。",
@@ -698,7 +698,7 @@
         "title": "文本替换",
         "description": "把转录中的某个短语替换成您常用的文本。例如：“我的邮箱”会变成“alex@example.com”。",
         "rulesTitle": "替换规则",
-        "rulesHint": "设定 SpeakoFlow 听到什么，以及应该插入什么。",
+        "rulesHint": "设定 ShalomFlow 听到什么，以及应该插入什么。",
         "empty": "为您常说的短语创建一条规则。",
         "addFirst": "创建第一条规则",
         "addRule": "添加替换",
@@ -965,7 +965,7 @@
       },
       "updateChecks": {
         "label": "检查更新",
-        "description": "自动检查 SpeakoFlow 的新版本"
+        "description": "自动检查 ShalomFlow 的新版本"
       },
       "soundTheme": {
         "label": "声音主题",
@@ -1035,7 +1035,7 @@
       "title": "关于",
       "version": {
         "title": "版本",
-        "description": "SpeakoFlow 的当前版本"
+        "description": "ShalomFlow 的当前版本"
       },
       "updates": {
         "title": "更新",
@@ -1047,7 +1047,7 @@
       },
       "appDataDirectory": {
         "title": "应用数据目录",
-        "description": "SpeakoFlow 存储数据的位置"
+        "description": "ShalomFlow 存储数据的位置"
       },
       "sourceCode": {
         "title": "源代码",
@@ -1056,12 +1056,12 @@
       },
       "license": {
         "title": "许可证",
-        "description": "SpeakoFlow 基于 MIT 许可证开源，构建于 CJ Pais 的 Handy（同为 MIT 许可）之上。",
+        "description": "ShalomFlow 基于 MIT 许可证开源，构建于 CJ Pais 的 Handy（同为 MIT 许可）之上。",
         "button": "查看许可证"
       },
       "supportDevelopment": {
         "title": "支持开发",
-        "description": "帮助我们继续开发 SpeakoFlow",
+        "description": "帮助我们继续开发 ShalomFlow",
         "button": "捐赠"
       }
     },
@@ -1098,7 +1098,7 @@
         "finderSectionTitle": "更多本地模型",
         "finderSectionDescription": "需要不同大小或能力的模型时，可搜索 Hugging Face。",
         "finderTitle": "浏览 Hugging Face",
-        "finderDescription": "搜索数千个 GGUF 模型，并直接下载到 SpeakoFlow。",
+        "finderDescription": "搜索数千个 GGUF 模型，并直接下载到 ShalomFlow。",
         "finderAction": "查找模型",
         "huggingFaceTitle": "我的模型",
         "huggingFaceDescription": "已下载的模型，以及您从 Hugging Face 添加的模型。",
@@ -1263,7 +1263,7 @@
           }
         },
         "screenRecording": {
-          "description": "屏幕视觉需要 macOS 的屏幕录制权限。请在“系统设置”中授予，然后重启 SpeakoFlow 使其生效。",
+          "description": "屏幕视觉需要 macOS 的屏幕录制权限。请在“系统设置”中授予，然后重启 ShalomFlow 使其生效。",
           "grant": "打开系统设置"
         }
       },
@@ -1341,7 +1341,7 @@
         "testButton": "测试语音",
         "testing": "测试中…",
         "testOk": "已播放 ✓",
-        "testPhrase": "你好！这是 SpeakoFlow 语音输出的测试。",
+        "testPhrase": "你好！这是 ShalomFlow 语音输出的测试。",
         "downloadStart": "正在下载 Kokoro 语音…",
         "downloadProgress": "正在下载 Kokoro 语音… {{progress}}%",
         "downloadReady": "Kokoro 语音已就绪 ✓",
@@ -1444,7 +1444,7 @@
   },
   "accessibility": {
     "permissionsRequired": "需要辅助功能权限",
-    "permissionsDescription": "SpeakoFlow 需要辅助功能权限才能输入转录的文字。",
+    "permissionsDescription": "ShalomFlow 需要辅助功能权限才能输入转录的文字。",
     "openSettings": "打开系统设置",
     "dismiss": "关闭"
   },
@@ -1468,7 +1468,7 @@
   },
   "appLanguage": {
     "title": "应用语言",
-    "description": "更改 SpeakoFlow 界面的语言"
+    "description": "更改 ShalomFlow 界面的语言"
   },
   "overlay": {
     "preparing": "正在准备麦克风…",

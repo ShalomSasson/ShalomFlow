@@ -965,7 +965,7 @@ impl ShortcutAction for TranscribeAction {
             // can't swallow the user's first words — the cue itself is the
             // "you can speak now" signal. Backport of Handy PR #1582 / #1283
             // (mic-init delay clips the first word), reconciled with
-            // SpeakoFlow's capture-ready signal rather than a fixed warm-up
+            // ShalomFlow's capture-ready signal rather than a fixed warm-up
             // guess. Faster mic init (config caching) keeps this snappy: the
             // wait returns as soon as the first real frame arrives.
             debug!("On-demand mode: starting recording, then audio feedback");
@@ -1914,7 +1914,7 @@ mod tests {
             "Meet Tuesday—wait, no, Wednesday",
             "Hello comma new line team period",
             "January fifteenth, three hundred dollars, five thirty PM, 555 0102",
-            "Use SpeakoFlow, Result<T, E>, foo_bar, and https://example.com/a?b=1",
+            "Use ShalomFlow, Result<T, E>, foo_bar, and https://example.com/a?b=1",
             "Do not send it unless Priya approves.",
             "What time is the release?",
             "Delete the draft and send the final copy.",

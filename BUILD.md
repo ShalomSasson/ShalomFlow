@@ -1,6 +1,6 @@
 # Build Instructions
 
-This guide covers how to set up the development environment and build SpeakoFlow from source across different platforms.
+This guide covers how to set up the development environment and build ShalomFlow from source across different platforms.
 
 ## Prerequisites
 
@@ -89,7 +89,7 @@ any release. See [issue #19](https://github.com/AbhishekBarali/SpeakoFlow/issues
 
 ```bash
 git clone git@github.com:AbhishekBarali/SpeakoFlow.git
-cd SpeakoFlow
+cd ShalomFlow
 ```
 
 ### 2. Install Dependencies
@@ -148,10 +148,10 @@ an app-private directory instead of copying their generic library names into
 
 ```bash
 cd /tmp
-ar x /path/to/SpeakoFlow/src-tauri/target/release/bundle/deb/SpeakoFlow_*_amd64.deb data.tar.gz
+ar x /path/to/ShalomFlow/src-tauri/target/release/bundle/deb/SpeakoFlow_*_amd64.deb data.tar.gz
 tar xzf data.tar.gz
 sudo cp usr/bin/speakoflow /usr/bin/
-sudo cp -r usr/lib/SpeakoFlow /usr/lib/
+sudo cp -r usr/lib/ShalomFlow /usr/lib/
 sudo cp -r usr/share/icons/hicolor/* /usr/share/icons/hicolor/
 sudo cp usr/share/applications/SpeakoFlow.desktop /usr/share/applications/
 ```
@@ -182,7 +182,7 @@ Tauri swallows the real linuxdeploy error. To see it, run linuxdeploy manually:
 ```bash
 cd src-tauri/target/release/bundle/appimage
 ~/.cache/tauri/linuxdeploy-x86_64.AppImage --appimage-extract-and-run \
-  --appdir SpeakoFlow.AppDir --plugin gtk --output appimage
+  --appdir ShalomFlow.AppDir --plugin gtk --output appimage
 ```
 
 **Workaround:** The binary, deb, and rpm bundles all build fine — only the AppImage step fails. To skip it:

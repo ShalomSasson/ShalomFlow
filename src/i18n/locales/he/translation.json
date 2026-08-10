@@ -57,7 +57,7 @@
       "ready": "הכול מוכן"
     },
     "speechToText": {
-      "title": "איך SpeakoFlow צריך לשמוע אותך?",
+      "title": "איך ShalomFlow צריך לשמוע אותך?",
       "subtitle": "זה הופך את הקול שלך לטקסט, ישר במחשב שלך. בחר אחד, אפשר להחליף בכל עת.",
       "cards": {
         "fast": {
@@ -113,7 +113,7 @@
       "downloadingVoice": "מודל הקול שלך כמעט כאן. {{percentage}}% הושלמו.",
       "downloadingGeneric": "עדיין מוריד. {{percentage}}% הושלמו.",
       "signOff": "זה הכול. קדימה, תגיד משהו.",
-      "openApp": "פתח את SpeakoFlow"
+      "openApp": "פתח את ShalomFlow"
     },
     "errors": {
       "selectModel": "לא ניתן היה לבחור את המודל הזה. נסה שוב.",
@@ -245,7 +245,7 @@
     },
     "permissions": {
       "title": "נדרשות הרשאות",
-      "description": "SpeakoFlow צריך כמה הרשאות כדי לעבוד כמו שצריך.",
+      "description": "ShalomFlow צריך כמה הרשאות כדי לעבוד כמו שצריך.",
       "microphone": {
         "title": "גישה למיקרופון",
         "description": "נדרש כדי לשמוע את הקול שלך לצורך תמלול."
@@ -598,15 +598,15 @@
       },
       "autostart": {
         "label": "הפעל עם עליית המערכת",
-        "description": "הפעל את SpeakoFlow אוטומטית כשאתה מתחבר למחשב."
+        "description": "הפעל את ShalomFlow אוטומטית כשאתה מתחבר למחשב."
       },
       "showTrayIcon": {
         "label": "הצג אייקון במגש",
-        "description": "הצג את האייקון של SpeakoFlow במגש המערכת."
+        "description": "הצג את האייקון של ShalomFlow במגש המערכת."
       },
       "closeBehavior": {
         "label": "צא מהאפליקציה כשאני סוגר את החלון",
-        "description": "כשהאפשרות כבויה, סגירת החלון משאירה את SpeakoFlow פועל במגש המערכת, כך שקיצורי המקשים שלך ימשיכו לעבוד. כשהיא מופעלת, סגירת החלון סוגרת את האפליקציה לגמרי."
+        "description": "כשהאפשרות כבויה, סגירת החלון משאירה את ShalomFlow פועל במגש המערכת, כך שקיצורי המקשים שלך ימשיכו לעבוד. כשהיא מופעלת, סגירת החלון סוגרת את האפליקציה לגמרי."
       },
       "overlayStyle": {
         "title": "שכבת משוב",
@@ -686,8 +686,8 @@
       },
       "customWords": {
         "title": "מילים מותאמות אישית",
-        "description": "שמות, מוצרים וביטויים ש-SpeakoFlow צריך לאיית בדרך שלך.",
-        "info": "לדוגמה: הוסף ״Kokoro״ אם SpeakoFlow כותב ״Coco row״.",
+        "description": "שמות, מוצרים וביטויים ש-ShalomFlow צריך לאיית בדרך שלך.",
+        "info": "לדוגמה: הוסף ״Kokoro״ אם ShalomFlow כותב ״Coco row״.",
         "placeholder": "הוסף שם, מונח או ביטוי קצר",
         "add": "הוסף",
         "empty": "אין עדיין מילים מותאמות אישית.",
@@ -698,7 +698,7 @@
         "title": "החלפות טקסט",
         "description": "החלף ביטוי בתמלול שלך בטקסט שאתה משתמש בו לעיתים קרובות. לדוגמה: ״האימייל שלי״ הופך ל״alex@example.com״.",
         "rulesTitle": "כללי החלפה",
-        "rulesHint": "בחר מה SpeakoFlow שומע ומה הוא צריך להכניס במקום.",
+        "rulesHint": "בחר מה ShalomFlow שומע ומה הוא צריך להכניס במקום.",
         "empty": "צור כלל לביטוי שאתה אומר לעיתים קרובות.",
         "addFirst": "צור כלל ראשון",
         "addRule": "הוסף החלפה",
@@ -965,7 +965,7 @@
       },
       "updateChecks": {
         "label": "בדוק עדכונים",
-        "description": "בדוק אוטומטית אם קיימות גרסאות חדשות של SpeakoFlow"
+        "description": "בדוק אוטומטית אם קיימות גרסאות חדשות של ShalomFlow"
       },
       "soundTheme": {
         "label": "ערכת צלילים",
@@ -1035,7 +1035,7 @@
       "title": "אודות",
       "version": {
         "title": "גרסה",
-        "description": "הגרסה הנוכחית של SpeakoFlow"
+        "description": "הגרסה הנוכחית של ShalomFlow"
       },
       "updates": {
         "title": "עדכונים",
@@ -1047,7 +1047,7 @@
       },
       "appDataDirectory": {
         "title": "תיקיית נתוני אפליקציה",
-        "description": "המיקום שבו SpeakoFlow שומר את הנתונים שלו"
+        "description": "המיקום שבו ShalomFlow שומר את הנתונים שלו"
       },
       "sourceCode": {
         "title": "קוד מקור",
@@ -1056,12 +1056,12 @@
       },
       "license": {
         "title": "רישיון",
-        "description": "SpeakoFlow הוא קוד פתוח תחת רישיון MIT, ומבוסס על Handy (גם הוא MIT) מאת CJ Pais.",
+        "description": "ShalomFlow הוא קוד פתוח תחת רישיון MIT, ומבוסס על Handy (גם הוא MIT) מאת CJ Pais.",
         "button": "הצג את הרישיון"
       },
       "supportDevelopment": {
         "title": "תמיכה בפיתוח",
-        "description": "עזור לנו להמשיך לבנות את SpeakoFlow",
+        "description": "עזור לנו להמשיך לבנות את ShalomFlow",
         "button": "תרומה"
       }
     },
@@ -1098,7 +1098,7 @@
         "finderSectionTitle": "עוד מודלים שפועלים במכשיר",
         "finderSectionDescription": "חפש ב-Hugging Face כשאתה צריך גודל מודל או יכולת אחרים.",
         "finderTitle": "עיין ב-Hugging Face",
-        "finderDescription": "חפש בין אלפי מודלי GGUF והורד אחד ישירות ל-SpeakoFlow.",
+        "finderDescription": "חפש בין אלפי מודלי GGUF והורד אחד ישירות ל-ShalomFlow.",
         "finderAction": "מצא מודל",
         "huggingFaceTitle": "המודלים שלך",
         "huggingFaceDescription": "מודלים שהורדת ומודלים שהוספת מ-Hugging Face.",
@@ -1263,7 +1263,7 @@
           }
         },
         "screenRecording": {
-          "description": "ראיית מסך דורשת את הרשאת הקלטת המסך של macOS. תן אותה בהגדרות המערכת, ואז הפעל מחדש את SpeakoFlow כדי שהשינוי ייכנס לתוקף.",
+          "description": "ראיית מסך דורשת את הרשאת הקלטת המסך של macOS. תן אותה בהגדרות המערכת, ואז הפעל מחדש את ShalomFlow כדי שהשינוי ייכנס לתוקף.",
           "grant": "פתח את הגדרות המערכת"
         }
       },
@@ -1341,7 +1341,7 @@
         "testButton": "בדוק את הקול",
         "testing": "בודק…",
         "testOk": "הושמע ✓",
-        "testPhrase": "שלום! זו בדיקה של הפלט הקולי של SpeakoFlow.",
+        "testPhrase": "שלום! זו בדיקה של הפלט הקולי של ShalomFlow.",
         "downloadStart": "מוריד את הקול של Kokoro…",
         "downloadProgress": "מוריד את הקול של Kokoro… {{progress}}%",
         "downloadReady": "הקול של Kokoro מוכן ✓",
@@ -1444,7 +1444,7 @@
   },
   "accessibility": {
     "permissionsRequired": "נדרשות הרשאות נגישות",
-    "permissionsDescription": "SpeakoFlow צריך הרשאות נגישות כדי להקליד את הטקסט המתומלל.",
+    "permissionsDescription": "ShalomFlow צריך הרשאות נגישות כדי להקליד את הטקסט המתומלל.",
     "openSettings": "פתח את הגדרות המערכת",
     "dismiss": "סגור"
   },
@@ -1468,7 +1468,7 @@
   },
   "appLanguage": {
     "title": "שפת האפליקציה",
-    "description": "שנה את שפת הממשק של SpeakoFlow"
+    "description": "שנה את שפת הממשק של ShalomFlow"
   },
   "overlay": {
     "preparing": "מכין את המיקרופון…",

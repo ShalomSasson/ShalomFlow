@@ -2,10 +2,10 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="Logo/final/lockup-dark.svg" />
-  <img src="Logo/final/lockup.svg" alt="SpeakoFlow" width="340" />
+  <img src="Logo/final/lockup.svg" alt="ShalomFlow" width="340" />
 </picture>
 
-# SpeakoFlow: free voice dictation and an AI assistant for Windows, macOS, and Linux
+# ShalomFlow: free voice dictation and an AI assistant for Windows, macOS, and Linux
 
 ### You think faster than you type.
 
@@ -15,7 +15,7 @@
 [![Platforms](https://img.shields.io/badge/Windows%20%7C%20macOS%20%7C%20Linux-informational)](#install)
 [![Built with Tauri](https://img.shields.io/badge/built%20with-Tauri%202-24C8DB?logo=tauri&logoColor=white)](https://tauri.app)
 
-<img src="assets/darko.gif" alt="SpeakoFlow live dictation demo" width="720" />
+<img src="assets/darko.gif" alt="ShalomFlow live dictation demo" width="720" />
 
 ### Download
 
@@ -34,8 +34,8 @@
 
 ## Contents
 
-- [What is SpeakoFlow?](#what-is-speakoflow)
-- [Why SpeakoFlow](#why-speakoflow)
+- [What is ShalomFlow?](#what-is-speakoflow)
+- [Why ShalomFlow](#why-speakoflow)
 - [Features](#features)
 - [Default hotkeys](#default-hotkeys)
 - [Install](#install)
@@ -48,34 +48,34 @@
 - [License](#license)
 - [Credits](#credits)
 
-## What is SpeakoFlow?
+## What is ShalomFlow?
 
-SpeakoFlow turns your voice into text, right where you're working. Press a hotkey and talk, and your words are typed into whatever app you're using. Say "Hey Flow" to turn what you say into a finished reply or email, or open a floating assistant panel to chat by voice and get answers read back to you.
+ShalomFlow turns your voice into text, right where you're working. Press a hotkey and talk, and your words are typed into whatever app you're using. Say "Hey Flow" to turn what you say into a finished reply or email, or open a floating assistant panel to chat by voice and get answers read back to you.
 
 Speech-to-text runs locally on your machine, so your voice never leaves your device. The AI assistant runs on any model you choose, from a fully offline built-in model to your own local server or a cloud provider with your own key. You decide how much stays on your machine.
 
 I built it while studying alone for exams. I was paying for dictation software that stopped at typing: it could hear me, but it couldn't help me.
 
-## Why SpeakoFlow
+## Why ShalomFlow
 
 Most dictation tools stop at typing. Wispr Flow, Superwhisper, and Handy all turn
 speech into text well. None of them can look at what you are working on and write
 the reply for you.
 
-SpeakoFlow does both. It's also the only one of the four that's free, open source,
+ShalomFlow does both. It's also the only one of the four that's free, open source,
 and runs on all three desktop platforms.
 
 - **Compared with Wispr Flow.** Wispr Flow is closed source, transcribes in the
   cloud, has no Linux build, and caps its free tier at 2,000 words per week
-  ($15/month after that). SpeakoFlow is MIT licensed, transcribes on your own
+  ($15/month after that). ShalomFlow is MIT licensed, transcribes on your own
   machine, and has no cap. Full breakdown:
-  [SpeakoFlow vs Wispr Flow](https://www.speakoflow.com/blog/speakoflow-vs-wispr-flow).
+  [ShalomFlow vs Wispr Flow](https://www.speakoflow.com/blog/speakoflow-vs-wispr-flow).
 - **Compared with Superwhisper.** Superwhisper is a capable closed-source app on
   macOS, Windows, and iOS, with Pro at $8.49/month or $249.99 for a lifetime
-  licence. SpeakoFlow is free, MIT licensed, and also runs on Linux.
-- **Built on Handy.** SpeakoFlow's dictation core comes from
+  licence. ShalomFlow is free, MIT licensed, and also runs on Linux.
+- **Built on Handy.** ShalomFlow's dictation core comes from
   [Handy](https://github.com/cjpais/Handy), the more established project and a
-  genuinely good pure-dictation tool. SpeakoFlow takes that core further:
+  genuinely good pure-dictation tool. ShalomFlow takes that core further:
   spoken-instruction writing, on-device translation, text-to-speech, personal
   memory, and a screen-aware assistant.
 
@@ -87,7 +87,7 @@ to answer you, keep reading. See also:
 
 ### Generate with Flow: say "Hey Flow" and it writes the reply
 
-Begin a dictation with "Hey Flow" and SpeakoFlow acts on what you said instead of
+Begin a dictation with "Hey Flow" and ShalomFlow acts on what you said instead of
 transcribing it. Describe the email, reply, or draft you want and it writes the
 finished text and pastes it where your cursor is. The trigger phrase is renameable,
 and it works in any app that accepts text. This is the part plain dictation tools
@@ -193,21 +193,21 @@ it.
 
 ### macOS
 
-Download the `.dmg` and drag **SpeakoFlow** into Applications. macOS then needs
+Download the `.dmg` and drag **ShalomFlow** into Applications. macOS then needs
 **Microphone** and **Accessibility** permissions (_System Settings → Privacy &
-Security_) so SpeakoFlow can hear you and type into other apps.
+Security_) so ShalomFlow can hear you and type into other apps.
 
 Because the app isn't Apple-signed yet, macOS blocks the first launch and needs
 one Terminal command to clear it. Full explanation below, or in the
 [install docs](https://www.speakoflow.com/docs/start/install#macos).
 
 <details>
-<summary><b>Why macOS says "SpeakoFlow is damaged", and the one-line fix</b></summary>
+<summary><b>Why macOS says "ShalomFlow is damaged", and the one-line fix</b></summary>
 
 <br />
 
-SpeakoFlow works fully on macOS, but it isn't signed by Apple yet, so macOS
-blocks it on first launch with a message that says **"SpeakoFlow is damaged and
+ShalomFlow works fully on macOS, but it isn't signed by Apple yet, so macOS
+blocks it on first launch with a message that says **"ShalomFlow is damaged and
 can't be opened."**
 
 **The app is not damaged.** That wording is what macOS shows for any app it
@@ -216,18 +216,18 @@ this project doesn't have yet, so the block is expected and harmless.
 
 Install it in three steps:
 
-1. Download `SpeakoFlow_<version>_aarch64.dmg` and drag **SpeakoFlow** into your
+1. Download `SpeakoFlow_<version>_aarch64.dmg` and drag **ShalomFlow** into your
    Applications folder.
 2. Open **Terminal** (press `Cmd + Space`, type `Terminal`) and paste this,
    then press Return:
    ```bash
    xattr -dr com.apple.quarantine /Applications/SpeakoFlow.app
    ```
-3. Open SpeakoFlow normally, from Launchpad, Spotlight, or Applications.
+3. Open ShalomFlow normally, from Launchpad, Spotlight, or Applications.
 
 **You only do this once per version you install.** The command removes the
 "downloaded from the internet" tag that macOS puts on the file; after that the
-app opens like any other. Because SpeakoFlow can't auto-update while unsigned,
+app opens like any other. Because ShalomFlow can't auto-update while unsigned,
 you'll repeat the step the next time you download a new version. One command
 per update, never per launch.
 
@@ -257,7 +257,7 @@ the meantime you can [build from source](#build-from-source), and see
 To use the assistant, choose a provider in Settings:
 
 - **Built-in (offline).** Download a small local model and run it fully on your machine, no key needed.
-- **Local server.** Point SpeakoFlow at Ollama or LM Studio.
+- **Local server.** Point ShalomFlow at Ollama or LM Studio.
 - **Cloud.** Bring your own API key for any OpenAI-compatible provider.
 
 ## Build from source
@@ -266,7 +266,7 @@ Requires [Rust](https://rustup.rs/) and [Bun](https://bun.sh/).
 
 ```bash
 git clone https://github.com/AbhishekBarali/SpeakoFlow.git
-cd SpeakoFlow
+cd ShalomFlow
 bun install
 mkdir -p src-tauri/resources/models
 curl -o src-tauri/resources/models/silero_vad_v4.onnx https://blob.handy.computer/silero_vad_v4.onnx
@@ -314,7 +314,7 @@ The recording overlay has to float above every other window. On Linux that is on
 
 **A native GNOME/Wayland session supports neither.** Mutter does not implement `wlr-layer-shell`, and Wayland gives apps no way to raise themselves above others. So under native GNOME/Wayland the overlay can't stay on top.
 
-SpeakoFlow handles this automatically: when it detects GNOME on Wayland it runs under **XWayland**, where "keep above" works and the overlay floats normally. This is on by default and needs no setup. X11 sessions and KDE/wlroots Wayland already work out of the box.
+ShalomFlow handles this automatically: when it detects GNOME on Wayland it runs under **XWayland**, where "keep above" works and the overlay floats normally. This is on by default and needs no setup. X11 sessions and KDE/wlroots Wayland already work out of the box.
 
 - Force native Wayland anyway (the overlay may not stay on top): launch with `SPEAKOFLOW_ALLOW_WAYLAND=1`.
 - If the overlay misbehaves under a layer-shell compositor, disable layer shell with `SPEAKOFLOW_NO_GTK_LAYER_SHELL=1`.
@@ -354,7 +354,7 @@ Two ways to fix it:
 On some Linux setups a trackpad pinch-to-zoom gesture crashes the window, with
 `Received invalid message: 'DrawingArea_CommitTransientZoom'` in the logs. This
 is a bug in **WebKitGTK** (the Linux web engine Tauri/wry uses), not in
-SpeakoFlow itself, and it affects many WebKitGTK-based apps. It is tracked
+ShalomFlow itself, and it affects many WebKitGTK-based apps. It is tracked
 upstream in [tauri#13115](https://github.com/tauri-apps/tauri/issues/13115) and
 [wry#544](https://github.com/tauri-apps/wry/issues/544).
 
@@ -384,10 +384,10 @@ Released under the [MIT License](LICENSE).
 
 ## Credits
 
-SpeakoFlow builds on the dictation core from [Handy](https://github.com/cjpais/Handy)
+ShalomFlow builds on the dictation core from [Handy](https://github.com/cjpais/Handy)
 by CJ Pais, used under the MIT licence. Thanks to CJ for making it open. The
 assistant, screen vision, Generate with Flow, translation, text-to-speech, and
-memory layers are SpeakoFlow's own.
+memory layers are ShalomFlow's own.
 
 Thanks also to [Tauri](https://tauri.app), whisper.cpp, llama.cpp, Silero VAD, and
 [Kokoro](https://github.com/hexgrad/kokoro).

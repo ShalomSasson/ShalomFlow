@@ -57,7 +57,7 @@
       "ready": "You're ready"
     },
     "speechToText": {
-      "title": "How should SpeakoFlow hear you?",
+      "title": "How should ShalomFlow hear you?",
       "subtitle": "This turns your voice into text, right on your machine. Pick one, switch anytime.",
       "cards": {
         "fast": {
@@ -113,7 +113,7 @@
       "downloadingVoice": "Your voice model is landing. {{percentage}}% there.",
       "downloadingGeneric": "Still downloading. {{percentage}}% there.",
       "signOff": "That's it. Go say something.",
-      "openApp": "Open SpeakoFlow"
+      "openApp": "Open ShalomFlow"
     },
     "errors": {
       "selectModel": "Couldn't select that model. Please try again.",
@@ -245,7 +245,7 @@
     },
     "permissions": {
       "title": "Permissions required",
-      "description": "SpeakoFlow needs a couple of permissions to work properly.",
+      "description": "ShalomFlow needs a couple of permissions to work properly.",
       "microphone": {
         "title": "Microphone access",
         "description": "Required to hear your voice for transcription."
@@ -598,15 +598,15 @@
       },
       "autostart": {
         "label": "Launch on startup",
-        "description": "Open SpeakoFlow automatically when you sign in."
+        "description": "Open ShalomFlow automatically when you sign in."
       },
       "showTrayIcon": {
         "label": "Show tray icon",
-        "description": "Keep SpeakoFlow in your system tray."
+        "description": "Keep ShalomFlow in your system tray."
       },
       "closeBehavior": {
         "label": "Quit when I close the window",
-        "description": "When off, closing the window keeps SpeakoFlow running in the tray so your hotkeys still work. When on, closing the window quits the app completely."
+        "description": "When off, closing the window keeps ShalomFlow running in the tray so your hotkeys still work. When on, closing the window quits the app completely."
       },
       "overlayStyle": {
         "title": "Overlay",
@@ -686,8 +686,8 @@
       },
       "customWords": {
         "title": "Custom words",
-        "description": "Names, products, and phrases SpeakoFlow should spell your way.",
-        "info": "Example: add “Kokoro” if SpeakoFlow writes “Coco row.”",
+        "description": "Names, products, and phrases ShalomFlow should spell your way.",
+        "info": "Example: add “Kokoro” if ShalomFlow writes “Coco row.”",
         "placeholder": "Add a name, term, or short phrase",
         "add": "Add",
         "empty": "No custom words yet.",
@@ -698,7 +698,7 @@
         "title": "Text replacements",
         "description": "Replace a phrase in your transcript with text you use often. Example: “my email” becomes “alex@example.com”.",
         "rulesTitle": "Replacement rules",
-        "rulesHint": "Choose what SpeakoFlow hears and what it should insert.",
+        "rulesHint": "Choose what ShalomFlow hears and what it should insert.",
         "empty": "Create a rule for a phrase you say often.",
         "addFirst": "Create first rule",
         "addRule": "Add replacement",
@@ -1047,7 +1047,7 @@
       },
       "appDataDirectory": {
         "title": "App data folder",
-        "description": "Where SpeakoFlow keeps your models, history, and settings."
+        "description": "Where ShalomFlow keeps your models, history, and settings."
       },
       "sourceCode": {
         "title": "Source code",
@@ -1056,12 +1056,12 @@
       },
       "license": {
         "title": "License",
-        "description": "SpeakoFlow is open source under the MIT License, building on Handy (also MIT) by CJ Pais.",
+        "description": "ShalomFlow is open source under the MIT License, building on Handy (also MIT) by CJ Pais.",
         "button": "View license"
       },
       "supportDevelopment": {
         "title": "Support development",
-        "description": "Help us keep building SpeakoFlow",
+        "description": "Help us keep building ShalomFlow",
         "button": "Donate"
       }
     },
@@ -1098,7 +1098,7 @@
         "finderSectionTitle": "More on-device models",
         "finderSectionDescription": "Search Hugging Face when you need a different model size or capability.",
         "finderTitle": "Browse Hugging Face",
-        "finderDescription": "Search thousands of GGUF models and download one directly to SpeakoFlow.",
+        "finderDescription": "Search thousands of GGUF models and download one directly to ShalomFlow.",
         "finderAction": "Find a model",
         "huggingFaceTitle": "Your models",
         "huggingFaceDescription": "Downloaded models and models you added from Hugging Face.",
@@ -1263,7 +1263,7 @@
           }
         },
         "screenRecording": {
-          "description": "Screen vision needs macOS Screen Recording permission. Grant it in System Settings, then restart SpeakoFlow for it to take effect.",
+          "description": "Screen vision needs macOS Screen Recording permission. Grant it in System Settings, then restart ShalomFlow for it to take effect.",
           "grant": "Open System Settings"
         }
       },
@@ -1341,7 +1341,7 @@
         "testButton": "Test voice",
         "testing": "Testing…",
         "testOk": "Played ✓",
-        "testPhrase": "Hi! This is a test of SpeakoFlow's voice output.",
+        "testPhrase": "Hi! This is a test of ShalomFlow's voice output.",
         "downloadStart": "Downloading Kokoro voice…",
         "downloadProgress": "Downloading Kokoro voice… {{progress}}%",
         "downloadReady": "Kokoro voice ready ✓",
@@ -1444,7 +1444,7 @@
   },
   "accessibility": {
     "permissionsRequired": "Accessibility permissions required",
-    "permissionsDescription": "SpeakoFlow needs accessibility permissions to type transcribed text.",
+    "permissionsDescription": "ShalomFlow needs accessibility permissions to type transcribed text.",
     "openSettings": "Open System Settings",
     "dismiss": "Dismiss"
   },
@@ -1468,7 +1468,7 @@
   },
   "appLanguage": {
     "title": "App language",
-    "description": "Change the language of the SpeakoFlow interface"
+    "description": "Change the language of the ShalomFlow interface"
   },
   "overlay": {
     "preparing": "Getting mic ready…",

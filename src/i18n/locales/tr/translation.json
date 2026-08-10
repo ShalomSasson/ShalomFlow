@@ -57,7 +57,7 @@
       "ready": "Hazırsınız"
     },
     "speechToText": {
-      "title": "SpeakoFlow sizi nasıl duysun?",
+      "title": "ShalomFlow sizi nasıl duysun?",
       "subtitle": "Bu, sesinizi doğrudan makinenizde metne dönüştürür. Birini seçin, istediğiniz zaman değiştirin.",
       "cards": {
         "fast": {
@@ -113,7 +113,7 @@
       "downloadingVoice": "Ses modeliniz iniyor. %{{percentage}} tamamlandı.",
       "downloadingGeneric": "İndirme sürüyor. %{{percentage}} tamamlandı.",
       "signOff": "Hepsi bu. Hadi bir şeyler söyleyin.",
-      "openApp": "SpeakoFlow'u aç"
+      "openApp": "ShalomFlow'u aç"
     },
     "errors": {
       "selectModel": "Bu model seçilemedi. Lütfen tekrar deneyin.",
@@ -245,7 +245,7 @@
     },
     "permissions": {
       "title": "İzinler Gerekli",
-      "description": "SpeakoFlow'nin düzgün çalışabilmesi için birkaç izne ihtiyacı var.",
+      "description": "ShalomFlow'nin düzgün çalışabilmesi için birkaç izne ihtiyacı var.",
       "microphone": {
         "title": "Mikrofon Erişimi",
         "description": "Sesinizi transkripsiyon için alabilmek için gereklidir."
@@ -598,15 +598,15 @@
       },
       "autostart": {
         "label": "Başlangıçta Çalıştır",
-        "description": "Bilgisayara giriş yaptığınızda SpeakoFlow otomatik olarak başlatılır."
+        "description": "Bilgisayara giriş yaptığınızda ShalomFlow otomatik olarak başlatılır."
       },
       "showTrayIcon": {
         "label": "Tepsi simgesini göster",
-        "description": "SpeakoFlow simgesini sistem tepsisinde göster."
+        "description": "ShalomFlow simgesini sistem tepsisinde göster."
       },
       "closeBehavior": {
         "label": "Pencereyi kapattığımda uygulamadan çık",
-        "description": "Kapalıyken pencereyi kapatmak SpeakoFlow'u tepside çalışır durumda tutar, böylece kısayollarınız çalışmaya devam eder. Açıkken pencereyi kapatmak uygulamayı tamamen kapatır."
+        "description": "Kapalıyken pencereyi kapatmak ShalomFlow'u tepside çalışır durumda tutar, böylece kısayollarınız çalışmaya devam eder. Açıkken pencereyi kapatmak uygulamayı tamamen kapatır."
       },
       "overlayStyle": {
         "title": "Kaplama",
@@ -686,8 +686,8 @@
       },
       "customWords": {
         "title": "Özel Kelimeler",
-        "description": "SpeakoFlow'un sizin istediğiniz gibi yazması gereken adlar, ürünler ve ifadeler.",
-        "info": "Örnek: SpeakoFlow “Coco row” yazıyorsa “Kokoro” ekleyin.",
+        "description": "ShalomFlow'un sizin istediğiniz gibi yazması gereken adlar, ürünler ve ifadeler.",
+        "info": "Örnek: ShalomFlow “Coco row” yazıyorsa “Kokoro” ekleyin.",
         "placeholder": "Bir ad, terim veya kısa ifade ekleyin",
         "add": "Ekle",
         "empty": "Henüz özel kelime yok.",
@@ -698,7 +698,7 @@
         "title": "Metin değiştirmeleri",
         "description": "Transkriptinizdeki bir ifadeyi, sık kullandığınız bir metinle değiştirin. Örnek: “e-postam” ifadesi “alex@example.com” olur.",
         "rulesTitle": "Değiştirme kuralları",
-        "rulesHint": "SpeakoFlow'un ne duyacağını ve ne ekleyeceğini seçin.",
+        "rulesHint": "ShalomFlow'un ne duyacağını ve ne ekleyeceğini seçin.",
         "empty": "Sık söylediğiniz bir ifade için kural oluşturun.",
         "addFirst": "İlk kuralı oluştur",
         "addRule": "Değiştirme ekle",
@@ -965,7 +965,7 @@
       },
       "updateChecks": {
         "label": "Güncellemeleri Kontrol Et",
-        "description": "SpeakoFlow için yeni sürümleri otomatik olarak kontrol eder"
+        "description": "ShalomFlow için yeni sürümleri otomatik olarak kontrol eder"
       },
       "soundTheme": {
         "label": "Ses Teması",
@@ -1035,7 +1035,7 @@
       "title": "Hakkında",
       "version": {
         "title": "Sürüm",
-        "description": "SpeakoFlow'nin mevcut sürümü"
+        "description": "ShalomFlow'nin mevcut sürümü"
       },
       "updates": {
         "title": "Güncellemeler",
@@ -1047,7 +1047,7 @@
       },
       "appDataDirectory": {
         "title": "Uygulama Veri Dizini",
-        "description": "SpeakoFlow'nin verilerini sakladığı konum"
+        "description": "ShalomFlow'nin verilerini sakladığı konum"
       },
       "sourceCode": {
         "title": "Kaynak Kodu",
@@ -1056,12 +1056,12 @@
       },
       "license": {
         "title": "Lisans",
-        "description": "SpeakoFlow, MIT Lisansı altında açık kaynaktır ve CJ Pais'in Handy (o da MIT) projesi üzerine kuruludur.",
+        "description": "ShalomFlow, MIT Lisansı altında açık kaynaktır ve CJ Pais'in Handy (o da MIT) projesi üzerine kuruludur.",
         "button": "Lisansı görüntüle"
       },
       "supportDevelopment": {
         "title": "Geliştirmeyi Destekle",
-        "description": "SpeakoFlow'yi geliştirmeye devam etmemize yardımcı olun",
+        "description": "ShalomFlow'yi geliştirmeye devam etmemize yardımcı olun",
         "button": "Bağış Yap"
       }
     },
@@ -1098,7 +1098,7 @@
         "finderSectionTitle": "Daha fazla cihaz içi model",
         "finderSectionDescription": "Farklı bir model boyutuna veya yeteneğine ihtiyaç duyduğunuzda Hugging Face'te arayın.",
         "finderTitle": "Hugging Face'e göz at",
-        "finderDescription": "Binlerce GGUF modeli arasında arama yapın ve birini doğrudan SpeakoFlow'a indirin.",
+        "finderDescription": "Binlerce GGUF modeli arasında arama yapın ve birini doğrudan ShalomFlow'a indirin.",
         "finderAction": "Model bul",
         "huggingFaceTitle": "Modelleriniz",
         "huggingFaceDescription": "İndirdiğiniz modeller ve Hugging Face'ten eklediğiniz modeller.",
@@ -1263,7 +1263,7 @@
           }
         },
         "screenRecording": {
-          "description": "Ekran görüşü, macOS Ekran Kaydı iznine ihtiyaç duyar. İzni Sistem Ayarları'ndan verin, ardından etkili olması için SpeakoFlow'u yeniden başlatın.",
+          "description": "Ekran görüşü, macOS Ekran Kaydı iznine ihtiyaç duyar. İzni Sistem Ayarları'ndan verin, ardından etkili olması için ShalomFlow'u yeniden başlatın.",
           "grant": "Sistem Ayarları'nı aç"
         }
       },
@@ -1341,7 +1341,7 @@
         "testButton": "Sesi test et",
         "testing": "Test ediliyor…",
         "testOk": "Çalındı ✓",
-        "testPhrase": "Merhaba! Bu, SpeakoFlow'un ses çıkışı testidir.",
+        "testPhrase": "Merhaba! Bu, ShalomFlow'un ses çıkışı testidir.",
         "downloadStart": "Kokoro sesi indiriliyor…",
         "downloadProgress": "Kokoro sesi indiriliyor… %{{progress}}",
         "downloadReady": "Kokoro sesi hazır ✓",
@@ -1444,7 +1444,7 @@
   },
   "accessibility": {
     "permissionsRequired": "Erişilebilirlik İzinleri Gerekli",
-    "permissionsDescription": "SpeakoFlow, transkribe edilen metni yazabilmek için erişilebilirlik izinlerine ihtiyaç duyar.",
+    "permissionsDescription": "ShalomFlow, transkribe edilen metni yazabilmek için erişilebilirlik izinlerine ihtiyaç duyar.",
     "openSettings": "Sistem Ayarlarını Aç",
     "dismiss": "Yoksay"
   },
@@ -1468,7 +1468,7 @@
   },
   "appLanguage": {
     "title": "Uygulama Dili",
-    "description": "SpeakoFlow arayüzünün dilini değiştirin"
+    "description": "ShalomFlow arayüzünün dilini değiştirin"
   },
   "overlay": {
     "preparing": "Mikrofon hazırlanıyor…",

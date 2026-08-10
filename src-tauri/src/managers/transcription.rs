@@ -1693,9 +1693,9 @@ pub fn recognition_words(settings: &crate::settings::AppSettings) -> Vec<String>
     if settings.flow_enabled
         && !words
             .iter()
-            .any(|word| word.eq_ignore_ascii_case("SpeakoFlow"))
+            .any(|word| word.eq_ignore_ascii_case("ShalomFlow"))
     {
-        words.push("SpeakoFlow".to_string());
+        words.push("ShalomFlow".to_string());
     }
     words
 }
@@ -2428,7 +2428,7 @@ mod tests {
         settings.flow_phrase = "Hey Flow".to_string();
 
         let correction_hints = recognition_words(&settings);
-        assert!(correction_hints.iter().any(|hint| hint == "SpeakoFlow"));
+        assert!(correction_hints.iter().any(|hint| hint == "ShalomFlow"));
         assert!(!correction_hints.iter().any(|hint| hint == "Hey Flow"));
         assert!(!correction_hints.iter().any(|hint| hint == "Flow"));
         assert_eq!(

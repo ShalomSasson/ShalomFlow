@@ -785,7 +785,7 @@ impl ModelUnloadTimeout {
 #[derive(Serialize, Deserialize, Debug, Clone, Copy, PartialEq, Eq, Type)]
 #[serde(rename_all = "snake_case")]
 pub enum SoundTheme {
-    /// SpeakoFlow's own start/stop cues — the default. Ships a matching lock
+    /// ShalomFlow's own start/stop cues — the default. Ships a matching lock
     /// cue (`popo_lock.wav`) used by every theme for tap-to-lock.
     Dictation,
     Marimba,

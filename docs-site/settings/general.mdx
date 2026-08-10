@@ -1,6 +1,6 @@
 ---
 title: "General settings"
-description: "Every setting in SpeakoFlow's General section with its default: recording shortcuts and microphone, theme and text size, feedback sounds, the recording overlay, startup and tray behavior, and the experimental toggles."
+description: "Every setting in ShalomFlow's General section with its default: recording shortcuts and microphone, theme and text size, feedback sounds, the recording overlay, startup and tray behavior, and the experimental toggles."
 icon: "gear"
 ---
 
@@ -47,11 +47,11 @@ Recording behavior governs every recording shortcut, including the assistant. Pi
 
 | Setting | Default | What it does |
 | --- | --- | --- |
-| Launch on startup | Off | Open SpeakoFlow automatically when you sign in. |
+| Launch on startup | Off | Open ShalomFlow automatically when you sign in. |
 | Start hidden | Off | Launch straight to the tray without opening the window. |
-| Show tray icon | On | Keep SpeakoFlow in the system tray or menu bar. |
+| Show tray icon | On | Keep ShalomFlow in the system tray or menu bar. |
 | Quit when I close the window | Off | Off hides the window to the tray and keeps hotkeys working. On quits the app completely. |
-| Check for updates | On | Let SpeakoFlow check for new versions and offer to download them. |
+| Check for updates | On | Let ShalomFlow check for new versions and offer to download them. |
 
 Turning off **Check for updates** also disables the tray menu's **Check for updates** item and the manual button on the About page.
 
@@ -72,7 +72,7 @@ This group appears only when **Experimental features** is on.
 
 | Setting | Default | What it does |
 | --- | --- | --- |
-| Keyboard implementation | `Tauri` on Linux, `SpeakoFlow Keys` elsewhere | Which backend listens for global shortcuts. |
+| Keyboard implementation | `Tauri` on Linux, `ShalomFlow Keys` elsewhere | Which backend listens for global shortcuts. |
 | Whisper acceleration, ONNX acceleration | Auto | Which compute device transcription runs on. See [Acceleration & GPU](/models/acceleration). |
 | Keep mic open between transcriptions | Off | Leaves the audio stream open for faster back-to-back dictation. May affect Bluetooth audio quality. See [Performance and memory](/models/acceleration). |
 
@@ -96,7 +96,7 @@ This group appears only when **Experimental features** is on.
   </Accordion>
 
   <Accordion title="Using your own start and stop sounds">
-    A fifth option, **Custom**, appears only once both `custom_start.wav` and `custom_stop.wav` exist in SpeakoFlow's app data folder. There is no file picker, so you drop the files in yourself. The path is shown under *Settings → About → Folders*.
+    A fifth option, **Custom**, appears only once both `custom_start.wav` and `custom_stop.wav` exist in ShalomFlow's app data folder. There is no file picker, so you drop the files in yourself. The path is shown under *Settings → About → Folders*.
 
     A sixth sound ships alongside the themes: a theme-independent lock cue shared by every theme. You will not hear it in the current build, because the tap-to-lock gesture it belongs to is not active. See [Keyboard shortcuts](/start/keyboard-shortcuts).
   </Accordion>
@@ -112,35 +112,35 @@ This group appears only when **Experimental features** is on.
   </Accordion>
 
   <Accordion title="Why the keyboard engine default differs on Linux">
-    **SpeakoFlow Keys** reads input devices directly, which is what makes modifier-only combos like `Left Ctrl` + `Left Win` possible. That is why it is the default on Windows and macOS, where the default dictation shortcut is a modifier-only combo.
+    **ShalomFlow Keys** reads input devices directly, which is what makes modifier-only combos like `Left Ctrl` + `Left Win` possible. That is why it is the default on Windows and macOS, where the default dictation shortcut is a modifier-only combo.
 
-    **Tauri Global Shortcut** uses the OS or compositor's own global-shortcut API and needs no special permissions. That is why it is the Linux default: SpeakoFlow Keys reads `/dev/input/event*` and requires your user to be in the `input` group.
+    **Tauri Global Shortcut** uses the OS or compositor's own global-shortcut API and needs no special permissions. That is why it is the Linux default: ShalomFlow Keys reads `/dev/input/event*` and requires your user to be in the `input` group.
 
     Switching backends can invalidate shortcuts the new backend cannot express. Affected bindings are reset to their defaults and you get a warning telling you so.
   </Accordion>
 
   <Accordion title="Window size and position">
-    SpeakoFlow remembers how big you left the main window and reopens it that way. Only the size is remembered, never the position, so the window cannot reopen off-screen after you unplug a monitor.
+    ShalomFlow remembers how big you left the main window and reopens it that way. Only the size is remembered, never the position, so the window cannot reopen off-screen after you unplug a monitor.
 
     The remembered size is clamped to your current display and re-centered on launch, so a size saved on a large screen still fits a small one. It is saved when you close or hide the window, not continuously while you drag.
   </Accordion>
 
   <Accordion title="Portable mode">
-    SpeakoFlow can keep settings, models, recordings, history, and logs next to the executable instead of in your user profile. Useful on a USB stick or a locked-down machine.
+    ShalomFlow can keep settings, models, recordings, history, and logs next to the executable instead of in your user profile. Useful on a USB stick or a locked-down machine.
 
     <Steps>
       <Step title="Create a marker file">
-        In the same folder as the SpeakoFlow executable, create a file named `portable` (no extension) containing the line `SpeakoFlow Portable Mode`.
+        In the same folder as the ShalomFlow executable, create a file named `portable` (no extension) containing the line `ShalomFlow Portable Mode`.
       </Step>
 
-      <Step title="Launch SpeakoFlow">
+      <Step title="Launch ShalomFlow">
         On startup it detects the marker, creates a `Data/` folder beside the executable, and stores everything there. Logs go to `Data/logs`.
       </Step>
     </Steps>
 
     An empty `portable` file is **not** enough, because the magic string has to be there. Some package managers create stray empty files, and an empty marker used to silently relocate a normal install's data.
 
-    One exception: if an empty marker sits next to an existing `Data/` folder, SpeakoFlow treats it as a real portable install and repairs the marker in place. Markers written under the project's old "Handy" branding also still work.
+    One exception: if an empty marker sits next to an existing `Data/` folder, ShalomFlow treats it as a real portable install and repairs the marker in place. Markers written under the project's old "Handy" branding also still work.
   </Accordion>
 </AccordionGroup>
 
@@ -148,6 +148,6 @@ This group appears only when **Experimental features** is on.
 
 | Setting | Where it lives |
 | --- | --- |
-| App language (the SpeakoFlow interface language) | *Settings → About* |
+| App language (the ShalomFlow interface language) | *Settings → About* |
 | Speech-recognition language, Translate to English | *Settings → Dictation*. See [Languages & accents](/models/languages). |
 | Log level and other diagnostics | The hidden Debug section. See [Debug & advanced](/settings/debug). |

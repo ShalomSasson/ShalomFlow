@@ -2904,7 +2904,7 @@ export type ShortcutBinding = { id: string; name: string; description: string; d
 export type SnipRect = { x: number; y: number; width: number; height: number }
 export type SoundTheme = 
 /**
- * SpeakoFlow's own start/stop cues — the default. Ships a matching lock
+ * ShalomFlow's own start/stop cues — the default. Ships a matching lock
  * cue (`popo_lock.wav`) used by every theme for tap-to-lock.
  */
 "dictation" | "marimba" | "pop" | "click" | "custom"

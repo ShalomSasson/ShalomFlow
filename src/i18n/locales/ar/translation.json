@@ -57,7 +57,7 @@
       "ready": "أنت جاهز"
     },
     "speechToText": {
-      "title": "كيف ينبغي أن يسمعك SpeakoFlow؟",
+      "title": "كيف ينبغي أن يسمعك ShalomFlow؟",
       "subtitle": "يحوّل هذا صوتك إلى نص على جهازك مباشرة. اختر واحدًا، وبدّله في أي وقت.",
       "cards": {
         "fast": {
@@ -113,7 +113,7 @@
       "downloadingVoice": "نموذج الصوت على وشك الوصول. أُنجز {{percentage}}%.",
       "downloadingGeneric": "التنزيل ما زال جاريًا. أُنجز {{percentage}}%.",
       "signOff": "هذا كل شيء. هيّا قل شيئًا.",
-      "openApp": "افتح SpeakoFlow"
+      "openApp": "افتح ShalomFlow"
     },
     "errors": {
       "selectModel": "تعذّر اختيار هذا النموذج. يرجى المحاولة مرة أخرى.",
@@ -245,7 +245,7 @@
     },
     "permissions": {
       "title": "الأذونات المطلوبة",
-      "description": ".يحتاج SpeakoFlow إلى بعض الأذونات ليعمل بشكل صحيح",
+      "description": ".يحتاج ShalomFlow إلى بعض الأذونات ليعمل بشكل صحيح",
       "microphone": {
         "title": "الوصول إلى الميكروفون",
         "description": ".مطلوب لسماع صوتك من أجل التفريغ الصوتي"
@@ -598,15 +598,15 @@
       },
       "autostart": {
         "label": "التشغيل عند بدء التشغيل",
-        "description": ".بدء تشغيل SpeakoFlow تلقائياً عند تسجيل الدخول إلى جهاز الكمبيوتر الخاص بك"
+        "description": ".بدء تشغيل ShalomFlow تلقائياً عند تسجيل الدخول إلى جهاز الكمبيوتر الخاص بك"
       },
       "showTrayIcon": {
         "label": "إظهار أيقونة شريط النظام",
-        "description": ".عرض أيقونة SpeakoFlow في شريط النظام"
+        "description": ".عرض أيقونة ShalomFlow في شريط النظام"
       },
       "closeBehavior": {
         "label": "الإنهاء عند إغلاق النافذة",
-        "description": "عند الإيقاف، يبقى SpeakoFlow يعمل في شريط النظام بعد إغلاق النافذة لتظلّ اختصاراتك فعّالة. وعند التشغيل، يؤدي إغلاق النافذة إلى إنهاء التطبيق تمامًا."
+        "description": "عند الإيقاف، يبقى ShalomFlow يعمل في شريط النظام بعد إغلاق النافذة لتظلّ اختصاراتك فعّالة. وعند التشغيل، يؤدي إغلاق النافذة إلى إنهاء التطبيق تمامًا."
       },
       "overlayStyle": {
         "title": "التراكب",
@@ -686,8 +686,8 @@
       },
       "customWords": {
         "title": "كلمات مخصصة",
-        "description": "الأسماء والمنتجات والعبارات التي ينبغي أن يكتبها SpeakoFlow بطريقتك.",
-        "info": "مثال: أضف «Kokoro» إذا كتب SpeakoFlow «Coco row».",
+        "description": "الأسماء والمنتجات والعبارات التي ينبغي أن يكتبها ShalomFlow بطريقتك.",
+        "info": "مثال: أضف «Kokoro» إذا كتب ShalomFlow «Coco row».",
         "placeholder": "أضف اسمًا أو مصطلحًا أو عبارة قصيرة",
         "add": "إضافة",
         "empty": "لا توجد كلمات مخصصة بعد.",
@@ -698,7 +698,7 @@
         "title": "استبدال النصوص",
         "description": "استبدل عبارة في نصك المفرَّغ بنص تستخدمه كثيرًا. مثال: «بريدي» تصبح «alex@example.com».",
         "rulesTitle": "قواعد الاستبدال",
-        "rulesHint": "حدّد ما يسمعه SpeakoFlow وما ينبغي أن يُدرجه.",
+        "rulesHint": "حدّد ما يسمعه ShalomFlow وما ينبغي أن يُدرجه.",
         "empty": "أنشئ قاعدة لعبارة تقولها كثيرًا.",
         "addFirst": "إنشاء أول قاعدة",
         "addRule": "إضافة استبدال",
@@ -965,7 +965,7 @@
       },
       "updateChecks": {
         "label": "التحقق من وجود تحديثات",
-        "description": "التحقق تلقائياً من وجود إصدارات جديدة من SpeakoFlow"
+        "description": "التحقق تلقائياً من وجود إصدارات جديدة من ShalomFlow"
       },
       "soundTheme": {
         "label": "سمة الصوت",
@@ -1035,7 +1035,7 @@
       "title": "حول",
       "version": {
         "title": "الإصدار",
-        "description": "الإصدار الحالي من SpeakoFlow"
+        "description": "الإصدار الحالي من ShalomFlow"
       },
       "updates": {
         "title": "التحديثات",
@@ -1047,7 +1047,7 @@
       },
       "appDataDirectory": {
         "title": "مجلد بيانات التطبيق",
-        "description": "الموقع الذي يخزن فيه SpeakoFlow بياناته"
+        "description": "الموقع الذي يخزن فيه ShalomFlow بياناته"
       },
       "sourceCode": {
         "title": "كود المصدر",
@@ -1056,12 +1056,12 @@
       },
       "license": {
         "title": "الترخيص",
-        "description": "SpeakoFlow مفتوح المصدر بموجب ترخيص MIT، ويستند إلى Handy (بترخيص MIT أيضًا) من CJ Pais.",
+        "description": "ShalomFlow مفتوح المصدر بموجب ترخيص MIT، ويستند إلى Handy (بترخيص MIT أيضًا) من CJ Pais.",
         "button": "عرض الترخيص"
       },
       "supportDevelopment": {
         "title": "دعم التطوير",
-        "description": "ساعدنا في مواصلة بناء SpeakoFlow",
+        "description": "ساعدنا في مواصلة بناء ShalomFlow",
         "button": "تبرع"
       }
     },
@@ -1098,7 +1098,7 @@
         "finderSectionTitle": "نماذج أخرى على الجهاز",
         "finderSectionDescription": "ابحث في Hugging Face عندما تحتاج حجمًا أو قدرة مختلفة.",
         "finderTitle": "استعراض Hugging Face",
-        "finderDescription": "ابحث في آلاف نماذج GGUF ونزّل أحدها مباشرةً إلى SpeakoFlow.",
+        "finderDescription": "ابحث في آلاف نماذج GGUF ونزّل أحدها مباشرةً إلى ShalomFlow.",
         "finderAction": "ابحث عن نموذج",
         "huggingFaceTitle": "نماذجك",
         "huggingFaceDescription": "النماذج المنزَّلة والنماذج التي أضفتها من Hugging Face.",
@@ -1263,7 +1263,7 @@
           }
         },
         "screenRecording": {
-          "description": "تحتاج رؤية الشاشة إلى إذن تسجيل الشاشة في macOS. امنحه من إعدادات النظام، ثم أعد تشغيل SpeakoFlow ليصبح ساري المفعول.",
+          "description": "تحتاج رؤية الشاشة إلى إذن تسجيل الشاشة في macOS. امنحه من إعدادات النظام، ثم أعد تشغيل ShalomFlow ليصبح ساري المفعول.",
           "grant": "فتح إعدادات النظام"
         }
       },
@@ -1341,7 +1341,7 @@
         "testButton": "اختبار الصوت",
         "testing": "جارٍ الاختبار…",
         "testOk": "تم التشغيل ✓",
-        "testPhrase": "مرحبًا! هذا اختبار للإخراج الصوتي في SpeakoFlow.",
+        "testPhrase": "مرحبًا! هذا اختبار للإخراج الصوتي في ShalomFlow.",
         "downloadStart": "جارٍ تنزيل صوت Kokoro…",
         "downloadProgress": "جارٍ تنزيل صوت Kokoro… {{progress}}%",
         "downloadReady": "صوت Kokoro جاهز ✓",
@@ -1444,7 +1444,7 @@
   },
   "accessibility": {
     "permissionsRequired": "أذونات إمكانية الوصول مطلوبة",
-    "permissionsDescription": ".يحتاج SpeakoFlow إلى أذونات إمكانية الوصول لكتابة النص المفرغ",
+    "permissionsDescription": ".يحتاج ShalomFlow إلى أذونات إمكانية الوصول لكتابة النص المفرغ",
     "openSettings": "فتح إعدادات النظام",
     "dismiss": "تجاهل"
   },
@@ -1468,7 +1468,7 @@
   },
   "appLanguage": {
     "title": "لغة التطبيق",
-    "description": "تغيير لغة واجهة SpeakoFlow"
+    "description": "تغيير لغة واجهة ShalomFlow"
   },
   "overlay": {
     "preparing": "جارٍ تهيئة الميكروفون…",

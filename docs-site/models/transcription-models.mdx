@@ -1,6 +1,6 @@
 ---
 title: "Transcription models"
-description: "The full catalog of speech-to-text models SpeakoFlow can download and run locally, with size, language coverage, streaming, and translation for each. Also covers older models, downloads, and deleting models."
+description: "The full catalog of speech-to-text models ShalomFlow can download and run locally, with size, language coverage, streaming, and translation for each. Also covers older models, downloads, and deleting models."
 icon: "microchip"
 ---
 
@@ -10,7 +10,7 @@ Open the catalog from *Settings → Dictation → Change model*.
 
 ## Recommended models
 
-These five run on SpeakoFlow's current engine, a native ggml/GGUF build. Sizes are the exact download.
+These five run on ShalomFlow's current engine, a native ggml/GGUF build. Sizes are the exact download.
 
 | Model | Size | Languages | Streams | Translates |
 | --- | --- | --- | --- | --- |
@@ -37,7 +37,7 @@ The catalog splits into **Downloaded models**, **Available to download**, and **
 - **Delete** a model to free disk space. You get a confirmation, and a stronger one if it is your active model.
 - **Switch from the tray.** The system tray menu has a model submenu, so you can change models without opening Settings.
 
-A brand-new install is seeded with **Parakeet Unified EN 0.6B**. If it is not on disk yet, SpeakoFlow falls back to any other transcription model you have downloaded, so the app is never stranded without a working model.
+A brand-new install is seeded with **Parakeet Unified EN 0.6B**. If it is not on disk yet, ShalomFlow falls back to any other transcription model you have downloaded, so the app is never stranded without a working model.
 
 <AccordionGroup>
   <Accordion title="Older models: the full list">
@@ -56,7 +56,7 @@ A brand-new install is seeded with **Parakeet Unified EN 0.6B**. If it is not on
   </Accordion>
 
   <Accordion title="Downloads survive a bad connection">
-    Progress is written to a `.partial` file next to the model, and every retry resumes from where it stopped using an HTTP `Range` request. If the server ignores the range and sends the whole file again, SpeakoFlow notices and restarts cleanly rather than appending garbage.
+    Progress is written to a `.partial` file next to the model, and every retry resumes from where it stopped using an HTTP `Range` request. If the server ignores the range and sends the whole file again, ShalomFlow notices and restarts cleanly rather than appending garbage.
 
     Each source is retried up to four times with exponential backoff. A server error, a timeout, or a dropped connection is treated as worth retrying. A permanent client error such as a 404 is not, and moves straight on.
 

@@ -6,7 +6,7 @@ interface LogoProps {
 }
 
 /**
- * SpeakoFlow brand mark (speech bubble + waveform). Inline SVG so it stays
+ * ShalomFlow brand mark (speech bubble + waveform). Inline SVG so it stays
  * crisp at any size and inherits color via `currentColor` — set the color with
  * a text utility (e.g. `text-ink`) so it adapts to light/dark automatically.
  */

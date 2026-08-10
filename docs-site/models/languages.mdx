@@ -1,6 +1,6 @@
 ---
 title: "Languages and translation"
-description: "Choose the transcription language in SpeakoFlow, use autodetect, and translate speech to English on your own device. Includes which models cover which languages and which ones can translate."
+description: "Choose the transcription language in ShalomFlow, use autodetect, and translate speech to English on your own device. Includes which models cover which languages and which ones can translate."
 icon: "language"
 ---
 
@@ -50,7 +50,7 @@ Leave translation off and you get a transcript in the language you spoke. Turn i
 
 <AccordionGroup>
   <Accordion title="Your language choice is only a hint, and can be ignored">
-    Your choice is passed to the model **only if that model claims to support the language**. If it does not, SpeakoFlow falls back to autodetection rather than forcing a language the model cannot handle.
+    Your choice is passed to the model **only if that model claims to support the language**. If it does not, ShalomFlow falls back to autodetection rather than forcing a language the model cannot handle.
 
     So picking Japanese while an English-only model is active changes nothing.
   </Accordion>
@@ -60,7 +60,7 @@ Leave translation off and you get a transcript in the language you spoke. Turn i
   </Accordion>
 
   <Accordion title="Why a model card's capabilities can change after first use">
-    Language and translation support are declared by the model file itself. For current-engine models, SpeakoFlow reads those capabilities out of the GGUF the first time the model actually loads and corrects its own catalog entry if it was wrong.
+    Language and translation support are declared by the model file itself. For current-engine models, ShalomFlow reads those capabilities out of the GGUF the first time the model actually loads and corrects its own catalog entry if it was wrong.
   </Accordion>
 
   <Accordion title="Custom words work differently per model family">

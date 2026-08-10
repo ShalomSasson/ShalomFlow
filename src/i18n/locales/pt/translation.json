@@ -57,7 +57,7 @@
       "ready": "Tudo pronto"
     },
     "speechToText": {
-      "title": "Como o SpeakoFlow deve te ouvir?",
+      "title": "Como o ShalomFlow deve te ouvir?",
       "subtitle": "Isso transforma sua voz em texto, direto na sua máquina. Escolha um, troque quando quiser.",
       "cards": {
         "fast": {
@@ -113,7 +113,7 @@
       "downloadingVoice": "Seu modelo de voz está chegando. {{percentage}}% concluído.",
       "downloadingGeneric": "Ainda baixando. {{percentage}}% concluído.",
       "signOff": "É isso. Vá dizer algo.",
-      "openApp": "Abrir SpeakoFlow"
+      "openApp": "Abrir ShalomFlow"
     },
     "errors": {
       "selectModel": "Não foi possível selecionar esse modelo. Tente novamente.",
@@ -245,7 +245,7 @@
     },
     "permissions": {
       "title": "Permissões Necessárias",
-      "description": "O SpeakoFlow precisa de algumas permissões para funcionar corretamente.",
+      "description": "O ShalomFlow precisa de algumas permissões para funcionar corretamente.",
       "microphone": {
         "title": "Acesso ao Microfone",
         "description": "Necessário para ouvir sua voz para transcrição."
@@ -598,15 +598,15 @@
       },
       "autostart": {
         "label": "Iniciar na Inicialização",
-        "description": "Iniciar automaticamente o SpeakoFlow quando você fizer login no seu computador."
+        "description": "Iniciar automaticamente o ShalomFlow quando você fizer login no seu computador."
       },
       "showTrayIcon": {
         "label": "Mostrar ícone na bandeja",
-        "description": "Exibir o ícone do SpeakoFlow na bandeja do sistema."
+        "description": "Exibir o ícone do ShalomFlow na bandeja do sistema."
       },
       "closeBehavior": {
         "label": "Sair ao fechar a janela",
-        "description": "Quando desativado, fechar a janela mantém o SpeakoFlow rodando na bandeja, para que suas teclas de atalho continuem funcionando. Quando ativado, fechar a janela encerra o app por completo."
+        "description": "Quando desativado, fechar a janela mantém o ShalomFlow rodando na bandeja, para que suas teclas de atalho continuem funcionando. Quando ativado, fechar a janela encerra o app por completo."
       },
       "overlayStyle": {
         "title": "Sobreposição",
@@ -686,8 +686,8 @@
       },
       "customWords": {
         "title": "Palavras Personalizadas",
-        "description": "Nomes, produtos e frases que o SpeakoFlow deve escrever do seu jeito.",
-        "info": "Exemplo: adicione “Kokoro” se o SpeakoFlow escrever “Coco row”.",
+        "description": "Nomes, produtos e frases que o ShalomFlow deve escrever do seu jeito.",
+        "info": "Exemplo: adicione “Kokoro” se o ShalomFlow escrever “Coco row”.",
         "placeholder": "Adicione um nome, termo ou frase curta",
         "add": "Adicionar",
         "empty": "Nenhuma palavra personalizada ainda.",
@@ -698,7 +698,7 @@
         "title": "Substituições de texto",
         "description": "Substitua uma frase da sua transcrição por um texto que você usa com frequência. Exemplo: “meu e-mail” vira “alex@example.com”.",
         "rulesTitle": "Regras de substituição",
-        "rulesHint": "Escolha o que o SpeakoFlow ouve e o que ele deve inserir.",
+        "rulesHint": "Escolha o que o ShalomFlow ouve e o que ele deve inserir.",
         "empty": "Crie uma regra para uma frase que você diz com frequência.",
         "addFirst": "Criar primeira regra",
         "addRule": "Adicionar substituição",
@@ -965,7 +965,7 @@
       },
       "updateChecks": {
         "label": "Verificar Atualizações",
-        "description": "Verificar automaticamente novas versões do SpeakoFlow"
+        "description": "Verificar automaticamente novas versões do ShalomFlow"
       },
       "soundTheme": {
         "label": "Tema de Som",
@@ -1035,7 +1035,7 @@
       "title": "Sobre",
       "version": {
         "title": "Versão",
-        "description": "Versão atual do SpeakoFlow"
+        "description": "Versão atual do ShalomFlow"
       },
       "updates": {
         "title": "Atualizações",
@@ -1047,7 +1047,7 @@
       },
       "appDataDirectory": {
         "title": "Diretório de Dados do App",
-        "description": "Local onde o SpeakoFlow armazena seus dados"
+        "description": "Local onde o ShalomFlow armazena seus dados"
       },
       "sourceCode": {
         "title": "Código Fonte",
@@ -1056,12 +1056,12 @@
       },
       "license": {
         "title": "Licença",
-        "description": "O SpeakoFlow é código aberto sob a Licença MIT, construído sobre o Handy (também MIT), de CJ Pais.",
+        "description": "O ShalomFlow é código aberto sob a Licença MIT, construído sobre o Handy (também MIT), de CJ Pais.",
         "button": "Ver licença"
       },
       "supportDevelopment": {
         "title": "Apoiar o Desenvolvimento",
-        "description": "Ajude-nos a continuar construindo o SpeakoFlow",
+        "description": "Ajude-nos a continuar construindo o ShalomFlow",
         "button": "Doar"
       }
     },
@@ -1098,7 +1098,7 @@
         "finderSectionTitle": "Mais modelos no dispositivo",
         "finderSectionDescription": "Busque no Hugging Face quando precisar de outro tamanho ou outra capacidade de modelo.",
         "finderTitle": "Explorar o Hugging Face",
-        "finderDescription": "Busque entre milhares de modelos GGUF e baixe um direto para o SpeakoFlow.",
+        "finderDescription": "Busque entre milhares de modelos GGUF e baixe um direto para o ShalomFlow.",
         "finderAction": "Encontrar um modelo",
         "huggingFaceTitle": "Seus modelos",
         "huggingFaceDescription": "Modelos baixados e modelos que você adicionou do Hugging Face.",
@@ -1263,7 +1263,7 @@
           }
         },
         "screenRecording": {
-          "description": "A visão de tela precisa da permissão de Gravação de Tela do macOS. Conceda nas Configurações do Sistema e reinicie o SpeakoFlow para que ela tenha efeito.",
+          "description": "A visão de tela precisa da permissão de Gravação de Tela do macOS. Conceda nas Configurações do Sistema e reinicie o ShalomFlow para que ela tenha efeito.",
           "grant": "Abrir Configurações do Sistema"
         }
       },
@@ -1341,7 +1341,7 @@
         "testButton": "Testar a voz",
         "testing": "Testando…",
         "testOk": "Reproduzido ✓",
-        "testPhrase": "Olá! Este é um teste da saída de voz do SpeakoFlow.",
+        "testPhrase": "Olá! Este é um teste da saída de voz do ShalomFlow.",
         "downloadStart": "Baixando a voz do Kokoro…",
         "downloadProgress": "Baixando a voz do Kokoro… {{progress}}%",
         "downloadReady": "Voz do Kokoro pronta ✓",
@@ -1444,7 +1444,7 @@
   },
   "accessibility": {
     "permissionsRequired": "Permissões de Acessibilidade Necessárias",
-    "permissionsDescription": "O SpeakoFlow precisa de permissões de acessibilidade para digitar o texto transcrito.",
+    "permissionsDescription": "O ShalomFlow precisa de permissões de acessibilidade para digitar o texto transcrito.",
     "openSettings": "Abrir Configurações do Sistema",
     "dismiss": "Dispensar"
   },
@@ -1468,7 +1468,7 @@
   },
   "appLanguage": {
     "title": "Idioma da Aplicação",
-    "description": "Alterar o idioma da interface do SpeakoFlow"
+    "description": "Alterar o idioma da interface do ShalomFlow"
   },
   "overlay": {
     "preparing": "Preparando o microfone…",

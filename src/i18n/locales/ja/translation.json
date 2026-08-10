@@ -57,7 +57,7 @@
       "ready": "準備完了"
     },
     "speechToText": {
-      "title": "SpeakoFlowにどう聞き取ってほしいですか？",
+      "title": "ShalomFlowにどう聞き取ってほしいですか？",
       "subtitle": "あなたの声を、この端末上でそのままテキストに変えます。ひとつ選んでください。いつでも変更できます。",
       "cards": {
         "fast": {
@@ -113,7 +113,7 @@
       "downloadingVoice": "音声モデルを準備しています。{{percentage}}% 完了。",
       "downloadingGeneric": "ダウンロード中です。{{percentage}}% 完了。",
       "signOff": "以上で完了です。何か話しかけてみてください。",
-      "openApp": "SpeakoFlowを開く"
+      "openApp": "ShalomFlowを開く"
     },
     "errors": {
       "selectModel": "そのモデルを選択できませんでした。もう一度お試しください。",
@@ -245,7 +245,7 @@
     },
     "permissions": {
       "title": "権限が必要です",
-      "description": "SpeakoFlowが正常に動作するにはいくつかの権限が必要です。",
+      "description": "ShalomFlowが正常に動作するにはいくつかの権限が必要です。",
       "microphone": {
         "title": "マイクへのアクセス",
         "description": "文字起こしのためにあなたの声を聞くために必要です。"
@@ -598,15 +598,15 @@
       },
       "autostart": {
         "label": "起動時に実行",
-        "description": "コンピューターにログインしたときにSpeakoFlowを自動的に起動。"
+        "description": "コンピューターにログインしたときにShalomFlowを自動的に起動。"
       },
       "showTrayIcon": {
         "label": "トレイアイコンを表示",
-        "description": "システムトレイにSpeakoFlowのアイコンを表示します。"
+        "description": "システムトレイにShalomFlowのアイコンを表示します。"
       },
       "closeBehavior": {
         "label": "ウィンドウを閉じたら終了する",
-        "description": "オフの場合、ウィンドウを閉じてもSpeakoFlowはトレイで動作し続け、ホットキーも使えます。オンの場合、ウィンドウを閉じるとアプリが完全に終了します。"
+        "description": "オフの場合、ウィンドウを閉じてもShalomFlowはトレイで動作し続け、ホットキーも使えます。オンの場合、ウィンドウを閉じるとアプリが完全に終了します。"
       },
       "overlayStyle": {
         "title": "オーバーレイ",
@@ -686,8 +686,8 @@
       },
       "customWords": {
         "title": "カスタム単語",
-        "description": "SpeakoFlowにあなたの表記どおりに書いてほしい名前、製品名、フレーズ。",
-        "info": "例：SpeakoFlowが「Coco row」と書いてしまう場合は「Kokoro」を追加します。",
+        "description": "ShalomFlowにあなたの表記どおりに書いてほしい名前、製品名、フレーズ。",
+        "info": "例：ShalomFlowが「Coco row」と書いてしまう場合は「Kokoro」を追加します。",
         "placeholder": "名前、用語、短いフレーズを追加",
         "add": "追加",
         "empty": "カスタム単語はまだありません。",
@@ -698,7 +698,7 @@
         "title": "テキスト置換",
         "description": "文字起こしの中の言い回しを、よく使うテキストに置き換えます。例：「my email」が「alex@example.com」になります。",
         "rulesTitle": "置換ルール",
-        "rulesHint": "SpeakoFlowが聞き取る言葉と、挿入するテキストを指定します。",
+        "rulesHint": "ShalomFlowが聞き取る言葉と、挿入するテキストを指定します。",
         "empty": "よく話す言い回しのルールを作成しましょう。",
         "addFirst": "最初のルールを作成",
         "addRule": "置換を追加",
@@ -965,7 +965,7 @@
       },
       "updateChecks": {
         "label": "アップデートを確認",
-        "description": "SpeakoFlowの新しいバージョンを自動的にチェック"
+        "description": "ShalomFlowの新しいバージョンを自動的にチェック"
       },
       "soundTheme": {
         "label": "サウンドテーマ",
@@ -1035,7 +1035,7 @@
       "title": "概要",
       "version": {
         "title": "バージョン",
-        "description": "SpeakoFlowの現在のバージョン"
+        "description": "ShalomFlowの現在のバージョン"
       },
       "updates": {
         "title": "アップデート",
@@ -1047,7 +1047,7 @@
       },
       "appDataDirectory": {
         "title": "アプリデータディレクトリ",
-        "description": "SpeakoFlowがデータを保存する場所"
+        "description": "ShalomFlowがデータを保存する場所"
       },
       "sourceCode": {
         "title": "ソースコード",
@@ -1056,12 +1056,12 @@
       },
       "license": {
         "title": "ライセンス",
-        "description": "SpeakoFlowはMITライセンスのオープンソースで、CJ Pais氏によるHandy（同じくMIT）を基にしています。",
+        "description": "ShalomFlowはMITライセンスのオープンソースで、CJ Pais氏によるHandy（同じくMIT）を基にしています。",
         "button": "ライセンスを見る"
       },
       "supportDevelopment": {
         "title": "開発を支援",
-        "description": "SpeakoFlowの開発を支援してください",
+        "description": "ShalomFlowの開発を支援してください",
         "button": "寄付する"
       }
     },
@@ -1098,7 +1098,7 @@
         "finderSectionTitle": "デバイス上で動く他のモデル",
         "finderSectionDescription": "別のサイズや機能のモデルが必要なときは、Hugging Faceを検索してください。",
         "finderTitle": "Hugging Faceを見る",
-        "finderDescription": "数千のGGUFモデルを検索し、SpeakoFlowに直接ダウンロードできます。",
+        "finderDescription": "数千のGGUFモデルを検索し、ShalomFlowに直接ダウンロードできます。",
         "finderAction": "モデルを探す",
         "huggingFaceTitle": "あなたのモデル",
         "huggingFaceDescription": "ダウンロード済みのモデルと、Hugging Faceから追加したモデル。",
@@ -1263,7 +1263,7 @@
           }
         },
         "screenRecording": {
-          "description": "画面認識にはmacOSの画面収録の権限が必要です。システム設定で許可したあと、SpeakoFlowを再起動すると有効になります。",
+          "description": "画面認識にはmacOSの画面収録の権限が必要です。システム設定で許可したあと、ShalomFlowを再起動すると有効になります。",
           "grant": "システム設定を開く"
         }
       },
@@ -1341,7 +1341,7 @@
         "testButton": "音声をテスト",
         "testing": "テスト中…",
         "testOk": "再生しました ✓",
-        "testPhrase": "こんにちは！これはSpeakoFlowの音声出力のテストです。",
+        "testPhrase": "こんにちは！これはShalomFlowの音声出力のテストです。",
         "downloadStart": "Kokoroの音声をダウンロード中…",
         "downloadProgress": "Kokoroの音声をダウンロード中… {{progress}}%",
         "downloadReady": "Kokoroの音声の準備が完了しました ✓",
@@ -1444,7 +1444,7 @@
   },
   "accessibility": {
     "permissionsRequired": "アクセシビリティ権限が必要です",
-    "permissionsDescription": "SpeakoFlowが文字起こしテキストを入力するには、アクセシビリティ権限が必要です。",
+    "permissionsDescription": "ShalomFlowが文字起こしテキストを入力するには、アクセシビリティ権限が必要です。",
     "openSettings": "システム設定を開く",
     "dismiss": "閉じる"
   },
@@ -1468,7 +1468,7 @@
   },
   "appLanguage": {
     "title": "アプリケーション言語",
-    "description": "SpeakoFlowインターフェースの言語を変更"
+    "description": "ShalomFlowインターフェースの言語を変更"
   },
   "overlay": {
     "preparing": "マイクを準備中…",

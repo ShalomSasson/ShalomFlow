@@ -12,8 +12,8 @@ interface LogoLockupProps {
 }
 
 /**
- * SpeakoFlow brand lockup — the waveform speech-bubble mark next to the
- * "SpeakoFlow" wordmark, matching the reference logo.
+ * ShalomFlow brand lockup — the waveform speech-bubble mark next to the
+ * "ShalomFlow" wordmark, matching the reference logo.
  *
  * The whole lockup sits on a transparent background: the mark fills via
  * `currentColor` and the wordmark inherits the same color, so pairing the
@@ -24,7 +24,7 @@ interface LogoLockupProps {
 export const LogoLockup: React.FC<LogoLockupProps> = ({
   className = "",
   iconClassName = "h-6 w-auto",
-  title = "SpeakoFlow",
+  title = "ShalomFlow",
 }) => (
   <div
     className={`flex items-center gap-2 text-ink select-none ${className}`}
@@ -33,7 +33,7 @@ export const LogoLockup: React.FC<LogoLockupProps> = ({
   >
     <Logo className={`${iconClassName} shrink-0`} />
     <span className="font-brand text-lg leading-none whitespace-nowrap">
-      SpeakoFlow
+      ShalomFlow
     </span>
   </div>
 );

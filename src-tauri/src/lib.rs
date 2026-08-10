@@ -872,7 +872,7 @@ pub fn run(cli_args: CliArgs) {
                     .additional_browser_args(crate::WEBVIEW2_BROWSER_ARGS)
                     // Empty title + a blanked caption icon (see
                     // tray::update_window_icon) keep the top of the window clear
-                    // — no "SpeakoFlow" text and no logo in the title bar.
+                    // — no "ShalomFlow" text and no logo in the title bar.
                     .title("")
                     // Open a bit wider/taller so content (max-w-3xl) breathes
                     // next to the sidebar instead of feeling cramped. Min stays
