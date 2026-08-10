@@ -1480,7 +1480,10 @@
     "notices": {
       "flowNotConfigured": "Flowにはアシスタントのモデルが必要です — 音声入力として貼り付けました",
       "flowFailed": "Flowが生成できませんでした — 何も貼り付けられていません",
-      "flowEmpty": "起動フレーズのあとに指示を話してください"
+      "flowEmpty": "起動フレーズのあとに指示を話してください",
+      "transformNoSelection": "Select some text first, then press the transform shortcut",
+      "transformNoModel": "Set an Assistant model in Settings to use Transforms",
+      "transformFailed": "The transform didn't run — your text was left unchanged"
     },
     "listening": "聞いています…",
     "locked": "ハンズフリーで録音中 — 停止するにはもう一度ホットキーを押してください",

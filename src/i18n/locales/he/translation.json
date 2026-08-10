@@ -1480,7 +1480,10 @@
     "notices": {
       "flowNotConfigured": "Flow דורש מודל עוזר — הודבק כהכתבה",
       "flowFailed": "Flow לא הצליח ליצור — שום דבר לא הודבק",
-      "flowEmpty": "אמור פקודה אחרי ביטוי ההפעלה"
+      "flowEmpty": "אמור פקודה אחרי ביטוי ההפעלה",
+      "transformNoSelection": "Select some text first, then press the transform shortcut",
+      "transformNoModel": "Set an Assistant model in Settings to use Transforms",
+      "transformFailed": "The transform didn't run — your text was left unchanged"
     },
     "listening": "מקשיב…",
     "locked": "מקליט ללא ידיים — לחץ שוב על קיצור המקשים כדי לעצור",

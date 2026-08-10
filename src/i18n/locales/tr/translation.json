@@ -1480,7 +1480,10 @@
     "notices": {
       "flowNotConfigured": "Flow bir asistan modeline ihtiyaç duyuyor — dikte olarak yapıştırıldı",
       "flowFailed": "Flow oluşturamadı — hiçbir şey yapıştırılmadı",
-      "flowEmpty": "Etkinleştirme ifadesinden sonra bir komut söyleyin"
+      "flowEmpty": "Etkinleştirme ifadesinden sonra bir komut söyleyin",
+      "transformNoSelection": "Select some text first, then press the transform shortcut",
+      "transformNoModel": "Set an Assistant model in Settings to use Transforms",
+      "transformFailed": "The transform didn't run — your text was left unchanged"
     },
     "listening": "Dinleniyor…",
     "locked": "Eller serbest kaydediliyor — durdurmak için kısayola tekrar basın",

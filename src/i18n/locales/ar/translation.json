@@ -1480,7 +1480,10 @@
     "notices": {
       "flowNotConfigured": "يحتاج Flow إلى نموذج مساعد — تم اللصق كإملاء عادي",
       "flowFailed": "تعذّر التوليد بواسطة Flow — لم يُلصق أي شيء",
-      "flowEmpty": "قل أمرًا بعد عبارة التنشيط"
+      "flowEmpty": "قل أمرًا بعد عبارة التنشيط",
+      "transformNoSelection": "Select some text first, then press the transform shortcut",
+      "transformNoModel": "Set an Assistant model in Settings to use Transforms",
+      "transformFailed": "The transform didn't run — your text was left unchanged"
     },
     "listening": "جارٍ الاستماع…",
     "locked": "تسجيل متواصل — اضغط الاختصار مرة أخرى للإيقاف",

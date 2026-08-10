@@ -1480,7 +1480,10 @@
     "notices": {
       "flowNotConfigured": "Flow 需要助理模型——已改以一般語音輸入貼上",
       "flowFailed": "Flow 無法生成——未貼上任何內容",
-      "flowEmpty": "請在啟動語句後說出指令"
+      "flowEmpty": "請在啟動語句後說出指令",
+      "transformNoSelection": "Select some text first, then press the transform shortcut",
+      "transformNoModel": "Set an Assistant model in Settings to use Transforms",
+      "transformFailed": "The transform didn't run — your text was left unchanged"
     },
     "listening": "正在聆聽…",
     "locked": "免持錄製中——再按一次快捷鍵即可停止",

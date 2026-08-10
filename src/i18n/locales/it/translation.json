@@ -1480,7 +1480,10 @@
     "notices": {
       "flowNotConfigured": "Flow richiede un modello per l'assistente — incollato come dettatura",
       "flowFailed": "Flow non è riuscito a generare — non è stato incollato nulla",
-      "flowEmpty": "Pronuncia un comando dopo la frase di attivazione"
+      "flowEmpty": "Pronuncia un comando dopo la frase di attivazione",
+      "transformNoSelection": "Select some text first, then press the transform shortcut",
+      "transformNoModel": "Set an Assistant model in Settings to use Transforms",
+      "transformFailed": "The transform didn't run — your text was left unchanged"
     },
     "listening": "In ascolto…",
     "locked": "Registrazione a mani libere — premi di nuovo la scorciatoia per fermarti",

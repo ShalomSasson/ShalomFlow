@@ -1480,7 +1480,10 @@
     "notices": {
       "flowNotConfigured": "Для Flow нужна модель ассистента — вставлено как диктовка",
       "flowFailed": "Flow не смог сгенерировать — ничего не вставлено",
-      "flowEmpty": "Произнесите команду после фразы активации"
+      "flowEmpty": "Произнесите команду после фразы активации",
+      "transformNoSelection": "Select some text first, then press the transform shortcut",
+      "transformNoModel": "Set an Assistant model in Settings to use Transforms",
+      "transformFailed": "The transform didn't run — your text was left unchanged"
     },
     "listening": "Слушаем…",
     "locked": "Запись без удержания — нажмите горячую клавишу снова, чтобы остановить",
