@@ -18,6 +18,7 @@ mod lock_watch;
 mod managers;
 mod memory;
 mod overlay;
+mod paste_safety;
 pub mod portable;
 mod screenshot;
 mod secret_store;
