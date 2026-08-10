@@ -1481,7 +1481,7 @@
       "flowNotConfigured": "Flow cần một mô hình trợ lý — đã dán như đọc chính tả",
       "flowFailed": "Flow không tạo được nội dung — không có gì được dán",
       "flowEmpty": "Hãy nói một câu lệnh sau cụm từ kích hoạt",
-      "transformNoSelection": "Select some text first, then press the transform shortcut",
+      "transformNoSelection": "Nothing was captured — select some text and try again (some apps respond slowly)",
       "transformNoModel": "Set an Assistant model in Settings to use Transforms",
       "transformFailed": "The transform didn't run — your text was left unchanged"
     },

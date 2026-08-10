@@ -1481,7 +1481,7 @@
       "flowNotConfigured": "Flow potřebuje model asistenta — vloženo jako diktování",
       "flowFailed": "Flow nedokázal nic vygenerovat — nic se nevložilo",
       "flowEmpty": "Po aktivační frázi vyslovte příkaz",
-      "transformNoSelection": "Select some text first, then press the transform shortcut",
+      "transformNoSelection": "Nothing was captured — select some text and try again (some apps respond slowly)",
       "transformNoModel": "Set an Assistant model in Settings to use Transforms",
       "transformFailed": "The transform didn't run — your text was left unchanged"
     },

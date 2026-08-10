@@ -1481,7 +1481,7 @@
       "flowNotConfigured": "Flowにはアシスタントのモデルが必要です — 音声入力として貼り付けました",
       "flowFailed": "Flowが生成できませんでした — 何も貼り付けられていません",
       "flowEmpty": "起動フレーズのあとに指示を話してください",
-      "transformNoSelection": "Select some text first, then press the transform shortcut",
+      "transformNoSelection": "Nothing was captured — select some text and try again (some apps respond slowly)",
       "transformNoModel": "Set an Assistant model in Settings to use Transforms",
       "transformFailed": "The transform didn't run — your text was left unchanged"
     },

@@ -32,7 +32,6 @@ pub(crate) enum Outcome {
 #[derive(Debug)]
 pub(crate) enum SelectionError {
     NoSelection,
-    Timeout,
     Clipboard(String),
 }
 
@@ -40,7 +39,6 @@ impl std::fmt::Display for SelectionError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             Self::NoSelection => write!(f, "No text is selected"),
-            Self::Timeout => write!(f, "Timed out reading the selection"),
             Self::Clipboard(detail) => write!(f, "Clipboard unavailable: {detail}"),
         }
     }
@@ -61,37 +59,65 @@ pub(crate) fn classify(sentinel: &str, observed: Option<&str>) -> Outcome {
     Outcome::Captured(text.trim().to_string())
 }
 
+/// What arming the sentinel produced: the clipboard's previous contents (so
+/// `capture_selection` can restore them), the sentinel value written (for
+/// `classify`), and whether the copy chord itself fired successfully.
+struct ArmedProbe {
+    original: Option<String>,
+    probe: String,
+    copy_result: Result<(), String>,
+}
+
+/// Remember the clipboard, write the sentinel, and fire the copy chord — the
+/// only Enigo-driven part of a capture, and so the only part that needs the
+/// main thread (see `input::on_main_thread`). Resolving Enigo *before* the
+/// clipboard is touched is deliberate: both steps below are fallible, and if
+/// either failed after the sentinel was already written, there would be no
+/// `restore` in scope yet to put the user's clipboard back, permanently
+/// discarding it. Ordering it this way makes that class of bug unreachable
+/// rather than merely unlikely.
+fn arm_selection_probe(app: &AppHandle) -> ArmedProbe {
+    let clipboard = app.clipboard();
+    let original = clipboard.read_text().ok();
+    let probe = sentinel();
+
+    let copy_result = (|| -> Result<(), String> {
+        let enigo_state = app
+            .try_state::<EnigoState>()
+            .ok_or_else(|| "input not initialized".to_string())?;
+        let mut enigo = enigo_state.0.lock().map_err(|_| "input busy".to_string())?;
+        clipboard
+            .write_text(probe.as_str())
+            .map_err(|e| e.to_string())?;
+        send_copy(&mut enigo)
+    })();
+
+    ArmedProbe {
+        original,
+        probe,
+        copy_result,
+    }
+}
+
 /// Read the user's current selection from the focused application.
 ///
 /// Saves and restores the user's clipboard around the probe, so running a
-/// transform never costs them what they had copied.
-pub(crate) fn capture_selection(app: &AppHandle) -> Result<String, SelectionError> {
+/// transform never costs them what they had copied. Only the copy chord
+/// itself needs the main thread; polling the clipboard and restoring it
+/// afterward are plain I/O with no Enigo involved, so they run directly on
+/// the calling task instead of blocking the main thread for the whole
+/// `CAPTURE_TIMEOUT` window.
+pub(crate) async fn capture_selection(app: &AppHandle) -> Result<String, SelectionError> {
+    let arm_app = app.clone();
+    let ArmedProbe {
+        original,
+        probe,
+        copy_result,
+    } = crate::input::on_main_thread(app, move || arm_selection_probe(&arm_app))
+        .await
+        .map_err(SelectionError::Clipboard)?;
+
     let clipboard = app.clipboard();
-    let original = clipboard.read_text().ok();
-
-    // Resolve Enigo *before* the clipboard is touched. Both steps below are
-    // fallible; if either failed after the sentinel was already written,
-    // there would be no `restore` in scope yet to put the user's clipboard
-    // back, permanently discarding it. Ordering it this way makes that class
-    // of bug unreachable rather than merely unlikely.
-    let enigo_state = app
-        .try_state::<EnigoState>()
-        .ok_or_else(|| SelectionError::Clipboard("input not initialized".to_string()))?;
-    let mut enigo = enigo_state
-        .0
-        .lock()
-        .map_err(|_| SelectionError::Clipboard("input busy".to_string()))?;
-
-    let probe = sentinel();
-    let copy_result = clipboard
-        .write_text(probe.as_str())
-        .map_err(|e| e.to_string())
-        .and_then(|_| send_copy(&mut enigo));
-
-    // The copy chord is done (or failed); release Enigo before the poll loop
-    // below, which only touches the clipboard and needn't hold the lock.
-    drop(enigo);
-
     let restore = |clipboard: &tauri_plugin_clipboard_manager::Clipboard<tauri::Wry>| {
         if let Some(text) = original.as_deref() {
             let _ = clipboard.write_text(text);
@@ -106,7 +132,7 @@ pub(crate) fn capture_selection(app: &AppHandle) -> Result<String, SelectionErro
     let mut waited = Duration::ZERO;
     let mut outcome = Outcome::NoSelection;
     while waited < CAPTURE_TIMEOUT {
-        std::thread::sleep(POLL_INTERVAL);
+        tokio::time::sleep(POLL_INTERVAL).await;
         waited += POLL_INTERVAL;
         let observed = clipboard.read_text().ok();
         if let Outcome::Captured(text) = classify(&probe, observed.as_deref()) {

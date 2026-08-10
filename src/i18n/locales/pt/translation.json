@@ -1481,7 +1481,7 @@
       "flowNotConfigured": "O Flow precisa de um modelo de assistente — colado como ditado",
       "flowFailed": "O Flow não conseguiu gerar — nada foi colado",
       "flowEmpty": "Diga um comando depois da frase de ativação",
-      "transformNoSelection": "Select some text first, then press the transform shortcut",
+      "transformNoSelection": "Nothing was captured — select some text and try again (some apps respond slowly)",
       "transformNoModel": "Set an Assistant model in Settings to use Transforms",
       "transformFailed": "The transform didn't run — your text was left unchanged"
     },

@@ -1481,7 +1481,7 @@
       "flowNotConfigured": "Flow에는 어시스턴트 모델이 필요합니다 — 받아쓰기로 붙여넣었습니다",
       "flowFailed": "Flow가 생성하지 못했습니다 — 아무것도 붙여넣지 않았습니다",
       "flowEmpty": "활성화 문구 뒤에 명령을 말하세요",
-      "transformNoSelection": "Select some text first, then press the transform shortcut",
+      "transformNoSelection": "Nothing was captured — select some text and try again (some apps respond slowly)",
       "transformNoModel": "Set an Assistant model in Settings to use Transforms",
       "transformFailed": "The transform didn't run — your text was left unchanged"
     },

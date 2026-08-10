@@ -22,6 +22,31 @@ pub fn get_cursor_position(app_handle: &AppHandle) -> Option<(i32, i32)> {
     enigo.location().ok()
 }
 
+/// Run `f` on the main thread and await its result.
+///
+/// Every production call site that fires an Enigo chord (`actions.rs:1241`,
+/// `actions.rs:1358` for paste; `selection.rs`'s copy chord) dispatches it
+/// through `run_on_main_thread` for reliability on macOS, while calls in
+/// those same functions that only touch the overlay/tray (e.g.
+/// `actions.rs:1069`) run straight off the tokio task with no hop at all —
+/// in this codebase the dividing line is "does it drive Enigo", not "is it
+/// UI-adjacent". This bridges that main-thread-only work back into an async
+/// caller with a oneshot channel, so nothing needs to block a tokio worker
+/// for the duration of the chord.
+pub(crate) async fn on_main_thread<T, F>(app: &AppHandle, f: F) -> Result<T, String>
+where
+    T: Send + 'static,
+    F: FnOnce() -> T + Send + 'static,
+{
+    let (tx, rx) = tokio::sync::oneshot::channel();
+    app.run_on_main_thread(move || {
+        let _ = tx.send(f());
+    })
+    .map_err(|e| format!("failed to schedule main-thread work: {e}"))?;
+    rx.await
+        .map_err(|_| "main-thread task ended without a result".to_string())
+}
+
 /// Sends a Ctrl+V or Cmd+V paste command using platform-specific virtual key codes.
 /// This ensures the paste works regardless of keyboard layout (e.g., Russian, AZERTY, DVORAK).
 /// Note: On Wayland, this may not work - callers should check for Wayland and use alternative methods.

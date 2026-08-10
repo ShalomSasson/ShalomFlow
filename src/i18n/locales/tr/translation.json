@@ -1481,7 +1481,7 @@
       "flowNotConfigured": "Flow bir asistan modeline ihtiyaç duyuyor — dikte olarak yapıştırıldı",
       "flowFailed": "Flow oluşturamadı — hiçbir şey yapıştırılmadı",
       "flowEmpty": "Etkinleştirme ifadesinden sonra bir komut söyleyin",
-      "transformNoSelection": "Select some text first, then press the transform shortcut",
+      "transformNoSelection": "Nothing was captured — select some text and try again (some apps respond slowly)",
       "transformNoModel": "Set an Assistant model in Settings to use Transforms",
       "transformFailed": "The transform didn't run — your text was left unchanged"
     },

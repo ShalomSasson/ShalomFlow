@@ -1481,7 +1481,7 @@
       "flowNotConfigured": "Flow 需要一个助手模型——已作为普通语音输入粘贴",
       "flowFailed": "Flow 无法生成——未粘贴任何内容",
       "flowEmpty": "请在激活短语之后说出指令",
-      "transformNoSelection": "Select some text first, then press the transform shortcut",
+      "transformNoSelection": "Nothing was captured — select some text and try again (some apps respond slowly)",
       "transformNoModel": "Set an Assistant model in Settings to use Transforms",
       "transformFailed": "The transform didn't run — your text was left unchanged"
     },
