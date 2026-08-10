@@ -28,6 +28,7 @@ mod shortcut;
 mod signal_handle;
 mod speech_stream;
 mod transcription_coordinator;
+mod transforms;
 mod tray;
 mod tray_i18n;
 mod tts;
