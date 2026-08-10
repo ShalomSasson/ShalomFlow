@@ -30,6 +30,13 @@ pub fn cancel_current_operation(app: &AppHandle) {
     crate::flow::cancel_generation();
     crate::flow::stop_prewarm_watch();
 
+    // Cancel any in-flight transform generation, the same way — see
+    // `transforms::TRANSFORM_CANCEL_GENERATION`. The transform is the one that
+    // registered the cancel shortcut in this case (it has no recording to
+    // ride along with), but disarming it is handled by its own
+    // `CancelShortcutGuard::drop` once `run_transform` returns.
+    crate::transforms::cancel_generation();
+
     // Drop any screen frame grabbed at the start of a voice question (Immediate
     // vision timing) so a cancelled capture never rides along with a later turn.
     crate::assistant::clear_immediate_capture();
@@ -87,6 +94,22 @@ pub fn cancel_current_operation(app: &AppHandle) {
     }
 
     info!("Operation cancellation completed - returned to idle state");
+}
+
+/// Whether a currently-active recording, assistant turn, or Flow generation
+/// still needs the global cancel shortcut bound. Each of those registers it
+/// around its own lifetime and unregisters it the same way (see
+/// `actions::FinishGuard::drop` and `cancel_current_operation` above) with no
+/// reference count between owners. A transform is a second, independent
+/// owner (see `transforms::CancelShortcutGuard`) that must check this before
+/// unregistering on its own way out, or it could silently disarm Esc for one
+/// of these if it happened to still be running.
+pub(crate) fn cancel_shortcut_has_other_owner(app: &AppHandle) -> bool {
+    let audio_manager = app.state::<Arc<AudioRecordingManager>>();
+    let assistant_busy = app
+        .try_state::<crate::assistant::AssistantConversation>()
+        .map_or(false, |c| c.is_busy());
+    audio_manager.is_recording() || assistant_busy || crate::flow::is_generation_active()
 }
 
 /// Check if using the Wayland display server protocol

@@ -1,6 +1,6 @@
 //! Transforms: run a saved AI rewrite instruction over the user's selection.
 
-use std::sync::atomic::{AtomicBool, Ordering};
+use std::sync::atomic::{AtomicBool, AtomicU64, Ordering};
 use std::time::Duration;
 
 use log::{debug, error, warn};
@@ -102,6 +102,71 @@ impl Drop for TransformGuard {
     }
 }
 
+/// RAII registration of the global cancel shortcut for the lifetime of one
+/// transform. Unlike a recording — which already has the shortcut bound
+/// before Flow generation ever starts — a transform has nothing else
+/// registering Esc, so it must arm and disarm it itself. Unregistering on
+/// `Drop` (rather than at each of `run_transform`'s many early returns)
+/// guarantees Esc cannot stay bound forever after a panic or a failure path
+/// that was missed.
+struct CancelShortcutGuard {
+    app: AppHandle,
+}
+
+impl CancelShortcutGuard {
+    fn register(app: &AppHandle) -> Self {
+        crate::shortcut::register_cancel_shortcut(app);
+        Self { app: app.clone() }
+    }
+}
+
+impl Drop for CancelShortcutGuard {
+    fn drop(&mut self) {
+        // Recording, the assistant, and Flow each register this same global
+        // shortcut around their own lifetime and unregister it the same way
+        // (see `actions::FinishGuard::drop` and
+        // `utils::cancel_current_operation`) — there is no reference count,
+        // so whichever owner finishes first "wins" the unregister. Only
+        // release it here when nothing else still needs Esc bound, or a
+        // transform finishing first would silently disarm cancel for a
+        // still-running recording.
+        if !crate::utils::cancel_shortcut_has_other_owner(&self.app) {
+            crate::shortcut::unregister_cancel_shortcut(&self.app);
+        }
+    }
+}
+
+/// Monotonic cancellation generation for transforms, mirroring Flow's
+/// `FLOW_CANCEL_GENERATION` (`flow.rs`): Esc bumps it, and an in-flight
+/// transform keeps the value it started with, aborting as soon as the global
+/// value changes. A counter rather than a single flag so a stale cancel
+/// belonging to an earlier transform can never leak into the next one. Kept
+/// as its own counter rather than reusing Flow's — a transform and a spoken
+/// Flow command are independent operations that can, in principle, overlap.
+static TRANSFORM_CANCEL_GENERATION: AtomicU64 = AtomicU64::new(0);
+
+/// Snapshot the current cancellation generation before starting a transform.
+fn cancellation_generation() -> u64 {
+    TRANSFORM_CANCEL_GENERATION.load(Ordering::SeqCst)
+}
+
+/// Cancel the in-flight transform, if any. No-op for future transforms:
+/// each one snapshots the incremented generation when it starts.
+pub(crate) fn cancel_generation() {
+    TRANSFORM_CANCEL_GENERATION.fetch_add(1, Ordering::SeqCst);
+}
+
+/// Whether a transform that started at `generation` has since been cancelled.
+fn is_generation_cancelled(generation: u64) -> bool {
+    cancellation_generation() != generation
+}
+
+async fn wait_for_generation_cancel(generation: u64) {
+    while !is_generation_cancelled(generation) {
+        tokio::time::sleep(Duration::from_millis(25)).await;
+    }
+}
+
 pub(crate) enum TransformPlan {
     Run(Transform),
     Disabled,
@@ -149,6 +214,14 @@ pub async fn run_transform(app: AppHandle, transform_id: String) {
         return;
     };
 
+    // Bind Esc for this transform's whole lifetime — mirroring how a
+    // recording registers/unregisters the same global shortcut — and snapshot
+    // the cancellation generation so a stale press aimed at an earlier
+    // transform can never cancel this one (see `flow::FLOW_CANCEL_GENERATION`
+    // for the same pattern).
+    let _cancel_shortcut_guard = CancelShortcutGuard::register(&app);
+    let cancel_generation = cancellation_generation();
+
     let Some(llm) = crate::flow::resolve_flow_llm(&settings) else {
         crate::utils::show_overlay_notice(&app, "transformNoModel");
         return;
@@ -169,24 +242,30 @@ pub async fn run_transform(app: AppHandle, transform_id: String) {
 
     let system_prompt = compose_system_prompt(&transform, &[]);
 
-    let generation = tokio::time::timeout(
-        Duration::from_secs(TRANSFORM_TIMEOUT_SECS + TRANSFORM_ENGINE_START_TIMEOUT_SECS),
-        // `send_chat_completion` takes no system prompt (`llm_client.rs:410`);
-        // the `_with_schema` variant does. `json_schema: None` because no
-        // transform needs structured output — and the Claude Code CLI provider
-        // reports `supports_structured_output: false` anyway.
-        crate::llm_client::send_chat_completion_with_schema(
-            &llm.provider,
-            llm.api_key.clone(),
-            &llm.model,
-            selection.clone(),
-            Some(system_prompt),
-            None,
-            None,
-            None,
-        ),
-    )
-    .await;
+    let generation = tokio::select! {
+        biased;
+        _ = wait_for_generation_cancel(cancel_generation) => {
+            debug!("transforms: cancelled while generating");
+            return;
+        }
+        result = tokio::time::timeout(
+            Duration::from_secs(TRANSFORM_TIMEOUT_SECS + TRANSFORM_ENGINE_START_TIMEOUT_SECS),
+            // `send_chat_completion` takes no system prompt (`llm_client.rs:410`);
+            // the `_with_schema` variant does. `json_schema: None` because no
+            // transform needs structured output — and the Claude Code CLI provider
+            // reports `supports_structured_output: false` anyway.
+            crate::llm_client::send_chat_completion_with_schema(
+                &llm.provider,
+                llm.api_key.clone(),
+                &llm.model,
+                selection.clone(),
+                Some(system_prompt),
+                None,
+                None,
+                None,
+            ),
+        ) => result,
+    };
 
     let raw = match generation {
         Ok(Ok(Some(text))) => text,
@@ -215,6 +294,16 @@ pub async fn run_transform(app: AppHandle, transform_id: String) {
         crate::utils::show_overlay_notice(&app, "transformFailed");
         return;
     };
+
+    // Cancellation may have landed after generation finished but before this
+    // check — the whole point of the signal is that a cancelled transform
+    // must never modify the document, so this is not optional even though the
+    // race above already covers the far more likely case (cancelling during
+    // the wait itself).
+    if is_generation_cancelled(cancel_generation) {
+        debug!("transforms: cancelled before paste");
+        return;
+    }
 
     // The selection is still active, so a paste replaces it. Like Flow, a
     // transform must never submit or append anything on the user's behalf —
@@ -386,5 +475,18 @@ mod tests {
         // wedge the feature until restart.
         let second = TransformGuard::acquire().expect("flag should clear on drop");
         drop(second);
+    }
+
+    #[test]
+    fn cancelling_invalidates_a_snapshotted_generation() {
+        // A transform snapshots the generation once, at start. Esc bumps the
+        // global counter; the snapshot is now stale, which is exactly how
+        // `run_transform` notices a cancellation mid-flight.
+        let generation = cancellation_generation();
+        assert!(!is_generation_cancelled(generation));
+        cancel_generation();
+        assert!(is_generation_cancelled(generation));
+        // A fresh snapshot taken after the cancel is unaffected by it.
+        assert!(!is_generation_cancelled(cancellation_generation()));
     }
 }
