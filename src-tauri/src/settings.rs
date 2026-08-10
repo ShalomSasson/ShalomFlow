@@ -98,6 +98,57 @@ pub struct LLMPrompt {
     pub prompt: String,
 }
 
+/// Prefix for the dynamic shortcut binding id of a transform.
+pub const TRANSFORM_BINDING_PREFIX: &str = "transform.";
+
+/// The shortcut binding id that runs a given transform.
+pub fn transform_binding_id(transform_id: &str) -> String {
+    format!("{TRANSFORM_BINDING_PREFIX}{transform_id}")
+}
+
+/// The transform a binding id refers to, or `None` if it is not a transform
+/// binding. A bare prefix with no id names nothing.
+pub fn transform_id_from_binding(binding_id: &str) -> Option<&str> {
+    binding_id
+        .strip_prefix(TRANSFORM_BINDING_PREFIX)
+        .filter(|id| !id.is_empty())
+}
+
+/// One toggleable instruction inside a transform (Polish's rule rows).
+#[derive(Serialize, Deserialize, Debug, Clone, Type)]
+pub struct TransformRule {
+    pub id: String,
+    pub label: String,
+    /// Appended to the composed prompt when `enabled`.
+    pub instruction: String,
+    pub enabled: bool,
+}
+
+/// A saved AI rewrite instruction bound to a global shortcut.
+#[derive(Serialize, Deserialize, Debug, Clone, Type)]
+pub struct Transform {
+    pub id: String,
+    pub name: String,
+    /// Card subtitle on the Transforms page.
+    pub description: String,
+    /// Longer blurb shown in the detail view.
+    pub detail_description: String,
+    /// Base instruction, or — for a template transform — the output shape.
+    pub prompt: String,
+    /// Toggleable rules. Empty for template-driven transforms.
+    pub rules: Vec<TransformRule>,
+    /// Free-text additions from the user.
+    pub custom_instructions: String,
+    /// Whether the shared writing-example voice profile is applied.
+    pub use_voice_profile: bool,
+    /// Current shortcut, mirrored into the bindings map.
+    pub shortcut: String,
+    /// Input used by the in-app live preview.
+    pub sample_text: String,
+    /// False for user-created transforms.
+    pub builtin: bool,
+}
+
 /// Optional built-in writing style applied during dictation cleanup.
 ///
 /// This enum remains persisted for backwards compatibility. New code selects a
@@ -1079,6 +1130,11 @@ pub struct AppSettings {
     /// access mode on purpose — the two features are permissioned independently.
     #[serde(default)]
     pub flow_screen_access: bool,
+    /// Master opt-in for Transforms. The feature stays inert until this is on.
+    #[serde(default)]
+    pub transforms_enabled: bool,
+    #[serde(default = "default_transforms")]
+    pub transforms: Vec<Transform>,
     #[serde(default)]
     pub mute_while_recording: bool,
     #[serde(default)]
@@ -1620,6 +1676,115 @@ fn default_post_process_providers() -> Vec<PostProcessProvider> {
     });
 
     providers
+}
+
+fn polish_rules() -> Vec<TransformRule> {
+    let rules = [
+        (
+            "concise",
+            "Make more concise",
+            "Cut redundancy and filler so the text is as short as it can be without losing meaning.",
+        ),
+        (
+            "clarity",
+            "Reword for clarity",
+            "Replace vague or awkward phrasing with plain, direct wording.",
+        ),
+        (
+            "reorder",
+            "Reorder for readability",
+            "Reorder sentences so the main point comes first and related ideas sit together.",
+        ),
+        (
+            "structure",
+            "Add structure for readability",
+            "Add paragraph breaks, and use lists only where the content is genuinely a list.",
+        ),
+        (
+            "tone",
+            "Maintain your tone",
+            "Preserve the author's voice, register, and level of formality. Do not make casual writing sound corporate.",
+        ),
+    ];
+    rules
+        .into_iter()
+        .map(|(id, label, instruction)| TransformRule {
+            id: id.to_string(),
+            label: label.to_string(),
+            instruction: instruction.to_string(),
+            enabled: true,
+        })
+        .collect()
+}
+
+/// The Prompt Engineer output template.
+///
+/// Verbatim from the user's specification, with one change: the `**Name**`
+/// placeholder. Their draft read "(write constant Tom is the Queen)", which was
+/// scratch text and must not ship.
+fn prompt_engineer_template() -> String {
+    [
+        "**Name**\n(a short, descriptive name for this prompt)",
+        "**Title**\n(1 concise line)",
+        "**Role & stance**\n(who the model is and how it should behave)",
+        "**Task**\n(what the model must do)",
+        "**Context**\n(only what the model needs to know)",
+        "**Inputs available**\n(explicit list)",
+        "**Output requirements**\n(format, structure, tone, length — only if specified; otherwise placeholders)",
+        "**Constraints / Do-nots**\n(bulleted)",
+        "**Examples / References**\n(include all examples verbatim)",
+        "**Execution checklist**\n(short, factual verification list)",
+        "**Conflict resolution**\n(only if applicable)",
+    ]
+    .join("\n\n")
+}
+
+pub fn default_transforms() -> Vec<Transform> {
+    vec![
+        Transform {
+            id: "polish".to_string(),
+            name: "Polish".to_string(),
+            description: "Improve clarity and conciseness".to_string(),
+            detail_description: "Polish rewrites your text to sound clearer, in your voice."
+                .to_string(),
+            prompt: "You rewrite the user's text so it reads better, while keeping their meaning \
+                     and their voice. Apply the rules below."
+                .to_string(),
+            rules: polish_rules(),
+            custom_instructions: String::new(),
+            use_voice_profile: true,
+            shortcut: "option+1".to_string(),
+            sample_text: "hey so about the deck i added some slides but im not sure if they go \
+                          with your part. it seems kinda long maybe we should remove the market \
+                          trends thing? i can look at it again tonight if u want. also the \
+                          pricing slide might be wrong cuz the data changed. we should check \
+                          before sending to the board"
+                .to_string(),
+            builtin: true,
+        },
+        Transform {
+            id: "prompt_engineer".to_string(),
+            name: "Prompt Engineer".to_string(),
+            description: "Turn messy thoughts into a clean, optimized AI prompt".to_string(),
+            detail_description: "Prompt Engineer takes messy, spoken, unstructured thoughts and \
+                                 converts them into a clean, optimized AI prompt."
+                .to_string(),
+            prompt: format!(
+                "Convert the user's rough, spoken notes into a single well-structured AI prompt. \
+                 Fill in only the sections the notes actually support; omit a section entirely \
+                 rather than inventing content for it. Use exactly this shape:\n\n{}",
+                prompt_engineer_template()
+            ),
+            rules: Vec::new(),
+            custom_instructions: String::new(),
+            use_voice_profile: false,
+            shortcut: "option+2".to_string(),
+            sample_text: "I need help writing product descriptions for a skincare brand. The AI \
+                          should be warm, aspirational, and concise"
+                .to_string(),
+            builtin: true,
+        },
+    ]
 }
 
 fn default_post_process_api_keys() -> SecretMap {
@@ -2433,6 +2598,25 @@ pub fn get_default_settings() -> AppSettings {
         },
     );
 
+    // Transforms get dynamic binding ids so user-created ones work the same way
+    // as the built-ins.
+    for transform in default_transforms() {
+        let binding_id = transform_binding_id(&transform.id);
+        bindings.insert(
+            binding_id.clone(),
+            ShortcutBinding {
+                id: binding_id,
+                name: format!("Transform: {}", transform.name),
+                description: format!(
+                    "Replaces the selected text using the {} transform.",
+                    transform.name
+                ),
+                default_binding: transform.shortcut.clone(),
+                current_binding: transform.shortcut,
+            },
+        );
+    }
+
     AppSettings {
         bindings,
         push_to_talk: true,
@@ -2488,6 +2672,8 @@ pub fn get_default_settings() -> AppSettings {
         flow_enabled: false,
         flow_phrase: default_flow_phrase(),
         flow_screen_access: false,
+        transforms_enabled: false,
+        transforms: default_transforms(),
         mute_while_recording: false,
         append_trailing_space: false,
         app_language: default_app_language(),
@@ -4330,5 +4516,105 @@ mod tests {
         let out = format!("{:?}", map);
         assert!(!out.contains("secret"));
         assert!(out.contains("[REDACTED]"));
+    }
+
+    #[test]
+    fn transforms_ship_polish_and_prompt_engineer_by_default() {
+        let transforms = default_transforms();
+        let ids: Vec<&str> = transforms.iter().map(|t| t.id.as_str()).collect();
+        assert_eq!(ids, vec!["polish", "prompt_engineer"]);
+        assert!(transforms.iter().all(|t| t.builtin));
+
+        // Every transform must be reachable by shortcut out of the box.
+        let polish = &transforms[0];
+        let engineer = &transforms[1];
+        assert_eq!(polish.shortcut, "option+1");
+        assert_eq!(engineer.shortcut, "option+2");
+    }
+
+    #[test]
+    fn polish_ships_five_rules_all_enabled() {
+        let transforms = default_transforms();
+        let polish = transforms.iter().find(|t| t.id == "polish").unwrap();
+        let rule_ids: Vec<&str> = polish.rules.iter().map(|r| r.id.as_str()).collect();
+        assert_eq!(
+            rule_ids,
+            vec!["concise", "clarity", "reorder", "structure", "tone"]
+        );
+        assert!(polish.rules.iter().all(|r| r.enabled));
+        // Each rule must carry a real instruction — an empty one would silently
+        // contribute nothing to the composed prompt.
+        assert!(polish.rules.iter().all(|r| !r.instruction.trim().is_empty()));
+        // The voice-profile rule is the one that consumes writing examples.
+        assert!(polish.use_voice_profile);
+        assert!(!polish.sample_text.trim().is_empty());
+    }
+
+    #[test]
+    fn prompt_engineer_template_is_complete_and_carries_no_scratch_text() {
+        let transforms = default_transforms();
+        let engineer = transforms
+            .iter()
+            .find(|t| t.id == "prompt_engineer")
+            .unwrap();
+
+        for heading in [
+            "**Name**",
+            "**Title**",
+            "**Role & stance**",
+            "**Task**",
+            "**Context**",
+            "**Inputs available**",
+            "**Output requirements**",
+            "**Constraints / Do-nots**",
+            "**Examples / References**",
+            "**Execution checklist**",
+            "**Conflict resolution**",
+        ] {
+            assert!(
+                engineer.prompt.contains(heading),
+                "template is missing {heading}"
+            );
+        }
+
+        // The original draft contained a scratch placeholder that must never ship.
+        assert!(
+            !engineer.prompt.to_lowercase().contains("tom is the queen"),
+            "the scratch placeholder leaked into the shipped template"
+        );
+        // A template transform drives itself from the template, not from rules.
+        assert!(engineer.rules.is_empty());
+    }
+
+    #[test]
+    fn transform_binding_ids_round_trip() {
+        assert_eq!(transform_binding_id("polish"), "transform.polish");
+        assert_eq!(
+            transform_id_from_binding("transform.polish"),
+            Some("polish")
+        );
+        // Non-transform bindings must not be claimed by the transform dispatcher.
+        assert_eq!(transform_id_from_binding("transcribe"), None);
+        assert_eq!(transform_id_from_binding("cancel"), None);
+        // A bare prefix names no transform.
+        assert_eq!(transform_id_from_binding("transform."), None);
+    }
+
+    #[test]
+    fn transforms_are_opt_in_and_bound_by_default() {
+        let settings = get_default_settings();
+        // The feature must stay dark until the user turns it on.
+        assert!(!settings.transforms_enabled);
+        assert_eq!(settings.transforms.len(), 2);
+
+        // Each default transform has a registered shortcut binding.
+        for transform in &settings.transforms {
+            let binding_id = transform_binding_id(&transform.id);
+            let binding = settings
+                .bindings
+                .get(&binding_id)
+                .unwrap_or_else(|| panic!("no binding registered for {binding_id}"));
+            assert_eq!(binding.current_binding, transform.shortcut);
+        }
     }
 }
