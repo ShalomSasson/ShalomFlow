@@ -201,7 +201,10 @@ pub async fn run_transform(app: AppHandle, transform_id: String) {
             return;
         }
         Err(_) => {
-            warn!("transforms: timed out after {TRANSFORM_TIMEOUT_SECS}s");
+            warn!(
+                "transforms: timed out after {}s",
+                TRANSFORM_TIMEOUT_SECS + TRANSFORM_ENGINE_START_TIMEOUT_SECS
+            );
             crate::utils::show_overlay_notice(&app, "transformFailed");
             return;
         }
@@ -213,8 +216,17 @@ pub async fn run_transform(app: AppHandle, transform_id: String) {
         return;
     };
 
-    // The selection is still active, so a paste replaces it.
-    if let Err(err) = crate::clipboard::paste(clean, app.clone()) {
+    // The selection is still active, so a paste replaces it. Like Flow, a
+    // transform must never submit or append anything on the user's behalf —
+    // it replaces the selection and stops.
+    if let Err(err) = crate::clipboard::paste_with_behavior(
+        clean,
+        app.clone(),
+        crate::clipboard::PasteBehavior {
+            allow_trailing_space: false,
+            allow_auto_submit: false,
+        },
+    ) {
         error!("transforms: paste failed: {err}");
         crate::utils::show_overlay_notice(&app, "transformFailed");
     }
