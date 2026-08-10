@@ -22,6 +22,7 @@ mod paste_safety;
 pub mod portable;
 mod screenshot;
 mod secret_store;
+mod selection;
 mod settings;
 mod shortcut;
 mod signal_handle;
