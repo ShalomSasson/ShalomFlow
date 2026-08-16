@@ -923,7 +923,8 @@
         "all": "Alla",
         "recordings": "Recordings",
         "flow": "Flow",
-        "assistant": "Assistentchattar"
+        "assistant": "Assistentchattar",
+        "transforms": "Transformationer"
       },
       "openFolder": "Öppna mapp för inspelningar",
       "loading": "Laddar historik…",
@@ -959,7 +960,9 @@
       "screenshotAttached": "Skärmvisning",
       "messageCount_one": "{{count}} meddelande",
       "messageCount_other": "{{count}} meddelanden",
-      "deleteAssistantError": "Kunde inte ta bort konversationen. Försök igen."
+      "deleteAssistantError": "Kunde inte ta bort konversationen. Försök igen.",
+      "transformInputLabel": "Ursprunglig text",
+      "transformOutputLabel": "Transformerad text"
     },
     "debug": {
       "title": "Felsökning",

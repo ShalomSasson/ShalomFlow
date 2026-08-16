@@ -923,7 +923,8 @@
         "all": "Todos",
         "recordings": "Recordings",
         "flow": "Flow",
-        "assistant": "Conversas com o assistente"
+        "assistant": "Conversas com o assistente",
+        "transforms": "Transformações"
       },
       "openFolder": "Abrir Pasta de Gravações",
       "loading": "Carregando histórico…",
@@ -959,7 +960,9 @@
       "screenshotAttached": "Visão",
       "messageCount_one": "{{count}} mensagem",
       "messageCount_other": "{{count}} mensagens",
-      "deleteAssistantError": "Não foi possível excluir a conversa. Tente novamente."
+      "deleteAssistantError": "Não foi possível excluir a conversa. Tente novamente.",
+      "transformInputLabel": "Texto original",
+      "transformOutputLabel": "Texto transformado"
     },
     "debug": {
       "title": "Depuração",

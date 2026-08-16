@@ -923,7 +923,8 @@
         "all": "Wszystkie",
         "recordings": "Recordings",
         "flow": "Flow",
-        "assistant": "Rozmowy z asystentem"
+        "assistant": "Rozmowy z asystentem",
+        "transforms": "Transformacje"
       },
       "openFolder": "Otwórz folder nagrań",
       "loading": "Wczytywanie historii…",
@@ -959,7 +960,9 @@
       "screenshotAttached": "Ekran",
       "messageCount_one": "{{count}} wiadomość",
       "messageCount_other": "{{count}} wiadomości",
-      "deleteAssistantError": "Nie udało się usunąć rozmowy. Spróbuj ponownie."
+      "deleteAssistantError": "Nie udało się usunąć rozmowy. Spróbuj ponownie.",
+      "transformInputLabel": "Tekst oryginalny",
+      "transformOutputLabel": "Tekst przekształcony"
     },
     "debug": {
       "title": "Debugowanie",

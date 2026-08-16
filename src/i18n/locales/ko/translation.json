@@ -923,7 +923,8 @@
         "all": "전체",
         "recordings": "Recordings",
         "flow": "Flow",
-        "assistant": "어시스턴트 대화"
+        "assistant": "어시스턴트 대화",
+        "transforms": "트랜스폼"
       },
       "openFolder": "녹음 폴더 열기",
       "loading": "히스토리 로딩 중…",
@@ -959,7 +960,9 @@
       "screenshotAttached": "화면",
       "messageCount_one": "메시지 {{count}}개",
       "messageCount_other": "메시지 {{count}}개",
-      "deleteAssistantError": "대화를 삭제할 수 없습니다. 다시 시도해주세요."
+      "deleteAssistantError": "대화를 삭제할 수 없습니다. 다시 시도해주세요.",
+      "transformInputLabel": "원본 텍스트",
+      "transformOutputLabel": "변환된 텍스트"
     },
     "debug": {
       "title": "디버그",

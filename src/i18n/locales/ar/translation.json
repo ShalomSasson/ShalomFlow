@@ -923,7 +923,8 @@
         "all": "الكل",
         "recordings": "Recordings",
         "flow": "Flow",
-        "assistant": "محادثات المساعد"
+        "assistant": "محادثات المساعد",
+        "transforms": "التحويلات"
       },
       "openFolder": "فتح مجلد التسجيلات",
       "loading": "…جاري تحميل السجل",
@@ -959,7 +960,9 @@
       "screenshotAttached": "رؤية",
       "messageCount_one": "{{count}} رسالة",
       "messageCount_other": "{{count}} رسالة",
-      "deleteAssistantError": "تعذّر حذف المحادثة. يرجى المحاولة مرة أخرى."
+      "deleteAssistantError": "تعذّر حذف المحادثة. يرجى المحاولة مرة أخرى.",
+      "transformInputLabel": "النص الأصلي",
+      "transformOutputLabel": "النص المحوَّل"
     },
     "debug": {
       "title": "تصحيح الأخطاء",

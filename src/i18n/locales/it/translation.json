@@ -923,7 +923,8 @@
         "all": "Tutto",
         "recordings": "Recordings",
         "flow": "Flow",
-        "assistant": "Chat con l'assistente"
+        "assistant": "Chat con l'assistente",
+        "transforms": "Trasformazioni"
       },
       "openFolder": "Apri la cartella delle registrazioni",
       "loading": "Caricamento cronologia…",
@@ -959,7 +960,9 @@
       "screenshotAttached": "Visione",
       "messageCount_one": "{{count}} messaggio",
       "messageCount_other": "{{count}} messaggi",
-      "deleteAssistantError": "Impossibile eliminare la conversazione. Riprova."
+      "deleteAssistantError": "Impossibile eliminare la conversazione. Riprova.",
+      "transformInputLabel": "Testo originale",
+      "transformOutputLabel": "Testo trasformato"
     },
     "debug": {
       "title": "Debug",

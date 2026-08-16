@@ -923,7 +923,8 @@
         "all": "Tümü",
         "recordings": "Recordings",
         "flow": "Flow",
-        "assistant": "Asistan sohbetleri"
+        "assistant": "Asistan sohbetleri",
+        "transforms": "Dönüşümler"
       },
       "openFolder": "Kayıtlar Klasörünü Aç",
       "loading": "Geçmiş yükleniyor…",
@@ -959,7 +960,9 @@
       "screenshotAttached": "Görüş",
       "messageCount_one": "{{count}} mesaj",
       "messageCount_other": "{{count}} mesaj",
-      "deleteAssistantError": "Konuşma silinemedi. Lütfen tekrar deneyin."
+      "deleteAssistantError": "Konuşma silinemedi. Lütfen tekrar deneyin.",
+      "transformInputLabel": "Özgün metin",
+      "transformOutputLabel": "Dönüştürülmüş metin"
     },
     "debug": {
       "title": "Hata Ayıklama",

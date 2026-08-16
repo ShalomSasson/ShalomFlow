@@ -923,7 +923,8 @@
         "all": "全部",
         "recordings": "Recordings",
         "flow": "Flow",
-        "assistant": "助理對話"
+        "assistant": "助理對話",
+        "transforms": "轉換"
       },
       "openFolder": "開啟錄音資料夾",
       "loading": "載入歷史紀錄中…",
@@ -959,7 +960,9 @@
       "screenshotAttached": "視覺",
       "messageCount_one": "{{count}} 則訊息",
       "messageCount_other": "{{count}} 則訊息",
-      "deleteAssistantError": "無法刪除這段對話，請重試。"
+      "deleteAssistantError": "無法刪除這段對話，請重試。",
+      "transformInputLabel": "原始文字",
+      "transformOutputLabel": "轉換後文字"
     },
     "debug": {
       "title": "偵錯",

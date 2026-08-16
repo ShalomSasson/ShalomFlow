@@ -923,7 +923,8 @@
         "all": "Всички",
         "recordings": "Recordings",
         "flow": "Flow",
-        "assistant": "Разговори с асистента"
+        "assistant": "Разговори с асистента",
+        "transforms": "Трансформации"
       },
       "openFolder": "Отваряне на папката с записи",
       "loading": "Зареждане на историята…",
@@ -959,7 +960,9 @@
       "screenshotAttached": "Видимост",
       "messageCount_one": "{{count}} съобщение",
       "messageCount_other": "{{count}} съобщения",
-      "deleteAssistantError": "Разговорът не можа да бъде изтрит. Опитайте отново."
+      "deleteAssistantError": "Разговорът не можа да бъде изтрит. Опитайте отново.",
+      "transformInputLabel": "Оригинален текст",
+      "transformOutputLabel": "Трансформиран текст"
     },
     "debug": {
       "title": "Отстраняване",

@@ -923,7 +923,8 @@
         "all": "Alle",
         "recordings": "Recordings",
         "flow": "Flow",
-        "assistant": "Assistenten-Chats"
+        "assistant": "Assistenten-Chats",
+        "transforms": "Transformationen"
       },
       "openFolder": "Aufnahmeordner öffnen",
       "loading": "Verlauf wird geladen…",
@@ -959,7 +960,9 @@
       "screenshotAttached": "Screenshot",
       "messageCount_one": "{{count}} Nachricht",
       "messageCount_other": "{{count}} Nachrichten",
-      "deleteAssistantError": "Das Gespräch konnte nicht gelöscht werden. Bitte versuche es erneut."
+      "deleteAssistantError": "Das Gespräch konnte nicht gelöscht werden. Bitte versuche es erneut.",
+      "transformInputLabel": "Ursprünglicher Text",
+      "transformOutputLabel": "Transformierter Text"
     },
     "debug": {
       "title": "Debug",

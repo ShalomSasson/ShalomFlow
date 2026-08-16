@@ -923,7 +923,8 @@
         "all": "Все",
         "recordings": "Recordings",
         "flow": "Flow",
-        "assistant": "Чаты с ассистентом"
+        "assistant": "Чаты с ассистентом",
+        "transforms": "Трансформации"
       },
       "openFolder": "Открыть папку с записями",
       "loading": "Загрузка истории…",
@@ -959,7 +960,9 @@
       "screenshotAttached": "Экран",
       "messageCount_one": "{{count}} сообщение",
       "messageCount_other": "{{count}} сообщений",
-      "deleteAssistantError": "Не удалось удалить разговор. Пожалуйста, попробуйте снова."
+      "deleteAssistantError": "Не удалось удалить разговор. Пожалуйста, попробуйте снова.",
+      "transformInputLabel": "Исходный текст",
+      "transformOutputLabel": "Преобразованный текст"
     },
     "debug": {
       "title": "Отлаживать",

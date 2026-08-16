@@ -923,7 +923,8 @@
         "all": "全部",
         "recordings": "Recordings",
         "flow": "Flow",
-        "assistant": "助手聊天"
+        "assistant": "助手聊天",
+        "transforms": "转换"
       },
       "openFolder": "打开录音文件夹",
       "loading": "加载历史记录中…",
@@ -959,7 +960,9 @@
       "screenshotAttached": "视觉",
       "messageCount_one": "{{count}} 条消息",
       "messageCount_other": "{{count}} 条消息",
-      "deleteAssistantError": "无法删除该对话。请重试。"
+      "deleteAssistantError": "无法删除该对话。请重试。",
+      "transformInputLabel": "原始文本",
+      "transformOutputLabel": "转换后文本"
     },
     "debug": {
       "title": "调试",

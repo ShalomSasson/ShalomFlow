@@ -923,7 +923,8 @@
         "all": "Tous",
         "recordings": "Recordings",
         "flow": "Flow",
-        "assistant": "Conversations de l'assistant"
+        "assistant": "Conversations de l'assistant",
+        "transforms": "Transformations"
       },
       "openFolder": "Ouvrir le dossier des enregistrements",
       "loading": "Chargement de l'historique…",
@@ -959,7 +960,9 @@
       "screenshotAttached": "Vision",
       "messageCount_one": "{{count}} message",
       "messageCount_other": "{{count}} messages",
-      "deleteAssistantError": "Impossible de supprimer la conversation. Veuillez réessayer."
+      "deleteAssistantError": "Impossible de supprimer la conversation. Veuillez réessayer.",
+      "transformInputLabel": "Texte original",
+      "transformOutputLabel": "Texte transformé"
     },
     "debug": {
       "title": "Débogage",

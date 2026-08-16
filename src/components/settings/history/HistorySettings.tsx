@@ -23,6 +23,7 @@ import {
   Sparkles,
   Star,
   Trash2,
+  Wand2,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import ReactMarkdown, { type Components } from "react-markdown";
@@ -56,6 +57,17 @@ const FLOW_HISTORY_MARKER = "Generate with Flow";
 
 const isFlowHistoryEntry = (entry: HistoryEntry): boolean =>
   entry.post_process_prompt === FLOW_HISTORY_MARKER;
+
+/** Transform executions are stored with "Transform: <name>" in
+ *  post_process_prompt (matches TRANSFORM_HISTORY_PREFIX in transforms.rs)
+ *  and no recording behind them (empty file_name). */
+const TRANSFORM_HISTORY_PREFIX = "Transform: ";
+
+const isTransformHistoryEntry = (entry: HistoryEntry): boolean =>
+  entry.post_process_prompt?.startsWith(TRANSFORM_HISTORY_PREFIX) ?? false;
+
+const transformEntryName = (entry: HistoryEntry): string =>
+  entry.post_process_prompt?.slice(TRANSFORM_HISTORY_PREFIX.length) ?? "";
 
 /** Strip the attachment markers the backend appends to stored user messages,
  *  returning the clean text plus what rode along (screen capture / files). */
@@ -264,7 +276,7 @@ type FeedItem =
   | { kind: "transcription"; sortTime: number; entry: HistoryEntry }
   | { kind: "assistant"; sortTime: number; session: AssistantHistoryEntry };
 
-type HistoryFilter = "all" | "recordings" | "flow" | "assistant";
+type HistoryFilter = "all" | "recordings" | "flow" | "transforms" | "assistant";
 
 export const HistorySettings: React.FC = () => {
   const { t } = useTranslation();
@@ -572,12 +584,20 @@ export const HistorySettings: React.FC = () => {
       feed.filter((item) => {
         if (filter === "recordings") {
           return (
-            item.kind === "transcription" && !isFlowHistoryEntry(item.entry)
+            item.kind === "transcription" &&
+            !isFlowHistoryEntry(item.entry) &&
+            !isTransformHistoryEntry(item.entry)
           );
         }
         if (filter === "flow") {
           return (
             item.kind === "transcription" && isFlowHistoryEntry(item.entry)
+          );
+        }
+        if (filter === "transforms") {
+          return (
+            item.kind === "transcription" &&
+            isTransformHistoryEntry(item.entry)
           );
         }
         if (filter === "assistant") return item.kind === "assistant";
@@ -680,6 +700,7 @@ export const HistorySettings: React.FC = () => {
                 ["all", "settings.history.filters.all"],
                 ["recordings", "settings.history.filters.recordings"],
                 ["flow", "settings.history.filters.flow"],
+                ["transforms", "settings.history.filters.transforms"],
                 ["assistant", "settings.history.filters.assistant"],
               ] as const
             ).map(([value, labelKey]) => (
@@ -734,6 +755,7 @@ const HistoryEntryComponent: React.FC<HistoryEntryProps> = ({
 
   const hasTranscription = entry.transcription_text.trim().length > 0;
   const flowEntry = isFlowHistoryEntry(entry);
+  const transformEntry = isTransformHistoryEntry(entry);
   const processedText = entry.post_processed_text?.trim()
     ? entry.post_processed_text
     : null;
@@ -794,9 +816,11 @@ const HistoryEntryComponent: React.FC<HistoryEntryProps> = ({
         {(flowEntry || secondaryText) && (
           <div className="text-[11px] font-medium text-muted">
             {t(
-              flowEntry
-                ? "settings.history.flowTranscriptLabel"
-                : "settings.history.originalTranscriptionLabel",
+              transformEntry
+                ? "settings.history.transformInputLabel"
+                : flowEntry
+                  ? "settings.history.flowTranscriptLabel"
+                  : "settings.history.originalTranscriptionLabel",
             )}
           </div>
         )}
@@ -834,9 +858,11 @@ const HistoryEntryComponent: React.FC<HistoryEntryProps> = ({
             <div className="mb-1 inline-flex items-center gap-1.5 text-[11px] font-medium text-muted">
               <Sparkles width={11} height={11} />
               {t(
-                flowEntry
-                  ? "settings.history.flowOutputLabel"
-                  : "settings.history.finalTextLabel",
+                transformEntry
+                  ? "settings.history.transformOutputLabel"
+                  : flowEntry
+                    ? "settings.history.flowOutputLabel"
+                    : "settings.history.finalTextLabel",
               )}
             </div>
             <p className="select-text whitespace-pre-wrap break-words text-[13px] leading-relaxed text-ink">
@@ -855,16 +881,20 @@ const HistoryEntryComponent: React.FC<HistoryEntryProps> = ({
       <div className="flex items-center justify-between gap-3">
         <span className="inline-flex shrink-0 items-center gap-1.5 text-xs text-muted">
           <span className="inline-flex items-center gap-1 font-medium text-ink/75">
-            {flowEntry ? (
+            {transformEntry ? (
+              <Wand2 width={11} height={11} />
+            ) : flowEntry ? (
               <Sparkles width={11} height={11} />
             ) : (
               <Mic width={11} height={11} />
             )}
-            {t(
-              flowEntry
-                ? "settings.history.flowLabel"
-                : "settings.history.recordingLabel",
-            )}
+            {transformEntry
+              ? transformEntryName(entry)
+              : t(
+                  flowEntry
+                    ? "settings.history.flowLabel"
+                    : "settings.history.recordingLabel",
+                )}
           </span>
           <span aria-hidden="true" className="text-muted-soft">
             ·
@@ -905,21 +935,24 @@ const HistoryEntryComponent: React.FC<HistoryEntryProps> = ({
               fill={entry.saved ? "currentColor" : "none"}
             />
           </IconButton>
-          <IconButton
-            onClick={handleRetranscribe}
-            disabled={retrying}
-            title={t("settings.history.retranscribe")}
-          >
-            <RotateCcw
-              width={14}
-              height={14}
-              style={
-                retrying
-                  ? { animation: "spin 1s linear infinite reverse" }
-                  : undefined
-              }
-            />
-          </IconButton>
+          {/* No recording behind a transform execution — nothing to re-run. */}
+          {entry.file_name.trim() !== "" && (
+            <IconButton
+              onClick={handleRetranscribe}
+              disabled={retrying}
+              title={t("settings.history.retranscribe")}
+            >
+              <RotateCcw
+                width={14}
+                height={14}
+                style={
+                  retrying
+                    ? { animation: "spin 1s linear infinite reverse" }
+                    : undefined
+                }
+              />
+            </IconButton>
+          )}
           <IconButton
             onClick={handleDeleteEntry}
             disabled={retrying}
@@ -930,7 +963,9 @@ const HistoryEntryComponent: React.FC<HistoryEntryProps> = ({
         </div>
       </div>
 
-      <AudioPlayer onLoadRequest={handleLoadAudio} className="w-full" />
+      {entry.file_name.trim() !== "" && (
+        <AudioPlayer onLoadRequest={handleLoadAudio} className="w-full" />
+      )}
     </div>
   );
 };

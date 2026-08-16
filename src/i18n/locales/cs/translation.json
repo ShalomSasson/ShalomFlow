@@ -923,7 +923,8 @@
         "all": "Vše",
         "recordings": "Recordings",
         "flow": "Flow",
-        "assistant": "Chaty s asistentem"
+        "assistant": "Chaty s asistentem",
+        "transforms": "Transformace"
       },
       "openFolder": "Otevřít složku nahrávek",
       "loading": "Načítám historii…",
@@ -959,7 +960,9 @@
       "screenshotAttached": "Obraz",
       "messageCount_one": "{{count}} zpráva",
       "messageCount_other": "{{count}} zpráv",
-      "deleteAssistantError": "Konverzaci se nepodařilo smazat. Zkuste to prosím znovu."
+      "deleteAssistantError": "Konverzaci se nepodařilo smazat. Zkuste to prosím znovu.",
+      "transformInputLabel": "Původní text",
+      "transformOutputLabel": "Transformovaný text"
     },
     "debug": {
       "title": "Ladění",

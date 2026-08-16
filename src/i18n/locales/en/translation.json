@@ -923,7 +923,8 @@
         "all": "All",
         "recordings": "Dictations",
         "flow": "Flow",
-        "assistant": "Assistant chats"
+        "assistant": "Assistant chats",
+        "transforms": "Transforms"
       },
       "openFolder": "Open recordings folder",
       "loading": "Loading history…",
@@ -959,7 +960,9 @@
       "screenshotAttached": "Vision",
       "messageCount_one": "{{count}} message",
       "messageCount_other": "{{count}} messages",
-      "deleteAssistantError": "Couldn't delete the conversation. Please try again."
+      "deleteAssistantError": "Couldn't delete the conversation. Please try again.",
+      "transformInputLabel": "Original text",
+      "transformOutputLabel": "Transformed text"
     },
     "debug": {
       "title": "Debug",

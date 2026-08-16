@@ -421,7 +421,9 @@ impl HistoryManager {
                 params![file_name],
                 |row| row.get(0),
             )?;
-            if remaining_references == 0 {
+            // Transform executions have no recording (empty file_name); an
+            // empty name would join() to the recordings dir itself.
+            if remaining_references == 0 && !file_name.is_empty() {
                 let file_path = self.recordings_dir.join(file_name);
                 if file_path.exists() {
                     if let Err(e) = fs::remove_file(&file_path) {
@@ -688,7 +690,8 @@ impl HistoryManager {
                 params![&file_name],
                 |row| row.get(0),
             )?;
-            if remaining_references == 0 {
+            // See the retention guard above: empty file_name = no recording.
+            if remaining_references == 0 && !file_name.is_empty() {
                 let file_path = self.get_audio_file_path(&file_name);
                 if file_path.exists() {
                     if let Err(e) = fs::remove_file(&file_path) {

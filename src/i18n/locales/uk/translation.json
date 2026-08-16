@@ -923,7 +923,8 @@
         "all": "Усі",
         "recordings": "Recordings",
         "flow": "Flow",
-        "assistant": "Чати асистента"
+        "assistant": "Чати асистента",
+        "transforms": "Трансформації"
       },
       "openFolder": "Відкрити папку записів",
       "loading": "Завантаження історії…",
@@ -959,7 +960,9 @@
       "screenshotAttached": "Екран",
       "messageCount_one": "{{count}} повідомлення",
       "messageCount_other": "{{count}} повідомлень",
-      "deleteAssistantError": "Не вдалося видалити розмову. Будь ласка, спробуйте ще раз."
+      "deleteAssistantError": "Не вдалося видалити розмову. Будь ласка, спробуйте ще раз.",
+      "transformInputLabel": "Початковий текст",
+      "transformOutputLabel": "Перетворений текст"
     },
     "debug": {
       "title": "Дебаг",

@@ -923,7 +923,8 @@
         "all": "Tất cả",
         "recordings": "Recordings",
         "flow": "Flow",
-        "assistant": "Trò chuyện với trợ lý"
+        "assistant": "Trò chuyện với trợ lý",
+        "transforms": "Biến đổi"
       },
       "openFolder": "Mở thư mục ghi âm",
       "loading": "Đang tải lịch sử…",
@@ -959,7 +960,9 @@
       "screenshotAttached": "Màn hình",
       "messageCount_one": "{{count}} tin nhắn",
       "messageCount_other": "{{count}} tin nhắn",
-      "deleteAssistantError": "Không thể xóa cuộc trò chuyện. Vui lòng thử lại."
+      "deleteAssistantError": "Không thể xóa cuộc trò chuyện. Vui lòng thử lại.",
+      "transformInputLabel": "Văn bản gốc",
+      "transformOutputLabel": "Văn bản đã biến đổi"
     },
     "debug": {
       "title": "Gỡ lỗi",

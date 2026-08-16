@@ -923,7 +923,8 @@
         "all": "הכול",
         "recordings": "Recordings",
         "flow": "Flow",
-        "assistant": "שיחות עם העוזר"
+        "assistant": "שיחות עם העוזר",
+        "transforms": "טרנספורמציות"
       },
       "openFolder": "פתח את תיקיית ההקלטות",
       "loading": "טוען היסטוריה…",
@@ -959,7 +960,9 @@
       "screenshotAttached": "ראייה",
       "messageCount_one": "{{count}} הודעה",
       "messageCount_other": "{{count}} הודעות",
-      "deleteAssistantError": "לא ניתן היה למחוק את השיחה. נסה שוב."
+      "deleteAssistantError": "לא ניתן היה למחוק את השיחה. נסה שוב.",
+      "transformInputLabel": "הטקסט המקורי",
+      "transformOutputLabel": "הטקסט לאחר הטרנספורמציה"
     },
     "debug": {
       "title": "ניפוי שגיאות",
