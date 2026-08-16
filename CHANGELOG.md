@@ -8,6 +8,7 @@ individually.
 
 ## [Unreleased]
 
+- feat(transforms): rename built-ins to Templates and rewrite prompts in prompt form (5e17013)
 - build(macos): dev re-sign script for stable Accessibility grants (2adbcdc)
 - feat(transforms): Styles and Transforms pages, transform editors, polish-after-dictation, and the Goal built-in (fc9478b)
 - refactor(brand): finish the ShalomFlow rename everywhere (c4c2a52)
