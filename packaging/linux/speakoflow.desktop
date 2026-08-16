@@ -1,10 +1,10 @@
 [Desktop Entry]
 Type=Application
-Name=SpeakoFlow
+Name=ShalomFlow
 Comment=Local voice dictation and AI assistant
 Exec=speak
 Icon=speakoflow
 Terminal=false
 Categories=AudioVideo;Audio;
 StartupNotify=true
-StartupWMClass=SpeakoFlow
+StartupWMClass=ShalomFlow

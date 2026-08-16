@@ -1,11 +1,11 @@
-// Build the FINAL SpeakoFlow logo: the white mark composited inside the
+// Build the FINAL ShalomFlow logo: the white mark composited inside the
 // brand teal rounded box (app-icon style), plus a horizontal wordmark lockup
-// (teal box + two-tone "SpeakoFlow"). Reuses the mark paths from
+// (teal box + two-tone "ShalomFlow"). Reuses the mark paths from
 // "Only Logo.svg" and the same wordmark font/layout as build-logos.mjs.
 //
 // Outputs -> logo/final/  and the two named deliverables in logo/:
 //   - "Final logo.png"            (1024 teal-boxed icon)
-//   - "Final logo with text.png"  (teal box + "SpeakoFlow" lockup)
+//   - "Final logo with text.png"  (teal box + "ShalomFlow" lockup)
 
 import fs from "node:fs";
 import path from "node:path";
@@ -19,7 +19,7 @@ import opentype from "opentype.js";
 // ---------------------------------------------------------------------------
 const TEAL = "#14b8a6"; // brand teal box fill (vibrant, matches the app icon)
 const WHITE = "#ffffff"; // the mark, on top of the teal box
-const INK = "#201a16"; // "Speako" wordmark color (warm near-black brand ink)
+const INK = "#201a16"; // "Shalom" wordmark color (warm near-black brand ink)
 const CORNER = 0.225; // rounded-box corner radius as a fraction of the size
 const MARK_RATIO = 0.6; // mark's max dimension as a fraction of the box
 const OUT = "final";
@@ -105,7 +105,7 @@ fs.copyFileSync(
 );
 
 // ---------------------------------------------------------------------------
-// 3. Wordmark lockup: teal box + two-tone "SpeakoFlow"
+// 3. Wordmark lockup: teal box + two-tone "ShalomFlow"
 // ---------------------------------------------------------------------------
 const fontBuf = fs.readFileSync("fonts/PlusJakartaSans-800.ttf");
 const font = opentype.parse(
@@ -140,9 +140,9 @@ const ICON_H = 88; // box height in the lockup
 const GAP = 20;
 const scale = FONT_SIZE / font.unitsPerEm;
 
-// Lay out "SpeakoFlow" continuously, but split the fill: Speako=ink, Flow=teal.
+// Lay out "ShalomFlow" continuously, but split the fill: Shalom=ink, Flow=teal.
 const segments = [
-  { text: "Speako", fill: INK },
+  { text: "Shalom", fill: INK },
   { text: "Flow", fill: TEAL },
 ];
 const allGlyphs = [...segments.flatMap((s) => [...s.text])].map((ch) =>

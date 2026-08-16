@@ -4,7 +4,7 @@
   test the "Built-in (Local)" assistant provider locally.
 
 .DESCRIPTION
-  SpeakoFlow's built-in LLM runs a small `llama-server` engine in the
+  ShalomFlow's built-in LLM runs a small `llama-server` engine in the
   background. In production this binary is bundled in the installer; for local
   development you fetch it once with this script.
 

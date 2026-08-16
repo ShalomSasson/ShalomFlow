@@ -1,4 +1,4 @@
-# Home-manager module for SpeakoFlow voice assistant
+# Home-manager module for ShalomFlow voice assistant
 #
 # Provides a systemd user service for autostart.
 # Usage: imports = [ speakoflow.homeManagerModules.default ];
@@ -14,19 +14,19 @@ let
 in
 {
   options.services.speakoflow = {
-    enable = lib.mkEnableOption "SpeakoFlow voice assistant user service";
+    enable = lib.mkEnableOption "ShalomFlow voice assistant user service";
 
     package = lib.mkOption {
       type = lib.types.package;
       defaultText = lib.literalExpression "speakoflow.packages.\${system}.speakoflow";
-      description = "The SpeakoFlow package to use.";
+      description = "The ShalomFlow package to use.";
     };
   };
 
   config = lib.mkIf cfg.enable {
     systemd.user.services.speakoflow = {
       Unit = {
-        Description = "SpeakoFlow voice assistant";
+        Description = "ShalomFlow voice assistant";
         After = [ "graphical-session.target" ];
         PartOf = [ "graphical-session.target" ];
       };

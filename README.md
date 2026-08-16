@@ -176,7 +176,7 @@ info → Run anyway**.
   and install it. This registers the app icon and menu entry properly, which the
   AppImage can't do on its own:
   ```bash
-  sudo apt install ./SpeakoFlow_*_amd64.deb
+  sudo apt install ./ShalomFlow_*_amd64.deb
   ```
   The `.deb` is built on Ubuntu 24.04, so it needs that era of glibc. On an
   older release, use the AppImage instead.
@@ -216,12 +216,12 @@ this project doesn't have yet, so the block is expected and harmless.
 
 Install it in three steps:
 
-1. Download `SpeakoFlow_<version>_aarch64.dmg` and drag **ShalomFlow** into your
+1. Download `ShalomFlow_<version>_aarch64.dmg` and drag **ShalomFlow** into your
    Applications folder.
 2. Open **Terminal** (press `Cmd + Space`, type `Terminal`) and paste this,
    then press Return:
    ```bash
-   xattr -dr com.apple.quarantine /Applications/SpeakoFlow.app
+   xattr -dr com.apple.quarantine /Applications/ShalomFlow.app
    ```
 3. Open ShalomFlow normally, from Launchpad, Spotlight, or Applications.
 

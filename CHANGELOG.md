@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to SpeakoFlow are documented here.
+All notable changes to ShalomFlow are documented here.
 
 Backfilled from git history, newest first. Releases are grouped by their git
 tag; merge commits are omitted because the changes they bring in are listed
@@ -141,7 +141,7 @@ individually.
 - docs: sync graphify graph outputs from post-commit rebuild (9ef2bd3)
 - feat: assistant characters/personas, tap-to-lock gesture, and panel polish (ccef17b)
 - docs: sync graphify graph outputs from post-commit rebuild (f723035)
-- feat: SpeakoFlow branding overhaul and UI polish (5cd31e8)
+- feat: ShalomFlow branding overhaul and UI polish (5cd31e8)
 - docs: sync graphify graph outputs from post-commit rebuild (6aff6f6)
 - feat: refine assistant panel and history settings (c08ff91)
 - docs: sync graphify graph outputs from post-commit rebuild (728c48d)
@@ -149,7 +149,7 @@ individually.
 - docs: sync graphify graph outputs from post-commit rebuild (e0e76bf)
 - docs: rebuild graphify knowledge graph (full AST + semantic extraction) (28b2247)
 - chore: refresh graphify knowledge graph outputs (afd77ab)
-- feat: SpeakoFlow rebrand, assistant/web-search updates, and docs (27e8e7d)
+- feat: ShalomFlow rebrand, assistant/web-search updates, and docs (27e8e7d)
 - docs: add phased release plan, copy-paste session prompts, and completion tracker (93cd210)
 - docs: refresh graphify knowledge graph outputs (bcbd476)
 - feat: multi-provider web search (Serper/Exa) and assistant UI polish (9e4cc38)
@@ -186,7 +186,7 @@ individually.
 - feat: add light/dark/system theme and restore multi-provider TTS picker (2cae5fb)
 - feat: add built-in local LLM provider and audio waveform; rework history and model management (92bf585)
 - docs: publish graphify knowledge graph outputs (405adc9)
-- feat: rebrand to SpeakoFlow with editorial UI redesign (b0fe26d)
+- feat: rebrand to ShalomFlow with editorial UI redesign (b0fe26d)
 - feat: add Azure Speech TTS engine, voice loader, and playback controls (8e5173d)
 - build: fix release bundling (no upstream signing key, NSIS only, own update endpoint) (f7c12e8)
 - fix: compress screenshots to <=48KB encoded (observed cuts down to ~140KB); add dev.ps1 + PROGRESS.md (e4ebf34)

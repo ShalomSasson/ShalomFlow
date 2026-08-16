@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-# Build SpeakoFlow from this checkout and install it for the current user.
+# Build ShalomFlow from this checkout and install it for the current user.
 # The default layout is self-contained under ~/.local:
 #
 #   bin/speak -> ../lib/speakoflow/bin/speakoflow
-#   lib/speakoflow/lib/{libtranscribe,libggml*,SpeakoFlow/resources}
+#   lib/speakoflow/lib/{libtranscribe,libggml*,ShalomFlow/resources}
 #
 # Keeping the executable and libraries in that shape satisfies the
 # $ORIGIN/../lib rpath embedded by src-tauri/build.rs without putting generic
@@ -21,7 +21,7 @@ Options:
   --skip-build   Install an existing release build without rebuilding it
   -h, --help     Show this help
 
-After installation, run SpeakoFlow with: speak
+After installation, run ShalomFlow with: speak
 EOF
 }
 
@@ -136,7 +136,7 @@ fi
 
 release_binary="$repo_root/src-tauri/target/release/speakoflow"
 if $build_release; then
-  echo "Building the SpeakoFlow frontend..."
+  echo "Building the ShalomFlow frontend..."
   (
     cd "$repo_root"
     bun_scratch_dir="$(mktemp -d /tmp/speakoflow-bun.XXXXXX)"
@@ -148,7 +148,7 @@ if $build_release; then
     bun run build
   )
 
-  echo "Building the SpeakoFlow release binary..."
+  echo "Building the ShalomFlow release binary..."
   (
     cd "$repo_root/src-tauri"
     # CMake 4 removed compatibility with policies used by a few native speech
@@ -183,9 +183,9 @@ fi
 app_root="$install_prefix/lib/speakoflow"
 app_bin_dir="$app_root/bin"
 app_lib_dir="$app_root/lib"
-resource_dir="$app_lib_dir/SpeakoFlow"
+resource_dir="$app_lib_dir/ShalomFlow"
 
-echo "Installing SpeakoFlow below $install_prefix..."
+echo "Installing ShalomFlow below $install_prefix..."
 install -Dm755 "$release_binary" "$app_bin_dir/speakoflow"
 install -d "$app_lib_dir" "$resource_dir" "$install_prefix/bin"
 bash "$repo_root/scripts/ci/stage-transcribe-libs.sh" "$transcribe_lib_dir" "$app_lib_dir"
@@ -222,4 +222,4 @@ case ":$PATH:" in
 esac
 
 echo
-echo "SpeakoFlow installed successfully. Run it with: speak"
+echo "ShalomFlow installed successfully. Run it with: speak"

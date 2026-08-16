@@ -35,7 +35,7 @@ const KEEP_AS_IS = new Set([
   "Exa",
   "SerpAPI",
   "TinyFish",
-  "SpeakoFlow",
+  "ShalomFlow",
   "Whisper",
   "Parakeet",
   "GitHub",

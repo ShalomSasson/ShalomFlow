@@ -15,7 +15,7 @@ export const Wordmark: React.FC<WordmarkProps> = ({ className = "" }) => (
   <span
     className={`font-display font-semibold tracking-tight text-ink leading-none select-none inline-block ${className}`}
   >
-    Speako<span className="text-accent">Flow</span>
+    Shalom<span className="text-accent">Flow</span>
   </span>
 );
 

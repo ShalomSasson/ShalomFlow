@@ -47,7 +47,7 @@ ORT_LIB_LOCATION=$(brew --prefix onnxruntime)/lib ORT_PREFER_DYNAMIC_LINK=1 bun 
 > "Stage ONNX Runtime for Intel macOS" step in
 > [.github/workflows/build.yml](.github/workflows/build.yml) copies the dylib
 > into `src-tauri/onnx-libs/`, rewrites its install name to `@rpath/...` _before_
-> linking, and ships it inside `SpeakoFlow.app/Contents/Frameworks`. Don't
+> linking, and ships it inside `ShalomFlow.app/Contents/Frameworks`. Don't
 > distribute a locally built Intel `.dmg`; use a CI artifact.
 
 Intel macOS is currently built in `test-build.yml` only, and is not yet part of
@@ -148,12 +148,12 @@ an app-private directory instead of copying their generic library names into
 
 ```bash
 cd /tmp
-ar x /path/to/ShalomFlow/src-tauri/target/release/bundle/deb/SpeakoFlow_*_amd64.deb data.tar.gz
+ar x /path/to/ShalomFlow/src-tauri/target/release/bundle/deb/ShalomFlow_*_amd64.deb data.tar.gz
 tar xzf data.tar.gz
 sudo cp usr/bin/speakoflow /usr/bin/
 sudo cp -r usr/lib/ShalomFlow /usr/lib/
 sudo cp -r usr/share/icons/hicolor/* /usr/share/icons/hicolor/
-sudo cp usr/share/applications/SpeakoFlow.desktop /usr/share/applications/
+sudo cp usr/share/applications/ShalomFlow.desktop /usr/share/applications/
 ```
 
 After subsequent rebuilds, only the binary needs re-copying:
@@ -173,7 +173,7 @@ Resources only need re-copying if they change upstream (new icons, sounds, etc.)
 The error from Tauri:
 
 ```
-Bundling SpeakoFlow_*_amd64.AppImage
+Bundling ShalomFlow_*_amd64.AppImage
 failed to bundle project `failed to run linuxdeploy`
 ```
 
