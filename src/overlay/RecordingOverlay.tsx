@@ -13,6 +13,7 @@ type OverlayState =
   | "processing"
   | "generating"
   | "vision"
+  | "transforming"
   | "notice";
 
 /** Payload of the untyped Rust "stream-text" event (live transcription). */
@@ -204,9 +205,11 @@ const RecordingOverlay: React.FC = () => {
         ? t("overlay.generating")
         : state === "vision"
           ? t("overlay.vision")
-          : state === "notice"
-            ? t(`overlay.notices.${notice ?? "flowFailed"}`)
-            : t("overlay.processing");
+          : state === "transforming"
+            ? t("overlay.transforming")
+            : state === "notice"
+              ? t(`overlay.notices.${notice ?? "flowFailed"}`)
+              : t("overlay.processing");
 
   const ariaLabel = isRecording
     ? locked
@@ -347,10 +350,12 @@ const RecordingOverlay: React.FC = () => {
             </div>
           )}
 
-          {/* Flow working states — generation can take a while and "looking at
-            your screen" must be unmistakable, so these carry a small text
-            label instead of the anonymous frozen waveform. */}
-          {(state === "generating" || state === "vision") && (
+          {/* Flow / transform working states — generation can take a while and
+            "looking at your screen" must be unmistakable, so these carry a
+            small text label instead of the anonymous frozen waveform. */}
+          {(state === "generating" ||
+            state === "vision" ||
+            state === "transforming") && (
             <div className="pill-wave">
               <Loader2
                 className="load-spinner"

@@ -149,6 +149,32 @@ pub struct Transform {
     pub builtin: bool,
 }
 
+/// Per-context tone presets chosen on the Styles page. Each field holds the
+/// selected preset id for one writing context (e.g. "formal", "casual"), and
+/// `auto_cleanup` holds "off" | "light" | "aggressive". Presentation-only for
+/// now: the selections persist but are not yet composed into the cleanup
+/// prompt.
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq, Type)]
+pub struct StylePrefs {
+    pub personal: String,
+    pub work: String,
+    pub email: String,
+    pub other: String,
+    pub auto_cleanup: String,
+}
+
+impl Default for StylePrefs {
+    fn default() -> Self {
+        StylePrefs {
+            personal: "very_casual".to_string(),
+            work: "casual".to_string(),
+            email: "casual".to_string(),
+            other: "casual".to_string(),
+            auto_cleanup: "light".to_string(),
+        }
+    }
+}
+
 /// Optional built-in writing style applied during dictation cleanup.
 ///
 /// This enum remains persisted for backwards compatibility. New code selects a
@@ -1135,6 +1161,19 @@ pub struct AppSettings {
     pub transforms_enabled: bool,
     #[serde(default = "default_transforms")]
     pub transforms: Vec<Transform>,
+    /// Per-context tone presets from the Styles page.
+    #[serde(default)]
+    pub style_prefs: StylePrefs,
+    /// Run the Polish transform over every plain dictation before pasting.
+    /// Independent of `transforms_enabled` (that gates only the selection
+    /// shortcuts) and skipped when the dictation already used AI Correction,
+    /// so a transcript is never rewritten twice.
+    #[serde(default)]
+    pub polish_after_dictation: bool,
+    /// Samples of the user's own writing, shared across every transform that
+    /// opts into the voice profile (`Transform::use_voice_profile`).
+    #[serde(default)]
+    pub transform_writing_examples: Vec<String>,
     #[serde(default)]
     pub mute_while_recording: bool,
     #[serde(default)]
@@ -1739,6 +1778,22 @@ fn prompt_engineer_template() -> String {
     .join("\n\n")
 }
 
+/// The Goal output template.
+fn goal_template() -> String {
+    [
+        "**Goal**\n(one concise outcome statement — what will be true when this is done)",
+        "**Why it matters**\n(the motivation or impact, in 1–2 lines)",
+        "**Success criteria**\n(bulleted, each one verifiable — how you'll know it's achieved, not how you'll work on it)",
+        "**Scope**\n(what's included / explicitly not included)",
+        "**Milestones**\n(ordered steps toward the goal, with timing only if the notes gave any)",
+        "**Owner & stakeholders**\n(who drives it, who needs to be involved or informed)",
+        "**Timeframe**\n(deadline or horizon — only if stated)",
+        "**Risks & dependencies**\n(what could block it, what it relies on)",
+        "**First next action**\n(the single smallest concrete step to start — this section is required)",
+    ]
+    .join("\n\n")
+}
+
 pub fn default_transforms() -> Vec<Transform> {
     vec![
         Transform {
@@ -1781,6 +1836,32 @@ pub fn default_transforms() -> Vec<Transform> {
             shortcut: "option+2".to_string(),
             sample_text: "I need help writing product descriptions for a skincare brand. The AI \
                           should be warm, aspirational, and concise"
+                .to_string(),
+            builtin: true,
+        },
+        Transform {
+            id: "goal".to_string(),
+            name: "Goal".to_string(),
+            description: "Turn rough thoughts into a structured goal".to_string(),
+            detail_description: "Goal converts rough, spoken notes about something you want to \
+                                 achieve into a structured, actionable goal definition."
+                .to_string(),
+            prompt: format!(
+                "Convert the user's rough, spoken notes into a single well-structured goal \
+                 definition. Fill in only the sections the notes actually support; omit a \
+                 section entirely rather than inventing content for it. Never add commitments, \
+                 dates, or numbers that were not in the notes. Preserve the user's certainty \
+                 level — a \"maybe\" stays a maybe. Write the content in the same language as \
+                 the input; keep the section headers as they are. Use exactly this shape:\n\n{}",
+                goal_template()
+            ),
+            rules: Vec::new(),
+            custom_instructions: String::new(),
+            use_voice_profile: false,
+            shortcut: "option+3".to_string(),
+            sample_text: "um so I want the transforms feature to be actually done and merged, \
+                          like tests passing, maybe by end of next week, and someone from the \
+                          team should review the backend part"
                 .to_string(),
             builtin: true,
         },
@@ -2674,6 +2755,9 @@ pub fn get_default_settings() -> AppSettings {
         flow_screen_access: false,
         transforms_enabled: false,
         transforms: default_transforms(),
+        style_prefs: StylePrefs::default(),
+        polish_after_dictation: false,
+        transform_writing_examples: Vec::new(),
         mute_while_recording: false,
         append_trailing_space: false,
         app_language: default_app_language(),
@@ -3455,6 +3539,19 @@ pub fn load_or_create_app_settings(app: &AppHandle) -> AppSettings {
             if !settings.bindings.contains_key(&key) {
                 debug!("Adding missing binding: {}", key);
                 settings.bindings.insert(key, value);
+                updated = true;
+            }
+        }
+
+        // Merge built-in transforms added by newer releases into existing
+        // settings, same as the bindings merge above. Only missing built-ins
+        // are appended — the user's edits to existing transforms (and their
+        // own custom transforms) are untouched. The matching
+        // `transform.<id>` binding arrives via the bindings merge.
+        for transform in default_transforms() {
+            if !settings.transforms.iter().any(|t| t.id == transform.id) {
+                debug!("Adding missing built-in transform: {}", transform.id);
+                settings.transforms.push(transform);
                 updated = true;
             }
         }
@@ -4522,14 +4619,16 @@ mod tests {
     fn transforms_ship_polish_and_prompt_engineer_by_default() {
         let transforms = default_transforms();
         let ids: Vec<&str> = transforms.iter().map(|t| t.id.as_str()).collect();
-        assert_eq!(ids, vec!["polish", "prompt_engineer"]);
+        assert_eq!(ids, vec!["polish", "prompt_engineer", "goal"]);
         assert!(transforms.iter().all(|t| t.builtin));
 
         // Every transform must be reachable by shortcut out of the box.
         let polish = &transforms[0];
         let engineer = &transforms[1];
+        let goal = &transforms[2];
         assert_eq!(polish.shortcut, "option+1");
         assert_eq!(engineer.shortcut, "option+2");
+        assert_eq!(goal.shortcut, "option+3");
     }
 
     #[test]
@@ -4605,7 +4704,7 @@ mod tests {
         let settings = get_default_settings();
         // The feature must stay dark until the user turns it on.
         assert!(!settings.transforms_enabled);
-        assert_eq!(settings.transforms.len(), 2);
+        assert_eq!(settings.transforms.len(), 3);
 
         // Each default transform has a registered shortcut binding.
         for transform in &settings.transforms {

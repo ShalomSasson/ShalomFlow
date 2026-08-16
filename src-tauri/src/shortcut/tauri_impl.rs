@@ -19,7 +19,7 @@ pub fn init_shortcuts(app: &AppHandle) {
     let user_settings = settings::load_or_create_app_settings(app);
 
     // Register all default shortcuts, applying user customizations
-    for (id, default_binding) in default_bindings {
+    for (id, default_binding) in &default_bindings {
         if id == "cancel" {
             continue; // Skip cancel shortcut, it will be registered dynamically
         }
@@ -30,9 +30,9 @@ pub fn init_shortcuts(app: &AppHandle) {
         }
         let binding = user_settings
             .bindings
-            .get(&id)
+            .get(id)
             .cloned()
-            .unwrap_or(default_binding);
+            .unwrap_or_else(|| default_binding.clone());
 
         // An empty binding means "disabled" — nothing to register.
         if binding.current_binding.trim().is_empty() {
@@ -40,6 +40,20 @@ pub fn init_shortcuts(app: &AppHandle) {
         }
 
         if let Err(e) = register_shortcut(app, binding) {
+            error!("Failed to register shortcut {} during init: {}", id, e);
+        }
+    }
+
+    // User-created transforms have dynamic binding ids that exist only in the
+    // user's settings, so the defaults loop above never sees them.
+    for (id, binding) in &user_settings.bindings {
+        if settings::transform_id_from_binding(id).is_none()
+            || default_bindings.contains_key(id)
+            || binding.current_binding.trim().is_empty()
+        {
+            continue;
+        }
+        if let Err(e) = register_shortcut(app, binding.clone()) {
             error!("Failed to register shortcut {} during init: {}", id, e);
         }
     }

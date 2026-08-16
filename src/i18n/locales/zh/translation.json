@@ -31,7 +31,9 @@
     "characters": "角色",
     "memory": "记忆",
     "collapse": "收起侧边栏",
-    "expand": "展开侧边栏"
+    "expand": "展开侧边栏",
+    "styles": "风格",
+    "transforms": "转换"
   },
   "window": {
     "minimize": "最小化",
@@ -45,7 +47,8 @@
     "assistant": "先设置助手，再调整它的语音、屏幕视觉和网络搜索。",
     "history": "您最近的语音输入、Flow 生成和助手聊天，都保存在本设备上。",
     "about": "版本、应用语言、数据位置和致谢。",
-    "debug": "诊断与开发者工具。"
+    "debug": "诊断与开发者工具。",
+    "styles": "听写文本在各类应用中的格式设置。"
   },
   "onboarding": {
     "subtitle": "请选择一个转录模型以开始使用",
@@ -444,6 +447,11 @@
         "info": "按住录制快捷键时轻按此键，即可锁定免持录制，松手后仍可继续说话。请选择任意不属于录制快捷键的按键，或清空以关闭此功能。",
         "off": "关闭",
         "clear": "清空"
+      },
+      "polishDictation": {
+        "label": "润色听写",
+        "description": "粘贴前用润色转换重写每次听写。",
+        "info": "独立于转换的启用开关，后者只控制选中文本的快捷键。使用转换页面中配置的润色转换（规则、自定义指令和你的写作示例）以及同一个 AI 提供商。已使用 AI 纠正的听写会被跳过，文本绝不会被重写两次；若重写失败，将原样粘贴原始转录。"
       }
     },
     "models": {
@@ -1489,7 +1497,8 @@
     "locked": "免持录制中——再次按下快捷键即可停止",
     "cancel": "取消",
     "done": "完成",
-    "askAssistant": "改为询问助手，而不是把这些文字输入进去"
+    "askAssistant": "改为询问助手，而不是把这些文字输入进去",
+    "transforming": "转换中…"
   },
   "assistant": {
     "title": "助手",
@@ -1600,6 +1609,77 @@
       "preparing": "正在设置本地引擎（首次运行）…",
       "extracting": "正在安装本地引擎…",
       "short": "正在设置引擎…"
+    }
+  },
+  "styles": {
+    "beta": "测试版",
+    "tabs": {
+      "personal": "私人消息",
+      "work": "工作消息",
+      "email": "电子邮件",
+      "other": "其他",
+      "autoCleanup": "自动清理"
+    },
+    "promo": {
+      "personal": "此风格适用于私人聊天应用",
+      "work": "此风格适用于办公聊天应用",
+      "email": "此风格适用于所有主流电子邮件应用",
+      "other": "此风格适用于所有其他应用",
+      "autoCleanup": "自动清理口头语和错误的开头",
+      "note": "风格格式目前仅适用于英语。更多语言即将推出。"
+    },
+    "presets": {
+      "formal": "正式。",
+      "casual": "随意",
+      "veryCasual": "非常随意",
+      "excited": "兴奋！",
+      "off": "关闭",
+      "light": "轻度",
+      "aggressive": "强力"
+    },
+    "rules": {
+      "capsPunctuation": "大写 + 标点",
+      "capsLessPunctuation": "大写 + 较少标点",
+      "noCapsLessPunctuation": "无大写 + 较少标点",
+      "moreExclamations": "更多感叹号",
+      "keepRaw": "保留原始转录",
+      "trimFillers": "去除口头语",
+      "trimFillersTighten": "去除口头语 + 精简"
+    }
+  },
+  "transformsPage": {
+    "beta": "测试版",
+    "optIn": "启用",
+    "myTransforms": "我的转换",
+    "resetDefaults": "重置为默认",
+    "createNew": "新建",
+    "createOwn": "创建你自己的",
+    "uploadPrompt": "上传你自己的提示词",
+    "promo": {
+      "title": "转换可在任何书写位置使用",
+      "body": "听写后应用转换来重写、清理或重组文本。"
+    },
+    "detail": {
+      "autosave": "自动保存已开启",
+      "reset": "重置",
+      "close": "关闭",
+      "toUse": "使用",
+      "chooseShortcut": "选择键盘快捷键",
+      "selectRules": "选择 {{name}} 的规则",
+      "customizeNamedPrompt": "自定义你的 {{name}} 提示词",
+      "customizeTemplatePrompt": "自定义提示词。（这是提示词最终输出的样子）",
+      "exampleTitle": "转换后文本示例",
+      "seeUpdates": "查看更新",
+      "addExamples": "添加写作示例",
+      "addExamplesHint": "添加你的写作示例，帮助 ShalomFlow 学习你的独特风格。提供的样本越多，越能贴合你的语气。",
+      "addExample": "添加示例",
+      "removeExample": "移除示例",
+      "createTitle": "创建你自己的",
+      "createSubtitle": "设置键盘快捷键来应用此转换。",
+      "nameLabel": "为你的转换快捷键命名",
+      "namePlaceholder": "老板模式",
+      "customizePrompt": "自定义提示词",
+      "promptPlaceholder": "你希望此转换如何改变你的文本？"
     }
   }
 }

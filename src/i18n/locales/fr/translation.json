@@ -31,7 +31,9 @@
     "characters": "Profils",
     "memory": "Mémoire",
     "collapse": "Réduire la barre latérale",
-    "expand": "Développer la barre latérale"
+    "expand": "Développer la barre latérale",
+    "styles": "Styles",
+    "transforms": "Transformations"
   },
   "window": {
     "minimize": "Réduire",
@@ -45,7 +47,8 @@
     "assistant": "Configurez l'assistant, puis réglez sa voix, la vision d'écran et la recherche web.",
     "history": "Vos dictées récentes, vos générations Flow et vos conversations avec l'assistant, conservées sur cet appareil.",
     "about": "Version, langue de l'application, emplacements des données et crédits.",
-    "debug": "Diagnostics et outils de développement."
+    "debug": "Diagnostics et outils de développement.",
+    "styles": "Comment votre texte dicté est mis en forme dans chaque type d'application."
   },
   "onboarding": {
     "subtitle": "Pour commencer, choisissez un modèle de transcription",
@@ -444,6 +447,11 @@
         "info": "Pendant que vous maintenez votre raccourci d'enregistrement, appuyez sur cette touche pour verrouiller l'enregistrement mains libres : vous pouvez alors relâcher et continuer à parler. Choisissez n'importe quelle touche qui ne fait pas partie de votre raccourci d'enregistrement, ou effacez-la pour désactiver cette option.",
         "off": "Désactivé",
         "clear": "Effacer"
+      },
+      "polishDictation": {
+        "label": "Peaufiner la dictée",
+        "description": "Réécrit chaque dictée avec la transformation Peaufiner avant de coller.",
+        "info": "Indépendant de l'activation des Transformations, qui ne concerne que les raccourcis de sélection. Utilise la transformation Peaufiner exactement comme configurée sur la page Transformations (règles, instructions personnalisées et vos exemples d'écriture) et le même fournisseur d'IA. Ignoré quand la dictée a déjà utilisé la correction IA, pour ne jamais réécrire le texte deux fois ; si la réécriture échoue, la transcription brute est collée telle quelle."
       }
     },
     "models": {
@@ -1489,7 +1497,8 @@
     "locked": "Enregistrement mains libres — appuyez à nouveau sur le raccourci pour arrêter",
     "cancel": "Annuler",
     "done": "Terminé",
-    "askAssistant": "Demander à l'assistant au lieu de taper ce texte"
+    "askAssistant": "Demander à l'assistant au lieu de taper ce texte",
+    "transforming": "Transformation…"
   },
   "assistant": {
     "title": "Assistant",
@@ -1600,6 +1609,77 @@
       "preparing": "Configuration du moteur local (premier lancement)…",
       "extracting": "Installation du moteur local…",
       "short": "Configuration du moteur…"
+    }
+  },
+  "styles": {
+    "beta": "Bêta",
+    "tabs": {
+      "personal": "Messages personnels",
+      "work": "Messages professionnels",
+      "email": "E-mail",
+      "other": "Autres",
+      "autoCleanup": "Nettoyage auto"
+    },
+    "promo": {
+      "personal": "Ce style s'applique dans les messageries personnelles",
+      "work": "Ce style s'applique dans les messageries professionnelles",
+      "email": "Ce style s'applique dans toutes les principales applications e-mail",
+      "other": "Ce style s'applique dans toutes les autres applications",
+      "autoCleanup": "Nettoyage automatique des mots de remplissage et faux départs",
+      "note": "La mise en forme du style ne s'applique qu'en anglais. D'autres langues arrivent bientôt."
+    },
+    "presets": {
+      "formal": "Formel.",
+      "casual": "Décontracté",
+      "veryCasual": "très décontracté",
+      "excited": "Enthousiaste !",
+      "off": "Désactivé",
+      "light": "Léger",
+      "aggressive": "Agressif"
+    },
+    "rules": {
+      "capsPunctuation": "Majuscules + ponctuation",
+      "capsLessPunctuation": "Majuscules + moins de ponctuation",
+      "noCapsLessPunctuation": "Sans majuscules + moins de ponctuation",
+      "moreExclamations": "Plus d'exclamations",
+      "keepRaw": "Conserver la transcription brute",
+      "trimFillers": "Supprimer les mots de remplissage",
+      "trimFillersTighten": "Supprimer les mots de remplissage + condenser"
+    }
+  },
+  "transformsPage": {
+    "beta": "Bêta",
+    "optIn": "Activer",
+    "myTransforms": "Mes transformations",
+    "resetDefaults": "Réinitialiser",
+    "createNew": "Créer",
+    "createOwn": "Créez la vôtre",
+    "uploadPrompt": "Importez votre propre prompt",
+    "promo": {
+      "title": "Les transformations fonctionnent partout où vous écrivez",
+      "body": "Appliquez une transformation pour réécrire, nettoyer ou restructurer le texte après la dictée."
+    },
+    "detail": {
+      "autosave": "Sauvegarde auto activée",
+      "reset": "Réinitialiser",
+      "close": "Fermer",
+      "toUse": "pour utiliser",
+      "chooseShortcut": "Choisissez un raccourci clavier",
+      "selectRules": "Sélectionnez les règles pour {{name}}",
+      "customizeNamedPrompt": "Personnalisez votre prompt {{name}}",
+      "customizeTemplatePrompt": "Personnalisez le prompt. (Voici à quoi ressemblera le résultat final)",
+      "exampleTitle": "Exemple de texte transformé",
+      "seeUpdates": "Voir les modifications",
+      "addExamples": "Ajoutez des exemples d'écriture",
+      "addExamplesHint": "Ajoutez des exemples de vos écrits pour aider ShalomFlow à apprendre votre style unique. Plus vous fournissez d'exemples, mieux il reproduira votre voix.",
+      "addExample": "Ajouter un exemple",
+      "removeExample": "Supprimer l'exemple",
+      "createTitle": "Créez la vôtre",
+      "createSubtitle": "Configurez un raccourci clavier pour appliquer cette transformation.",
+      "nameLabel": "Nommez votre raccourci de transformation",
+      "namePlaceholder": "Mode patron",
+      "customizePrompt": "Personnaliser le prompt",
+      "promptPlaceholder": "Comment cette transformation doit-elle modifier votre texte ?"
     }
   }
 }

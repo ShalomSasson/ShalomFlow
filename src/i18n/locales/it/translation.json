@@ -31,7 +31,9 @@
     "characters": "Profili",
     "memory": "Memoria",
     "collapse": "Comprimi barra laterale",
-    "expand": "Espandi barra laterale"
+    "expand": "Espandi barra laterale",
+    "styles": "Stili",
+    "transforms": "Trasformazioni"
   },
   "window": {
     "minimize": "Riduci a icona",
@@ -45,7 +47,8 @@
     "assistant": "Configura l'assistente, poi regola voce, visione dello schermo e ricerca web.",
     "history": "Le tue dettature recenti, le generazioni con Flow e le chat con l'assistente, conservate su questo dispositivo.",
     "about": "Versione, lingua dell'app, percorsi dei dati e riconoscimenti.",
-    "debug": "Diagnostica e strumenti per sviluppatori."
+    "debug": "Diagnostica e strumenti per sviluppatori.",
+    "styles": "Come viene formattato il testo dettato in ogni tipo di app."
   },
   "onboarding": {
     "subtitle": "Per cominciare, scegli un modello di riconoscimento vocale",
@@ -444,6 +447,11 @@
         "info": "Mentre tieni premuta la scorciatoia di registrazione, tocca questo tasto per bloccare la registrazione a mani libere: puoi rilasciare e continuare a parlare. Scegli un tasto che non faccia parte della scorciatoia di registrazione, oppure cancellalo per disattivare la funzione.",
         "off": "Disattivato",
         "clear": "Cancella"
+      },
+      "polishDictation": {
+        "label": "Rifinisci la dettatura",
+        "description": "Riscrive ogni dettatura con la trasformazione Rifinisci prima di incollare.",
+        "info": "Indipendente dall'attivazione delle Trasformazioni, che riguarda solo le scorciatoie di selezione. Usa la trasformazione Rifinisci esattamente come configurata nella pagina Trasformazioni (regole, istruzioni personalizzate e i tuoi esempi di scrittura) e lo stesso provider IA. Saltata quando la dettatura ha già usato la correzione IA, così il testo non viene mai riscritto due volte; se la riscrittura fallisce, viene incollata la trascrizione grezza invariata."
       }
     },
     "models": {
@@ -1489,7 +1497,8 @@
     "locked": "Registrazione a mani libere — premi di nuovo la scorciatoia per fermarti",
     "cancel": "Annulla",
     "done": "Fatto",
-    "askAssistant": "Chiedi all'assistente invece di digitare questo testo"
+    "askAssistant": "Chiedi all'assistente invece di digitare questo testo",
+    "transforming": "Trasformazione…"
   },
   "assistant": {
     "title": "Assistente",
@@ -1600,6 +1609,77 @@
       "preparing": "Configurazione del motore locale (primo avvio)…",
       "extracting": "Installazione del motore locale…",
       "short": "Configurazione del motore…"
+    }
+  },
+  "styles": {
+    "beta": "Beta",
+    "tabs": {
+      "personal": "Messaggi personali",
+      "work": "Messaggi di lavoro",
+      "email": "Email",
+      "other": "Altro",
+      "autoCleanup": "Pulizia automatica"
+    },
+    "promo": {
+      "personal": "Questo stile si applica nei messenger personali",
+      "work": "Questo stile si applica nei messenger di lavoro",
+      "email": "Questo stile si applica in tutte le principali app di posta",
+      "other": "Questo stile si applica in tutte le altre app",
+      "autoCleanup": "Rimozione automatica di intercalari e false partenze",
+      "note": "La formattazione dello stile vale solo per l'inglese. Altre lingue in arrivo."
+    },
+    "presets": {
+      "formal": "Formale.",
+      "casual": "Informale",
+      "veryCasual": "molto informale",
+      "excited": "Entusiasta!",
+      "off": "Disattivato",
+      "light": "Leggera",
+      "aggressive": "Aggressiva"
+    },
+    "rules": {
+      "capsPunctuation": "Maiuscole + punteggiatura",
+      "capsLessPunctuation": "Maiuscole + meno punteggiatura",
+      "noCapsLessPunctuation": "Niente maiuscole + meno punteggiatura",
+      "moreExclamations": "Più esclamazioni",
+      "keepRaw": "Mantieni la trascrizione grezza",
+      "trimFillers": "Rimuovi gli intercalari",
+      "trimFillersTighten": "Rimuovi gli intercalari + sintetizza"
+    }
+  },
+  "transformsPage": {
+    "beta": "Beta",
+    "optIn": "Attiva",
+    "myTransforms": "Le mie trasformazioni",
+    "resetDefaults": "Ripristina predefiniti",
+    "createNew": "Crea nuova",
+    "createOwn": "Creane una tua",
+    "uploadPrompt": "Carica il tuo prompt",
+    "promo": {
+      "title": "Le trasformazioni funzionano ovunque scrivi",
+      "body": "Applica una trasformazione per riscrivere, ripulire o ristrutturare il testo dopo la dettatura."
+    },
+    "detail": {
+      "autosave": "Salvataggio automatico attivo",
+      "reset": "Ripristina",
+      "close": "Chiudi",
+      "toUse": "per usare",
+      "chooseShortcut": "Scegli una scorciatoia da tastiera",
+      "selectRules": "Seleziona le regole per {{name}}",
+      "customizeNamedPrompt": "Personalizza il tuo prompt {{name}}",
+      "customizeTemplatePrompt": "Personalizza il prompt. (Ecco come apparirà l'output finale)",
+      "exampleTitle": "Esempio di testo trasformato",
+      "seeUpdates": "Vedi modifiche",
+      "addExamples": "Aggiungi esempi di scrittura",
+      "addExamplesHint": "Aggiungi esempi dei tuoi testi per aiutare ShalomFlow a imparare il tuo stile unico. Più campioni fornisci, meglio riprodurrà la tua voce.",
+      "addExample": "Aggiungi un esempio",
+      "removeExample": "Rimuovi esempio",
+      "createTitle": "Creane una tua",
+      "createSubtitle": "Imposta una scorciatoia da tastiera per applicare questa trasformazione.",
+      "nameLabel": "Dai un nome alla tua trasformazione",
+      "namePlaceholder": "Modalità capo",
+      "customizePrompt": "Personalizza il prompt",
+      "promptPlaceholder": "Come vuoi che questa trasformazione modifichi il tuo testo?"
     }
   }
 }

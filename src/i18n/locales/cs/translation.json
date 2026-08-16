@@ -31,7 +31,9 @@
     "characters": "Profily",
     "memory": "Paměť",
     "collapse": "Sbalit postranní panel",
-    "expand": "Rozbalit postranní panel"
+    "expand": "Rozbalit postranní panel",
+    "styles": "Styly",
+    "transforms": "Transformace"
   },
   "window": {
     "minimize": "Minimalizovat",
@@ -45,7 +47,8 @@
     "assistant": "Nastavte asistenta a pak vylaďte jeho hlas, zobrazení obrazovky a vyhledávání na webu.",
     "history": "Vaše nedávná diktování, generování pomocí Flow a chaty s asistentem, uložené na tomto zařízení.",
     "about": "Verze, jazyk aplikace, umístění dat a poděkování.",
-    "debug": "Diagnostika a nástroje pro vývojáře."
+    "debug": "Diagnostika a nástroje pro vývojáře.",
+    "styles": "Jak je diktovaný text formátován v jednotlivých typech aplikací."
   },
   "onboarding": {
     "subtitle": "Pro začátek vyberte model pro přepis",
@@ -444,6 +447,11 @@
         "info": "Když držíte zkratku pro nahrávání, klepnutím na tuto klávesu uzamknete nahrávání bez držení, takže můžete klávesy pustit a mluvit dál. Vyberte jakoukoli klávesu, která není součástí vaší zkratky pro nahrávání, nebo ji vymažte a funkci tím vypněte.",
         "off": "Vypnuto",
         "clear": "Vymazat"
+      },
+      "polishDictation": {
+        "label": "Vylepšit diktát",
+        "description": "Před vložením přepíše každý diktát transformací Vylepšit.",
+        "info": "Nezávislé na zapnutí Transformací, které řídí jen zkratky pro výběr. Používá transformaci Vylepšit přesně tak, jak je nastavena na stránce Transformace (pravidla, vlastní pokyny a vaše ukázky psaní) a stejného poskytovatele AI. Přeskočí se, pokud diktát už prošel AI korekcí, takže text se nikdy nepřepisuje dvakrát; při selhání se vloží surový přepis beze změny."
       }
     },
     "models": {
@@ -1489,7 +1497,8 @@
     "locked": "Nahrávám bez držení — dalším stiskem zkratky nahrávání zastavíte",
     "cancel": "Zrušit",
     "done": "Hotovo",
-    "askAssistant": "Zeptat se asistenta místo vypsání tohoto textu"
+    "askAssistant": "Zeptat se asistenta místo vypsání tohoto textu",
+    "transforming": "Transformuji…"
   },
   "assistant": {
     "title": "Asistent",
@@ -1600,6 +1609,77 @@
       "preparing": "Nastavuji místní jádro (první spuštění)…",
       "extracting": "Instaluji místní jádro…",
       "short": "Nastavuji jádro…"
+    }
+  },
+  "styles": {
+    "beta": "Beta",
+    "tabs": {
+      "personal": "Osobní zprávy",
+      "work": "Pracovní zprávy",
+      "email": "E-mail",
+      "other": "Ostatní",
+      "autoCleanup": "Automatické čištění"
+    },
+    "promo": {
+      "personal": "Tento styl se používá v osobních messengerech",
+      "work": "Tento styl se používá v pracovních messengerech",
+      "email": "Tento styl se používá ve všech hlavních e-mailových aplikacích",
+      "other": "Tento styl se používá ve všech ostatních aplikacích",
+      "autoCleanup": "Automatické odstranění výplňových slov a přeřeknutí",
+      "note": "Formátování stylu funguje zatím jen v angličtině. Další jazyky brzy."
+    },
+    "presets": {
+      "formal": "Formální.",
+      "casual": "Neformální",
+      "veryCasual": "hodně neformální",
+      "excited": "Nadšený!",
+      "off": "Vypnuto",
+      "light": "Mírné",
+      "aggressive": "Důkladné"
+    },
+    "rules": {
+      "capsPunctuation": "Velká písmena + interpunkce",
+      "capsLessPunctuation": "Velká písmena + méně interpunkce",
+      "noCapsLessPunctuation": "Bez velkých písmen + méně interpunkce",
+      "moreExclamations": "Více vykřičníků",
+      "keepRaw": "Ponechat surový přepis",
+      "trimFillers": "Odstranit výplňová slova",
+      "trimFillersTighten": "Odstranit výplňová slova + zhutnit"
+    }
+  },
+  "transformsPage": {
+    "beta": "Beta",
+    "optIn": "Zapnout",
+    "myTransforms": "Moje transformace",
+    "resetDefaults": "Obnovit výchozí",
+    "createNew": "Vytvořit novou",
+    "createOwn": "Vytvořte si vlastní",
+    "uploadPrompt": "Nahrajte vlastní prompt",
+    "promo": {
+      "title": "Transformace fungují všude, kde píšete",
+      "body": "Použijte transformaci k přepsání, vyčištění nebo přeuspořádání textu po diktování."
+    },
+    "detail": {
+      "autosave": "Automatické ukládání zapnuto",
+      "reset": "Obnovit",
+      "close": "Zavřít",
+      "toUse": "pro použití",
+      "chooseShortcut": "Zvolte klávesovou zkratku",
+      "selectRules": "Vyberte pravidla pro {{name}}",
+      "customizeNamedPrompt": "Přizpůsobte si prompt pro {{name}}",
+      "customizeTemplatePrompt": "Přizpůsobte prompt. (Takto bude vypadat konečný výstup promptu)",
+      "exampleTitle": "Příklad transformovaného textu",
+      "seeUpdates": "Zobrazit změny",
+      "addExamples": "Přidejte ukázky svého psaní",
+      "addExamplesHint": "Přidejte ukázky svého psaní, aby se ShalomFlow naučil váš jedinečný styl. Čím více ukázek poskytnete, tím lépe se trefí do vašeho hlasu.",
+      "addExample": "Přidat ukázku",
+      "removeExample": "Odebrat ukázku",
+      "createTitle": "Vytvořte si vlastní",
+      "createSubtitle": "Nastavte klávesovou zkratku pro použití této transformace.",
+      "nameLabel": "Pojmenujte svou transformaci",
+      "namePlaceholder": "Režim šéfa",
+      "customizePrompt": "Přizpůsobit prompt",
+      "promptPlaceholder": "Jak má tato transformace měnit váš text?"
     }
   }
 }

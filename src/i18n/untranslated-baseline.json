@@ -185,6 +185,8 @@
       "settings.postProcessing.api.model.placeholderApple",
       "settings.postProcessing.api.model.title",
       "settings.postProcessing.prompts.title",
+      "styles.beta",
+      "transformsPage.beta",
       "tray.model"
     ],
     "englishFromOtherKey": []
@@ -267,7 +269,9 @@
       "settings.postProcessing.api.baseUrl.placeholder",
       "settings.postProcessing.api.model.placeholderApple",
       "settings.postProcessing.prompts.title",
-      "sidebar.debug"
+      "sidebar.debug",
+      "styles.beta",
+      "transformsPage.beta"
     ],
     "englishFromOtherKey": [
       "appearance.textSizeDefault",
@@ -339,7 +343,10 @@
       "settings.postProcessing.api.model.placeholderApple",
       "settings.postProcessing.prompts.title",
       "settings.postProcessing.tone.options.formal",
-      "sidebar.general"
+      "sidebar.general",
+      "styles.beta",
+      "styles.presets.formal",
+      "transformsPage.beta"
     ],
     "englishFromOtherKey": []
   },
@@ -425,7 +432,8 @@
       "settings.postProcessing.prompts.title",
       "settings.sound.microphone.title",
       "settings.sound.volume.title",
-      "sidebar.assistant"
+      "sidebar.assistant",
+      "sidebar.styles"
     ],
     "englishFromOtherKey": [
       "onboarding.steps.speechToText"
@@ -569,6 +577,9 @@
       "settings.postProcessing.prompts.title",
       "settings.sound.volume.title",
       "sidebar.debug",
+      "styles.beta",
+      "styles.tabs.email",
+      "transformsPage.beta",
       "tray.home"
     ],
     "englishFromOtherKey": []
@@ -764,6 +775,8 @@
       "settings.postProcessing.api.model.placeholderApple",
       "settings.postProcessing.api.model.title",
       "settings.postProcessing.prompts.title",
+      "styles.beta",
+      "transformsPage.beta",
       "tray.model"
     ],
     "englishFromOtherKey": []
@@ -836,7 +849,11 @@
       "settings.postProcessing.prompts.title",
       "settings.postProcessing.tone.options.casual",
       "settings.postProcessing.tone.options.formal",
-      "settings.sound.volume.title"
+      "settings.sound.volume.title",
+      "styles.beta",
+      "styles.presets.casual",
+      "styles.presets.formal",
+      "transformsPage.beta"
     ],
     "englishFromOtherKey": []
   },
@@ -969,7 +986,9 @@
       "settings.postProcessing.api.appleIntelligence.title",
       "settings.postProcessing.api.baseUrl.placeholder",
       "settings.postProcessing.api.model.placeholderApple",
-      "settings.postProcessing.prompts.title"
+      "settings.postProcessing.prompts.title",
+      "styles.beta",
+      "transformsPage.beta"
     ],
     "englishFromOtherKey": [
       "appearance.textSizeDefault",
@@ -1041,6 +1060,8 @@
       "settings.postProcessing.api.model.placeholderApple",
       "settings.postProcessing.api.model.title",
       "settings.postProcessing.prompts.title",
+      "styles.beta",
+      "transformsPage.beta",
       "tray.model"
     ],
     "englishFromOtherKey": [
@@ -1167,7 +1188,10 @@
       "settings.postProcessing.api.appleIntelligence.title",
       "settings.postProcessing.api.baseUrl.placeholder",
       "settings.postProcessing.api.model.placeholderApple",
-      "settings.postProcessing.prompts.title"
+      "settings.postProcessing.prompts.title",
+      "styles.beta",
+      "styles.tabs.email",
+      "transformsPage.beta"
     ],
     "englishFromOtherKey": []
   },

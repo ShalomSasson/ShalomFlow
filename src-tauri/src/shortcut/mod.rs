@@ -765,6 +765,111 @@ pub fn update_custom_words(app: AppHandle, words: Vec<String>) -> Result<(), Str
 
 #[tauri::command]
 #[specta::specta]
+pub fn set_transforms_enabled(app: AppHandle, enabled: bool) -> Result<(), String> {
+    let mut settings = settings::get_settings(&app);
+    settings.transforms_enabled = enabled;
+    settings::write_settings(&app, settings);
+    Ok(())
+}
+
+#[tauri::command]
+#[specta::specta]
+pub fn set_polish_after_dictation(app: AppHandle, enabled: bool) -> Result<(), String> {
+    let mut settings = settings::get_settings(&app);
+    settings.polish_after_dictation = enabled;
+    settings::write_settings(&app, settings);
+    Ok(())
+}
+
+#[tauri::command]
+#[specta::specta]
+pub fn set_style_prefs(app: AppHandle, prefs: settings::StylePrefs) -> Result<(), String> {
+    let mut settings = settings::get_settings(&app);
+    settings.style_prefs = prefs;
+    settings::write_settings(&app, settings);
+    Ok(())
+}
+
+#[tauri::command]
+#[specta::specta]
+pub fn set_transform_writing_examples(
+    app: AppHandle,
+    examples: Vec<String>,
+) -> Result<(), String> {
+    let mut settings = settings::get_settings(&app);
+    settings.transform_writing_examples = examples;
+    settings::write_settings(&app, settings);
+    Ok(())
+}
+
+/// Replace the transform set and keep the bindings map in sync with it:
+/// a binding is created (and its shortcut registered) for every transform
+/// that doesn't have one yet, and bindings whose transform was removed are
+/// unregistered and dropped. Existing bindings are left untouched — shortcut
+/// *changes* go through `change_binding` so they get the usual validation
+/// and re-registration path.
+#[tauri::command]
+#[specta::specta]
+pub fn update_transforms(
+    app: AppHandle,
+    transforms: Vec<settings::Transform>,
+) -> Result<(), String> {
+    let mut settings = settings::get_settings(&app);
+
+    let new_ids: std::collections::HashSet<&str> =
+        transforms.iter().map(|t| t.id.as_str()).collect();
+
+    // Drop bindings whose transform no longer exists.
+    let stale: Vec<String> = settings
+        .bindings
+        .keys()
+        .filter(|key| {
+            settings::transform_id_from_binding(key)
+                .is_some_and(|id| !new_ids.contains(id))
+        })
+        .cloned()
+        .collect();
+    for key in stale {
+        if let Some(binding) = settings.bindings.remove(&key) {
+            if !binding.current_binding.trim().is_empty() {
+                if let Err(e) = unregister_shortcut(&app, binding) {
+                    warn!("update_transforms: failed to unregister {key}: {e}");
+                }
+            }
+        }
+    }
+
+    // Create bindings for transforms that don't have one yet (user-created).
+    for transform in &transforms {
+        let key = settings::transform_binding_id(&transform.id);
+        if settings.bindings.contains_key(&key) {
+            continue;
+        }
+        let binding = ShortcutBinding {
+            id: key.clone(),
+            name: format!("Transform: {}", transform.name),
+            description: format!(
+                "Replaces the selected text using the {} transform.",
+                transform.name
+            ),
+            default_binding: transform.shortcut.clone(),
+            current_binding: transform.shortcut.clone(),
+        };
+        if !binding.current_binding.trim().is_empty() {
+            if let Err(e) = register_shortcut(&app, binding.clone()) {
+                warn!("update_transforms: failed to register {key}: {e}");
+            }
+        }
+        settings.bindings.insert(key, binding);
+    }
+
+    settings.transforms = transforms;
+    settings::write_settings(&app, settings);
+    Ok(())
+}
+
+#[tauri::command]
+#[specta::specta]
 pub fn change_spoken_emojis_enabled_setting(app: AppHandle, enabled: bool) -> Result<(), String> {
     let mut settings = settings::get_settings(&app);
     settings.spoken_emojis_enabled = enabled;

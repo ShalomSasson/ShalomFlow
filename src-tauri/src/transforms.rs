@@ -167,6 +167,56 @@ async fn wait_for_generation_cancel(generation: u64) {
     }
 }
 
+/// Rewrite a freshly transcribed dictation with the Polish transform.
+///
+/// Used by the `polish_after_dictation` setting, which is independent of
+/// `transforms_enabled` (that flag gates only the selection shortcuts).
+/// Returns `None` on any failure — a missing model, a timeout, an empty
+/// result — so the caller always falls back to the raw transcript; a
+/// dictation must never be lost to a cleanup step.
+pub(crate) async fn polish_transcript(settings: &AppSettings, text: &str) -> Option<String> {
+    let transform = settings
+        .transforms
+        .iter()
+        .find(|transform| transform.id == "polish")?;
+    let llm = crate::flow::resolve_flow_llm(settings)?;
+    let system_prompt = compose_system_prompt(transform, &settings.transform_writing_examples);
+
+    let generation = tokio::time::timeout(
+        Duration::from_secs(TRANSFORM_TIMEOUT_SECS + TRANSFORM_ENGINE_START_TIMEOUT_SECS),
+        crate::llm_client::send_chat_completion_with_schema(
+            &llm.provider,
+            llm.api_key.clone(),
+            &llm.model,
+            text.to_string(),
+            Some(system_prompt),
+            None,
+            None,
+            None,
+        ),
+    )
+    .await;
+
+    match generation {
+        Ok(Ok(Some(raw))) => crate::paste_safety::sanitize_model_output(&raw),
+        Ok(Ok(None)) => {
+            warn!("polish_transcript: model returned no content");
+            None
+        }
+        Ok(Err(err)) => {
+            error!("polish_transcript: generation failed: {err}");
+            None
+        }
+        Err(_) => {
+            warn!(
+                "polish_transcript: timed out after {}s",
+                TRANSFORM_TIMEOUT_SECS + TRANSFORM_ENGINE_START_TIMEOUT_SECS
+            );
+            None
+        }
+    }
+}
+
 pub(crate) enum TransformPlan {
     Run(Transform),
     Disabled,
@@ -214,14 +264,6 @@ pub async fn run_transform(app: AppHandle, transform_id: String) {
         return;
     };
 
-    // Bind Esc for this transform's whole lifetime — mirroring how a
-    // recording registers/unregisters the same global shortcut — and snapshot
-    // the cancellation generation so a stale press aimed at an earlier
-    // transform can never cancel this one (see `flow::FLOW_CANCEL_GENERATION`
-    // for the same pattern).
-    let _cancel_shortcut_guard = CancelShortcutGuard::register(&app);
-    let cancel_generation = cancellation_generation();
-
     let Some(llm) = crate::flow::resolve_flow_llm(&settings) else {
         crate::utils::show_overlay_notice(&app, "transformNoModel");
         return;
@@ -240,12 +282,37 @@ pub async fn run_transform(app: AppHandle, transform_id: String) {
         }
     };
 
-    let system_prompt = compose_system_prompt(&transform, &[]);
+    // The selection is in hand and the slow part (the LLM round trip) starts
+    // here — surface it. Every failure path below replaces this state with a
+    // self-hiding notice; the success and cancel paths hide it explicitly.
+    crate::utils::show_transforming_overlay(&app);
+
+    // Bind Esc only from here on — right before the one long-running,
+    // cancellable step (the LLM call below) — and snapshot the cancellation
+    // generation so a stale press aimed at an earlier transform can never
+    // cancel this one (see `flow::FLOW_CANCEL_GENERATION` for the same
+    // pattern). Registering any earlier meant the "no model"/"no selection"
+    // paths above would register and immediately unregister within
+    // microseconds; both operations are fire-and-forget
+    // `tauri::async_runtime::spawn` calls with no ordering guarantee between
+    // them (`shortcut::tauri_impl::register_cancel_shortcut` /
+    // `unregister_cancel_shortcut`), so the unregister could in principle run
+    // before the register even executes, leaving Esc registered with nothing
+    // left to ever release it. Placing this immediately before the only
+    // `.await` that takes real time (a network round trip, not a
+    // microsecond) gives the runtime a genuine opportunity to have already
+    // run the earlier-spawned register task before this guard can possibly
+    // reach `Drop`.
+    let _cancel_shortcut_guard = CancelShortcutGuard::register(&app);
+    let cancel_generation = cancellation_generation();
+
+    let system_prompt = compose_system_prompt(&transform, &settings.transform_writing_examples);
 
     let generation = tokio::select! {
         biased;
         _ = wait_for_generation_cancel(cancel_generation) => {
             debug!("transforms: cancelled while generating");
+            crate::utils::hide_recording_overlay(&app);
             return;
         }
         result = tokio::time::timeout(
@@ -299,9 +366,14 @@ pub async fn run_transform(app: AppHandle, transform_id: String) {
     // check — the whole point of the signal is that a cancelled transform
     // must never modify the document, so this is not optional even though the
     // race above already covers the far more likely case (cancelling during
-    // the wait itself).
+    // the wait itself). This is a fast-path only, not the last word: it just
+    // avoids scheduling a pointless main-thread hop. The closure below
+    // re-checks right before the actual paste, closing the gap between this
+    // check and whenever the main thread — which can be busy with unrelated
+    // UI work — actually wakes up to run it.
     if is_generation_cancelled(cancel_generation) {
         debug!("transforms: cancelled before paste");
+        crate::utils::hide_recording_overlay(&app);
         return;
     }
 
@@ -310,6 +382,14 @@ pub async fn run_transform(app: AppHandle, transform_id: String) {
     // it replaces the selection and stops.
     let paste_app = app.clone();
     let paste_result = crate::input::on_main_thread(&app, move || {
+        // Re-check here, not just before dispatching: an Esc press landing
+        // while this closure sits queued for the main thread would otherwise
+        // still paste. An atomic load costs nothing, so there's no reason to
+        // leave that window open.
+        if is_generation_cancelled(cancel_generation) {
+            debug!("transforms: cancelled inside the paste closure");
+            return Ok(());
+        }
         crate::clipboard::paste_with_behavior(
             clean,
             paste_app,
@@ -324,6 +404,8 @@ pub async fn run_transform(app: AppHandle, transform_id: String) {
     if let Ok(Err(err)) | Err(err) = paste_result {
         error!("transforms: paste failed: {err}");
         crate::utils::show_overlay_notice(&app, "transformFailed");
+    } else {
+        crate::utils::hide_recording_overlay(&app);
     }
 }
 

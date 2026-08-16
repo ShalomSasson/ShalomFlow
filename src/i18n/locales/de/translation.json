@@ -31,7 +31,9 @@
     "characters": "Profile",
     "memory": "Gedächtnis",
     "collapse": "Seitenleiste einklappen",
-    "expand": "Seitenleiste ausklappen"
+    "expand": "Seitenleiste ausklappen",
+    "styles": "Stile",
+    "transforms": "Transformationen"
   },
   "window": {
     "minimize": "Minimieren",
@@ -45,7 +47,8 @@
     "assistant": "Richte den Assistenten ein und stelle dann Stimme, Bildschirmansicht und Websuche ein.",
     "history": "Deine letzten Diktate, Flow-Ergebnisse und Assistenten-Chats, gespeichert auf diesem Gerät.",
     "about": "Version, App-Sprache, Datenspeicherorte und Danksagungen.",
-    "debug": "Diagnose und Entwicklerwerkzeuge."
+    "debug": "Diagnose und Entwicklerwerkzeuge.",
+    "styles": "Wie dein diktierter Text in den einzelnen App-Typen formatiert wird."
   },
   "onboarding": {
     "subtitle": "Wähle ein Transkriptionsmodell, um loszulegen",
@@ -444,6 +447,11 @@
         "info": "Tippe diese Taste an, während du dein Aufnahme-Tastenkürzel hältst, um die freihändige Aufnahme festzustellen — dann kannst du loslassen und weitersprechen. Wähle eine Taste, die nicht Teil deines Aufnahme-Tastenkürzels ist, oder lösche sie, um das abzuschalten.",
         "off": "Aus",
         "clear": "Löschen"
+      },
+      "polishDictation": {
+        "label": "Diktat polieren",
+        "description": "Schreibt jedes Diktat vor dem Einfügen mit der Polieren-Transformation um.",
+        "info": "Unabhängig vom Transformations-Opt-in, das nur die Auswahl-Shortcuts steuert. Verwendet die Polieren-Transformation genau wie auf der Transformationen-Seite konfiguriert (Regeln, eigene Anweisungen und deine Schreibbeispiele) und denselben KI-Anbieter. Wird übersprungen, wenn ein Diktat bereits die KI-Korrektur durchlaufen hat, damit Text nie zweimal umgeschrieben wird; schlägt das Umschreiben fehl, wird das rohe Transkript unverändert eingefügt."
       }
     },
     "models": {
@@ -1489,7 +1497,8 @@
     "locked": "Freihändige Aufnahme — drücke das Tastenkürzel erneut zum Stoppen",
     "cancel": "Abbrechen",
     "done": "Fertig",
-    "askAssistant": "Den Assistenten fragen, statt das zu tippen"
+    "askAssistant": "Den Assistenten fragen, statt das zu tippen",
+    "transforming": "Transformiere…"
   },
   "assistant": {
     "title": "Assistent",
@@ -1600,6 +1609,77 @@
       "preparing": "Lokale Engine wird eingerichtet (erster Start)…",
       "extracting": "Lokale Engine wird installiert…",
       "short": "Engine wird eingerichtet…"
+    }
+  },
+  "styles": {
+    "beta": "Beta",
+    "tabs": {
+      "personal": "Private Nachrichten",
+      "work": "Arbeitsnachrichten",
+      "email": "E-Mail",
+      "other": "Sonstiges",
+      "autoCleanup": "Auto-Bereinigung"
+    },
+    "promo": {
+      "personal": "Dieser Stil gilt in privaten Messengern",
+      "work": "Dieser Stil gilt in Arbeits-Messengern",
+      "email": "Dieser Stil gilt in allen gängigen E-Mail-Apps",
+      "other": "Dieser Stil gilt in allen anderen Apps",
+      "autoCleanup": "Automatisches Entfernen von Füllwörtern und Fehlstarts",
+      "note": "Stil-Formatierung gilt nur für Englisch. Weitere Sprachen folgen bald."
+    },
+    "presets": {
+      "formal": "Formell.",
+      "casual": "Locker",
+      "veryCasual": "sehr locker",
+      "excited": "Begeistert!",
+      "off": "Aus",
+      "light": "Leicht",
+      "aggressive": "Aggressiv"
+    },
+    "rules": {
+      "capsPunctuation": "Großschreibung + Interpunktion",
+      "capsLessPunctuation": "Großschreibung + weniger Interpunktion",
+      "noCapsLessPunctuation": "Keine Großschreibung + weniger Interpunktion",
+      "moreExclamations": "Mehr Ausrufezeichen",
+      "keepRaw": "Rohes Transkript behalten",
+      "trimFillers": "Füllwörter entfernen",
+      "trimFillersTighten": "Füllwörter entfernen + straffen"
+    }
+  },
+  "transformsPage": {
+    "beta": "Beta",
+    "optIn": "Aktivieren",
+    "myTransforms": "Meine Transformationen",
+    "resetDefaults": "Auf Standard zurücksetzen",
+    "createNew": "Neu erstellen",
+    "createOwn": "Eigene erstellen",
+    "uploadPrompt": "Eigenen Prompt hochladen",
+    "promo": {
+      "title": "Transformationen funktionieren überall, wo du schreibst",
+      "body": "Wende eine Transformation an, um Text nach dem Diktieren umzuschreiben, zu bereinigen oder neu zu strukturieren."
+    },
+    "detail": {
+      "autosave": "Autospeichern an",
+      "reset": "Zurücksetzen",
+      "close": "Schließen",
+      "toUse": "zum Verwenden",
+      "chooseShortcut": "Tastenkürzel wählen",
+      "selectRules": "Regeln für {{name}} auswählen",
+      "customizeNamedPrompt": "{{name}}-Prompt anpassen",
+      "customizeTemplatePrompt": "Prompt anpassen. (So wird die endgültige Ausgabe des Prompts aussehen)",
+      "exampleTitle": "Beispiel für transformierten Text",
+      "seeUpdates": "Änderungen ansehen",
+      "addExamples": "Schreibbeispiele hinzufügen",
+      "addExamplesHint": "Füge Beispiele deiner Texte hinzu, damit ShalomFlow deinen einzigartigen Stil lernt. Je mehr Beispiele, desto besser trifft es deine Stimme.",
+      "addExample": "Beispiel hinzufügen",
+      "removeExample": "Beispiel entfernen",
+      "createTitle": "Eigene erstellen",
+      "createSubtitle": "Richte ein Tastenkürzel ein, um diese Transformation anzuwenden.",
+      "nameLabel": "Benenne dein Transformations-Kürzel",
+      "namePlaceholder": "Boss-Modus",
+      "customizePrompt": "Prompt anpassen",
+      "promptPlaceholder": "Wie soll diese Transformation deinen Text verändern?"
     }
   }
 }

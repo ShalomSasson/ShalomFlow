@@ -9,6 +9,7 @@ import {
   SunMoon,
   Type,
   Mic,
+  Wand2,
 } from "lucide-react";
 import { MicrophoneSelector } from "../MicrophoneSelector";
 import { ShortcutInput } from "../ShortcutInput";
@@ -20,6 +21,7 @@ import { SoundPicker } from "../SoundPicker";
 import { AppearanceSelector } from "../AppearanceSelector";
 import { TextSizeSelector } from "../TextSizeSelector";
 import { PushToTalk } from "../PushToTalk";
+import { PolishDictation } from "../PolishDictation";
 import { useSettings } from "../../../hooks/useSettings";
 import { VolumeSlider } from "../VolumeSlider";
 import { MuteWhileRecording } from "../MuteWhileRecording";
@@ -63,6 +65,12 @@ export const GeneralSettings: React.FC = () => {
           grouped={true}
           icon={AudioLines}
           tone="teal"
+        />
+        <PolishDictation
+          descriptionMode="tooltip"
+          grouped={true}
+          icon={Wand2}
+          tone="amber"
         />
         {/* Cancel shortcut is hidden on Linux (dynamic shortcut instability). */}
         {!isLinux && (

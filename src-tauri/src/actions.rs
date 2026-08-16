@@ -809,6 +809,29 @@ pub(crate) async fn process_transcription_output(
         post_processed_text = Some(final_text.clone());
     }
 
+    // === Polish after dictation ===========================================
+    // Independent of the Transforms opt-in, and skipped when AI Correction
+    // already rewrote this dictation (one rewrite pass, never two). Runs
+    // before spoken emojis and text replacements so those deterministic
+    // fix-ups keep final authority, exactly like AI cleanup above.
+    if !uses_ai_cleanup(post_process) && settings.polish_after_dictation {
+        let started = Instant::now();
+        match crate::transforms::polish_transcript(&settings, &final_text).await {
+            Some(polished) => {
+                debug!("Polish applied to dictation in {:?}", started.elapsed());
+                final_text = polished;
+                post_processed_text = Some(final_text.clone());
+                post_process_prompt = Some("Polish".to_string());
+            }
+            None => {
+                warn!(
+                    "Polish fell back to the raw transcript after {:?}",
+                    started.elapsed()
+                );
+            }
+        }
+    }
+
     // === Spoken emoji commands ============================================
     // This opt-in pass is local and deterministic. It runs after optional AI
     // cleanup (so it also works for plain dictation) and before user-authored
@@ -1328,7 +1351,9 @@ impl ShortcutAction for TranscribeAction {
                                 }
                             }
 
-                            if post_process {
+                            // "Processing…" covers both rewrite paths: AI
+                            // Correction and the polish-after-dictation pass.
+                            if post_process || get_settings(&ah).polish_after_dictation {
                                 show_processing_overlay(&ah);
                             }
                             let processed =

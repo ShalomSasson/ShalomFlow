@@ -31,7 +31,9 @@
     "characters": "Profiler",
     "memory": "Minne",
     "collapse": "Fäll in sidofältet",
-    "expand": "Fäll ut sidofältet"
+    "expand": "Fäll ut sidofältet",
+    "styles": "Stilar",
+    "transforms": "Transformationer"
   },
   "window": {
     "minimize": "Minimera",
@@ -45,7 +47,8 @@
     "assistant": "Ställ in assistenten och finjustera sedan dess röst, skärmvisning och webbsökning.",
     "history": "Dina senaste dikteringar, Flow-genereringar och assistentchattar, lagrade på den här enheten.",
     "about": "Version, appspråk, dataplatser och tack till.",
-    "debug": "Diagnostik och utvecklarverktyg."
+    "debug": "Diagnostik och utvecklarverktyg.",
+    "styles": "Hur din dikterade text formateras i varje typ av app."
   },
   "onboarding": {
     "subtitle": "För att komma igång, välj en transkriptionsmodell",
@@ -444,6 +447,11 @@
         "info": "Medan du håller ned ditt inspelningskortkommando trycker du på den här tangenten för att låsa handsfree-inspelning, så att du kan släppa och fortsätta tala. Välj en tangent som inte ingår i ditt inspelningskortkommando, eller rensa den för att stänga av funktionen.",
         "off": "Av",
         "clear": "Rensa"
+      },
+      "polishDictation": {
+        "label": "Polera diktering",
+        "description": "Skriver om varje diktering med Polera-transformationen innan den klistras in.",
+        "info": "Oberoende av Transformations-aktiveringen, som bara styr markeringsgenvägarna. Använder Polera-transformationen exakt som den är inställd på Transformationer-sidan (regler, egna instruktioner och dina skrivexempel) och samma AI-leverantör. Hoppas över när dikteringen redan använt AI-korrigering, så text skrivs aldrig om två gånger; misslyckas omskrivningen klistras den råa transkriptionen in oförändrad."
       }
     },
     "models": {
@@ -1489,7 +1497,8 @@
     "locked": "Spelar in handsfree — tryck på kortkommandot igen för att stoppa",
     "cancel": "Avbryt",
     "done": "Klar",
-    "askAssistant": "Fråga assistenten i stället för att skriva in det här"
+    "askAssistant": "Fråga assistenten i stället för att skriva in det här",
+    "transforming": "Transformerar…"
   },
   "assistant": {
     "title": "Assistent",
@@ -1600,6 +1609,77 @@
       "preparing": "Ställer in den lokala motorn (första körningen)…",
       "extracting": "Installerar den lokala motorn…",
       "short": "Ställer in motorn…"
+    }
+  },
+  "styles": {
+    "beta": "Beta",
+    "tabs": {
+      "personal": "Personliga meddelanden",
+      "work": "Arbetsmeddelanden",
+      "email": "E-post",
+      "other": "Övrigt",
+      "autoCleanup": "Autorensning"
+    },
+    "promo": {
+      "personal": "Den här stilen gäller i personliga meddelandeappar",
+      "work": "Den här stilen gäller i meddelandeappar för arbetet",
+      "email": "Den här stilen gäller i alla större e-postappar",
+      "other": "Den här stilen gäller i alla andra appar",
+      "autoCleanup": "Automatisk rensning av utfyllnadsord och felstarter",
+      "note": "Stilformatering gäller endast engelska. Fler språk kommer snart."
+    },
+    "presets": {
+      "formal": "Formell.",
+      "casual": "Ledig",
+      "veryCasual": "väldigt ledig",
+      "excited": "Entusiastisk!",
+      "off": "Av",
+      "light": "Lätt",
+      "aggressive": "Aggressiv"
+    },
+    "rules": {
+      "capsPunctuation": "Versaler + interpunktion",
+      "capsLessPunctuation": "Versaler + mindre interpunktion",
+      "noCapsLessPunctuation": "Inga versaler + mindre interpunktion",
+      "moreExclamations": "Fler utropstecken",
+      "keepRaw": "Behåll den råa transkriptionen",
+      "trimFillers": "Ta bort utfyllnadsord",
+      "trimFillersTighten": "Ta bort utfyllnadsord + strama åt"
+    }
+  },
+  "transformsPage": {
+    "beta": "Beta",
+    "optIn": "Aktivera",
+    "myTransforms": "Mina transformationer",
+    "resetDefaults": "Återställ till standard",
+    "createNew": "Skapa ny",
+    "createOwn": "Skapa din egen",
+    "uploadPrompt": "Ladda upp din egen prompt",
+    "promo": {
+      "title": "Transformationer fungerar överallt där du skriver",
+      "body": "Använd en transformation för att skriva om, städa upp eller strukturera om text efter diktering."
+    },
+    "detail": {
+      "autosave": "Autospar på",
+      "reset": "Återställ",
+      "close": "Stäng",
+      "toUse": "för att använda",
+      "chooseShortcut": "Välj ett kortkommando",
+      "selectRules": "Välj regler för {{name}}",
+      "customizeNamedPrompt": "Anpassa din {{name}}-prompt",
+      "customizeTemplatePrompt": "Anpassa prompten. (Så här kommer promptens slutresultat att se ut)",
+      "exampleTitle": "Exempel på transformerad text",
+      "seeUpdates": "Se ändringar",
+      "addExamples": "Lägg till skrivexempel",
+      "addExamplesHint": "Lägg till exempel på ditt skrivande så att ShalomFlow lär sig din unika stil. Ju fler exempel, desto bättre matchar den din röst.",
+      "addExample": "Lägg till exempel",
+      "removeExample": "Ta bort exempel",
+      "createTitle": "Skapa din egen",
+      "createSubtitle": "Ställ in ett kortkommando för att använda den här transformationen.",
+      "nameLabel": "Namnge din transformation",
+      "namePlaceholder": "Bossläge",
+      "customizePrompt": "Anpassa prompt",
+      "promptPlaceholder": "Hur vill du att den här transformationen ska ändra din text?"
     }
   }
 }

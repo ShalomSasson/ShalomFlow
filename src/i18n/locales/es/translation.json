@@ -31,7 +31,9 @@
     "characters": "Perfiles",
     "memory": "Memoria",
     "collapse": "Contraer barra lateral",
-    "expand": "Expandir barra lateral"
+    "expand": "Expandir barra lateral",
+    "styles": "Estilos",
+    "transforms": "Transformaciones"
   },
   "window": {
     "minimize": "Minimizar",
@@ -45,7 +47,8 @@
     "assistant": "Configura el asistente y luego ajusta su voz, la visión de pantalla y la búsqueda web.",
     "history": "Tus dictados recientes, las generaciones de Flow y los chats del asistente, guardados en este dispositivo.",
     "about": "Versión, idioma de la aplicación, ubicación de los datos y créditos.",
-    "debug": "Diagnóstico y herramientas para desarrolladores."
+    "debug": "Diagnóstico y herramientas para desarrolladores.",
+    "styles": "Cómo se formatea el texto dictado en cada tipo de aplicación."
   },
   "onboarding": {
     "subtitle": "Para comenzar, elige un modelo de transcripción",
@@ -444,6 +447,11 @@
         "info": "Mientras mantienes pulsado el atajo de grabación, toca esta tecla para fijar la grabación con manos libres y así poder soltar y seguir hablando. Elige cualquier tecla que no forme parte de tu atajo de grabación, o bórrala para desactivar esta opción.",
         "off": "Desactivado",
         "clear": "Borrar"
+      },
+      "polishDictation": {
+        "label": "Pulir el dictado",
+        "description": "Reescribe cada dictado con la transformación Pulir antes de pegar.",
+        "info": "Independiente de la activación de Transformaciones, que solo controla los atajos de selección. Usa la transformación Pulir tal como está configurada en la página Transformaciones (reglas, instrucciones personalizadas y tus ejemplos de escritura) y el mismo proveedor de IA. Se omite cuando el dictado ya usó la corrección con IA, para no reescribir el texto dos veces; si la reescritura falla, se pega la transcripción sin cambios."
       }
     },
     "models": {
@@ -1489,7 +1497,8 @@
     "locked": "Grabando con manos libres: pulsa el atajo de nuevo para detener",
     "cancel": "Cancelar",
     "done": "Listo",
-    "askAssistant": "Preguntar al asistente en lugar de escribir esto"
+    "askAssistant": "Preguntar al asistente en lugar de escribir esto",
+    "transforming": "Transformando…"
   },
   "assistant": {
     "title": "Asistente",
@@ -1600,6 +1609,77 @@
       "preparing": "Configurando el motor local (primer uso)…",
       "extracting": "Instalando el motor local…",
       "short": "Configurando el motor…"
+    }
+  },
+  "styles": {
+    "beta": "Beta",
+    "tabs": {
+      "personal": "Mensajes personales",
+      "work": "Mensajes de trabajo",
+      "email": "Correo",
+      "other": "Otros",
+      "autoCleanup": "Limpieza automática"
+    },
+    "promo": {
+      "personal": "Este estilo se aplica en mensajería personal",
+      "work": "Este estilo se aplica en mensajería de trabajo",
+      "email": "Este estilo se aplica en las principales apps de correo",
+      "other": "Este estilo se aplica en el resto de las apps",
+      "autoCleanup": "Limpieza automática de muletillas y falsos comienzos",
+      "note": "El formato de estilo solo se aplica en inglés. Pronto habrá más idiomas."
+    },
+    "presets": {
+      "formal": "Formal.",
+      "casual": "Informal",
+      "veryCasual": "muy informal",
+      "excited": "¡Entusiasta!",
+      "off": "Desactivado",
+      "light": "Ligera",
+      "aggressive": "Agresiva"
+    },
+    "rules": {
+      "capsPunctuation": "Mayúsculas + puntuación",
+      "capsLessPunctuation": "Mayúsculas + menos puntuación",
+      "noCapsLessPunctuation": "Sin mayúsculas + menos puntuación",
+      "moreExclamations": "Más exclamaciones",
+      "keepRaw": "Mantener la transcripción sin editar",
+      "trimFillers": "Eliminar muletillas",
+      "trimFillersTighten": "Eliminar muletillas + condensar"
+    }
+  },
+  "transformsPage": {
+    "beta": "Beta",
+    "optIn": "Activar",
+    "myTransforms": "Mis transformaciones",
+    "resetDefaults": "Restablecer valores predeterminados",
+    "createNew": "Crear nueva",
+    "createOwn": "Crea la tuya",
+    "uploadPrompt": "Sube tu propio prompt",
+    "promo": {
+      "title": "Las transformaciones funcionan donde sea que escribas",
+      "body": "Aplica una transformación para reescribir, limpiar o reestructurar el texto después de dictar."
+    },
+    "detail": {
+      "autosave": "Autoguardado activado",
+      "reset": "Restablecer",
+      "close": "Cerrar",
+      "toUse": "para usar",
+      "chooseShortcut": "Elige un atajo de teclado",
+      "selectRules": "Selecciona reglas para {{name}}",
+      "customizeNamedPrompt": "Personaliza tu prompt de {{name}}",
+      "customizeTemplatePrompt": "Personaliza el prompt. (Así se verá el resultado final del prompt)",
+      "exampleTitle": "Ejemplo de texto transformado",
+      "seeUpdates": "Ver cambios",
+      "addExamples": "Añade ejemplos de escritura",
+      "addExamplesHint": "Añade ejemplos de tu escritura para que ShalomFlow aprenda tu estilo único. Cuantas más muestras aportes, mejor imitará tu voz.",
+      "addExample": "Añadir un ejemplo",
+      "removeExample": "Eliminar ejemplo",
+      "createTitle": "Crea la tuya",
+      "createSubtitle": "Configura un atajo de teclado para aplicar esta transformación.",
+      "nameLabel": "Nombra tu atajo de transformación",
+      "namePlaceholder": "Modo jefe",
+      "customizePrompt": "Personalizar prompt",
+      "promptPlaceholder": "¿Cómo quieres que esta transformación cambie tu texto?"
     }
   }
 }

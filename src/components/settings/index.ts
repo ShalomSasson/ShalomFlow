@@ -7,6 +7,8 @@ export { ModelsSettings } from "./models/ModelsSettings";
 export { DictationSettings } from "./dictation/DictationSettings";
 export { AssistantSettings } from "./assistant/AssistantSettings";
 export { AssistantSection } from "./assistant/AssistantSection";
+export { StylesSettings } from "./styles/StylesSettings";
+export { TransformsSettings } from "./transforms/TransformsSettings";
 export { CharactersSettings } from "./assistant/CharactersSettings";
 export { MemorySettings } from "./assistant/MemorySettings";
 

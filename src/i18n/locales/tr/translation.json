@@ -31,7 +31,9 @@
     "characters": "Profiller",
     "memory": "Hafıza",
     "collapse": "Kenar çubuğunu daralt",
-    "expand": "Kenar çubuğunu genişlet"
+    "expand": "Kenar çubuğunu genişlet",
+    "styles": "Stiller",
+    "transforms": "Dönüşümler"
   },
   "window": {
     "minimize": "Küçült",
@@ -45,7 +47,8 @@
     "assistant": "Asistanı kurun, ardından sesini, ekran görüşünü ve web aramasını ayarlayın.",
     "history": "Bu cihazda saklanan son dikteleriniz, Flow üretimleriniz ve asistan sohbetleriniz.",
     "about": "Sürüm, uygulama dili, veri konumları ve katkı sağlayanlar.",
-    "debug": "Tanılama ve geliştirici araçları."
+    "debug": "Tanılama ve geliştirici araçları.",
+    "styles": "Dikte edilen metnin her uygulama türünde nasıl biçimlendirileceği."
   },
   "onboarding": {
     "subtitle": "Başlamak için bir transkripsiyon modeli seçin",
@@ -444,6 +447,11 @@
         "info": "Kayıt kısayolunuzu basılı tutarken bu tuşa dokunarak eller serbest kaydı kilitleyin; böylece tuşu bırakıp konuşmaya devam edebilirsiniz. Kayıt kısayolunuzun parçası olmayan herhangi bir tuşu seçin veya kapatmak için temizleyin.",
         "off": "Kapalı",
         "clear": "Temizle"
+      },
+      "polishDictation": {
+        "label": "Dikteyi cilala",
+        "description": "Yapıştırmadan önce her dikteyi Cilala dönüşümüyle yeniden yazar.",
+        "info": "Yalnızca seçim kısayollarını denetleyen Dönüşümler etkinleştirmesinden bağımsızdır. Cilala dönüşümünü Dönüşümler sayfasında yapılandırıldığı şekliyle (kurallar, özel talimatlar ve yazı örnekleriniz) ve aynı yapay zeka sağlayıcısıyla kullanır. Dikte zaten yapay zeka düzeltmesi kullandıysa atlanır, böylece metin asla iki kez yeniden yazılmaz; yeniden yazma başarısız olursa ham döküm değiştirilmeden yapıştırılır."
       }
     },
     "models": {
@@ -1489,7 +1497,8 @@
     "locked": "Eller serbest kaydediliyor — durdurmak için kısayola tekrar basın",
     "cancel": "İptal",
     "done": "Bitti",
-    "askAssistant": "Bunu yazmak yerine asistana sor"
+    "askAssistant": "Bunu yazmak yerine asistana sor",
+    "transforming": "Dönüştürülüyor…"
   },
   "assistant": {
     "title": "Asistan",
@@ -1600,6 +1609,77 @@
       "preparing": "Yerel motor hazırlanıyor (ilk çalıştırma)…",
       "extracting": "Yerel motor kuruluyor…",
       "short": "Motor hazırlanıyor…"
+    }
+  },
+  "styles": {
+    "beta": "Beta",
+    "tabs": {
+      "personal": "Kişisel mesajlar",
+      "work": "İş mesajları",
+      "email": "E-posta",
+      "other": "Diğer",
+      "autoCleanup": "Otomatik Temizleme"
+    },
+    "promo": {
+      "personal": "Bu stil kişisel mesajlaşma uygulamalarında geçerlidir",
+      "work": "Bu stil iş yeri mesajlaşma uygulamalarında geçerlidir",
+      "email": "Bu stil tüm popüler e-posta uygulamalarında geçerlidir",
+      "other": "Bu stil diğer tüm uygulamalarda geçerlidir",
+      "autoCleanup": "Dolgu sözcüklerinin ve yanlış başlangıçların otomatik temizlenmesi",
+      "note": "Stil biçimlendirmesi yalnızca İngilizce için geçerlidir. Yakında daha fazla dil."
+    },
+    "presets": {
+      "formal": "Resmî.",
+      "casual": "Gündelik",
+      "veryCasual": "çok gündelik",
+      "excited": "Heyecanlı!",
+      "off": "Kapalı",
+      "light": "Hafif",
+      "aggressive": "Agresif"
+    },
+    "rules": {
+      "capsPunctuation": "Büyük harf + noktalama",
+      "capsLessPunctuation": "Büyük harf + daha az noktalama",
+      "noCapsLessPunctuation": "Büyük harf yok + daha az noktalama",
+      "moreExclamations": "Daha çok ünlem",
+      "keepRaw": "Ham dökümü koru",
+      "trimFillers": "Dolgu sözcüklerini kaldır",
+      "trimFillersTighten": "Dolgu sözcüklerini kaldır + sıkılaştır"
+    }
+  },
+  "transformsPage": {
+    "beta": "Beta",
+    "optIn": "Etkinleştir",
+    "myTransforms": "Dönüşümlerim",
+    "resetDefaults": "Varsayılanlara sıfırla",
+    "createNew": "Yeni Oluştur",
+    "createOwn": "Kendinizinkini oluşturun",
+    "uploadPrompt": "Kendi isteminizi yükleyin",
+    "promo": {
+      "title": "Dönüşümler yazdığınız her yerde çalışır",
+      "body": "Dikte ettikten sonra metni yeniden yazmak, temizlemek veya yapılandırmak için bir dönüşüm uygulayın."
+    },
+    "detail": {
+      "autosave": "Otomatik kayıt açık",
+      "reset": "Sıfırla",
+      "close": "Kapat",
+      "toUse": "kullanmak için",
+      "chooseShortcut": "Bir klavye kısayolu seçin",
+      "selectRules": "{{name}} için kurallar seçin",
+      "customizeNamedPrompt": "{{name}} isteminizi özelleştirin",
+      "customizeTemplatePrompt": "İstemi özelleştirin. (İstemin nihai çıktısı böyle görünecek)",
+      "exampleTitle": "Dönüştürülmüş metin örneği",
+      "seeUpdates": "Güncellemeleri gör",
+      "addExamples": "Yazı örnekleri ekleyin",
+      "addExamplesHint": "ShalomFlow'un benzersiz tarzınızı öğrenmesi için yazı örnekleri ekleyin. Ne kadar çok örnek verirseniz sesinizi o kadar iyi yakalar.",
+      "addExample": "Örnek ekle",
+      "removeExample": "Örneği kaldır",
+      "createTitle": "Kendinizinkini oluşturun",
+      "createSubtitle": "Bu dönüşümü uygulamak için bir klavye kısayolu ayarlayın.",
+      "nameLabel": "Dönüşüm kısayolunuza ad verin",
+      "namePlaceholder": "Patron Modu",
+      "customizePrompt": "İstemi özelleştir",
+      "promptPlaceholder": "Bu dönüşüm metninizi nasıl değiştirsin?"
     }
   }
 }

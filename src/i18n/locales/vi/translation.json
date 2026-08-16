@@ -31,7 +31,9 @@
     "characters": "Hồ sơ",
     "memory": "Bộ nhớ",
     "collapse": "Thu gọn thanh bên",
-    "expand": "Mở rộng thanh bên"
+    "expand": "Mở rộng thanh bên",
+    "styles": "Phong cách",
+    "transforms": "Biến đổi"
   },
   "window": {
     "minimize": "Thu nhỏ",
@@ -45,7 +47,8 @@
     "assistant": "Thiết lập trợ lý, rồi tinh chỉnh giọng nói, khả năng xem màn hình và tìm kiếm web.",
     "history": "Các nội dung đọc chính tả, nội dung do Flow tạo và trò chuyện với trợ lý gần đây của bạn, được lưu trên thiết bị này.",
     "about": "Phiên bản, ngôn ngữ ứng dụng, vị trí dữ liệu và ghi công.",
-    "debug": "Công cụ chẩn đoán và dành cho nhà phát triển."
+    "debug": "Công cụ chẩn đoán và dành cho nhà phát triển.",
+    "styles": "Cách văn bản đọc chính tả được định dạng trong từng loại ứng dụng."
   },
   "onboarding": {
     "subtitle": "Để bắt đầu, hãy chọn một mô hình chuyển đổi giọng nói",
@@ -444,6 +447,11 @@
         "info": "Trong khi giữ phím tắt ghi âm, hãy nhấn phím này để khóa ghi âm rảnh tay, nhờ đó bạn có thể thả tay ra mà vẫn nói tiếp. Chọn phím nào không thuộc phím tắt ghi âm của bạn, hoặc xóa trống để tắt tính năng này.",
         "off": "Tắt",
         "clear": "Xóa"
+      },
+      "polishDictation": {
+        "label": "Trau chuốt chính tả",
+        "description": "Viết lại mỗi lần đọc chính tả bằng Biến đổi Trau chuốt trước khi dán.",
+        "info": "Độc lập với việc bật Biến đổi, vốn chỉ điều khiển các phím tắt cho vùng chọn. Dùng Biến đổi Trau chuốt đúng như cấu hình trên trang Biến đổi (quy tắc, hướng dẫn tùy chỉnh và ví dụ văn phong của bạn) cùng nhà cung cấp AI đó. Bỏ qua khi lần đọc chính tả đã dùng Sửa lỗi AI, nên văn bản không bao giờ bị viết lại hai lần; nếu viết lại thất bại, bản ghi thô được dán nguyên vẹn."
       }
     },
     "models": {
@@ -1489,7 +1497,8 @@
     "locked": "Đang ghi âm rảnh tay — nhấn lại phím tắt để dừng",
     "cancel": "Hủy",
     "done": "Xong",
-    "askAssistant": "Hỏi trợ lý thay vì gõ nội dung này"
+    "askAssistant": "Hỏi trợ lý thay vì gõ nội dung này",
+    "transforming": "Đang biến đổi…"
   },
   "assistant": {
     "title": "Trợ lý",
@@ -1600,6 +1609,77 @@
       "preparing": "Đang thiết lập công cụ cục bộ (lần chạy đầu)…",
       "extracting": "Đang cài đặt công cụ cục bộ…",
       "short": "Đang thiết lập công cụ…"
+    }
+  },
+  "styles": {
+    "beta": "Beta",
+    "tabs": {
+      "personal": "Tin nhắn cá nhân",
+      "work": "Tin nhắn công việc",
+      "email": "Email",
+      "other": "Khác",
+      "autoCleanup": "Tự động dọn dẹp"
+    },
+    "promo": {
+      "personal": "Phong cách này áp dụng trong ứng dụng nhắn tin cá nhân",
+      "work": "Phong cách này áp dụng trong ứng dụng nhắn tin công việc",
+      "email": "Phong cách này áp dụng trong các ứng dụng email phổ biến",
+      "other": "Phong cách này áp dụng trong tất cả ứng dụng khác",
+      "autoCleanup": "Tự động dọn từ đệm và câu nói dở",
+      "note": "Định dạng phong cách chỉ áp dụng cho tiếng Anh. Sắp có thêm ngôn ngữ khác."
+    },
+    "presets": {
+      "formal": "Trang trọng.",
+      "casual": "Thân mật",
+      "veryCasual": "rất thân mật",
+      "excited": "Hào hứng!",
+      "off": "Tắt",
+      "light": "Nhẹ",
+      "aggressive": "Mạnh"
+    },
+    "rules": {
+      "capsPunctuation": "Viết hoa + dấu câu",
+      "capsLessPunctuation": "Viết hoa + ít dấu câu hơn",
+      "noCapsLessPunctuation": "Không viết hoa + ít dấu câu hơn",
+      "moreExclamations": "Nhiều dấu chấm than hơn",
+      "keepRaw": "Giữ nguyên bản ghi thô",
+      "trimFillers": "Bỏ từ đệm",
+      "trimFillersTighten": "Bỏ từ đệm + cô đọng"
+    }
+  },
+  "transformsPage": {
+    "beta": "Beta",
+    "optIn": "Bật",
+    "myTransforms": "Biến đổi của tôi",
+    "resetDefaults": "Đặt lại mặc định",
+    "createNew": "Tạo mới",
+    "createOwn": "Tự tạo của riêng bạn",
+    "uploadPrompt": "Tải lên prompt của riêng bạn",
+    "promo": {
+      "title": "Biến đổi hoạt động ở mọi nơi bạn viết",
+      "body": "Áp dụng Biến đổi để viết lại, dọn dẹp hoặc sắp xếp lại văn bản sau khi đọc chính tả."
+    },
+    "detail": {
+      "autosave": "Tự động lưu bật",
+      "reset": "Đặt lại",
+      "close": "Đóng",
+      "toUse": "để dùng",
+      "chooseShortcut": "Chọn phím tắt",
+      "selectRules": "Chọn quy tắc cho {{name}}",
+      "customizeNamedPrompt": "Tùy chỉnh prompt {{name}} của bạn",
+      "customizeTemplatePrompt": "Tùy chỉnh prompt. (Đây là giao diện đầu ra cuối cùng của prompt)",
+      "exampleTitle": "Ví dụ về văn bản đã biến đổi",
+      "seeUpdates": "Xem cập nhật",
+      "addExamples": "Thêm ví dụ về văn phong",
+      "addExamplesHint": "Thêm ví dụ về văn phong của bạn để ShalomFlow học phong cách riêng của bạn. Càng nhiều mẫu, giọng văn càng khớp.",
+      "addExample": "Thêm ví dụ",
+      "removeExample": "Xóa ví dụ",
+      "createTitle": "Tự tạo của riêng bạn",
+      "createSubtitle": "Thiết lập phím tắt để áp dụng Biến đổi này.",
+      "nameLabel": "Đặt tên cho phím tắt Biến đổi",
+      "namePlaceholder": "Chế độ sếp",
+      "customizePrompt": "Tùy chỉnh prompt",
+      "promptPlaceholder": "Bạn muốn Biến đổi này thay đổi văn bản như thế nào?"
     }
   }
 }

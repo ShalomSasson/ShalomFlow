@@ -9,6 +9,8 @@ import {
   MessageCircle,
   ChevronLeft,
   ChevronRight,
+  Type,
+  Wand2,
 } from "lucide-react";
 import { useSettings } from "../hooks/useSettings";
 import {
@@ -18,6 +20,8 @@ import {
   DebugSettings,
   AboutSettings,
   AssistantSection,
+  StylesSettings,
+  TransformsSettings,
 } from "./settings";
 
 export type SidebarSection = keyof typeof SECTIONS_CONFIG;
@@ -60,6 +64,18 @@ export const SECTIONS_CONFIG = {
     labelKey: "sidebar.assistant",
     icon: MessageCircle,
     component: AssistantSection,
+    enabled: () => true,
+  },
+  styles: {
+    labelKey: "sidebar.styles",
+    icon: Type,
+    component: StylesSettings,
+    enabled: () => true,
+  },
+  transforms: {
+    labelKey: "sidebar.transforms",
+    icon: Wand2,
+    component: TransformsSettings,
     enabled: () => true,
   },
   history: {

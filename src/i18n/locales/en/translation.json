@@ -31,7 +31,9 @@
     "characters": "Profiles",
     "memory": "Memory",
     "collapse": "Collapse sidebar",
-    "expand": "Expand sidebar"
+    "expand": "Expand sidebar",
+    "styles": "Styles",
+    "transforms": "Transforms"
   },
   "window": {
     "minimize": "Minimize",
@@ -45,7 +47,8 @@
     "assistant": "Set up the assistant, then tune its voice, screen vision, and web search.",
     "history": "Your recent dictations, Flow generations, and assistant chats, stored on this device.",
     "about": "Version, app language, data locations, and credits.",
-    "debug": "Diagnostics and developer tools."
+    "debug": "Diagnostics and developer tools.",
+    "styles": "How your dictated text is formatted in each kind of app."
   },
   "onboarding": {
     "subtitle": "To get started, choose a transcription model",
@@ -444,6 +447,11 @@
         "info": "While holding your record shortcut, tap this to lock hands-free recording so you can let go and keep talking. Pick any key that isn't part of your record shortcut, or clear it to turn this off.",
         "off": "Off",
         "clear": "Clear"
+      },
+      "polishDictation": {
+        "label": "Polish dictation",
+        "description": "Rewrite every dictation with the Polish transform before pasting.",
+        "info": "Independent of the Transforms opt-in, which only gates the selection shortcuts. Uses the Polish transform exactly as configured on the Transforms page (rules, custom instructions, and your writing examples) and the same AI provider. Skipped when a dictation already used AI Correction, so text is never rewritten twice; if the rewrite fails, the raw transcript is pasted unchanged."
       }
     },
     "models": {
@@ -1489,7 +1497,8 @@
     "locked": "Recording hands-free — press the hotkey again to stop",
     "cancel": "Cancel",
     "done": "Done",
-    "askAssistant": "Ask the assistant instead of typing this"
+    "askAssistant": "Ask the assistant instead of typing this",
+    "transforming": "Transforming…"
   },
   "assistant": {
     "title": "Assistant",
@@ -1600,6 +1609,77 @@
       "preparing": "Setting up the local engine (first run)…",
       "extracting": "Installing the local engine…",
       "short": "Setting up engine…"
+    }
+  },
+  "styles": {
+    "beta": "Beta",
+    "tabs": {
+      "personal": "Personal messages",
+      "work": "Work messages",
+      "email": "Email",
+      "other": "Other",
+      "autoCleanup": "Auto Cleanup"
+    },
+    "promo": {
+      "personal": "This style applies in personal messengers",
+      "work": "This style applies in workplace messengers",
+      "email": "This style applies in all major email apps",
+      "other": "This style applies in all other apps",
+      "autoCleanup": "Automatic cleanup of filler words and false starts",
+      "note": "Style formatting only applies in English. More languages coming soon."
+    },
+    "presets": {
+      "formal": "Formal.",
+      "casual": "Casual",
+      "veryCasual": "very casual",
+      "excited": "Excited!",
+      "off": "Off",
+      "light": "Light",
+      "aggressive": "Aggressive"
+    },
+    "rules": {
+      "capsPunctuation": "Caps + Punctuation",
+      "capsLessPunctuation": "Caps + Less punctuation",
+      "noCapsLessPunctuation": "No Caps + Less punctuation",
+      "moreExclamations": "More exclamations",
+      "keepRaw": "Keep the raw transcript",
+      "trimFillers": "Trim filler words",
+      "trimFillersTighten": "Trim filler words + tighten"
+    }
+  },
+  "transformsPage": {
+    "beta": "Beta",
+    "optIn": "Opt in",
+    "myTransforms": "My Transforms",
+    "resetDefaults": "Reset to defaults",
+    "createNew": "Create New",
+    "createOwn": "Create your own",
+    "uploadPrompt": "Upload your own prompt",
+    "promo": {
+      "title": "Transform works anywhere you write",
+      "body": "Apply a Transform to rewrite, clean up, or restructure text after you dictate."
+    },
+    "detail": {
+      "autosave": "Autosave On",
+      "reset": "Reset",
+      "close": "Close",
+      "toUse": "to use",
+      "chooseShortcut": "Choose a keyboard shortcut",
+      "selectRules": "Select rules for {{name}}",
+      "customizeNamedPrompt": "Customize your {{name}} prompt",
+      "customizeTemplatePrompt": "Customize prompt. (This is what the final output of the prompt will look like)",
+      "exampleTitle": "Example of transformed text",
+      "seeUpdates": "See Updates",
+      "addExamples": "Add writing examples",
+      "addExamplesHint": "Add examples of your writing to help ShalomFlow learn your unique style. The more samples you provide, the better it can match your voice.",
+      "addExample": "Add an example",
+      "removeExample": "Remove example",
+      "createTitle": "Create your own",
+      "createSubtitle": "Set up a keyboard shortcut to apply this Transform.",
+      "nameLabel": "Name your Transform shortcut",
+      "namePlaceholder": "Boss Mode",
+      "customizePrompt": "Customize prompt",
+      "promptPlaceholder": "How do you want this Transform to change your text?"
     }
   }
 }
