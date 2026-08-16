@@ -8,6 +8,17 @@ individually.
 
 ## [Unreleased]
 
+- build(macos): dev re-sign script for stable Accessibility grants (2adbcdc)
+- feat(transforms): Styles and Transforms pages, transform editors, polish-after-dictation, and the Goal built-in (fc9478b)
+- refactor(brand): finish the ShalomFlow rename everywhere (c4c2a52)
+- fix(transforms): let Esc actually cancel a running transform (ad4ba34)
+- fix(transforms): never leave the selection-probe sentinel in the clipboard (5c9b2ec)
+- fix(transforms): hop only the Enigo chord to the main thread, not the poll (afc96e5)
+- feat(transforms): dispatch dynamic transform shortcuts (a700dca)
+- fix(transforms): never auto-submit or append a trailing space on paste (0004d88)
+- feat(transforms): execute a transform over the current selection (440eb9b)
+- feat(transforms): compose transform prompts from rules and options (a05077c)
+- refactor: rename the product display name to ShalomFlow (0607791)
 - feat(assistant): offer the Claude Code CLI brain in settings (581ebcd)
 - feat(assistant): run the assistant brain through the Claude Code CLI (1e80f88)
 
