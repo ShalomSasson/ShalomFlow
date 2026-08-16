@@ -1,6 +1,6 @@
 ---
 title: "Output & pasting"
-description: "How SpeakoFlow inserts transcribed text into the active app, and every setting that changes it: the six paste methods and their platform support, clipboard handling, auto submit, trailing spaces, and the Linux typing tools."
+description: "How ShalomFlow inserts transcribed text into the active app, and every setting that changes it: the six paste methods and their platform support, clipboard handling, auto submit, trailing spaces, and the Linux typing tools."
 icon: "clipboard"
 ---
 
@@ -56,13 +56,13 @@ The default is `Ctrl+V` on Windows, `Cmd+V` on macOS, and `Direct` on Linux, bec
 
     Clipboard writes prefer `wl-copy` under Wayland, which handles umlauts and other non-ASCII text better.
 
-    The paste keystroke is sent by whichever native tool is available: `wtype` on non-KDE Wayland, then `dotool`, then `ydotool`. On X11 it is `xdotool`, then `ydotool`. If none is installed, SpeakoFlow falls back to its own key synthesis.
+    The paste keystroke is sent by whichever native tool is available: `wtype` on non-KDE Wayland, then `dotool`, then `ydotool`. On X11 it is `xdotool`, then `ydotool`. If none is installed, ShalomFlow falls back to its own key synthesis.
   </Accordion>
 
   <Accordion title="Timing knobs in Debug">
     Two settings in *Settings → Debug* affect insertion. Debug appears once debug mode is on (`Ctrl+Shift+D`, or `Cmd+Shift+D` on macOS).
 
-    **Paste delay** (default 60 ms). How long to wait after writing the clipboard before sending the paste combo. Only applies to the clipboard-based methods. Increase it if the *wrong* text pastes, which means the app read the clipboard before SpeakoFlow finished writing it.
+    **Paste delay** (default 60 ms). How long to wait after writing the clipboard before sending the paste combo. Only applies to the clipboard-based methods. Increase it if the *wrong* text pastes, which means the app read the clipboard before ShalomFlow finished writing it.
 
     **Extra recording buffer** (default 0 ms). How much longer to keep recording after you release the key. Increase it if your last word or two gets cut off.
   </Accordion>

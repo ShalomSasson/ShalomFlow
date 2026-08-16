@@ -31,7 +31,9 @@
     "characters": "Profiles",
     "memory": "Memory",
     "collapse": "Collapse sidebar",
-    "expand": "Expand sidebar"
+    "expand": "Expand sidebar",
+    "styles": "Styles",
+    "transforms": "Transforms"
   },
   "window": {
     "minimize": "Minimize",
@@ -45,7 +47,8 @@
     "assistant": "Set up the assistant, then tune its voice, screen vision, and web search.",
     "history": "Your recent dictations, Flow generations, and assistant chats, stored on this device.",
     "about": "Version, app language, data locations, and credits.",
-    "debug": "Diagnostics and developer tools."
+    "debug": "Diagnostics and developer tools.",
+    "styles": "How your dictated text is formatted in each kind of app."
   },
   "onboarding": {
     "subtitle": "To get started, choose a transcription model",
@@ -57,7 +60,7 @@
       "ready": "You're ready"
     },
     "speechToText": {
-      "title": "How should SpeakoFlow hear you?",
+      "title": "How should ShalomFlow hear you?",
       "subtitle": "This turns your voice into text, right on your machine. Pick one, switch anytime.",
       "cards": {
         "fast": {
@@ -113,7 +116,7 @@
       "downloadingVoice": "Your voice model is landing. {{percentage}}% there.",
       "downloadingGeneric": "Still downloading. {{percentage}}% there.",
       "signOff": "That's it. Go say something.",
-      "openApp": "Open SpeakoFlow"
+      "openApp": "Open ShalomFlow"
     },
     "errors": {
       "selectModel": "Couldn't select that model. Please try again.",
@@ -245,7 +248,7 @@
     },
     "permissions": {
       "title": "Permissions required",
-      "description": "SpeakoFlow needs a couple of permissions to work properly.",
+      "description": "ShalomFlow needs a couple of permissions to work properly.",
       "microphone": {
         "title": "Microphone access",
         "description": "Required to hear your voice for transcription."
@@ -444,6 +447,11 @@
         "info": "While holding your record shortcut, tap this to lock hands-free recording so you can let go and keep talking. Pick any key that isn't part of your record shortcut, or clear it to turn this off.",
         "off": "Off",
         "clear": "Clear"
+      },
+      "polishDictation": {
+        "label": "Polish dictation",
+        "description": "Rewrite every dictation with the Polish transform before pasting.",
+        "info": "Independent of the Transforms opt-in, which only gates the selection shortcuts. Uses the Polish transform exactly as configured on the Transforms page (rules, custom instructions, and your writing examples) and the same AI provider. Skipped when a dictation already used AI Correction, so text is never rewritten twice; if the rewrite fails, the raw transcript is pasted unchanged."
       }
     },
     "models": {
@@ -598,15 +606,15 @@
       },
       "autostart": {
         "label": "Launch on startup",
-        "description": "Open SpeakoFlow automatically when you sign in."
+        "description": "Open ShalomFlow automatically when you sign in."
       },
       "showTrayIcon": {
         "label": "Show tray icon",
-        "description": "Keep SpeakoFlow in your system tray."
+        "description": "Keep ShalomFlow in your system tray."
       },
       "closeBehavior": {
         "label": "Quit when I close the window",
-        "description": "When off, closing the window keeps SpeakoFlow running in the tray so your hotkeys still work. When on, closing the window quits the app completely."
+        "description": "When off, closing the window keeps ShalomFlow running in the tray so your hotkeys still work. When on, closing the window quits the app completely."
       },
       "overlayStyle": {
         "title": "Overlay",
@@ -686,8 +694,8 @@
       },
       "customWords": {
         "title": "Custom words",
-        "description": "Names, products, and phrases SpeakoFlow should spell your way.",
-        "info": "Example: add “Kokoro” if SpeakoFlow writes “Coco row.”",
+        "description": "Names, products, and phrases ShalomFlow should spell your way.",
+        "info": "Example: add “Kokoro” if ShalomFlow writes “Coco row.”",
         "placeholder": "Add a name, term, or short phrase",
         "add": "Add",
         "empty": "No custom words yet.",
@@ -698,7 +706,7 @@
         "title": "Text replacements",
         "description": "Replace a phrase in your transcript with text you use often. Example: “my email” becomes “alex@example.com”.",
         "rulesTitle": "Replacement rules",
-        "rulesHint": "Choose what SpeakoFlow hears and what it should insert.",
+        "rulesHint": "Choose what ShalomFlow hears and what it should insert.",
         "empty": "Create a rule for a phrase you say often.",
         "addFirst": "Create first rule",
         "addRule": "Add replacement",
@@ -1047,7 +1055,7 @@
       },
       "appDataDirectory": {
         "title": "App data folder",
-        "description": "Where SpeakoFlow keeps your models, history, and settings."
+        "description": "Where ShalomFlow keeps your models, history, and settings."
       },
       "sourceCode": {
         "title": "Source code",
@@ -1056,12 +1064,12 @@
       },
       "license": {
         "title": "License",
-        "description": "SpeakoFlow is open source under the MIT License, building on Handy (also MIT) by CJ Pais.",
+        "description": "ShalomFlow is open source under the MIT License, building on Handy (also MIT) by CJ Pais.",
         "button": "View license"
       },
       "supportDevelopment": {
         "title": "Support development",
-        "description": "Help us keep building SpeakoFlow",
+        "description": "Help us keep building ShalomFlow",
         "button": "Donate"
       }
     },
@@ -1098,11 +1106,21 @@
         "finderSectionTitle": "More on-device models",
         "finderSectionDescription": "Search Hugging Face when you need a different model size or capability.",
         "finderTitle": "Browse Hugging Face",
-        "finderDescription": "Search thousands of GGUF models and download one directly to SpeakoFlow.",
+        "finderDescription": "Search thousands of GGUF models and download one directly to ShalomFlow.",
         "finderAction": "Find a model",
         "huggingFaceTitle": "Your models",
         "huggingFaceDescription": "Downloaded models and models you added from Hugging Face.",
-        "catalogEmpty": "No recommended local models are available right now."
+        "catalogEmpty": "No recommended local models are available right now.",
+        "claudeCodeTitle": "Use Claude Code instead",
+        "claudeCodeDescription": "Already have Claude Code installed? Run the assistant through it on your existing Claude plan — no download, no API key.",
+        "claudeCodeCardTitle": "Claude Code CLI",
+        "claudeCodeCardDescription": "Runs through your local Claude Code login. Prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeUseAction": "Use",
+        "claudeCodeActiveBadge": "In use",
+        "claudeCodeSubscriptionBadge": "Uses your Claude plan",
+        "claudeCodeDetected": "Detected v{{version}}",
+        "claudeCodeMissingDescription": "Install Claude Code, or make sure the `claude` command is on this machine's PATH, then check again.",
+        "claudeCodeRecheckAction": "Check again"
       },
       "subpages": {
         "profilesCaption": "Switch the assistant's name, role, and personality.",
@@ -1141,6 +1159,14 @@
         "builtinEnginePreparing": "Downloading the local engine…",
         "builtinEngineExtracting": "Installing the local engine…",
         "builtinEngineReady": "Local engine ready.",
+        "claudeCodeModelLabel": "Claude model",
+        "claudeCodeModelDescription": "Which Claude model the CLI should use for replies.",
+        "claudeCodeNotice": "Runs through your local Claude Code login — prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeModels": {
+          "sonnet": "Sonnet (recommended)",
+          "opus": "Opus (most capable)",
+          "haiku": "Haiku (fastest)"
+        },
         "contextSizeLabel": "Context window",
         "contextSizeDescription": "How much the local model can keep in mind at once — the system instructions, your chat history, any screenshot (a single image can eat a big chunk), and its reply. Bigger holds more and keeps screen vision and web search reliable, but uses more memory. The default is 8192; 16384 is a good step up if your machine has the RAM to spare. You can lower it later to save memory.",
         "unloadTimeoutLabel": "Unload from memory after",
@@ -1245,7 +1271,7 @@
           }
         },
         "screenRecording": {
-          "description": "Screen vision needs macOS Screen Recording permission. Grant it in System Settings, then restart SpeakoFlow for it to take effect.",
+          "description": "Screen vision needs macOS Screen Recording permission. Grant it in System Settings, then restart ShalomFlow for it to take effect.",
           "grant": "Open System Settings"
         }
       },
@@ -1323,7 +1349,7 @@
         "testButton": "Test voice",
         "testing": "Testing…",
         "testOk": "Played ✓",
-        "testPhrase": "Hi! This is a test of SpeakoFlow's voice output.",
+        "testPhrase": "Hi! This is a test of ShalomFlow's voice output.",
         "downloadStart": "Downloading Kokoro voice…",
         "downloadProgress": "Downloading Kokoro voice… {{progress}}%",
         "downloadReady": "Kokoro voice ready ✓",
@@ -1426,7 +1452,7 @@
   },
   "accessibility": {
     "permissionsRequired": "Accessibility permissions required",
-    "permissionsDescription": "SpeakoFlow needs accessibility permissions to type transcribed text.",
+    "permissionsDescription": "ShalomFlow needs accessibility permissions to type transcribed text.",
     "openSettings": "Open System Settings",
     "dismiss": "Dismiss"
   },
@@ -1450,7 +1476,7 @@
   },
   "appLanguage": {
     "title": "App language",
-    "description": "Change the language of the SpeakoFlow interface"
+    "description": "Change the language of the ShalomFlow interface"
   },
   "overlay": {
     "preparing": "Getting mic ready…",
@@ -1462,13 +1488,17 @@
     "notices": {
       "flowNotConfigured": "Flow needs an assistant model — pasted as dictation",
       "flowFailed": "Flow couldn't generate — nothing was pasted",
-      "flowEmpty": "Say a command after the activation phrase"
+      "flowEmpty": "Say a command after the activation phrase",
+      "transformNoSelection": "Nothing was captured — select some text and try again (some apps respond slowly)",
+      "transformNoModel": "Set an Assistant model in Settings to use Transforms",
+      "transformFailed": "The transform didn't run — your text was left unchanged"
     },
     "listening": "Listening…",
     "locked": "Recording hands-free — press the hotkey again to stop",
     "cancel": "Cancel",
     "done": "Done",
-    "askAssistant": "Ask the assistant instead of typing this"
+    "askAssistant": "Ask the assistant instead of typing this",
+    "transforming": "Transforming…"
   },
   "assistant": {
     "title": "Assistant",
@@ -1579,6 +1609,77 @@
       "preparing": "Setting up the local engine (first run)…",
       "extracting": "Installing the local engine…",
       "short": "Setting up engine…"
+    }
+  },
+  "styles": {
+    "beta": "Beta",
+    "tabs": {
+      "personal": "Personal messages",
+      "work": "Work messages",
+      "email": "Email",
+      "other": "Other",
+      "autoCleanup": "Auto Cleanup"
+    },
+    "promo": {
+      "personal": "This style applies in personal messengers",
+      "work": "This style applies in workplace messengers",
+      "email": "This style applies in all major email apps",
+      "other": "This style applies in all other apps",
+      "autoCleanup": "Automatic cleanup of filler words and false starts",
+      "note": "Style formatting only applies in English. More languages coming soon."
+    },
+    "presets": {
+      "formal": "Formal.",
+      "casual": "Casual",
+      "veryCasual": "very casual",
+      "excited": "Excited!",
+      "off": "Off",
+      "light": "Light",
+      "aggressive": "Aggressive"
+    },
+    "rules": {
+      "capsPunctuation": "Caps + Punctuation",
+      "capsLessPunctuation": "Caps + Less punctuation",
+      "noCapsLessPunctuation": "No Caps + Less punctuation",
+      "moreExclamations": "More exclamations",
+      "keepRaw": "Keep the raw transcript",
+      "trimFillers": "Trim filler words",
+      "trimFillersTighten": "Trim filler words + tighten"
+    }
+  },
+  "transformsPage": {
+    "beta": "Beta",
+    "optIn": "Opt in",
+    "myTransforms": "My Transforms",
+    "resetDefaults": "Reset to defaults",
+    "createNew": "Create New",
+    "createOwn": "Create your own",
+    "uploadPrompt": "Upload your own prompt",
+    "promo": {
+      "title": "Transform works anywhere you write",
+      "body": "Apply a Transform to rewrite, clean up, or restructure text after you dictate."
+    },
+    "detail": {
+      "autosave": "Autosave On",
+      "reset": "Reset",
+      "close": "Close",
+      "toUse": "to use",
+      "chooseShortcut": "Choose a keyboard shortcut",
+      "selectRules": "Select rules for {{name}}",
+      "customizeNamedPrompt": "Customize your {{name}} prompt",
+      "customizeTemplatePrompt": "Customize prompt. (This is what the final output of the prompt will look like)",
+      "exampleTitle": "Example of transformed text",
+      "seeUpdates": "See Updates",
+      "addExamples": "Add writing examples",
+      "addExamplesHint": "Add examples of your writing to help ShalomFlow learn your unique style. The more samples you provide, the better it can match your voice.",
+      "addExample": "Add an example",
+      "removeExample": "Remove example",
+      "createTitle": "Create your own",
+      "createSubtitle": "Set up a keyboard shortcut to apply this Transform.",
+      "nameLabel": "Name your Transform shortcut",
+      "namePlaceholder": "Boss Mode",
+      "customizePrompt": "Customize prompt",
+      "promptPlaceholder": "How do you want this Transform to change your text?"
     }
   }
 }

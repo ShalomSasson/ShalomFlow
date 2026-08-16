@@ -31,7 +31,9 @@
     "characters": "פרופילים",
     "memory": "זיכרון",
     "collapse": "כווץ את סרגל הצד",
-    "expand": "הרחב את סרגל הצד"
+    "expand": "הרחב את סרגל הצד",
+    "styles": "סגנונות",
+    "transforms": "טרנספורמציות"
   },
   "window": {
     "minimize": "מזער",
@@ -45,7 +47,8 @@
     "assistant": "הגדר את העוזר, ואז כוונן את הקול שלו, את ראיית המסך ואת החיפוש באינטרנט.",
     "history": "ההכתבות האחרונות שלך, היצירות של Flow והשיחות עם העוזר, שמורות במכשיר הזה.",
     "about": "גרסה, שפת האפליקציה, מיקומי נתונים וקרדיטים.",
-    "debug": "אבחון וכלי פיתוח."
+    "debug": "אבחון וכלי פיתוח.",
+    "styles": "איך הטקסט המוכתב מעוצב בכל סוג של אפליקציה."
   },
   "onboarding": {
     "subtitle": "כדי להתחיל, בחר מודל תמלול",
@@ -57,7 +60,7 @@
       "ready": "הכול מוכן"
     },
     "speechToText": {
-      "title": "איך SpeakoFlow צריך לשמוע אותך?",
+      "title": "איך ShalomFlow צריך לשמוע אותך?",
       "subtitle": "זה הופך את הקול שלך לטקסט, ישר במחשב שלך. בחר אחד, אפשר להחליף בכל עת.",
       "cards": {
         "fast": {
@@ -113,7 +116,7 @@
       "downloadingVoice": "מודל הקול שלך כמעט כאן. {{percentage}}% הושלמו.",
       "downloadingGeneric": "עדיין מוריד. {{percentage}}% הושלמו.",
       "signOff": "זה הכול. קדימה, תגיד משהו.",
-      "openApp": "פתח את SpeakoFlow"
+      "openApp": "פתח את ShalomFlow"
     },
     "errors": {
       "selectModel": "לא ניתן היה לבחור את המודל הזה. נסה שוב.",
@@ -245,7 +248,7 @@
     },
     "permissions": {
       "title": "נדרשות הרשאות",
-      "description": "SpeakoFlow צריך כמה הרשאות כדי לעבוד כמו שצריך.",
+      "description": "ShalomFlow צריך כמה הרשאות כדי לעבוד כמו שצריך.",
       "microphone": {
         "title": "גישה למיקרופון",
         "description": "נדרש כדי לשמוע את הקול שלך לצורך תמלול."
@@ -444,6 +447,11 @@
         "info": "בזמן שאתה מחזיק את קיצור ההקלטה, הקש על המקש הזה כדי לנעול הקלטה ללא ידיים, כך שתוכל לשחרר ולהמשיך לדבר. בחר כל מקש שאינו חלק מקיצור ההקלטה, או נקה אותו כדי לכבות את האפשרות.",
         "off": "כבוי",
         "clear": "נקה"
+      },
+      "polishDictation": {
+        "label": "ליטוש ההכתבה",
+        "description": "משכתב כל הכתבה עם טרנספורמציית הליטוש לפני ההדבקה.",
+        "info": "בלתי תלוי בהפעלת הטרנספורמציות, ששולטת רק בקיצורי הבחירה. משתמש בטרנספורמציית הליטוש בדיוק כפי שהוגדרה בעמוד הטרנספורמציות (כללים, הנחיות מותאמות ודוגמאות הכתיבה שלכם) ובאותו ספק AI. מדולג כאשר ההכתבה כבר עברה תיקון AI, כך שהטקסט לעולם לא ישוכתב פעמיים; אם השכתוב נכשל, התמלול הגולמי מודבק ללא שינוי."
       }
     },
     "models": {
@@ -598,15 +606,15 @@
       },
       "autostart": {
         "label": "הפעל עם עליית המערכת",
-        "description": "הפעל את SpeakoFlow אוטומטית כשאתה מתחבר למחשב."
+        "description": "הפעל את ShalomFlow אוטומטית כשאתה מתחבר למחשב."
       },
       "showTrayIcon": {
         "label": "הצג אייקון במגש",
-        "description": "הצג את האייקון של SpeakoFlow במגש המערכת."
+        "description": "הצג את האייקון של ShalomFlow במגש המערכת."
       },
       "closeBehavior": {
         "label": "צא מהאפליקציה כשאני סוגר את החלון",
-        "description": "כשהאפשרות כבויה, סגירת החלון משאירה את SpeakoFlow פועל במגש המערכת, כך שקיצורי המקשים שלך ימשיכו לעבוד. כשהיא מופעלת, סגירת החלון סוגרת את האפליקציה לגמרי."
+        "description": "כשהאפשרות כבויה, סגירת החלון משאירה את ShalomFlow פועל במגש המערכת, כך שקיצורי המקשים שלך ימשיכו לעבוד. כשהיא מופעלת, סגירת החלון סוגרת את האפליקציה לגמרי."
       },
       "overlayStyle": {
         "title": "שכבת משוב",
@@ -686,8 +694,8 @@
       },
       "customWords": {
         "title": "מילים מותאמות אישית",
-        "description": "שמות, מוצרים וביטויים ש-SpeakoFlow צריך לאיית בדרך שלך.",
-        "info": "לדוגמה: הוסף ״Kokoro״ אם SpeakoFlow כותב ״Coco row״.",
+        "description": "שמות, מוצרים וביטויים ש-ShalomFlow צריך לאיית בדרך שלך.",
+        "info": "לדוגמה: הוסף ״Kokoro״ אם ShalomFlow כותב ״Coco row״.",
         "placeholder": "הוסף שם, מונח או ביטוי קצר",
         "add": "הוסף",
         "empty": "אין עדיין מילים מותאמות אישית.",
@@ -698,7 +706,7 @@
         "title": "החלפות טקסט",
         "description": "החלף ביטוי בתמלול שלך בטקסט שאתה משתמש בו לעיתים קרובות. לדוגמה: ״האימייל שלי״ הופך ל״alex@example.com״.",
         "rulesTitle": "כללי החלפה",
-        "rulesHint": "בחר מה SpeakoFlow שומע ומה הוא צריך להכניס במקום.",
+        "rulesHint": "בחר מה ShalomFlow שומע ומה הוא צריך להכניס במקום.",
         "empty": "צור כלל לביטוי שאתה אומר לעיתים קרובות.",
         "addFirst": "צור כלל ראשון",
         "addRule": "הוסף החלפה",
@@ -965,7 +973,7 @@
       },
       "updateChecks": {
         "label": "בדוק עדכונים",
-        "description": "בדוק אוטומטית אם קיימות גרסאות חדשות של SpeakoFlow"
+        "description": "בדוק אוטומטית אם קיימות גרסאות חדשות של ShalomFlow"
       },
       "soundTheme": {
         "label": "ערכת צלילים",
@@ -1035,7 +1043,7 @@
       "title": "אודות",
       "version": {
         "title": "גרסה",
-        "description": "הגרסה הנוכחית של SpeakoFlow"
+        "description": "הגרסה הנוכחית של ShalomFlow"
       },
       "updates": {
         "title": "עדכונים",
@@ -1047,7 +1055,7 @@
       },
       "appDataDirectory": {
         "title": "תיקיית נתוני אפליקציה",
-        "description": "המיקום שבו SpeakoFlow שומר את הנתונים שלו"
+        "description": "המיקום שבו ShalomFlow שומר את הנתונים שלו"
       },
       "sourceCode": {
         "title": "קוד מקור",
@@ -1056,12 +1064,12 @@
       },
       "license": {
         "title": "רישיון",
-        "description": "SpeakoFlow הוא קוד פתוח תחת רישיון MIT, ומבוסס על Handy (גם הוא MIT) מאת CJ Pais.",
+        "description": "ShalomFlow הוא קוד פתוח תחת רישיון MIT, ומבוסס על Handy (גם הוא MIT) מאת CJ Pais.",
         "button": "הצג את הרישיון"
       },
       "supportDevelopment": {
         "title": "תמיכה בפיתוח",
-        "description": "עזור לנו להמשיך לבנות את SpeakoFlow",
+        "description": "עזור לנו להמשיך לבנות את ShalomFlow",
         "button": "תרומה"
       }
     },
@@ -1098,11 +1106,21 @@
         "finderSectionTitle": "עוד מודלים שפועלים במכשיר",
         "finderSectionDescription": "חפש ב-Hugging Face כשאתה צריך גודל מודל או יכולת אחרים.",
         "finderTitle": "עיין ב-Hugging Face",
-        "finderDescription": "חפש בין אלפי מודלי GGUF והורד אחד ישירות ל-SpeakoFlow.",
+        "finderDescription": "חפש בין אלפי מודלי GGUF והורד אחד ישירות ל-ShalomFlow.",
         "finderAction": "מצא מודל",
         "huggingFaceTitle": "המודלים שלך",
         "huggingFaceDescription": "מודלים שהורדת ומודלים שהוספת מ-Hugging Face.",
-        "catalogEmpty": "אין כרגע מודלים מקומיים מומלצים זמינים."
+        "catalogEmpty": "אין כרגע מודלים מקומיים מומלצים זמינים.",
+        "claudeCodeTitle": "Use Claude Code instead",
+        "claudeCodeDescription": "Already have Claude Code installed? Run the assistant through it on your existing Claude plan — no download, no API key.",
+        "claudeCodeCardTitle": "Claude Code CLI",
+        "claudeCodeCardDescription": "Runs through your local Claude Code login. Prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeUseAction": "Use",
+        "claudeCodeActiveBadge": "In use",
+        "claudeCodeSubscriptionBadge": "Uses your Claude plan",
+        "claudeCodeDetected": "Detected v{{version}}",
+        "claudeCodeMissingDescription": "Install Claude Code, or make sure the `claude` command is on this machine's PATH, then check again.",
+        "claudeCodeRecheckAction": "Check again"
       },
       "subpages": {
         "profilesCaption": "החלף את השם, התפקיד והאישיות של העוזר.",
@@ -1141,6 +1159,14 @@
         "builtinEnginePreparing": "מוריד את המנוע המקומי…",
         "builtinEngineExtracting": "מתקין את המנוע המקומי…",
         "builtinEngineReady": "המנוע המקומי מוכן.",
+        "claudeCodeModelLabel": "Claude model",
+        "claudeCodeModelDescription": "Which Claude model the CLI should use for replies.",
+        "claudeCodeNotice": "Runs through your local Claude Code login — prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeModels": {
+          "sonnet": "Sonnet (recommended)",
+          "opus": "Opus (most capable)",
+          "haiku": "Haiku (fastest)"
+        },
         "contextSizeLabel": "חלון הקשר",
         "contextSizeDescription": "כמה המודל המקומי יכול להחזיק בראש בו-זמנית — הוראות המערכת, היסטוריית השיחה שלך, כל צילום מסך (תמונה אחת יכולה לתפוס חלק גדול) והתשובה שלו. חלון גדול יותר מחזיק יותר ושומר על ראיית המסך והחיפוש באינטרנט אמינים, אבל צורך יותר זיכרון. ברירת המחדל היא 8192; 16384 היא שדרוג טוב אם יש למחשב שלך מספיק זיכרון פנוי. אפשר להקטין אותו מאוחר יותר כדי לחסוך בזיכרון.",
         "unloadTimeoutLabel": "פרוק מהזיכרון אחרי",
@@ -1245,7 +1271,7 @@
           }
         },
         "screenRecording": {
-          "description": "ראיית מסך דורשת את הרשאת הקלטת המסך של macOS. תן אותה בהגדרות המערכת, ואז הפעל מחדש את SpeakoFlow כדי שהשינוי ייכנס לתוקף.",
+          "description": "ראיית מסך דורשת את הרשאת הקלטת המסך של macOS. תן אותה בהגדרות המערכת, ואז הפעל מחדש את ShalomFlow כדי שהשינוי ייכנס לתוקף.",
           "grant": "פתח את הגדרות המערכת"
         }
       },
@@ -1323,7 +1349,7 @@
         "testButton": "בדוק את הקול",
         "testing": "בודק…",
         "testOk": "הושמע ✓",
-        "testPhrase": "שלום! זו בדיקה של הפלט הקולי של SpeakoFlow.",
+        "testPhrase": "שלום! זו בדיקה של הפלט הקולי של ShalomFlow.",
         "downloadStart": "מוריד את הקול של Kokoro…",
         "downloadProgress": "מוריד את הקול של Kokoro… {{progress}}%",
         "downloadReady": "הקול של Kokoro מוכן ✓",
@@ -1426,7 +1452,7 @@
   },
   "accessibility": {
     "permissionsRequired": "נדרשות הרשאות נגישות",
-    "permissionsDescription": "SpeakoFlow צריך הרשאות נגישות כדי להקליד את הטקסט המתומלל.",
+    "permissionsDescription": "ShalomFlow צריך הרשאות נגישות כדי להקליד את הטקסט המתומלל.",
     "openSettings": "פתח את הגדרות המערכת",
     "dismiss": "סגור"
   },
@@ -1450,7 +1476,7 @@
   },
   "appLanguage": {
     "title": "שפת האפליקציה",
-    "description": "שנה את שפת הממשק של SpeakoFlow"
+    "description": "שנה את שפת הממשק של ShalomFlow"
   },
   "overlay": {
     "preparing": "מכין את המיקרופון…",
@@ -1462,13 +1488,17 @@
     "notices": {
       "flowNotConfigured": "Flow דורש מודל עוזר — הודבק כהכתבה",
       "flowFailed": "Flow לא הצליח ליצור — שום דבר לא הודבק",
-      "flowEmpty": "אמור פקודה אחרי ביטוי ההפעלה"
+      "flowEmpty": "אמור פקודה אחרי ביטוי ההפעלה",
+      "transformNoSelection": "Nothing was captured — select some text and try again (some apps respond slowly)",
+      "transformNoModel": "Set an Assistant model in Settings to use Transforms",
+      "transformFailed": "The transform didn't run — your text was left unchanged"
     },
     "listening": "מקשיב…",
     "locked": "מקליט ללא ידיים — לחץ שוב על קיצור המקשים כדי לעצור",
     "cancel": "ביטול",
     "done": "סיום",
-    "askAssistant": "שאל את העוזר במקום להקליד את זה"
+    "askAssistant": "שאל את העוזר במקום להקליד את זה",
+    "transforming": "מבצע טרנספורמציה…"
   },
   "assistant": {
     "title": "עוזר",
@@ -1579,6 +1609,77 @@
       "preparing": "מגדיר את המנוע המקומי (הפעלה ראשונה)…",
       "extracting": "מתקין את המנוע המקומי…",
       "short": "מגדיר את המנוע…"
+    }
+  },
+  "styles": {
+    "beta": "בטא",
+    "tabs": {
+      "personal": "הודעות אישיות",
+      "work": "הודעות עבודה",
+      "email": "אימייל",
+      "other": "אחר",
+      "autoCleanup": "ניקוי אוטומטי"
+    },
+    "promo": {
+      "personal": "סגנון זה חל באפליקציות הודעות אישיות",
+      "work": "סגנון זה חל באפליקציות הודעות בעבודה",
+      "email": "סגנון זה חל בכל אפליקציות האימייל המרכזיות",
+      "other": "סגנון זה חל בכל שאר האפליקציות",
+      "autoCleanup": "ניקוי אוטומטי של מילות מילוי והתחלות שגויות",
+      "note": "עיצוב הסגנון חל רק על אנגלית. שפות נוספות בקרוב."
+    },
+    "presets": {
+      "formal": "רשמי.",
+      "casual": "יומיומי",
+      "veryCasual": "ממש יומיומי",
+      "excited": "נלהב!",
+      "off": "כבוי",
+      "light": "קל",
+      "aggressive": "אגרסיבי"
+    },
+    "rules": {
+      "capsPunctuation": "אותיות רישיות + פיסוק",
+      "capsLessPunctuation": "אותיות רישיות + פחות פיסוק",
+      "noCapsLessPunctuation": "בלי אותיות רישיות + פחות פיסוק",
+      "moreExclamations": "יותר סימני קריאה",
+      "keepRaw": "לשמור על התמלול הגולמי",
+      "trimFillers": "להסיר מילות מילוי",
+      "trimFillersTighten": "להסיר מילות מילוי + לחדד"
+    }
+  },
+  "transformsPage": {
+    "beta": "בטא",
+    "optIn": "הצטרפות",
+    "myTransforms": "הטרנספורמציות שלי",
+    "resetDefaults": "איפוס לברירת מחדל",
+    "createNew": "יצירת חדשה",
+    "createOwn": "צרו משלכם",
+    "uploadPrompt": "העלו הנחיה משלכם",
+    "promo": {
+      "title": "טרנספורמציות עובדות בכל מקום שבו כותבים",
+      "body": "החילו טרנספורמציה כדי לשכתב, לנקות או לארגן מחדש טקסט אחרי ההכתבה."
+    },
+    "detail": {
+      "autosave": "שמירה אוטומטית פועלת",
+      "reset": "איפוס",
+      "close": "סגירה",
+      "toUse": "לשימוש",
+      "chooseShortcut": "בחרו קיצור מקלדת",
+      "selectRules": "בחרו כללים עבור {{name}}",
+      "customizeNamedPrompt": "התאימו את ההנחיה של {{name}}",
+      "customizeTemplatePrompt": "התאימו את ההנחיה. (כך ייראה הפלט הסופי של ההנחיה)",
+      "exampleTitle": "דוגמה לטקסט לאחר טרנספורמציה",
+      "seeUpdates": "הצגת עדכונים",
+      "addExamples": "הוסיפו דוגמאות כתיבה",
+      "addExamplesHint": "הוסיפו דוגמאות מהכתיבה שלכם כדי לעזור ל-ShalomFlow ללמוד את הסגנון הייחודי שלכם. ככל שתספקו יותר דוגמאות, כך ההתאמה לקול שלכם תשתפר.",
+      "addExample": "הוספת דוגמה",
+      "removeExample": "הסרת דוגמה",
+      "createTitle": "צרו משלכם",
+      "createSubtitle": "הגדירו קיצור מקלדת כדי להחיל את הטרנספורמציה הזו.",
+      "nameLabel": "תנו שם לקיצור הטרנספורמציה",
+      "namePlaceholder": "מצב בוס",
+      "customizePrompt": "התאמת ההנחיה",
+      "promptPlaceholder": "איך תרצו שהטרנספורמציה הזו תשנה את הטקסט שלכם?"
     }
   }
 }

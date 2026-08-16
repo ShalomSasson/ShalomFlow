@@ -1,10 +1,10 @@
 ---
 title: "Command-line flags"
-description: "Every command-line flag and environment variable SpeakoFlow accepts on Windows, macOS, and Linux, including the remote-control flags that start, stop, or cancel a recording on an already-running instance."
+description: "Every command-line flag and environment variable ShalomFlow accepts on Windows, macOS, and Linux, including the remote-control flags that start, stop, or cancel a recording on an already-running instance."
 icon: "terminal"
 ---
 
-SpeakoFlow accepts command-line flags on all platforms, for scripts, window managers, and autostart setups.
+ShalomFlow accepts command-line flags on all platforms, for scripts, window managers, and autostart setups.
 
 ## Flags
 
@@ -47,19 +47,19 @@ SpeakoFlow accepts command-line flags on all platforms, for scripts, window mana
   </Accordion>
 
   <Accordion title="How the remote-control flags reach the running app">
-    They launch a second SpeakoFlow process. It hands its arguments to the running instance and exits immediately, so the command returns straight away and no second window or tray icon appears. Bind one to a hardware key, a stream deck, or a window-manager shortcut for a fully custom trigger.
+    They launch a second ShalomFlow process. It hands its arguments to the running instance and exits immediately, so the command returns straight away and no second window or tray icon appears. Bind one to a hardware key, a stream deck, or a window-manager shortcut for a fully custom trigger.
 
-    If SpeakoFlow is not already running, these flags do nothing useful. The new instance becomes the primary one and just starts normally. Launching a second instance with no recognized flag at all brings the existing window to the front.
+    If ShalomFlow is not already running, these flags do nothing useful. The new instance becomes the primary one and just starts normally. Launching a second instance with no recognized flag at all brings the existing window to the front.
   </Accordion>
 
   <Accordion title="Reading --list-devices output, and why --probe-devices exists">
-    `--list-devices` is what to reach for when you are not sure whether your GPU is visible to SpeakoFlow. It brings the native engine up, lists every device it found with its index and memory, and reports whether the Vulkan, Metal, and CPU backends actually loaded. That separates "my GPU is not detected" from "the app is choosing not to use it".
+    `--list-devices` is what to reach for when you are not sure whether your GPU is visible to ShalomFlow. It brings the native engine up, lists every device it found with its index and memory, and reports whether the Vulkan, Metal, and CPU backends actually loaded. That separates "my GPU is not detected" from "the app is choosing not to use it".
 
     `--probe-devices` is hidden from `--help` because it is not meant for you. It is the child half of the Linux crash-isolated device probe: on Linux the running app spawns itself with this flag so a crash inside the vendored GPU code kills a throwaway process instead of your session. See [Acceleration & GPU](/models/acceleration).
   </Accordion>
 
   <Accordion title="GDK_BACKEND on GNOME Wayland">
-    On GNOME under Wayland, SpeakoFlow sets `GDK_BACKEND=x11` for itself so the overlay can float above other windows. GNOME's compositor implements neither `wlr-layer-shell` nor any way for an app to raise itself.
+    On GNOME under Wayland, ShalomFlow sets `GDK_BACKEND=x11` for itself so the overlay can float above other windows. GNOME's compositor implements neither `wlr-layer-shell` nor any way for an app to raise itself.
 
     If you have already set `GDK_BACKEND` yourself, your choice is respected and nothing is overridden.
   </Accordion>

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Tooling to generate SpeakoFlow logo assets at standard sizes",
+  "description": "Tooling to generate ShalomFlow logo assets at standard sizes",
   "scripts": {
     "bbox": "node compute-bbox.mjs",
     "build": "node build-logos.mjs"

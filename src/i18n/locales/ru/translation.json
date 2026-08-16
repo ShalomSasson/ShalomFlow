@@ -31,7 +31,9 @@
     "characters": "Профили",
     "memory": "Память",
     "collapse": "Свернуть боковую панель",
-    "expand": "Развернуть боковую панель"
+    "expand": "Развернуть боковую панель",
+    "styles": "Стили",
+    "transforms": "Трансформации"
   },
   "window": {
     "minimize": "Свернуть",
@@ -45,7 +47,8 @@
     "assistant": "Настройте ассистента, а затем его голос, просмотр экрана и поиск в интернете.",
     "history": "Ваши недавние диктовки, генерации Flow и чаты с ассистентом, сохранённые на этом устройстве.",
     "about": "Версия, язык приложения, расположение данных и благодарности.",
-    "debug": "Диагностика и инструменты разработчика."
+    "debug": "Диагностика и инструменты разработчика.",
+    "styles": "Как надиктованный текст форматируется в каждом типе приложений."
   },
   "onboarding": {
     "subtitle": "Для начала выберите модель транскрипции",
@@ -57,7 +60,7 @@
       "ready": "Всё готово"
     },
     "speechToText": {
-      "title": "Как SpeakoFlow должен вас слышать?",
+      "title": "Как ShalomFlow должен вас слышать?",
       "subtitle": "Превращает ваш голос в текст прямо на вашем компьютере. Выберите одну, менять можно в любой момент.",
       "cards": {
         "fast": {
@@ -113,7 +116,7 @@
       "downloadingVoice": "Голосовая модель заходит на посадку. Уже {{percentage}} %.",
       "downloadingGeneric": "Загрузка продолжается. Уже {{percentage}} %.",
       "signOff": "Вот и всё. Скажите что-нибудь.",
-      "openApp": "Открыть SpeakoFlow"
+      "openApp": "Открыть ShalomFlow"
     },
     "errors": {
       "selectModel": "Не удалось выбрать эту модель. Пожалуйста, попробуйте снова.",
@@ -245,7 +248,7 @@
     },
     "permissions": {
       "title": "Требуются разрешения",
-      "description": "SpeakoFlow требуются некоторые разрешения для корректной работы.",
+      "description": "ShalomFlow требуются некоторые разрешения для корректной работы.",
       "microphone": {
         "title": "Доступ к микрофону",
         "description": "Необходим для прослушивания вашего голоса для транскрипции."
@@ -444,6 +447,11 @@
         "info": "Удерживая сочетание клавиш записи, нажмите эту клавишу, чтобы зафиксировать запись без удержания — можно отпустить клавиши и продолжать говорить. Выберите любую клавишу, которая не входит в сочетание для записи, или очистите поле, чтобы отключить это.",
         "off": "Выкл.",
         "clear": "Очистить"
+      },
+      "polishDictation": {
+        "label": "Полировать диктовку",
+        "description": "Переписывает каждую диктовку трансформацией «Полировка» перед вставкой.",
+        "info": "Не зависит от включения Трансформаций — оно управляет только сочетаниями для выделенного текста. Использует трансформацию «Полировка» ровно так, как она настроена на странице Трансформаций (правила, инструкции и ваши примеры письма), и того же провайдера ИИ. Пропускается, если диктовка уже прошла ИИ-коррекцию, поэтому текст никогда не переписывается дважды; при сбое вставляется исходная расшифровка без изменений."
       }
     },
     "models": {
@@ -598,15 +606,15 @@
       },
       "autostart": {
         "label": "Запускать при старте",
-        "description": "Автоматически запускать SpeakoFlow при входе в систему."
+        "description": "Автоматически запускать ShalomFlow при входе в систему."
       },
       "showTrayIcon": {
         "label": "Показать значок в трее",
-        "description": "Отображать значок SpeakoFlow в системном трее."
+        "description": "Отображать значок ShalomFlow в системном трее."
       },
       "closeBehavior": {
         "label": "Выходить при закрытии окна",
-        "description": "Когда выключено, закрытие окна оставляет SpeakoFlow работать в трее, и горячие клавиши продолжают действовать. Когда включено, закрытие окна полностью завершает приложение."
+        "description": "Когда выключено, закрытие окна оставляет ShalomFlow работать в трее, и горячие клавиши продолжают действовать. Когда включено, закрытие окна полностью завершает приложение."
       },
       "overlayStyle": {
         "title": "Индикатор",
@@ -686,8 +694,8 @@
       },
       "customWords": {
         "title": "Пользовательский словарь",
-        "description": "Имена, продукты и фразы, которые SpeakoFlow должен писать так, как нужно вам.",
-        "info": "Например: добавьте «Kokoro», если SpeakoFlow пишет «Коко Роу».",
+        "description": "Имена, продукты и фразы, которые ShalomFlow должен писать так, как нужно вам.",
+        "info": "Например: добавьте «Kokoro», если ShalomFlow пишет «Коко Роу».",
         "placeholder": "Добавьте имя, термин или короткую фразу",
         "add": "Добавить",
         "empty": "Пользовательских слов пока нет.",
@@ -698,7 +706,7 @@
         "title": "Замены текста",
         "description": "Заменяйте фразу в транскрипции на текст, который вы часто используете. Например: «моя почта» превращается в «alex@example.com».",
         "rulesTitle": "Правила замены",
-        "rulesHint": "Укажите, что слышит SpeakoFlow и что он должен вставить.",
+        "rulesHint": "Укажите, что слышит ShalomFlow и что он должен вставить.",
         "empty": "Создайте правило для фразы, которую вы часто говорите.",
         "addFirst": "Создать первое правило",
         "addRule": "Добавить замену",
@@ -965,7 +973,7 @@
       },
       "updateChecks": {
         "label": "Проверять наличие обновлений",
-        "description": "Автоматически проверять наличие новых версий SpeakoFlow"
+        "description": "Автоматически проверять наличие новых версий ShalomFlow"
       },
       "soundTheme": {
         "label": "Звуковая тема",
@@ -1035,7 +1043,7 @@
       "title": "О программе",
       "version": {
         "title": "Версия",
-        "description": "Текущая версия SpeakoFlow"
+        "description": "Текущая версия ShalomFlow"
       },
       "updates": {
         "title": "Обновления",
@@ -1047,7 +1055,7 @@
       },
       "appDataDirectory": {
         "title": "Каталог данных приложения",
-        "description": "Место, где SpeakoFlow хранит свои данные"
+        "description": "Место, где ShalomFlow хранит свои данные"
       },
       "sourceCode": {
         "title": "Исходный код",
@@ -1056,12 +1064,12 @@
       },
       "license": {
         "title": "Лицензия",
-        "description": "SpeakoFlow — проект с открытым исходным кодом под лицензией MIT, основанный на Handy (также MIT) от CJ Pais.",
+        "description": "ShalomFlow — проект с открытым исходным кодом под лицензией MIT, основанный на Handy (также MIT) от CJ Pais.",
         "button": "Посмотреть лицензию"
       },
       "supportDevelopment": {
         "title": "Поддержка развития",
-        "description": "Помогите нам продолжать развитие SpeakoFlow",
+        "description": "Помогите нам продолжать развитие ShalomFlow",
         "button": "Поддержать"
       }
     },
@@ -1098,11 +1106,21 @@
         "finderSectionTitle": "Другие модели для устройства",
         "finderSectionDescription": "Ищите на Hugging Face, если нужен другой размер модели или другие возможности.",
         "finderTitle": "Обзор Hugging Face",
-        "finderDescription": "Найдите одну из тысяч моделей GGUF и скачайте её прямо в SpeakoFlow.",
+        "finderDescription": "Найдите одну из тысяч моделей GGUF и скачайте её прямо в ShalomFlow.",
         "finderAction": "Найти модель",
         "huggingFaceTitle": "Ваши модели",
         "huggingFaceDescription": "Загруженные модели и модели, добавленные вами с Hugging Face.",
-        "catalogEmpty": "Сейчас нет доступных рекомендованных локальных моделей."
+        "catalogEmpty": "Сейчас нет доступных рекомендованных локальных моделей.",
+        "claudeCodeTitle": "Use Claude Code instead",
+        "claudeCodeDescription": "Already have Claude Code installed? Run the assistant through it on your existing Claude plan — no download, no API key.",
+        "claudeCodeCardTitle": "Claude Code CLI",
+        "claudeCodeCardDescription": "Runs through your local Claude Code login. Prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeUseAction": "Use",
+        "claudeCodeActiveBadge": "In use",
+        "claudeCodeSubscriptionBadge": "Uses your Claude plan",
+        "claudeCodeDetected": "Detected v{{version}}",
+        "claudeCodeMissingDescription": "Install Claude Code, or make sure the `claude` command is on this machine's PATH, then check again.",
+        "claudeCodeRecheckAction": "Check again"
       },
       "subpages": {
         "profilesCaption": "Меняйте имя, роль и характер ассистента.",
@@ -1141,6 +1159,14 @@
         "builtinEnginePreparing": "Загрузка локального движка…",
         "builtinEngineExtracting": "Установка локального движка…",
         "builtinEngineReady": "Локальный движок готов.",
+        "claudeCodeModelLabel": "Claude model",
+        "claudeCodeModelDescription": "Which Claude model the CLI should use for replies.",
+        "claudeCodeNotice": "Runs through your local Claude Code login — prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeModels": {
+          "sonnet": "Sonnet (recommended)",
+          "opus": "Opus (most capable)",
+          "haiku": "Haiku (fastest)"
+        },
         "contextSizeLabel": "Окно контекста",
         "contextSizeDescription": "Сколько локальная модель может держать в голове одновременно — системные инструкции, историю чата, снимок экрана (одно изображение может занять большую часть) и её ответ. Больше окно — больше вмещается, просмотр экрана и поиск в интернете работают надёжнее, но памяти уходит больше. По умолчанию 8192; 16384 — хороший следующий шаг, если у компьютера есть свободное ОЗУ. Позже значение можно уменьшить, чтобы сэкономить память.",
         "unloadTimeoutLabel": "Выгружать из памяти через",
@@ -1245,7 +1271,7 @@
           }
         },
         "screenRecording": {
-          "description": "Для просмотра экрана нужно разрешение macOS на запись экрана. Выдайте его в системных настройках, затем перезапустите SpeakoFlow, чтобы оно вступило в силу.",
+          "description": "Для просмотра экрана нужно разрешение macOS на запись экрана. Выдайте его в системных настройках, затем перезапустите ShalomFlow, чтобы оно вступило в силу.",
           "grant": "Открыть настройки системы"
         }
       },
@@ -1323,7 +1349,7 @@
         "testButton": "Проверить голос",
         "testing": "Проверка…",
         "testOk": "Воспроизведено ✓",
-        "testPhrase": "Привет! Это проверка голосового вывода SpeakoFlow.",
+        "testPhrase": "Привет! Это проверка голосового вывода ShalomFlow.",
         "downloadStart": "Загрузка голоса Kokoro…",
         "downloadProgress": "Загрузка голоса Kokoro… {{progress}} %",
         "downloadReady": "Голос Kokoro готов ✓",
@@ -1426,7 +1452,7 @@
   },
   "accessibility": {
     "permissionsRequired": "Требуются разрешения на доступ",
-    "permissionsDescription": "SpeakoFlow необходимы разрешения на доступ для ввода расшифрованного текста.",
+    "permissionsDescription": "ShalomFlow необходимы разрешения на доступ для ввода расшифрованного текста.",
     "openSettings": "Открыть настройки системы",
     "dismiss": "Увольнять"
   },
@@ -1450,7 +1476,7 @@
   },
   "appLanguage": {
     "title": "Язык приложения",
-    "description": "Изменить язык интерфейса SpeakoFlow"
+    "description": "Изменить язык интерфейса ShalomFlow"
   },
   "overlay": {
     "preparing": "Готовим микрофон…",
@@ -1462,13 +1488,17 @@
     "notices": {
       "flowNotConfigured": "Для Flow нужна модель ассистента — вставлено как диктовка",
       "flowFailed": "Flow не смог сгенерировать — ничего не вставлено",
-      "flowEmpty": "Произнесите команду после фразы активации"
+      "flowEmpty": "Произнесите команду после фразы активации",
+      "transformNoSelection": "Nothing was captured — select some text and try again (some apps respond slowly)",
+      "transformNoModel": "Set an Assistant model in Settings to use Transforms",
+      "transformFailed": "The transform didn't run — your text was left unchanged"
     },
     "listening": "Слушаем…",
     "locked": "Запись без удержания — нажмите горячую клавишу снова, чтобы остановить",
     "cancel": "Отмена",
     "done": "Готово",
-    "askAssistant": "Спросить ассистента вместо того, чтобы вставлять это текстом"
+    "askAssistant": "Спросить ассистента вместо того, чтобы вставлять это текстом",
+    "transforming": "Трансформация…"
   },
   "assistant": {
     "title": "Ассистент",
@@ -1579,6 +1609,77 @@
       "preparing": "Настройка локального движка (первый запуск)…",
       "extracting": "Установка локального движка…",
       "short": "Настройка движка…"
+    }
+  },
+  "styles": {
+    "beta": "Бета",
+    "tabs": {
+      "personal": "Личные сообщения",
+      "work": "Рабочие сообщения",
+      "email": "Электронная почта",
+      "other": "Другое",
+      "autoCleanup": "Автоочистка"
+    },
+    "promo": {
+      "personal": "Этот стиль применяется в личных мессенджерах",
+      "work": "Этот стиль применяется в рабочих мессенджерах",
+      "email": "Этот стиль применяется во всех основных почтовых приложениях",
+      "other": "Этот стиль применяется во всех остальных приложениях",
+      "autoCleanup": "Автоматическая очистка слов-паразитов и оговорок",
+      "note": "Форматирование стиля работает только для английского. Скоро появятся другие языки."
+    },
+    "presets": {
+      "formal": "Официальный.",
+      "casual": "Неформальный",
+      "veryCasual": "очень неформальный",
+      "excited": "Восторженный!",
+      "off": "Выкл.",
+      "light": "Лёгкая",
+      "aggressive": "Агрессивная"
+    },
+    "rules": {
+      "capsPunctuation": "Заглавные буквы + пунктуация",
+      "capsLessPunctuation": "Заглавные буквы + меньше пунктуации",
+      "noCapsLessPunctuation": "Без заглавных букв + меньше пунктуации",
+      "moreExclamations": "Больше восклицаний",
+      "keepRaw": "Сохранить исходную расшифровку",
+      "trimFillers": "Убрать слова-паразиты",
+      "trimFillersTighten": "Убрать слова-паразиты + ужать"
+    }
+  },
+  "transformsPage": {
+    "beta": "Бета",
+    "optIn": "Включить",
+    "myTransforms": "Мои трансформации",
+    "resetDefaults": "Сбросить к значениям по умолчанию",
+    "createNew": "Создать новую",
+    "createOwn": "Создайте свою",
+    "uploadPrompt": "Загрузите свой промпт",
+    "promo": {
+      "title": "Трансформации работают везде, где вы пишете",
+      "body": "Примените трансформацию, чтобы переписать, очистить или переструктурировать текст после диктовки."
+    },
+    "detail": {
+      "autosave": "Автосохранение включено",
+      "reset": "Сбросить",
+      "close": "Закрыть",
+      "toUse": "для запуска",
+      "chooseShortcut": "Выберите сочетание клавиш",
+      "selectRules": "Выберите правила для {{name}}",
+      "customizeNamedPrompt": "Настройте промпт {{name}}",
+      "customizeTemplatePrompt": "Настройте промпт. (Так будет выглядеть итоговый результат)",
+      "exampleTitle": "Пример преобразованного текста",
+      "seeUpdates": "Посмотреть изменения",
+      "addExamples": "Добавьте примеры письма",
+      "addExamplesHint": "Добавьте примеры своих текстов, чтобы ShalomFlow изучил ваш уникальный стиль. Чем больше образцов, тем точнее он передаст ваш голос.",
+      "addExample": "Добавить пример",
+      "removeExample": "Удалить пример",
+      "createTitle": "Создайте свою",
+      "createSubtitle": "Настройте сочетание клавиш для применения этой трансформации.",
+      "nameLabel": "Назовите свою трансформацию",
+      "namePlaceholder": "Режим босса",
+      "customizePrompt": "Настроить промпт",
+      "promptPlaceholder": "Как эта трансформация должна изменять ваш текст?"
     }
   }
 }

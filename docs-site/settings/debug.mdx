@@ -1,6 +1,6 @@
 ---
 title: "Debug & advanced"
-description: "How to reveal SpeakoFlow's hidden Debug section, plus every setting in it: log level and where the log file is written, the word correction threshold, paste delay, and the extra recording buffer."
+description: "How to reveal ShalomFlow's hidden Debug section, plus every setting in it: log level and where the log file is written, the word correction threshold, paste delay, and the extra recording buffer."
 icon: "bug"
 ---
 
@@ -21,7 +21,7 @@ Most people never need anything in here.
 | Clamshell microphone | Your input devices | System default | **macOS laptops only.** Which microphone to use when the lid is closed. |
 
 <Note>
-  Turning debug mode on does not change how SpeakoFlow behaves, with one exception. It adds an extra **After 15 seconds (Debug)** choice to the model-unload dropdowns so reload behavior is quick to test.
+  Turning debug mode on does not change how ShalomFlow behaves, with one exception. It adds an extra **After 15 seconds (Debug)** choice to the model-unload dropdowns so reload behavior is quick to test.
 </Note>
 
 ## When to change these
@@ -37,13 +37,13 @@ Most people never need anything in here.
   <Accordion title="Where the log file is">
     The log file is named `speakoflow` and lives in your platform's standard application log directory, or in `Data/logs` next to the executable in portable mode.
 
-    Rather than documenting a path that varies by OS and install method, SpeakoFlow shows you the real one. *Settings → About → Folders* has both the log directory and the app data directory, each with a button that opens it in your file manager.
+    Rather than documenting a path that varies by OS and install method, ShalomFlow shows you the real one. *Settings → About → Folders* has both the log directory and the app data directory, each with a button that opens it in your file manager.
 
     Logs rotate at 500 KB and one previous file is kept, so they cannot grow without bound. A long session can therefore push out earlier detail, so capture the log soon after reproducing a problem.
   </Accordion>
 
   <Accordion title="Log level versus RUST_LOG and --debug">
-    Console output is filtered separately by the `RUST_LOG` environment variable. Running SpeakoFlow from a terminal with `RUST_LOG=trace` gives you a live firehose without touching this setting.
+    Console output is filtered separately by the `RUST_LOG` environment variable. Running ShalomFlow from a terminal with `RUST_LOG=trace` gives you a live firehose without touching this setting.
 
     Launching with the `--debug` flag raises logging to `Trace` for that run only, without writing anything to your saved settings. It does not reveal this section, because only the keyboard shortcut does that. See [Command-line flags](/settings/cli).
   </Accordion>
@@ -55,9 +55,9 @@ Most people never need anything in here.
   </Accordion>
 
   <Accordion title="Why the clamshell microphone row is sometimes missing">
-    The row appears only when SpeakoFlow detects an internal battery, so it never shows on a desktop Mac, Windows, or Linux.
+    The row appears only when ShalomFlow detects an internal battery, so it never shows on a desktop Mac, Windows, or Linux.
 
-    SpeakoFlow reads the lid state from the system and switches to this device automatically when the lid is shut. That is useful when your normal choice is the built-in microphone, which is unusable in clamshell mode.
+    ShalomFlow reads the lid state from the system and switches to this device automatically when the lid is shut. That is useful when your normal choice is the built-in microphone, which is unusable in clamshell mode.
   </Accordion>
 
   <Accordion title="Settings that used to be here">

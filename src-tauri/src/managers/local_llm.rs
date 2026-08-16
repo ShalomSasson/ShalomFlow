@@ -1014,7 +1014,7 @@ impl LocalLlmManager {
     pub fn stop(&self) {
         // Called from `Drop` on app quit, so recover from a poisoned mutex
         // instead of panicking — a panic inside Drop calls abort() (extends the
-        // intent of Handy #1354 to this SpeakoFlow-added manager). Recovering
+        // intent of Handy #1354 to this ShalomFlow-added manager). Recovering
         // the guard still lets us kill the child process during shutdown.
         let mut st = match self.state.lock() {
             Ok(g) => g,

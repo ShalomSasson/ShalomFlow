@@ -6,6 +6,8 @@ import type {
   AudioDevice,
   PostProcessReadiness,
   Replacement,
+  StylePrefs,
+  Transform,
   WhisperAcceleratorSetting,
   OrtAcceleratorSetting,
   PostProcessCleanupStrength,
@@ -174,6 +176,14 @@ const settingUpdaters: {
     commands.changeAssistantOverlayStyleSetting(value as string),
   debug_mode: (value) => commands.changeDebugModeSetting(value as boolean),
   custom_words: (value) => commands.updateCustomWords(value as string[]),
+  transforms_enabled: (value) =>
+    commands.setTransformsEnabled(value as boolean),
+  polish_after_dictation: (value) =>
+    commands.setPolishAfterDictation(value as boolean),
+  transforms: (value) => commands.updateTransforms(value as Transform[]),
+  style_prefs: (value) => commands.setStylePrefs(value as StylePrefs),
+  transform_writing_examples: (value) =>
+    commands.setTransformWritingExamples(value as string[]),
   spoken_emojis_enabled: (value) =>
     commands.changeSpokenEmojisEnabledSetting(value as boolean),
   replacements_enabled: (value) =>

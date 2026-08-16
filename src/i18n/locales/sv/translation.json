@@ -31,7 +31,9 @@
     "characters": "Profiler",
     "memory": "Minne",
     "collapse": "Fäll in sidofältet",
-    "expand": "Fäll ut sidofältet"
+    "expand": "Fäll ut sidofältet",
+    "styles": "Stilar",
+    "transforms": "Transformationer"
   },
   "window": {
     "minimize": "Minimera",
@@ -45,7 +47,8 @@
     "assistant": "Ställ in assistenten och finjustera sedan dess röst, skärmvisning och webbsökning.",
     "history": "Dina senaste dikteringar, Flow-genereringar och assistentchattar, lagrade på den här enheten.",
     "about": "Version, appspråk, dataplatser och tack till.",
-    "debug": "Diagnostik och utvecklarverktyg."
+    "debug": "Diagnostik och utvecklarverktyg.",
+    "styles": "Hur din dikterade text formateras i varje typ av app."
   },
   "onboarding": {
     "subtitle": "För att komma igång, välj en transkriptionsmodell",
@@ -57,7 +60,7 @@
       "ready": "Du är klar"
     },
     "speechToText": {
-      "title": "Hur ska SpeakoFlow höra dig?",
+      "title": "Hur ska ShalomFlow höra dig?",
       "subtitle": "Det här förvandlar din röst till text, direkt på din dator. Välj en, byt när du vill.",
       "cards": {
         "fast": {
@@ -113,7 +116,7 @@
       "downloadingVoice": "Din röstmodell landar. {{percentage}}% klart.",
       "downloadingGeneric": "Laddar fortfarande ner. {{percentage}}% klart.",
       "signOff": "Det var allt. Säg något nu.",
-      "openApp": "Öppna SpeakoFlow"
+      "openApp": "Öppna ShalomFlow"
     },
     "errors": {
       "selectModel": "Kunde inte välja den modellen. Försök igen.",
@@ -245,7 +248,7 @@
     },
     "permissions": {
       "title": "Behörigheter krävs",
-      "description": "SpeakoFlow behöver ett par behörigheter för att fungera korrekt.",
+      "description": "ShalomFlow behöver ett par behörigheter för att fungera korrekt.",
       "microphone": {
         "title": "Mikrofonåtkomst",
         "description": "Krävs för att höra din röst för transkription."
@@ -444,6 +447,11 @@
         "info": "Medan du håller ned ditt inspelningskortkommando trycker du på den här tangenten för att låsa handsfree-inspelning, så att du kan släppa och fortsätta tala. Välj en tangent som inte ingår i ditt inspelningskortkommando, eller rensa den för att stänga av funktionen.",
         "off": "Av",
         "clear": "Rensa"
+      },
+      "polishDictation": {
+        "label": "Polera diktering",
+        "description": "Skriver om varje diktering med Polera-transformationen innan den klistras in.",
+        "info": "Oberoende av Transformations-aktiveringen, som bara styr markeringsgenvägarna. Använder Polera-transformationen exakt som den är inställd på Transformationer-sidan (regler, egna instruktioner och dina skrivexempel) och samma AI-leverantör. Hoppas över när dikteringen redan använt AI-korrigering, så text skrivs aldrig om två gånger; misslyckas omskrivningen klistras den råa transkriptionen in oförändrad."
       }
     },
     "models": {
@@ -598,15 +606,15 @@
       },
       "autostart": {
         "label": "Starta vid uppstart",
-        "description": "Starta SpeakoFlow automatiskt när du loggar in på din dator."
+        "description": "Starta ShalomFlow automatiskt när du loggar in på din dator."
       },
       "showTrayIcon": {
         "label": "Visa ikon i systemfältet",
-        "description": "Visa SpeakoFlow-ikonen i systemfältet."
+        "description": "Visa ShalomFlow-ikonen i systemfältet."
       },
       "closeBehavior": {
         "label": "Avsluta när jag stänger fönstret",
-        "description": "När det är av fortsätter SpeakoFlow att köras i systemfältet när du stänger fönstret, så att dina kortkommandon fortfarande fungerar. När det är på avslutas appen helt när du stänger fönstret."
+        "description": "När det är av fortsätter ShalomFlow att köras i systemfältet när du stänger fönstret, så att dina kortkommandon fortfarande fungerar. När det är på avslutas appen helt när du stänger fönstret."
       },
       "overlayStyle": {
         "title": "Överlagring",
@@ -686,8 +694,8 @@
       },
       "customWords": {
         "title": "Anpassade ord",
-        "description": "Namn, produkter och fraser som SpeakoFlow ska stava på ditt sätt.",
-        "info": "Exempel: lägg till ”Kokoro” om SpeakoFlow skriver ”Coco row”.",
+        "description": "Namn, produkter och fraser som ShalomFlow ska stava på ditt sätt.",
+        "info": "Exempel: lägg till ”Kokoro” om ShalomFlow skriver ”Coco row”.",
         "placeholder": "Lägg till ett namn, en term eller en kort fras",
         "add": "Lägg till",
         "empty": "Inga anpassade ord ännu.",
@@ -698,7 +706,7 @@
         "title": "Textersättningar",
         "description": "Ersätt en fras i din transkribering med text du använder ofta. Exempel: ”min e-post” blir ”alex@example.com”.",
         "rulesTitle": "Ersättningsregler",
-        "rulesHint": "Välj vad SpeakoFlow hör och vad som ska infogas.",
+        "rulesHint": "Välj vad ShalomFlow hör och vad som ska infogas.",
         "empty": "Skapa en regel för en fras du säger ofta.",
         "addFirst": "Skapa första regeln",
         "addRule": "Lägg till ersättning",
@@ -965,7 +973,7 @@
       },
       "updateChecks": {
         "label": "Sök efter uppdateringar",
-        "description": "Sök automatiskt efter nya versioner av SpeakoFlow"
+        "description": "Sök automatiskt efter nya versioner av ShalomFlow"
       },
       "soundTheme": {
         "label": "Ljudtema",
@@ -1035,7 +1043,7 @@
       "title": "Om",
       "version": {
         "title": "Version",
-        "description": "Nuvarande version av SpeakoFlow"
+        "description": "Nuvarande version av ShalomFlow"
       },
       "updates": {
         "title": "Uppdateringar",
@@ -1047,7 +1055,7 @@
       },
       "appDataDirectory": {
         "title": "Mapp för appdata",
-        "description": "Plats där SpeakoFlow lagrar sina data"
+        "description": "Plats där ShalomFlow lagrar sina data"
       },
       "sourceCode": {
         "title": "Källkod",
@@ -1056,12 +1064,12 @@
       },
       "license": {
         "title": "Licens",
-        "description": "SpeakoFlow är öppen källkod under MIT-licensen och bygger på Handy (också MIT) av CJ Pais.",
+        "description": "ShalomFlow är öppen källkod under MIT-licensen och bygger på Handy (också MIT) av CJ Pais.",
         "button": "Visa licensen"
       },
       "supportDevelopment": {
         "title": "Stöd utvecklingen",
-        "description": "Hjälp oss att fortsätta bygga SpeakoFlow",
+        "description": "Hjälp oss att fortsätta bygga ShalomFlow",
         "button": "Donera"
       }
     },
@@ -1098,11 +1106,21 @@
         "finderSectionTitle": "Fler modeller på enheten",
         "finderSectionDescription": "Sök på Hugging Face när du behöver en annan modellstorlek eller förmåga.",
         "finderTitle": "Utforska Hugging Face",
-        "finderDescription": "Sök bland tusentals GGUF-modeller och ladda ner en direkt till SpeakoFlow.",
+        "finderDescription": "Sök bland tusentals GGUF-modeller och ladda ner en direkt till ShalomFlow.",
         "finderAction": "Hitta en modell",
         "huggingFaceTitle": "Dina modeller",
         "huggingFaceDescription": "Nedladdade modeller och modeller du lagt till från Hugging Face.",
-        "catalogEmpty": "Inga rekommenderade lokala modeller är tillgängliga just nu."
+        "catalogEmpty": "Inga rekommenderade lokala modeller är tillgängliga just nu.",
+        "claudeCodeTitle": "Use Claude Code instead",
+        "claudeCodeDescription": "Already have Claude Code installed? Run the assistant through it on your existing Claude plan — no download, no API key.",
+        "claudeCodeCardTitle": "Claude Code CLI",
+        "claudeCodeCardDescription": "Runs through your local Claude Code login. Prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeUseAction": "Use",
+        "claudeCodeActiveBadge": "In use",
+        "claudeCodeSubscriptionBadge": "Uses your Claude plan",
+        "claudeCodeDetected": "Detected v{{version}}",
+        "claudeCodeMissingDescription": "Install Claude Code, or make sure the `claude` command is on this machine's PATH, then check again.",
+        "claudeCodeRecheckAction": "Check again"
       },
       "subpages": {
         "profilesCaption": "Byt assistentens namn, roll och personlighet.",
@@ -1141,6 +1159,14 @@
         "builtinEnginePreparing": "Laddar ner den lokala motorn…",
         "builtinEngineExtracting": "Installerar den lokala motorn…",
         "builtinEngineReady": "Den lokala motorn är klar.",
+        "claudeCodeModelLabel": "Claude model",
+        "claudeCodeModelDescription": "Which Claude model the CLI should use for replies.",
+        "claudeCodeNotice": "Runs through your local Claude Code login — prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeModels": {
+          "sonnet": "Sonnet (recommended)",
+          "opus": "Opus (most capable)",
+          "haiku": "Haiku (fastest)"
+        },
         "contextSizeLabel": "Kontextfönster",
         "contextSizeDescription": "Hur mycket den lokala modellen kan hålla i huvudet samtidigt — systeminstruktionerna, din chatthistorik, eventuella skärmbilder (en enda bild kan ta en stor del) och dess svar. Ett större fönster rymmer mer och håller skärmvisning och webbsökning tillförlitliga, men använder mer minne. Standard är 8192; 16384 är ett bra steg upp om din dator har RAM att avvara. Du kan sänka det senare för att spara minne.",
         "unloadTimeoutLabel": "Avlasta från minnet efter",
@@ -1245,7 +1271,7 @@
           }
         },
         "screenRecording": {
-          "description": "Skärmvisning kräver behörigheten Skärminspelning i macOS. Bevilja den i Systeminställningar och starta sedan om SpeakoFlow för att den ska börja gälla.",
+          "description": "Skärmvisning kräver behörigheten Skärminspelning i macOS. Bevilja den i Systeminställningar och starta sedan om ShalomFlow för att den ska börja gälla.",
           "grant": "Öppna systeminställningar"
         }
       },
@@ -1323,7 +1349,7 @@
         "testButton": "Testa rösten",
         "testing": "Testar…",
         "testOk": "Uppspelad ✓",
-        "testPhrase": "Hej! Det här är ett test av SpeakoFlows röstuppläsning.",
+        "testPhrase": "Hej! Det här är ett test av ShalomFlows röstuppläsning.",
         "downloadStart": "Laddar ner Kokoro-rösten…",
         "downloadProgress": "Laddar ner Kokoro-rösten… {{progress}}%",
         "downloadReady": "Kokoro-rösten är klar ✓",
@@ -1426,7 +1452,7 @@
   },
   "accessibility": {
     "permissionsRequired": "Behörigheter för hjälpmedel krävs",
-    "permissionsDescription": "SpeakoFlow behöver behörighet för hjälpmedel för att kunna skriva transkriberad text.",
+    "permissionsDescription": "ShalomFlow behöver behörighet för hjälpmedel för att kunna skriva transkriberad text.",
     "openSettings": "Öppna systeminställningar",
     "dismiss": "Avvisa"
   },
@@ -1450,7 +1476,7 @@
   },
   "appLanguage": {
     "title": "Applikationsspråk",
-    "description": "Ändra språket i SpeakoFlow-gränssnittet"
+    "description": "Ändra språket i ShalomFlow-gränssnittet"
   },
   "overlay": {
     "preparing": "Förbereder mikrofonen…",
@@ -1462,13 +1488,17 @@
     "notices": {
       "flowNotConfigured": "Flow behöver en assistentmodell — inklistrat som diktering",
       "flowFailed": "Flow kunde inte generera — inget klistrades in",
-      "flowEmpty": "Säg ett kommando efter aktiveringsfrasen"
+      "flowEmpty": "Säg ett kommando efter aktiveringsfrasen",
+      "transformNoSelection": "Nothing was captured — select some text and try again (some apps respond slowly)",
+      "transformNoModel": "Set an Assistant model in Settings to use Transforms",
+      "transformFailed": "The transform didn't run — your text was left unchanged"
     },
     "listening": "Lyssnar…",
     "locked": "Spelar in handsfree — tryck på kortkommandot igen för att stoppa",
     "cancel": "Avbryt",
     "done": "Klar",
-    "askAssistant": "Fråga assistenten i stället för att skriva in det här"
+    "askAssistant": "Fråga assistenten i stället för att skriva in det här",
+    "transforming": "Transformerar…"
   },
   "assistant": {
     "title": "Assistent",
@@ -1579,6 +1609,77 @@
       "preparing": "Ställer in den lokala motorn (första körningen)…",
       "extracting": "Installerar den lokala motorn…",
       "short": "Ställer in motorn…"
+    }
+  },
+  "styles": {
+    "beta": "Beta",
+    "tabs": {
+      "personal": "Personliga meddelanden",
+      "work": "Arbetsmeddelanden",
+      "email": "E-post",
+      "other": "Övrigt",
+      "autoCleanup": "Autorensning"
+    },
+    "promo": {
+      "personal": "Den här stilen gäller i personliga meddelandeappar",
+      "work": "Den här stilen gäller i meddelandeappar för arbetet",
+      "email": "Den här stilen gäller i alla större e-postappar",
+      "other": "Den här stilen gäller i alla andra appar",
+      "autoCleanup": "Automatisk rensning av utfyllnadsord och felstarter",
+      "note": "Stilformatering gäller endast engelska. Fler språk kommer snart."
+    },
+    "presets": {
+      "formal": "Formell.",
+      "casual": "Ledig",
+      "veryCasual": "väldigt ledig",
+      "excited": "Entusiastisk!",
+      "off": "Av",
+      "light": "Lätt",
+      "aggressive": "Aggressiv"
+    },
+    "rules": {
+      "capsPunctuation": "Versaler + interpunktion",
+      "capsLessPunctuation": "Versaler + mindre interpunktion",
+      "noCapsLessPunctuation": "Inga versaler + mindre interpunktion",
+      "moreExclamations": "Fler utropstecken",
+      "keepRaw": "Behåll den råa transkriptionen",
+      "trimFillers": "Ta bort utfyllnadsord",
+      "trimFillersTighten": "Ta bort utfyllnadsord + strama åt"
+    }
+  },
+  "transformsPage": {
+    "beta": "Beta",
+    "optIn": "Aktivera",
+    "myTransforms": "Mina transformationer",
+    "resetDefaults": "Återställ till standard",
+    "createNew": "Skapa ny",
+    "createOwn": "Skapa din egen",
+    "uploadPrompt": "Ladda upp din egen prompt",
+    "promo": {
+      "title": "Transformationer fungerar överallt där du skriver",
+      "body": "Använd en transformation för att skriva om, städa upp eller strukturera om text efter diktering."
+    },
+    "detail": {
+      "autosave": "Autospar på",
+      "reset": "Återställ",
+      "close": "Stäng",
+      "toUse": "för att använda",
+      "chooseShortcut": "Välj ett kortkommando",
+      "selectRules": "Välj regler för {{name}}",
+      "customizeNamedPrompt": "Anpassa din {{name}}-prompt",
+      "customizeTemplatePrompt": "Anpassa prompten. (Så här kommer promptens slutresultat att se ut)",
+      "exampleTitle": "Exempel på transformerad text",
+      "seeUpdates": "Se ändringar",
+      "addExamples": "Lägg till skrivexempel",
+      "addExamplesHint": "Lägg till exempel på ditt skrivande så att ShalomFlow lär sig din unika stil. Ju fler exempel, desto bättre matchar den din röst.",
+      "addExample": "Lägg till exempel",
+      "removeExample": "Ta bort exempel",
+      "createTitle": "Skapa din egen",
+      "createSubtitle": "Ställ in ett kortkommando för att använda den här transformationen.",
+      "nameLabel": "Namnge din transformation",
+      "namePlaceholder": "Bossläge",
+      "customizePrompt": "Anpassa prompt",
+      "promptPlaceholder": "Hur vill du att den här transformationen ska ändra din text?"
     }
   }
 }

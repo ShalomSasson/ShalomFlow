@@ -31,7 +31,9 @@
     "characters": "プロフィール",
     "memory": "メモリ",
     "collapse": "サイドバーを折りたたむ",
-    "expand": "サイドバーを展開"
+    "expand": "サイドバーを展開",
+    "styles": "スタイル",
+    "transforms": "トランスフォーム"
   },
   "window": {
     "minimize": "最小化",
@@ -45,7 +47,8 @@
     "assistant": "アシスタントを設定し、音声、画面認識、ウェブ検索を調整します。",
     "history": "このデバイスに保存されている、最近の音声入力、Flowでの生成、アシスタントのチャット。",
     "about": "バージョン、アプリの言語、データの保存場所、クレジット。",
-    "debug": "診断と開発者向けツール。"
+    "debug": "診断と開発者向けツール。",
+    "styles": "アプリの種類ごとに、音声入力したテキストの書式を設定します。"
   },
   "onboarding": {
     "subtitle": "開始するには、文字起こしモデルを選択してください",
@@ -57,7 +60,7 @@
       "ready": "準備完了"
     },
     "speechToText": {
-      "title": "SpeakoFlowにどう聞き取ってほしいですか？",
+      "title": "ShalomFlowにどう聞き取ってほしいですか？",
       "subtitle": "あなたの声を、この端末上でそのままテキストに変えます。ひとつ選んでください。いつでも変更できます。",
       "cards": {
         "fast": {
@@ -113,7 +116,7 @@
       "downloadingVoice": "音声モデルを準備しています。{{percentage}}% 完了。",
       "downloadingGeneric": "ダウンロード中です。{{percentage}}% 完了。",
       "signOff": "以上で完了です。何か話しかけてみてください。",
-      "openApp": "SpeakoFlowを開く"
+      "openApp": "ShalomFlowを開く"
     },
     "errors": {
       "selectModel": "そのモデルを選択できませんでした。もう一度お試しください。",
@@ -245,7 +248,7 @@
     },
     "permissions": {
       "title": "権限が必要です",
-      "description": "SpeakoFlowが正常に動作するにはいくつかの権限が必要です。",
+      "description": "ShalomFlowが正常に動作するにはいくつかの権限が必要です。",
       "microphone": {
         "title": "マイクへのアクセス",
         "description": "文字起こしのためにあなたの声を聞くために必要です。"
@@ -444,6 +447,11 @@
         "info": "録音ショートカットを押している間にこのキーをタップすると、ハンズフリー録音がロックされ、キーを離しても話し続けられます。録音ショートカットに含まれていないキーを選んでください。クリアするとこの機能はオフになります。",
         "off": "オフ",
         "clear": "クリア"
+      },
+      "polishDictation": {
+        "label": "音声入力をポリッシュ",
+        "description": "貼り付け前に、すべての音声入力をポリッシュトランスフォームで書き直します。",
+        "info": "トランスフォームのオプトインとは独立しており、オプトインは選択ショートカットのみを制御します。トランスフォームページで設定したとおりのポリッシュトランスフォーム（ルール、カスタム指示、文章の例）と同じAIプロバイダーを使用します。AI補正を使った音声入力ではスキップされ、テキストが二重に書き直されることはありません。書き直しに失敗した場合は、生の文字起こしがそのまま貼り付けられます。"
       }
     },
     "models": {
@@ -598,15 +606,15 @@
       },
       "autostart": {
         "label": "起動時に実行",
-        "description": "コンピューターにログインしたときにSpeakoFlowを自動的に起動。"
+        "description": "コンピューターにログインしたときにShalomFlowを自動的に起動。"
       },
       "showTrayIcon": {
         "label": "トレイアイコンを表示",
-        "description": "システムトレイにSpeakoFlowのアイコンを表示します。"
+        "description": "システムトレイにShalomFlowのアイコンを表示します。"
       },
       "closeBehavior": {
         "label": "ウィンドウを閉じたら終了する",
-        "description": "オフの場合、ウィンドウを閉じてもSpeakoFlowはトレイで動作し続け、ホットキーも使えます。オンの場合、ウィンドウを閉じるとアプリが完全に終了します。"
+        "description": "オフの場合、ウィンドウを閉じてもShalomFlowはトレイで動作し続け、ホットキーも使えます。オンの場合、ウィンドウを閉じるとアプリが完全に終了します。"
       },
       "overlayStyle": {
         "title": "オーバーレイ",
@@ -686,8 +694,8 @@
       },
       "customWords": {
         "title": "カスタム単語",
-        "description": "SpeakoFlowにあなたの表記どおりに書いてほしい名前、製品名、フレーズ。",
-        "info": "例：SpeakoFlowが「Coco row」と書いてしまう場合は「Kokoro」を追加します。",
+        "description": "ShalomFlowにあなたの表記どおりに書いてほしい名前、製品名、フレーズ。",
+        "info": "例：ShalomFlowが「Coco row」と書いてしまう場合は「Kokoro」を追加します。",
         "placeholder": "名前、用語、短いフレーズを追加",
         "add": "追加",
         "empty": "カスタム単語はまだありません。",
@@ -698,7 +706,7 @@
         "title": "テキスト置換",
         "description": "文字起こしの中の言い回しを、よく使うテキストに置き換えます。例：「my email」が「alex@example.com」になります。",
         "rulesTitle": "置換ルール",
-        "rulesHint": "SpeakoFlowが聞き取る言葉と、挿入するテキストを指定します。",
+        "rulesHint": "ShalomFlowが聞き取る言葉と、挿入するテキストを指定します。",
         "empty": "よく話す言い回しのルールを作成しましょう。",
         "addFirst": "最初のルールを作成",
         "addRule": "置換を追加",
@@ -965,7 +973,7 @@
       },
       "updateChecks": {
         "label": "アップデートを確認",
-        "description": "SpeakoFlowの新しいバージョンを自動的にチェック"
+        "description": "ShalomFlowの新しいバージョンを自動的にチェック"
       },
       "soundTheme": {
         "label": "サウンドテーマ",
@@ -1035,7 +1043,7 @@
       "title": "概要",
       "version": {
         "title": "バージョン",
-        "description": "SpeakoFlowの現在のバージョン"
+        "description": "ShalomFlowの現在のバージョン"
       },
       "updates": {
         "title": "アップデート",
@@ -1047,7 +1055,7 @@
       },
       "appDataDirectory": {
         "title": "アプリデータディレクトリ",
-        "description": "SpeakoFlowがデータを保存する場所"
+        "description": "ShalomFlowがデータを保存する場所"
       },
       "sourceCode": {
         "title": "ソースコード",
@@ -1056,12 +1064,12 @@
       },
       "license": {
         "title": "ライセンス",
-        "description": "SpeakoFlowはMITライセンスのオープンソースで、CJ Pais氏によるHandy（同じくMIT）を基にしています。",
+        "description": "ShalomFlowはMITライセンスのオープンソースで、CJ Pais氏によるHandy（同じくMIT）を基にしています。",
         "button": "ライセンスを見る"
       },
       "supportDevelopment": {
         "title": "開発を支援",
-        "description": "SpeakoFlowの開発を支援してください",
+        "description": "ShalomFlowの開発を支援してください",
         "button": "寄付する"
       }
     },
@@ -1098,11 +1106,21 @@
         "finderSectionTitle": "デバイス上で動く他のモデル",
         "finderSectionDescription": "別のサイズや機能のモデルが必要なときは、Hugging Faceを検索してください。",
         "finderTitle": "Hugging Faceを見る",
-        "finderDescription": "数千のGGUFモデルを検索し、SpeakoFlowに直接ダウンロードできます。",
+        "finderDescription": "数千のGGUFモデルを検索し、ShalomFlowに直接ダウンロードできます。",
         "finderAction": "モデルを探す",
         "huggingFaceTitle": "あなたのモデル",
         "huggingFaceDescription": "ダウンロード済みのモデルと、Hugging Faceから追加したモデル。",
-        "catalogEmpty": "現在、おすすめのローカルモデルはありません。"
+        "catalogEmpty": "現在、おすすめのローカルモデルはありません。",
+        "claudeCodeTitle": "Use Claude Code instead",
+        "claudeCodeDescription": "Already have Claude Code installed? Run the assistant through it on your existing Claude plan — no download, no API key.",
+        "claudeCodeCardTitle": "Claude Code CLI",
+        "claudeCodeCardDescription": "Runs through your local Claude Code login. Prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeUseAction": "Use",
+        "claudeCodeActiveBadge": "In use",
+        "claudeCodeSubscriptionBadge": "Uses your Claude plan",
+        "claudeCodeDetected": "Detected v{{version}}",
+        "claudeCodeMissingDescription": "Install Claude Code, or make sure the `claude` command is on this machine's PATH, then check again.",
+        "claudeCodeRecheckAction": "Check again"
       },
       "subpages": {
         "profilesCaption": "アシスタントの名前、役割、性格を切り替えます。",
@@ -1141,6 +1159,14 @@
         "builtinEnginePreparing": "ローカルエンジンをダウンロード中…",
         "builtinEngineExtracting": "ローカルエンジンをインストール中…",
         "builtinEngineReady": "ローカルエンジンの準備が完了しました。",
+        "claudeCodeModelLabel": "Claude model",
+        "claudeCodeModelDescription": "Which Claude model the CLI should use for replies.",
+        "claudeCodeNotice": "Runs through your local Claude Code login — prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeModels": {
+          "sonnet": "Sonnet (recommended)",
+          "opus": "Opus (most capable)",
+          "haiku": "Haiku (fastest)"
+        },
         "contextSizeLabel": "コンテキストウィンドウ",
         "contextSizeDescription": "ローカルモデルが一度に把握できる量です — システムの指示、チャット履歴、スクリーンショット（画像1枚で大きく消費します）、そして回答が含まれます。大きくすると多くを保持でき、画面認識やウェブ検索も安定しますが、メモリの使用量が増えます。既定は8192で、RAMに余裕があれば16384が良い一段上の選択です。メモリを節約するために、後から下げることもできます。",
         "unloadTimeoutLabel": "メモリから解放するまでの時間",
@@ -1245,7 +1271,7 @@
           }
         },
         "screenRecording": {
-          "description": "画面認識にはmacOSの画面収録の権限が必要です。システム設定で許可したあと、SpeakoFlowを再起動すると有効になります。",
+          "description": "画面認識にはmacOSの画面収録の権限が必要です。システム設定で許可したあと、ShalomFlowを再起動すると有効になります。",
           "grant": "システム設定を開く"
         }
       },
@@ -1323,7 +1349,7 @@
         "testButton": "音声をテスト",
         "testing": "テスト中…",
         "testOk": "再生しました ✓",
-        "testPhrase": "こんにちは！これはSpeakoFlowの音声出力のテストです。",
+        "testPhrase": "こんにちは！これはShalomFlowの音声出力のテストです。",
         "downloadStart": "Kokoroの音声をダウンロード中…",
         "downloadProgress": "Kokoroの音声をダウンロード中… {{progress}}%",
         "downloadReady": "Kokoroの音声の準備が完了しました ✓",
@@ -1426,7 +1452,7 @@
   },
   "accessibility": {
     "permissionsRequired": "アクセシビリティ権限が必要です",
-    "permissionsDescription": "SpeakoFlowが文字起こしテキストを入力するには、アクセシビリティ権限が必要です。",
+    "permissionsDescription": "ShalomFlowが文字起こしテキストを入力するには、アクセシビリティ権限が必要です。",
     "openSettings": "システム設定を開く",
     "dismiss": "閉じる"
   },
@@ -1450,7 +1476,7 @@
   },
   "appLanguage": {
     "title": "アプリケーション言語",
-    "description": "SpeakoFlowインターフェースの言語を変更"
+    "description": "ShalomFlowインターフェースの言語を変更"
   },
   "overlay": {
     "preparing": "マイクを準備中…",
@@ -1462,13 +1488,17 @@
     "notices": {
       "flowNotConfigured": "Flowにはアシスタントのモデルが必要です — 音声入力として貼り付けました",
       "flowFailed": "Flowが生成できませんでした — 何も貼り付けられていません",
-      "flowEmpty": "起動フレーズのあとに指示を話してください"
+      "flowEmpty": "起動フレーズのあとに指示を話してください",
+      "transformNoSelection": "Nothing was captured — select some text and try again (some apps respond slowly)",
+      "transformNoModel": "Set an Assistant model in Settings to use Transforms",
+      "transformFailed": "The transform didn't run — your text was left unchanged"
     },
     "listening": "聞いています…",
     "locked": "ハンズフリーで録音中 — 停止するにはもう一度ホットキーを押してください",
     "cancel": "キャンセル",
     "done": "完了",
-    "askAssistant": "これを入力せずアシスタントに聞く"
+    "askAssistant": "これを入力せずアシスタントに聞く",
+    "transforming": "変換中…"
   },
   "assistant": {
     "title": "アシスタント",
@@ -1579,6 +1609,77 @@
       "preparing": "ローカルエンジンを準備中（初回のみ）…",
       "extracting": "ローカルエンジンをインストール中…",
       "short": "エンジンを準備中…"
+    }
+  },
+  "styles": {
+    "beta": "ベータ",
+    "tabs": {
+      "personal": "個人メッセージ",
+      "work": "仕事のメッセージ",
+      "email": "メール",
+      "other": "その他",
+      "autoCleanup": "自動クリーンアップ"
+    },
+    "promo": {
+      "personal": "このスタイルは個人向けメッセージアプリに適用されます",
+      "work": "このスタイルは職場向けメッセージアプリに適用されます",
+      "email": "このスタイルは主要なメールアプリに適用されます",
+      "other": "このスタイルはその他すべてのアプリに適用されます",
+      "autoCleanup": "つなぎ言葉や言い直しを自動でクリーンアップ",
+      "note": "スタイルの書式設定は英語のみ対応しています。他の言語も近日対応予定です。"
+    },
+    "presets": {
+      "formal": "フォーマル。",
+      "casual": "カジュアル",
+      "veryCasual": "とてもカジュアル",
+      "excited": "ワクワク！",
+      "off": "オフ",
+      "light": "軽め",
+      "aggressive": "強め"
+    },
+    "rules": {
+      "capsPunctuation": "大文字＋句読点",
+      "capsLessPunctuation": "大文字＋句読点少なめ",
+      "noCapsLessPunctuation": "大文字なし＋句読点少なめ",
+      "moreExclamations": "感嘆符多め",
+      "keepRaw": "生の文字起こしを保持",
+      "trimFillers": "つなぎ言葉を削除",
+      "trimFillersTighten": "つなぎ言葉を削除＋引き締め"
+    }
+  },
+  "transformsPage": {
+    "beta": "ベータ",
+    "optIn": "オプトイン",
+    "myTransforms": "マイトランスフォーム",
+    "resetDefaults": "デフォルトに戻す",
+    "createNew": "新規作成",
+    "createOwn": "自分だけのものを作成",
+    "uploadPrompt": "独自のプロンプトをアップロード",
+    "promo": {
+      "title": "トランスフォームは書く場所を選びません",
+      "body": "音声入力後にトランスフォームを適用して、テキストの書き直し・整理・再構成ができます。"
+    },
+    "detail": {
+      "autosave": "自動保存オン",
+      "reset": "リセット",
+      "close": "閉じる",
+      "toUse": "で実行",
+      "chooseShortcut": "キーボードショートカットを選択",
+      "selectRules": "{{name}}のルールを選択",
+      "customizeNamedPrompt": "{{name}}のプロンプトをカスタマイズ",
+      "customizeTemplatePrompt": "プロンプトをカスタマイズ。（プロンプトの最終出力はこのようになります）",
+      "exampleTitle": "変換されたテキストの例",
+      "seeUpdates": "更新を見る",
+      "addExamples": "文章の例を追加",
+      "addExamplesHint": "あなたの文章の例を追加して、ShalomFlow に独自のスタイルを学習させましょう。サンプルが多いほど、あなたの声に近づきます。",
+      "addExample": "例を追加",
+      "removeExample": "例を削除",
+      "createTitle": "自分だけのものを作成",
+      "createSubtitle": "このトランスフォームを適用するキーボードショートカットを設定します。",
+      "nameLabel": "トランスフォームショートカットに名前を付ける",
+      "namePlaceholder": "ボスモード",
+      "customizePrompt": "プロンプトをカスタマイズ",
+      "promptPlaceholder": "このトランスフォームでテキストをどのように変えたいですか？"
     }
   }
 }

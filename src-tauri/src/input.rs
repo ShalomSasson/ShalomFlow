@@ -22,6 +22,31 @@ pub fn get_cursor_position(app_handle: &AppHandle) -> Option<(i32, i32)> {
     enigo.location().ok()
 }
 
+/// Run `f` on the main thread and await its result.
+///
+/// Every production call site that fires an Enigo chord (`actions.rs:1241`,
+/// `actions.rs:1358` for paste; `selection.rs`'s copy chord) dispatches it
+/// through `run_on_main_thread` for reliability on macOS, while calls in
+/// those same functions that only touch the overlay/tray (e.g.
+/// `actions.rs:1069`) run straight off the tokio task with no hop at all —
+/// in this codebase the dividing line is "does it drive Enigo", not "is it
+/// UI-adjacent". This bridges that main-thread-only work back into an async
+/// caller with a oneshot channel, so nothing needs to block a tokio worker
+/// for the duration of the chord.
+pub(crate) async fn on_main_thread<T, F>(app: &AppHandle, f: F) -> Result<T, String>
+where
+    T: Send + 'static,
+    F: FnOnce() -> T + Send + 'static,
+{
+    let (tx, rx) = tokio::sync::oneshot::channel();
+    app.run_on_main_thread(move || {
+        let _ = tx.send(f());
+    })
+    .map_err(|e| format!("failed to schedule main-thread work: {e}"))?;
+    rx.await
+        .map_err(|_| "main-thread task ended without a result".to_string())
+}
+
 /// Sends a Ctrl+V or Cmd+V paste command using platform-specific virtual key codes.
 /// This ensures the paste works regardless of keyboard layout (e.g., Russian, AZERTY, DVORAK).
 /// Note: On Wayland, this may not work - callers should check for Wayland and use alternative methods.
@@ -55,6 +80,39 @@ pub fn send_paste_ctrl_v(enigo: &mut Enigo) -> Result<(), String> {
         .map_err(|e| format!("Failed to release modifier key: {}", e));
 
     // Always attempt the release; surface the click error first if it failed.
+    click.and(release)
+}
+
+/// Sends Ctrl+C / Cmd+C using platform-specific virtual key codes, so it works
+/// regardless of keyboard layout (Russian, AZERTY, DVORAK).
+///
+/// Mirrors `send_paste_ctrl_v`, including its release guarantee: once the
+/// modifier is down we must release it even if the C click fails, or the OS is
+/// left with Cmd/Ctrl stuck down.
+pub fn send_copy(enigo: &mut Enigo) -> Result<(), String> {
+    #[cfg(target_os = "macos")]
+    let (modifier_key, c_key_code) = (Key::Meta, Key::Other(8));
+    #[cfg(target_os = "windows")]
+    let (modifier_key, c_key_code) = (Key::Control, Key::Other(0x43)); // VK_C
+    #[cfg(target_os = "linux")]
+    let (modifier_key, c_key_code) = (Key::Control, Key::Unicode('c'));
+
+    enigo
+        .key(modifier_key, enigo::Direction::Press)
+        .map_err(|e| format!("Failed to press modifier key: {}", e))?;
+
+    let click = enigo
+        .key(c_key_code, enigo::Direction::Click)
+        .map_err(|e| format!("Failed to click C key: {}", e));
+
+    if click.is_ok() {
+        std::thread::sleep(std::time::Duration::from_millis(100));
+    }
+
+    let release = enigo
+        .key(modifier_key, enigo::Direction::Release)
+        .map_err(|e| format!("Failed to release modifier key: {}", e));
+
     click.and(release)
 }
 

@@ -217,9 +217,9 @@ pub fn tray_tooltip() -> String {
 
 fn version_label() -> String {
     if cfg!(debug_assertions) {
-        format!("SpeakoFlow v{} (Dev)", env!("CARGO_PKG_VERSION"))
+        format!("ShalomFlow v{} (Dev)", env!("CARGO_PKG_VERSION"))
     } else {
-        format!("SpeakoFlow v{}", env!("CARGO_PKG_VERSION"))
+        format!("ShalomFlow v{}", env!("CARGO_PKG_VERSION"))
     }
 }
 

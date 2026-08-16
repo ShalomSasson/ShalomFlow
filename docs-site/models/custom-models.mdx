@@ -1,6 +1,6 @@
 ---
 title: "Custom models"
-description: "Search Hugging Face from inside SpeakoFlow and download any GGUF model to use as your local assistant, including vision-capable ones. Covers choosing a quantization and what the Include screen vision toggle does."
+description: "Search Hugging Face from inside ShalomFlow and download any GGUF model to use as your local assistant, including vision-capable ones. Covers choosing a quantization and what the Include screen vision toggle does."
 icon: "box"
 ---
 
@@ -20,7 +20,7 @@ Go to *Settings → Assistant → Browse and download models*, then choose **Bro
   </Step>
 
   <Step title="Choose a quantization">
-    Open a repository and SpeakoFlow lists its downloadable `.gguf` files, smallest first, with the quantization label pulled out of each filename.
+    Open a repository and ShalomFlow lists its downloadable `.gguf` files, smallest first, with the quantization label pulled out of each filename.
 
     **Q4_K_M** is flagged as recommended. It is usually the best balance of quality, speed, and memory.
   </Step>
@@ -50,7 +50,7 @@ Downloaded custom models appear under **Your models** in the assistant's model l
   </Accordion>
 
   <Accordion title="How a custom model is remembered">
-    SpeakoFlow records where each one came from (repository, download URL, and projector) in a `custom_models.json` file next to the models. It can re-download one later instead of leaving you with an anonymous `.gguf` on disk.
+    ShalomFlow records where each one came from (repository, download URL, and projector) in a `custom_models.json` file next to the models. It can re-download one later instead of leaving you with an anonymous `.gguf` on disk.
 
     Downloads use the same resumable, retrying path as the built-in models.
   </Accordion>

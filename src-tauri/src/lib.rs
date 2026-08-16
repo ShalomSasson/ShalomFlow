@@ -5,6 +5,7 @@ mod assistant;
 mod audio_feedback;
 pub mod audio_toolkit;
 mod catalog;
+mod claude_code;
 pub mod cli;
 mod clipboard;
 mod commands;
@@ -17,14 +18,17 @@ mod lock_watch;
 mod managers;
 mod memory;
 mod overlay;
+mod paste_safety;
 pub mod portable;
 mod screenshot;
 mod secret_store;
+mod selection;
 mod settings;
 mod shortcut;
 mod signal_handle;
 mod speech_stream;
 mod transcription_coordinator;
+mod transforms;
 mod tray;
 mod tray_i18n;
 mod tts;
@@ -584,6 +588,11 @@ pub fn run(cli_args: CliArgs) {
             shortcut::delete_post_process_prompt,
             shortcut::set_post_process_selected_prompt,
             shortcut::update_custom_words,
+            shortcut::set_transforms_enabled,
+            shortcut::set_polish_after_dictation,
+            shortcut::set_style_prefs,
+            shortcut::set_transform_writing_examples,
+            shortcut::update_transforms,
             shortcut::change_spoken_emojis_enabled_setting,
             shortcut::change_replacements_enabled_setting,
             shortcut::update_text_replacements,
@@ -626,6 +635,7 @@ pub fn run(cli_args: CliArgs) {
             commands::open_log_dir,
             commands::open_app_data_dir,
             commands::check_apple_intelligence_available,
+            commands::claude_code_status,
             commands::initialize_enigo,
             commands::initialize_shortcuts,
             commands::models::get_available_models,
@@ -868,7 +878,7 @@ pub fn run(cli_args: CliArgs) {
                     .additional_browser_args(crate::WEBVIEW2_BROWSER_ARGS)
                     // Empty title + a blanked caption icon (see
                     // tray::update_window_icon) keep the top of the window clear
-                    // — no "SpeakoFlow" text and no logo in the title bar.
+                    // — no "ShalomFlow" text and no logo in the title bar.
                     .title("")
                     // Open a bit wider/taller so content (max-w-3xl) breathes
                     // next to the sidebar instead of feeling cramped. Min stays

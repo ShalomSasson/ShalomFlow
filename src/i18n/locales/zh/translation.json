@@ -31,7 +31,9 @@
     "characters": "角色",
     "memory": "记忆",
     "collapse": "收起侧边栏",
-    "expand": "展开侧边栏"
+    "expand": "展开侧边栏",
+    "styles": "风格",
+    "transforms": "转换"
   },
   "window": {
     "minimize": "最小化",
@@ -45,7 +47,8 @@
     "assistant": "先设置助手，再调整它的语音、屏幕视觉和网络搜索。",
     "history": "您最近的语音输入、Flow 生成和助手聊天，都保存在本设备上。",
     "about": "版本、应用语言、数据位置和致谢。",
-    "debug": "诊断与开发者工具。"
+    "debug": "诊断与开发者工具。",
+    "styles": "听写文本在各类应用中的格式设置。"
   },
   "onboarding": {
     "subtitle": "请选择一个转录模型以开始使用",
@@ -57,7 +60,7 @@
       "ready": "一切就绪"
     },
     "speechToText": {
-      "title": "SpeakoFlow 该怎么听您说话？",
+      "title": "ShalomFlow 该怎么听您说话？",
       "subtitle": "这会直接在您的设备上把语音变成文字。先选一个，随时可以更换。",
       "cards": {
         "fast": {
@@ -113,7 +116,7 @@
       "downloadingVoice": "您的语音模型即将就位。已完成 {{percentage}}%。",
       "downloadingGeneric": "仍在下载。已完成 {{percentage}}%。",
       "signOff": "就是这样。去说点什么吧。",
-      "openApp": "打开 SpeakoFlow"
+      "openApp": "打开 ShalomFlow"
     },
     "errors": {
       "selectModel": "无法选择该模型。请重试。",
@@ -245,7 +248,7 @@
     },
     "permissions": {
       "title": "需要权限",
-      "description": "SpeakoFlow 需要一些权限才能正常工作。",
+      "description": "ShalomFlow 需要一些权限才能正常工作。",
       "microphone": {
         "title": "麦克风访问",
         "description": "需要听取您的语音进行转录。"
@@ -444,6 +447,11 @@
         "info": "按住录制快捷键时轻按此键，即可锁定免持录制，松手后仍可继续说话。请选择任意不属于录制快捷键的按键，或清空以关闭此功能。",
         "off": "关闭",
         "clear": "清空"
+      },
+      "polishDictation": {
+        "label": "润色听写",
+        "description": "粘贴前用润色转换重写每次听写。",
+        "info": "独立于转换的启用开关，后者只控制选中文本的快捷键。使用转换页面中配置的润色转换（规则、自定义指令和你的写作示例）以及同一个 AI 提供商。已使用 AI 纠正的听写会被跳过，文本绝不会被重写两次；若重写失败，将原样粘贴原始转录。"
       }
     },
     "models": {
@@ -598,15 +606,15 @@
       },
       "autostart": {
         "label": "开机启动",
-        "description": "登录计算机时自动启动 SpeakoFlow。"
+        "description": "登录计算机时自动启动 ShalomFlow。"
       },
       "showTrayIcon": {
         "label": "显示托盘图标",
-        "description": "在系统托盘中显示 SpeakoFlow 图标。"
+        "description": "在系统托盘中显示 ShalomFlow 图标。"
       },
       "closeBehavior": {
         "label": "关闭窗口时退出应用",
-        "description": "关闭此项时，关闭窗口只会让 SpeakoFlow 继续在托盘中运行，快捷键依然有效。开启后，关闭窗口会彻底退出应用。"
+        "description": "关闭此项时，关闭窗口只会让 ShalomFlow 继续在托盘中运行，快捷键依然有效。开启后，关闭窗口会彻底退出应用。"
       },
       "overlayStyle": {
         "title": "悬浮窗",
@@ -686,8 +694,8 @@
       },
       "customWords": {
         "title": "自定义词汇",
-        "description": "希望 SpeakoFlow 按您的写法拼写的人名、产品和短语。",
-        "info": "例如：如果 SpeakoFlow 把“Kokoro”写成“Coco row”，就把它加进来。",
+        "description": "希望 ShalomFlow 按您的写法拼写的人名、产品和短语。",
+        "info": "例如：如果 ShalomFlow 把“Kokoro”写成“Coco row”，就把它加进来。",
         "placeholder": "添加人名、术语或短语",
         "add": "添加",
         "empty": "还没有自定义词汇。",
@@ -698,7 +706,7 @@
         "title": "文本替换",
         "description": "把转录中的某个短语替换成您常用的文本。例如：“我的邮箱”会变成“alex@example.com”。",
         "rulesTitle": "替换规则",
-        "rulesHint": "设定 SpeakoFlow 听到什么，以及应该插入什么。",
+        "rulesHint": "设定 ShalomFlow 听到什么，以及应该插入什么。",
         "empty": "为您常说的短语创建一条规则。",
         "addFirst": "创建第一条规则",
         "addRule": "添加替换",
@@ -965,7 +973,7 @@
       },
       "updateChecks": {
         "label": "检查更新",
-        "description": "自动检查 SpeakoFlow 的新版本"
+        "description": "自动检查 ShalomFlow 的新版本"
       },
       "soundTheme": {
         "label": "声音主题",
@@ -1035,7 +1043,7 @@
       "title": "关于",
       "version": {
         "title": "版本",
-        "description": "SpeakoFlow 的当前版本"
+        "description": "ShalomFlow 的当前版本"
       },
       "updates": {
         "title": "更新",
@@ -1047,7 +1055,7 @@
       },
       "appDataDirectory": {
         "title": "应用数据目录",
-        "description": "SpeakoFlow 存储数据的位置"
+        "description": "ShalomFlow 存储数据的位置"
       },
       "sourceCode": {
         "title": "源代码",
@@ -1056,12 +1064,12 @@
       },
       "license": {
         "title": "许可证",
-        "description": "SpeakoFlow 基于 MIT 许可证开源，构建于 CJ Pais 的 Handy（同为 MIT 许可）之上。",
+        "description": "ShalomFlow 基于 MIT 许可证开源，构建于 CJ Pais 的 Handy（同为 MIT 许可）之上。",
         "button": "查看许可证"
       },
       "supportDevelopment": {
         "title": "支持开发",
-        "description": "帮助我们继续开发 SpeakoFlow",
+        "description": "帮助我们继续开发 ShalomFlow",
         "button": "捐赠"
       }
     },
@@ -1098,11 +1106,21 @@
         "finderSectionTitle": "更多本地模型",
         "finderSectionDescription": "需要不同大小或能力的模型时，可搜索 Hugging Face。",
         "finderTitle": "浏览 Hugging Face",
-        "finderDescription": "搜索数千个 GGUF 模型，并直接下载到 SpeakoFlow。",
+        "finderDescription": "搜索数千个 GGUF 模型，并直接下载到 ShalomFlow。",
         "finderAction": "查找模型",
         "huggingFaceTitle": "我的模型",
         "huggingFaceDescription": "已下载的模型，以及您从 Hugging Face 添加的模型。",
-        "catalogEmpty": "当前没有可用的推荐本地模型。"
+        "catalogEmpty": "当前没有可用的推荐本地模型。",
+        "claudeCodeTitle": "Use Claude Code instead",
+        "claudeCodeDescription": "Already have Claude Code installed? Run the assistant through it on your existing Claude plan — no download, no API key.",
+        "claudeCodeCardTitle": "Claude Code CLI",
+        "claudeCodeCardDescription": "Runs through your local Claude Code login. Prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeUseAction": "Use",
+        "claudeCodeActiveBadge": "In use",
+        "claudeCodeSubscriptionBadge": "Uses your Claude plan",
+        "claudeCodeDetected": "Detected v{{version}}",
+        "claudeCodeMissingDescription": "Install Claude Code, or make sure the `claude` command is on this machine's PATH, then check again.",
+        "claudeCodeRecheckAction": "Check again"
       },
       "subpages": {
         "profilesCaption": "切换助手的名称、定位和性格。",
@@ -1141,6 +1159,14 @@
         "builtinEnginePreparing": "正在下载本地引擎…",
         "builtinEngineExtracting": "正在安装本地引擎…",
         "builtinEngineReady": "本地引擎已就绪。",
+        "claudeCodeModelLabel": "Claude model",
+        "claudeCodeModelDescription": "Which Claude model the CLI should use for replies.",
+        "claudeCodeNotice": "Runs through your local Claude Code login — prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeModels": {
+          "sonnet": "Sonnet (recommended)",
+          "opus": "Opus (most capable)",
+          "haiku": "Haiku (fastest)"
+        },
         "contextSizeLabel": "上下文窗口",
         "contextSizeDescription": "本地模型一次能同时记住多少内容——系统指令、您的聊天记录、任何屏幕截图（一张图片就可能占掉一大块），以及它的回复。窗口越大能容纳的内容越多，屏幕视觉和网络搜索也更可靠，但内存占用更高。默认为 8192；如果您的电脑内存充裕，16384 是不错的提升。之后也可以调低以节省内存。",
         "unloadTimeoutLabel": "多久后从内存卸载",
@@ -1245,7 +1271,7 @@
           }
         },
         "screenRecording": {
-          "description": "屏幕视觉需要 macOS 的屏幕录制权限。请在“系统设置”中授予，然后重启 SpeakoFlow 使其生效。",
+          "description": "屏幕视觉需要 macOS 的屏幕录制权限。请在“系统设置”中授予，然后重启 ShalomFlow 使其生效。",
           "grant": "打开系统设置"
         }
       },
@@ -1323,7 +1349,7 @@
         "testButton": "测试语音",
         "testing": "测试中…",
         "testOk": "已播放 ✓",
-        "testPhrase": "你好！这是 SpeakoFlow 语音输出的测试。",
+        "testPhrase": "你好！这是 ShalomFlow 语音输出的测试。",
         "downloadStart": "正在下载 Kokoro 语音…",
         "downloadProgress": "正在下载 Kokoro 语音… {{progress}}%",
         "downloadReady": "Kokoro 语音已就绪 ✓",
@@ -1426,7 +1452,7 @@
   },
   "accessibility": {
     "permissionsRequired": "需要辅助功能权限",
-    "permissionsDescription": "SpeakoFlow 需要辅助功能权限才能输入转录的文字。",
+    "permissionsDescription": "ShalomFlow 需要辅助功能权限才能输入转录的文字。",
     "openSettings": "打开系统设置",
     "dismiss": "关闭"
   },
@@ -1450,7 +1476,7 @@
   },
   "appLanguage": {
     "title": "应用语言",
-    "description": "更改 SpeakoFlow 界面的语言"
+    "description": "更改 ShalomFlow 界面的语言"
   },
   "overlay": {
     "preparing": "正在准备麦克风…",
@@ -1462,13 +1488,17 @@
     "notices": {
       "flowNotConfigured": "Flow 需要一个助手模型——已作为普通语音输入粘贴",
       "flowFailed": "Flow 无法生成——未粘贴任何内容",
-      "flowEmpty": "请在激活短语之后说出指令"
+      "flowEmpty": "请在激活短语之后说出指令",
+      "transformNoSelection": "Nothing was captured — select some text and try again (some apps respond slowly)",
+      "transformNoModel": "Set an Assistant model in Settings to use Transforms",
+      "transformFailed": "The transform didn't run — your text was left unchanged"
     },
     "listening": "正在聆听…",
     "locked": "免持录制中——再次按下快捷键即可停止",
     "cancel": "取消",
     "done": "完成",
-    "askAssistant": "改为询问助手，而不是把这些文字输入进去"
+    "askAssistant": "改为询问助手，而不是把这些文字输入进去",
+    "transforming": "转换中…"
   },
   "assistant": {
     "title": "助手",
@@ -1579,6 +1609,77 @@
       "preparing": "正在设置本地引擎（首次运行）…",
       "extracting": "正在安装本地引擎…",
       "short": "正在设置引擎…"
+    }
+  },
+  "styles": {
+    "beta": "测试版",
+    "tabs": {
+      "personal": "私人消息",
+      "work": "工作消息",
+      "email": "电子邮件",
+      "other": "其他",
+      "autoCleanup": "自动清理"
+    },
+    "promo": {
+      "personal": "此风格适用于私人聊天应用",
+      "work": "此风格适用于办公聊天应用",
+      "email": "此风格适用于所有主流电子邮件应用",
+      "other": "此风格适用于所有其他应用",
+      "autoCleanup": "自动清理口头语和错误的开头",
+      "note": "风格格式目前仅适用于英语。更多语言即将推出。"
+    },
+    "presets": {
+      "formal": "正式。",
+      "casual": "随意",
+      "veryCasual": "非常随意",
+      "excited": "兴奋！",
+      "off": "关闭",
+      "light": "轻度",
+      "aggressive": "强力"
+    },
+    "rules": {
+      "capsPunctuation": "大写 + 标点",
+      "capsLessPunctuation": "大写 + 较少标点",
+      "noCapsLessPunctuation": "无大写 + 较少标点",
+      "moreExclamations": "更多感叹号",
+      "keepRaw": "保留原始转录",
+      "trimFillers": "去除口头语",
+      "trimFillersTighten": "去除口头语 + 精简"
+    }
+  },
+  "transformsPage": {
+    "beta": "测试版",
+    "optIn": "启用",
+    "myTransforms": "我的转换",
+    "resetDefaults": "重置为默认",
+    "createNew": "新建",
+    "createOwn": "创建你自己的",
+    "uploadPrompt": "上传你自己的提示词",
+    "promo": {
+      "title": "转换可在任何书写位置使用",
+      "body": "听写后应用转换来重写、清理或重组文本。"
+    },
+    "detail": {
+      "autosave": "自动保存已开启",
+      "reset": "重置",
+      "close": "关闭",
+      "toUse": "使用",
+      "chooseShortcut": "选择键盘快捷键",
+      "selectRules": "选择 {{name}} 的规则",
+      "customizeNamedPrompt": "自定义你的 {{name}} 提示词",
+      "customizeTemplatePrompt": "自定义提示词。（这是提示词最终输出的样子）",
+      "exampleTitle": "转换后文本示例",
+      "seeUpdates": "查看更新",
+      "addExamples": "添加写作示例",
+      "addExamplesHint": "添加你的写作示例，帮助 ShalomFlow 学习你的独特风格。提供的样本越多，越能贴合你的语气。",
+      "addExample": "添加示例",
+      "removeExample": "移除示例",
+      "createTitle": "创建你自己的",
+      "createSubtitle": "设置键盘快捷键来应用此转换。",
+      "nameLabel": "为你的转换快捷键命名",
+      "namePlaceholder": "老板模式",
+      "customizePrompt": "自定义提示词",
+      "promptPlaceholder": "你希望此转换如何改变你的文本？"
     }
   }
 }

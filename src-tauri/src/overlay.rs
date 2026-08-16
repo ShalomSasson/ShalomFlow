@@ -515,6 +515,12 @@ pub fn show_vision_overlay(app_handle: &AppHandle) {
     show_overlay_state(app_handle, "vision");
 }
 
+/// Shows the overlay in the "transforming" state (a transform is rewriting
+/// the selection).
+pub fn show_transforming_overlay(app_handle: &AppHandle) {
+    show_overlay_state(app_handle, "transforming");
+}
+
 /// Shows a brief text notice on the overlay (e.g. a Flow error), then hides
 /// it after a short delay. `notice_key` is the i18n suffix under
 /// `overlay.notices.*` in the webview.

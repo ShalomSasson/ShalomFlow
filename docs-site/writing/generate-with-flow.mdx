@@ -1,10 +1,10 @@
 ---
 title: "Generate with Flow"
-description: "Begin a dictation with the words Hey Flow and SpeakoFlow writes the finished email, reply, or draft and pastes it where you are typing. Covers turning it on, renaming the phrase, screen access, and what happens when generation fails."
+description: "Begin a dictation with the words Hey Flow and ShalomFlow writes the finished email, reply, or draft and pastes it where you are typing. Covers turning it on, renaming the phrase, screen access, and what happens when generation fails."
 icon: "wand-magic-sparkles"
 ---
 
-Start a dictation with "Hey Flow" and describe what you want. SpeakoFlow writes the finished thing and pastes it, instead of typing your words.
+Start a dictation with "Hey Flow" and describe what you want. ShalomFlow writes the finished thing and pastes it, instead of typing your words.
 
 <Steps>
   <Step title="Turn it on">
@@ -65,7 +65,7 @@ Every Flow recording is saved under the **Flow** filter in [History](/personaliz
 
     Beyond that it shares nothing with the assistant. Each command is a fresh, stateless turn made of one system prompt plus your spoken words. Your conversation history, your active [profile](/personalize/profiles), your [personal memory](/personalize/memory), and your assistant response-length setting all sit this one out. That keeps a Flow paste predictable: the same command produces the same kind of artifact whatever the assistant happens to be doing.
 
-    The system prompt tells the model that its entire response is pasted verbatim. No greetings, no "Sure, here's...", no explanations, and no placeholders like `[Your Name]`. Before pasting, SpeakoFlow strips leaked reasoning blocks and a lone Markdown fence wrapped around the whole answer. Real interior formatting is left alone.
+    The system prompt tells the model that its entire response is pasted verbatim. No greetings, no "Sure, here's...", no explanations, and no placeholders like `[Your Name]`. Before pasting, ShalomFlow strips leaked reasoning blocks and a lone Markdown fence wrapped around the whole answer. Real interior formatting is left alone.
 
     Flow output is pasted as-is. The *Append trailing space* and *Auto-submit* options from [Output](/dictation/output) are deliberately skipped, because a generated email should not send itself.
   </Accordion>

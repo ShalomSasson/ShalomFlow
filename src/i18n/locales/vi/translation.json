@@ -31,7 +31,9 @@
     "characters": "Hồ sơ",
     "memory": "Bộ nhớ",
     "collapse": "Thu gọn thanh bên",
-    "expand": "Mở rộng thanh bên"
+    "expand": "Mở rộng thanh bên",
+    "styles": "Phong cách",
+    "transforms": "Biến đổi"
   },
   "window": {
     "minimize": "Thu nhỏ",
@@ -45,7 +47,8 @@
     "assistant": "Thiết lập trợ lý, rồi tinh chỉnh giọng nói, khả năng xem màn hình và tìm kiếm web.",
     "history": "Các nội dung đọc chính tả, nội dung do Flow tạo và trò chuyện với trợ lý gần đây của bạn, được lưu trên thiết bị này.",
     "about": "Phiên bản, ngôn ngữ ứng dụng, vị trí dữ liệu và ghi công.",
-    "debug": "Công cụ chẩn đoán và dành cho nhà phát triển."
+    "debug": "Công cụ chẩn đoán và dành cho nhà phát triển.",
+    "styles": "Cách văn bản đọc chính tả được định dạng trong từng loại ứng dụng."
   },
   "onboarding": {
     "subtitle": "Để bắt đầu, hãy chọn một mô hình chuyển đổi giọng nói",
@@ -57,7 +60,7 @@
       "ready": "Sẵn sàng"
     },
     "speechToText": {
-      "title": "SpeakoFlow nên nghe bạn thế nào?",
+      "title": "ShalomFlow nên nghe bạn thế nào?",
       "subtitle": "Phần này biến giọng nói của bạn thành văn bản, ngay trên máy của bạn. Chọn một mô hình, đổi bất cứ lúc nào.",
       "cards": {
         "fast": {
@@ -113,7 +116,7 @@
       "downloadingVoice": "Mô hình giọng nói đang cập bến. Đã được {{percentage}}%.",
       "downloadingGeneric": "Vẫn đang tải xuống. Đã được {{percentage}}%.",
       "signOff": "Vậy là xong. Nói gì đi nào.",
-      "openApp": "Mở SpeakoFlow"
+      "openApp": "Mở ShalomFlow"
     },
     "errors": {
       "selectModel": "Không thể chọn mô hình đó. Vui lòng thử lại.",
@@ -245,7 +248,7 @@
     },
     "permissions": {
       "title": "Cần cấp quyền",
-      "description": "SpeakoFlow cần một số quyền để hoạt động bình thường.",
+      "description": "ShalomFlow cần một số quyền để hoạt động bình thường.",
       "microphone": {
         "title": "Quyền truy cập Micrô",
         "description": "Cần thiết để nghe giọng nói của bạn để chuyển đổi."
@@ -444,6 +447,11 @@
         "info": "Trong khi giữ phím tắt ghi âm, hãy nhấn phím này để khóa ghi âm rảnh tay, nhờ đó bạn có thể thả tay ra mà vẫn nói tiếp. Chọn phím nào không thuộc phím tắt ghi âm của bạn, hoặc xóa trống để tắt tính năng này.",
         "off": "Tắt",
         "clear": "Xóa"
+      },
+      "polishDictation": {
+        "label": "Trau chuốt chính tả",
+        "description": "Viết lại mỗi lần đọc chính tả bằng Biến đổi Trau chuốt trước khi dán.",
+        "info": "Độc lập với việc bật Biến đổi, vốn chỉ điều khiển các phím tắt cho vùng chọn. Dùng Biến đổi Trau chuốt đúng như cấu hình trên trang Biến đổi (quy tắc, hướng dẫn tùy chỉnh và ví dụ văn phong của bạn) cùng nhà cung cấp AI đó. Bỏ qua khi lần đọc chính tả đã dùng Sửa lỗi AI, nên văn bản không bao giờ bị viết lại hai lần; nếu viết lại thất bại, bản ghi thô được dán nguyên vẹn."
       }
     },
     "models": {
@@ -598,15 +606,15 @@
       },
       "autostart": {
         "label": "Khởi động cùng hệ thống",
-        "description": "Tự động khởi động SpeakoFlow khi bạn đăng nhập vào máy tính."
+        "description": "Tự động khởi động ShalomFlow khi bạn đăng nhập vào máy tính."
       },
       "showTrayIcon": {
         "label": "Hiển thị biểu tượng khay",
-        "description": "Hiển thị biểu tượng SpeakoFlow trong khay hệ thống."
+        "description": "Hiển thị biểu tượng ShalomFlow trong khay hệ thống."
       },
       "closeBehavior": {
         "label": "Thoát khi tôi đóng cửa sổ",
-        "description": "Khi tắt, đóng cửa sổ vẫn giữ SpeakoFlow chạy trong khay hệ thống để phím tắt của bạn tiếp tục hoạt động. Khi bật, đóng cửa sổ sẽ thoát hẳn ứng dụng."
+        "description": "Khi tắt, đóng cửa sổ vẫn giữ ShalomFlow chạy trong khay hệ thống để phím tắt của bạn tiếp tục hoạt động. Khi bật, đóng cửa sổ sẽ thoát hẳn ứng dụng."
       },
       "overlayStyle": {
         "title": "Lớp phủ",
@@ -686,8 +694,8 @@
       },
       "customWords": {
         "title": "Từ tùy chỉnh",
-        "description": "Tên riêng, sản phẩm và cụm từ mà SpeakoFlow nên viết theo cách của bạn.",
-        "info": "Ví dụ: thêm “Kokoro” nếu SpeakoFlow viết thành “Coco row.”",
+        "description": "Tên riêng, sản phẩm và cụm từ mà ShalomFlow nên viết theo cách của bạn.",
+        "info": "Ví dụ: thêm “Kokoro” nếu ShalomFlow viết thành “Coco row.”",
         "placeholder": "Thêm tên riêng, thuật ngữ hoặc cụm từ ngắn",
         "add": "Thêm",
         "empty": "Chưa có từ tùy chỉnh nào.",
@@ -698,7 +706,7 @@
         "title": "Thay thế văn bản",
         "description": "Thay một cụm từ trong bản chuyển đổi bằng đoạn văn bản bạn hay dùng. Ví dụ: “email của tôi” thành “alex@example.com”.",
         "rulesTitle": "Quy tắc thay thế",
-        "rulesHint": "Chọn điều SpeakoFlow nghe được và điều nó nên chèn vào.",
+        "rulesHint": "Chọn điều ShalomFlow nghe được và điều nó nên chèn vào.",
         "empty": "Hãy tạo một quy tắc cho cụm từ bạn thường nói.",
         "addFirst": "Tạo quy tắc đầu tiên",
         "addRule": "Thêm thay thế",
@@ -965,7 +973,7 @@
       },
       "updateChecks": {
         "label": "Kiểm tra cập nhật",
-        "description": "Tự động kiểm tra phiên bản mới của SpeakoFlow"
+        "description": "Tự động kiểm tra phiên bản mới của ShalomFlow"
       },
       "soundTheme": {
         "label": "Chủ đề âm thanh",
@@ -1035,7 +1043,7 @@
       "title": "Giới thiệu",
       "version": {
         "title": "Phiên bản",
-        "description": "Phiên bản hiện tại của SpeakoFlow"
+        "description": "Phiên bản hiện tại của ShalomFlow"
       },
       "updates": {
         "title": "Cập nhật",
@@ -1047,7 +1055,7 @@
       },
       "appDataDirectory": {
         "title": "Thư mục dữ liệu ứng dụng",
-        "description": "Vị trí SpeakoFlow lưu trữ dữ liệu"
+        "description": "Vị trí ShalomFlow lưu trữ dữ liệu"
       },
       "sourceCode": {
         "title": "Mã nguồn",
@@ -1056,12 +1064,12 @@
       },
       "license": {
         "title": "Giấy phép",
-        "description": "SpeakoFlow là mã nguồn mở theo Giấy phép MIT, dựa trên Handy (cũng MIT) của CJ Pais.",
+        "description": "ShalomFlow là mã nguồn mở theo Giấy phép MIT, dựa trên Handy (cũng MIT) của CJ Pais.",
         "button": "Xem giấy phép"
       },
       "supportDevelopment": {
         "title": "Hỗ trợ phát triển",
-        "description": "Giúp chúng tôi tiếp tục xây dựng SpeakoFlow",
+        "description": "Giúp chúng tôi tiếp tục xây dựng ShalomFlow",
         "button": "Quyên góp"
       }
     },
@@ -1098,11 +1106,21 @@
         "finderSectionTitle": "Thêm mô hình chạy trên thiết bị",
         "finderSectionDescription": "Tìm trên Hugging Face khi bạn cần một mô hình có kích thước hoặc khả năng khác.",
         "finderTitle": "Xem trên Hugging Face",
-        "finderDescription": "Tìm trong hàng nghìn mô hình GGUF và tải một mô hình trực tiếp vào SpeakoFlow.",
+        "finderDescription": "Tìm trong hàng nghìn mô hình GGUF và tải một mô hình trực tiếp vào ShalomFlow.",
         "finderAction": "Tìm một mô hình",
         "huggingFaceTitle": "Mô hình của bạn",
         "huggingFaceDescription": "Các mô hình đã tải và các mô hình bạn thêm từ Hugging Face.",
-        "catalogEmpty": "Hiện không có mô hình cục bộ được đề xuất nào."
+        "catalogEmpty": "Hiện không có mô hình cục bộ được đề xuất nào.",
+        "claudeCodeTitle": "Use Claude Code instead",
+        "claudeCodeDescription": "Already have Claude Code installed? Run the assistant through it on your existing Claude plan — no download, no API key.",
+        "claudeCodeCardTitle": "Claude Code CLI",
+        "claudeCodeCardDescription": "Runs through your local Claude Code login. Prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeUseAction": "Use",
+        "claudeCodeActiveBadge": "In use",
+        "claudeCodeSubscriptionBadge": "Uses your Claude plan",
+        "claudeCodeDetected": "Detected v{{version}}",
+        "claudeCodeMissingDescription": "Install Claude Code, or make sure the `claude` command is on this machine's PATH, then check again.",
+        "claudeCodeRecheckAction": "Check again"
       },
       "subpages": {
         "profilesCaption": "Đổi tên, vai trò và tính cách của trợ lý.",
@@ -1141,6 +1159,14 @@
         "builtinEnginePreparing": "Đang tải công cụ cục bộ…",
         "builtinEngineExtracting": "Đang cài đặt công cụ cục bộ…",
         "builtinEngineReady": "Công cụ cục bộ đã sẵn sàng.",
+        "claudeCodeModelLabel": "Claude model",
+        "claudeCodeModelDescription": "Which Claude model the CLI should use for replies.",
+        "claudeCodeNotice": "Runs through your local Claude Code login — prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeModels": {
+          "sonnet": "Sonnet (recommended)",
+          "opus": "Opus (most capable)",
+          "haiku": "Haiku (fastest)"
+        },
         "contextSizeLabel": "Cửa sổ ngữ cảnh",
         "contextSizeDescription": "Lượng thông tin mô hình cục bộ có thể ghi nhớ cùng lúc — hướng dẫn hệ thống, lịch sử trò chuyện của bạn, ảnh màn hình nếu có (một ảnh có thể chiếm phần khá lớn) và câu trả lời của nó. Cửa sổ lớn hơn chứa được nhiều hơn và giúp khả năng xem màn hình cùng tìm kiếm web đáng tin cậy, nhưng dùng nhiều bộ nhớ hơn. Mặc định là 8192; 16384 là bước nâng tốt nếu máy của bạn còn dư RAM. Bạn có thể giảm lại sau để tiết kiệm bộ nhớ.",
         "unloadTimeoutLabel": "Giải phóng khỏi bộ nhớ sau",
@@ -1245,7 +1271,7 @@
           }
         },
         "screenRecording": {
-          "description": "Khả năng xem màn hình cần quyền Ghi màn hình của macOS. Hãy cấp quyền trong Cài đặt Hệ thống, rồi khởi động lại SpeakoFlow để có hiệu lực.",
+          "description": "Khả năng xem màn hình cần quyền Ghi màn hình của macOS. Hãy cấp quyền trong Cài đặt Hệ thống, rồi khởi động lại ShalomFlow để có hiệu lực.",
           "grant": "Mở Cài đặt Hệ thống"
         }
       },
@@ -1323,7 +1349,7 @@
         "testButton": "Thử giọng",
         "testing": "Đang thử…",
         "testOk": "Đã phát ✓",
-        "testPhrase": "Xin chào! Đây là bản thử đầu ra giọng nói của SpeakoFlow.",
+        "testPhrase": "Xin chào! Đây là bản thử đầu ra giọng nói của ShalomFlow.",
         "downloadStart": "Đang tải giọng Kokoro…",
         "downloadProgress": "Đang tải giọng Kokoro… {{progress}}%",
         "downloadReady": "Giọng Kokoro đã sẵn sàng ✓",
@@ -1426,7 +1452,7 @@
   },
   "accessibility": {
     "permissionsRequired": "Cần quyền truy cập",
-    "permissionsDescription": "SpeakoFlow cần quyền truy cập để gõ văn bản đã chuyển đổi.",
+    "permissionsDescription": "ShalomFlow cần quyền truy cập để gõ văn bản đã chuyển đổi.",
     "openSettings": "Mở Cài đặt Hệ thống",
     "dismiss": "Bỏ qua"
   },
@@ -1450,7 +1476,7 @@
   },
   "appLanguage": {
     "title": "Ngôn ngữ ứng dụng",
-    "description": "Thay đổi ngôn ngữ giao diện của SpeakoFlow"
+    "description": "Thay đổi ngôn ngữ giao diện của ShalomFlow"
   },
   "overlay": {
     "preparing": "Đang chuẩn bị micrô…",
@@ -1462,13 +1488,17 @@
     "notices": {
       "flowNotConfigured": "Flow cần một mô hình trợ lý — đã dán như đọc chính tả",
       "flowFailed": "Flow không tạo được nội dung — không có gì được dán",
-      "flowEmpty": "Hãy nói một câu lệnh sau cụm từ kích hoạt"
+      "flowEmpty": "Hãy nói một câu lệnh sau cụm từ kích hoạt",
+      "transformNoSelection": "Nothing was captured — select some text and try again (some apps respond slowly)",
+      "transformNoModel": "Set an Assistant model in Settings to use Transforms",
+      "transformFailed": "The transform didn't run — your text was left unchanged"
     },
     "listening": "Đang lắng nghe…",
     "locked": "Đang ghi âm rảnh tay — nhấn lại phím tắt để dừng",
     "cancel": "Hủy",
     "done": "Xong",
-    "askAssistant": "Hỏi trợ lý thay vì gõ nội dung này"
+    "askAssistant": "Hỏi trợ lý thay vì gõ nội dung này",
+    "transforming": "Đang biến đổi…"
   },
   "assistant": {
     "title": "Trợ lý",
@@ -1579,6 +1609,77 @@
       "preparing": "Đang thiết lập công cụ cục bộ (lần chạy đầu)…",
       "extracting": "Đang cài đặt công cụ cục bộ…",
       "short": "Đang thiết lập công cụ…"
+    }
+  },
+  "styles": {
+    "beta": "Beta",
+    "tabs": {
+      "personal": "Tin nhắn cá nhân",
+      "work": "Tin nhắn công việc",
+      "email": "Email",
+      "other": "Khác",
+      "autoCleanup": "Tự động dọn dẹp"
+    },
+    "promo": {
+      "personal": "Phong cách này áp dụng trong ứng dụng nhắn tin cá nhân",
+      "work": "Phong cách này áp dụng trong ứng dụng nhắn tin công việc",
+      "email": "Phong cách này áp dụng trong các ứng dụng email phổ biến",
+      "other": "Phong cách này áp dụng trong tất cả ứng dụng khác",
+      "autoCleanup": "Tự động dọn từ đệm và câu nói dở",
+      "note": "Định dạng phong cách chỉ áp dụng cho tiếng Anh. Sắp có thêm ngôn ngữ khác."
+    },
+    "presets": {
+      "formal": "Trang trọng.",
+      "casual": "Thân mật",
+      "veryCasual": "rất thân mật",
+      "excited": "Hào hứng!",
+      "off": "Tắt",
+      "light": "Nhẹ",
+      "aggressive": "Mạnh"
+    },
+    "rules": {
+      "capsPunctuation": "Viết hoa + dấu câu",
+      "capsLessPunctuation": "Viết hoa + ít dấu câu hơn",
+      "noCapsLessPunctuation": "Không viết hoa + ít dấu câu hơn",
+      "moreExclamations": "Nhiều dấu chấm than hơn",
+      "keepRaw": "Giữ nguyên bản ghi thô",
+      "trimFillers": "Bỏ từ đệm",
+      "trimFillersTighten": "Bỏ từ đệm + cô đọng"
+    }
+  },
+  "transformsPage": {
+    "beta": "Beta",
+    "optIn": "Bật",
+    "myTransforms": "Biến đổi của tôi",
+    "resetDefaults": "Đặt lại mặc định",
+    "createNew": "Tạo mới",
+    "createOwn": "Tự tạo của riêng bạn",
+    "uploadPrompt": "Tải lên prompt của riêng bạn",
+    "promo": {
+      "title": "Biến đổi hoạt động ở mọi nơi bạn viết",
+      "body": "Áp dụng Biến đổi để viết lại, dọn dẹp hoặc sắp xếp lại văn bản sau khi đọc chính tả."
+    },
+    "detail": {
+      "autosave": "Tự động lưu bật",
+      "reset": "Đặt lại",
+      "close": "Đóng",
+      "toUse": "để dùng",
+      "chooseShortcut": "Chọn phím tắt",
+      "selectRules": "Chọn quy tắc cho {{name}}",
+      "customizeNamedPrompt": "Tùy chỉnh prompt {{name}} của bạn",
+      "customizeTemplatePrompt": "Tùy chỉnh prompt. (Đây là giao diện đầu ra cuối cùng của prompt)",
+      "exampleTitle": "Ví dụ về văn bản đã biến đổi",
+      "seeUpdates": "Xem cập nhật",
+      "addExamples": "Thêm ví dụ về văn phong",
+      "addExamplesHint": "Thêm ví dụ về văn phong của bạn để ShalomFlow học phong cách riêng của bạn. Càng nhiều mẫu, giọng văn càng khớp.",
+      "addExample": "Thêm ví dụ",
+      "removeExample": "Xóa ví dụ",
+      "createTitle": "Tự tạo của riêng bạn",
+      "createSubtitle": "Thiết lập phím tắt để áp dụng Biến đổi này.",
+      "nameLabel": "Đặt tên cho phím tắt Biến đổi",
+      "namePlaceholder": "Chế độ sếp",
+      "customizePrompt": "Tùy chỉnh prompt",
+      "promptPlaceholder": "Bạn muốn Biến đổi này thay đổi văn bản như thế nào?"
     }
   }
 }

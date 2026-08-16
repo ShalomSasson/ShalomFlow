@@ -10,6 +10,11 @@ use tauri_plugin_store::StoreExt;
 pub const APPLE_INTELLIGENCE_PROVIDER_ID: &str = "apple_intelligence";
 pub const APPLE_INTELLIGENCE_DEFAULT_MODEL_ID: &str = "Apple Intelligence";
 
+/// The Claude Code CLI provider id. Generation is delegated to the user's
+/// locally installed `claude` binary running on their own login, so this
+/// provider has no base URL and never stores an API key.
+pub const CLAUDE_CODE_PROVIDER_ID: &str = "claude_code";
+
 #[derive(Serialize, Debug, Clone, Copy, PartialEq, Eq, Type)]
 #[serde(rename_all = "lowercase")]
 pub enum LogLevel {
@@ -91,6 +96,83 @@ pub struct LLMPrompt {
     pub id: String,
     pub name: String,
     pub prompt: String,
+}
+
+/// Prefix for the dynamic shortcut binding id of a transform.
+pub const TRANSFORM_BINDING_PREFIX: &str = "transform.";
+
+/// The shortcut binding id that runs a given transform.
+pub fn transform_binding_id(transform_id: &str) -> String {
+    format!("{TRANSFORM_BINDING_PREFIX}{transform_id}")
+}
+
+/// The transform a binding id refers to, or `None` if it is not a transform
+/// binding. A bare prefix with no id names nothing.
+pub fn transform_id_from_binding(binding_id: &str) -> Option<&str> {
+    binding_id
+        .strip_prefix(TRANSFORM_BINDING_PREFIX)
+        .filter(|id| !id.is_empty())
+}
+
+/// One toggleable instruction inside a transform (Polish's rule rows).
+#[derive(Serialize, Deserialize, Debug, Clone, Type)]
+pub struct TransformRule {
+    pub id: String,
+    pub label: String,
+    /// Appended to the composed prompt when `enabled`.
+    pub instruction: String,
+    pub enabled: bool,
+}
+
+/// A saved AI rewrite instruction bound to a global shortcut.
+#[derive(Serialize, Deserialize, Debug, Clone, Type)]
+pub struct Transform {
+    pub id: String,
+    pub name: String,
+    /// Card subtitle on the Transforms page.
+    pub description: String,
+    /// Longer blurb shown in the detail view.
+    pub detail_description: String,
+    /// Base instruction, or — for a template transform — the output shape.
+    pub prompt: String,
+    /// Toggleable rules. Empty for template-driven transforms.
+    pub rules: Vec<TransformRule>,
+    /// Free-text additions from the user.
+    pub custom_instructions: String,
+    /// Whether the shared writing-example voice profile is applied.
+    pub use_voice_profile: bool,
+    /// Current shortcut, mirrored into the bindings map.
+    pub shortcut: String,
+    /// Input used by the in-app live preview.
+    pub sample_text: String,
+    /// False for user-created transforms.
+    pub builtin: bool,
+}
+
+/// Per-context tone presets chosen on the Styles page. Each field holds the
+/// selected preset id for one writing context (e.g. "formal", "casual"), and
+/// `auto_cleanup` holds "off" | "light" | "aggressive". Presentation-only for
+/// now: the selections persist but are not yet composed into the cleanup
+/// prompt.
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq, Type)]
+pub struct StylePrefs {
+    pub personal: String,
+    pub work: String,
+    pub email: String,
+    pub other: String,
+    pub auto_cleanup: String,
+}
+
+impl Default for StylePrefs {
+    fn default() -> Self {
+        StylePrefs {
+            personal: "very_casual".to_string(),
+            work: "casual".to_string(),
+            email: "casual".to_string(),
+            other: "casual".to_string(),
+            auto_cleanup: "light".to_string(),
+        }
+    }
 }
 
 /// Optional built-in writing style applied during dictation cleanup.
@@ -729,7 +811,7 @@ impl ModelUnloadTimeout {
 #[derive(Serialize, Deserialize, Debug, Clone, Copy, PartialEq, Eq, Type)]
 #[serde(rename_all = "snake_case")]
 pub enum SoundTheme {
-    /// SpeakoFlow's own start/stop cues — the default. Ships a matching lock
+    /// ShalomFlow's own start/stop cues — the default. Ships a matching lock
     /// cue (`popo_lock.wav`) used by every theme for tap-to-lock.
     Dictation,
     Marimba,
@@ -1074,6 +1156,24 @@ pub struct AppSettings {
     /// access mode on purpose — the two features are permissioned independently.
     #[serde(default)]
     pub flow_screen_access: bool,
+    /// Master opt-in for Transforms. The feature stays inert until this is on.
+    #[serde(default)]
+    pub transforms_enabled: bool,
+    #[serde(default = "default_transforms")]
+    pub transforms: Vec<Transform>,
+    /// Per-context tone presets from the Styles page.
+    #[serde(default)]
+    pub style_prefs: StylePrefs,
+    /// Run the Polish transform over every plain dictation before pasting.
+    /// Independent of `transforms_enabled` (that gates only the selection
+    /// shortcuts) and skipped when the dictation already used AI Correction,
+    /// so a transcript is never rewritten twice.
+    #[serde(default)]
+    pub polish_after_dictation: bool,
+    /// Samples of the user's own writing, shared across every transform that
+    /// opts into the voice profile (`Transform::use_voice_profile`).
+    #[serde(default)]
+    pub transform_writing_examples: Vec<String>,
     #[serde(default)]
     pub mute_while_recording: bool,
     #[serde(default)]
@@ -1582,6 +1682,18 @@ fn default_post_process_providers() -> Vec<PostProcessProvider> {
         supports_structured_output: false,
     });
 
+    // Claude Code CLI. Not an HTTP endpoint: requests are fulfilled by spawning
+    // the user's `claude` binary in headless print mode against their existing
+    // subscription login. `base_url` stays empty because nothing dials it.
+    providers.push(PostProcessProvider {
+        id: CLAUDE_CODE_PROVIDER_ID.to_string(),
+        label: "Claude Code CLI".to_string(),
+        base_url: String::new(),
+        allow_base_url_edit: false,
+        models_endpoint: None,
+        supports_structured_output: false,
+    });
+
     // Local OpenAI-compatible servers (Ollama, LM Studio, llama.cpp, vLLM)
     providers.push(PostProcessProvider {
         id: "local".to_string(),
@@ -1603,6 +1715,203 @@ fn default_post_process_providers() -> Vec<PostProcessProvider> {
     });
 
     providers
+}
+
+fn polish_rules() -> Vec<TransformRule> {
+    let rules = [
+        (
+            "concise",
+            "Make more concise",
+            "Cut redundancy and filler so the text is as short as it can be without losing meaning.",
+        ),
+        (
+            "clarity",
+            "Reword for clarity",
+            "Replace vague or awkward phrasing with plain, direct wording.",
+        ),
+        (
+            "reorder",
+            "Reorder for readability",
+            "Reorder sentences so the main point comes first and related ideas sit together.",
+        ),
+        (
+            "structure",
+            "Add structure for readability",
+            "Add paragraph breaks, and use lists only where the content is genuinely a list.",
+        ),
+        (
+            "tone",
+            "Maintain your tone",
+            "Preserve the author's voice, register, and level of formality. Do not make casual writing sound corporate.",
+        ),
+    ];
+    rules
+        .into_iter()
+        .map(|(id, label, instruction)| TransformRule {
+            id: id.to_string(),
+            label: label.to_string(),
+            instruction: instruction.to_string(),
+            enabled: true,
+        })
+        .collect()
+}
+
+/// The Prompt Engineer output template.
+///
+/// Verbatim from the user's specification, with one change: the `**Name**`
+/// placeholder. Their draft read "(write constant Tom is the Queen)", which was
+/// scratch text and must not ship.
+fn prompt_engineer_template() -> String {
+    [
+        "**Name**\n(a short, descriptive name for this prompt)",
+        "**Title**\n(1 concise line)",
+        "**Role & stance**\n(who the model is and how it should behave)",
+        "**Task**\n(what the model must do)",
+        "**Context**\n(only what the model needs to know)",
+        "**Inputs available**\n(explicit list)",
+        "**Output requirements**\n(format, structure, tone, length — only if specified; otherwise placeholders)",
+        "**Constraints / Do-nots**\n(bulleted)",
+        "**Examples / References**\n(include all examples verbatim)",
+        "**Execution checklist**\n(short, factual verification list)",
+        "**Conflict resolution**\n(only if applicable)",
+    ]
+    .join("\n\n")
+}
+
+/// The exact name and base prompt each built-in transform shipped with
+/// before the "Template" rename and prompt-form rewrite. Retained only so an
+/// untouched built-in can be upgraded safely at load time (same pattern as
+/// the legacy post-process prompt below); any other text is a user edit and
+/// is never overwritten.
+fn legacy_transform_shipped(id: &str) -> Option<(&'static str, String)> {
+    match id {
+        "polish" => Some((
+            "Polish",
+            "You rewrite the user's text so it reads better, while keeping their meaning \
+             and their voice. Apply the rules below."
+                .to_string(),
+        )),
+        "prompt_engineer" => Some((
+            "Prompt Engineer",
+            format!(
+                "Convert the user's rough, spoken notes into a single well-structured AI prompt. \
+                 Fill in only the sections the notes actually support; omit a section entirely \
+                 rather than inventing content for it. Use exactly this shape:\n\n{}",
+                prompt_engineer_template()
+            ),
+        )),
+        "goal" => Some((
+            "Goal",
+            format!(
+                "Convert the user's rough, spoken notes into a single well-structured goal \
+                 definition. Fill in only the sections the notes actually support; omit a \
+                 section entirely rather than inventing content for it. Never add commitments, \
+                 dates, or numbers that were not in the notes. Preserve the user's certainty \
+                 level — a \"maybe\" stays a maybe. Write the content in the same language as \
+                 the input; keep the section headers as they are. Use exactly this shape:\n\n{}",
+                goal_template()
+            ),
+        )),
+        _ => None,
+    }
+}
+
+/// The Goal output template.
+fn goal_template() -> String {
+    [
+        "**Goal**\n(one concise outcome statement — what will be true when this is done)",
+        "**Why it matters**\n(the motivation or impact, in 1–2 lines)",
+        "**Success criteria**\n(bulleted, each one verifiable — how you'll know it's achieved, not how you'll work on it)",
+        "**Scope**\n(what's included / explicitly not included)",
+        "**Milestones**\n(ordered steps toward the goal, with timing only if the notes gave any)",
+        "**Owner & stakeholders**\n(who drives it, who needs to be involved or informed)",
+        "**Timeframe**\n(deadline or horizon — only if stated)",
+        "**Risks & dependencies**\n(what could block it, what it relies on)",
+        "**First next action**\n(the single smallest concrete step to start — this section is required)",
+    ]
+    .join("\n\n")
+}
+
+pub fn default_transforms() -> Vec<Transform> {
+    vec![
+        Transform {
+            id: "polish".to_string(),
+            name: "Polish Template".to_string(),
+            description: "Improve clarity and conciseness".to_string(),
+            detail_description: "Polish rewrites your text to sound clearer, in your voice."
+                .to_string(),
+            prompt: "Goal: rewrite the user's text so it reads clearly and naturally while \
+                     preserving exactly what they meant and how they sound.\n\nYou are a careful \
+                     editor. Rewrite the text according to the rules below. Improve only the \
+                     wording — never the meaning: keep every fact, question, request, and hedge, \
+                     and keep the author's voice and register."
+                .to_string(),
+            rules: polish_rules(),
+            custom_instructions: String::new(),
+            use_voice_profile: true,
+            shortcut: "option+1".to_string(),
+            sample_text: "hey so about the deck i added some slides but im not sure if they go \
+                          with your part. it seems kinda long maybe we should remove the market \
+                          trends thing? i can look at it again tonight if u want. also the \
+                          pricing slide might be wrong cuz the data changed. we should check \
+                          before sending to the board"
+                .to_string(),
+            builtin: true,
+        },
+        Transform {
+            id: "prompt_engineer".to_string(),
+            name: "Prompt Engineer Template".to_string(),
+            description: "Turn messy thoughts into a clean, optimized AI prompt".to_string(),
+            detail_description: "Prompt Engineer takes messy, spoken, unstructured thoughts and \
+                                 converts them into a clean, optimized AI prompt."
+                .to_string(),
+            prompt: format!(
+                "Goal: convert the user's rough, spoken notes into one clean, well-structured AI \
+                 prompt that is ready to paste into any AI assistant.\n\nYou are an expert prompt \
+                 engineer. Restructure the user's notes into the template below. Fill in only the \
+                 sections the notes actually support — omit a section entirely rather than \
+                 inventing content for it. Preserve the user's intent, constraints, and examples \
+                 exactly. Use exactly this shape:\n\n{}",
+                prompt_engineer_template()
+            ),
+            rules: Vec::new(),
+            custom_instructions: String::new(),
+            use_voice_profile: false,
+            shortcut: "option+2".to_string(),
+            sample_text: "I need help writing product descriptions for a skincare brand. The AI \
+                          should be warm, aspirational, and concise"
+                .to_string(),
+            builtin: true,
+        },
+        Transform {
+            id: "goal".to_string(),
+            name: "Goal Template".to_string(),
+            description: "Turn rough thoughts into a structured goal".to_string(),
+            detail_description: "Goal converts rough, spoken notes about something you want to \
+                                 achieve into a structured, actionable goal definition."
+                .to_string(),
+            prompt: format!(
+                "Goal: turn the user's rough, spoken notes into a structured, actionable goal \
+                 definition they can execute against.\n\nYou are a planning assistant. \
+                 Restructure the user's notes into the template below. Fill in only the sections \
+                 the notes actually support — omit a section entirely rather than inventing \
+                 content for it. Never add commitments, dates, or numbers that were not in the \
+                 notes. Preserve the user's certainty level — a \"maybe\" stays a maybe. Write \
+                 the content in the same language as the input; keep the section headers as they \
+                 are. Use exactly this shape:\n\n{}",
+                goal_template()
+            ),
+            rules: Vec::new(),
+            custom_instructions: String::new(),
+            use_voice_profile: false,
+            shortcut: "option+3".to_string(),
+            sample_text: "um so I want the transforms feature to be actually done and merged, \
+                          like tests passing, maybe by end of next week, and someone from the \
+                          team should review the backend part"
+                .to_string(),
+            builtin: true,
+        },
+    ]
 }
 
 fn default_post_process_api_keys() -> SecretMap {
@@ -2416,6 +2725,25 @@ pub fn get_default_settings() -> AppSettings {
         },
     );
 
+    // Transforms get dynamic binding ids so user-created ones work the same way
+    // as the built-ins.
+    for transform in default_transforms() {
+        let binding_id = transform_binding_id(&transform.id);
+        bindings.insert(
+            binding_id.clone(),
+            ShortcutBinding {
+                id: binding_id,
+                name: format!("Transform: {}", transform.name),
+                description: format!(
+                    "Replaces the selected text using the {} transform.",
+                    transform.name
+                ),
+                default_binding: transform.shortcut.clone(),
+                current_binding: transform.shortcut,
+            },
+        );
+    }
+
     AppSettings {
         bindings,
         push_to_talk: true,
@@ -2471,6 +2799,11 @@ pub fn get_default_settings() -> AppSettings {
         flow_enabled: false,
         flow_phrase: default_flow_phrase(),
         flow_screen_access: false,
+        transforms_enabled: false,
+        transforms: default_transforms(),
+        style_prefs: StylePrefs::default(),
+        polish_after_dictation: false,
+        transform_writing_examples: Vec::new(),
         mute_while_recording: false,
         append_trailing_space: false,
         app_language: default_app_language(),
@@ -3256,6 +3589,49 @@ pub fn load_or_create_app_settings(app: &AppHandle) -> AppSettings {
             }
         }
 
+        // Merge built-in transforms added by newer releases into existing
+        // settings, same as the bindings merge above. Only missing built-ins
+        // are appended — the user's edits to existing transforms (and their
+        // own custom transforms) are untouched. The matching
+        // `transform.<id>` binding arrives via the bindings merge.
+        for transform in default_transforms() {
+            if !settings.transforms.iter().any(|t| t.id == transform.id) {
+                debug!("Adding missing built-in transform: {}", transform.id);
+                settings.transforms.push(transform);
+                updated = true;
+            }
+        }
+
+        // Upgrade built-in transform names/prompts the user never touched:
+        // a stored value that still exactly matches what an older release
+        // shipped is safe to move to the current wording; anything else is a
+        // user edit and is left alone. Rules, custom instructions, and
+        // shortcuts are never rewritten here.
+        for default_transform in default_transforms() {
+            let Some((legacy_name, legacy_prompt)) =
+                legacy_transform_shipped(&default_transform.id)
+            else {
+                continue;
+            };
+            if let Some(existing) = settings
+                .transforms
+                .iter_mut()
+                .find(|t| t.builtin && t.id == default_transform.id)
+            {
+                if existing.name == legacy_name && existing.name != default_transform.name {
+                    debug!("Upgrading built-in transform name: {}", existing.id);
+                    existing.name = default_transform.name.clone();
+                    updated = true;
+                }
+                if existing.prompt == legacy_prompt && existing.prompt != default_transform.prompt
+                {
+                    debug!("Upgrading built-in transform prompt: {}", existing.id);
+                    existing.prompt = default_transform.prompt.clone();
+                    updated = true;
+                }
+            }
+        }
+
         // Drop obsolete bindings from older settings files so they stop
         // being registered:
         //  - transcribe_toggle: the main shortcuts now lock hands-free
@@ -3440,6 +3816,31 @@ mod tests {
 
     fn default_settings_json() -> serde_json::Value {
         serde_json::to_value(get_default_settings()).unwrap()
+    }
+
+    #[test]
+    fn claude_code_provider_is_registered_and_keyless() {
+        let providers = default_post_process_providers();
+        let claude = providers
+            .iter()
+            .find(|p| p.id == CLAUDE_CODE_PROVIDER_ID)
+            .expect("claude_code should be a default provider");
+
+        assert_eq!(claude.label, "Claude Code CLI");
+        // Generation goes through a subprocess, so there is no HTTP endpoint to
+        // edit and no model list to fetch.
+        assert!(!claude.allow_base_url_edit);
+        assert!(claude.models_endpoint.is_none());
+        // The CLI has no OpenAI-style structured-output mode; callers must fall
+        // back to prompt + lenient JSON parsing.
+        assert!(!claude.supports_structured_output);
+        // Auth comes from the user's existing CLI login, never from a stored key.
+        assert!(!post_process_provider_requires_api_key(
+            CLAUDE_CODE_PROVIDER_ID
+        ));
+        // The conversational assistant must accept it (unlike Apple Intelligence,
+        // which is cleanup-only).
+        assert!(assistant_provider_is_supported(CLAUDE_CODE_PROVIDER_ID));
     }
 
     #[test]
@@ -3946,9 +4347,16 @@ mod tests {
     #[test]
     fn provider_key_policy_is_conservative_and_complete_for_shipped_providers() {
         for provider in default_post_process_providers() {
+            // Keyless by design: the local engines, a user-supplied endpoint,
+            // Apple Intelligence, and the Claude Code CLI (which authenticates
+            // through the user's own `claude` login, never a stored key).
             let should_require = !matches!(
                 provider.id.as_str(),
-                "builtin" | "local" | "custom" | APPLE_INTELLIGENCE_PROVIDER_ID
+                "builtin"
+                    | "local"
+                    | "custom"
+                    | APPLE_INTELLIGENCE_PROVIDER_ID
+                    | CLAUDE_CODE_PROVIDER_ID
             );
             assert_eq!(
                 post_process_provider_requires_api_key(&provider.id),
@@ -4281,5 +4689,107 @@ mod tests {
         let out = format!("{:?}", map);
         assert!(!out.contains("secret"));
         assert!(out.contains("[REDACTED]"));
+    }
+
+    #[test]
+    fn transforms_ship_polish_and_prompt_engineer_by_default() {
+        let transforms = default_transforms();
+        let ids: Vec<&str> = transforms.iter().map(|t| t.id.as_str()).collect();
+        assert_eq!(ids, vec!["polish", "prompt_engineer", "goal"]);
+        assert!(transforms.iter().all(|t| t.builtin));
+
+        // Every transform must be reachable by shortcut out of the box.
+        let polish = &transforms[0];
+        let engineer = &transforms[1];
+        let goal = &transforms[2];
+        assert_eq!(polish.shortcut, "option+1");
+        assert_eq!(engineer.shortcut, "option+2");
+        assert_eq!(goal.shortcut, "option+3");
+    }
+
+    #[test]
+    fn polish_ships_five_rules_all_enabled() {
+        let transforms = default_transforms();
+        let polish = transforms.iter().find(|t| t.id == "polish").unwrap();
+        let rule_ids: Vec<&str> = polish.rules.iter().map(|r| r.id.as_str()).collect();
+        assert_eq!(
+            rule_ids,
+            vec!["concise", "clarity", "reorder", "structure", "tone"]
+        );
+        assert!(polish.rules.iter().all(|r| r.enabled));
+        // Each rule must carry a real instruction — an empty one would silently
+        // contribute nothing to the composed prompt.
+        assert!(polish.rules.iter().all(|r| !r.instruction.trim().is_empty()));
+        // The voice-profile rule is the one that consumes writing examples.
+        assert!(polish.use_voice_profile);
+        assert!(!polish.sample_text.trim().is_empty());
+    }
+
+    #[test]
+    fn prompt_engineer_template_is_complete_and_carries_no_scratch_text() {
+        let transforms = default_transforms();
+        let engineer = transforms
+            .iter()
+            .find(|t| t.id == "prompt_engineer")
+            .unwrap();
+
+        for heading in [
+            "**Name**",
+            "**Title**",
+            "**Role & stance**",
+            "**Task**",
+            "**Context**",
+            "**Inputs available**",
+            "**Output requirements**",
+            "**Constraints / Do-nots**",
+            "**Examples / References**",
+            "**Execution checklist**",
+            "**Conflict resolution**",
+        ] {
+            assert!(
+                engineer.prompt.contains(heading),
+                "template is missing {heading}"
+            );
+        }
+
+        // The original draft contained a scratch placeholder that must never ship.
+        assert!(
+            !engineer.prompt.to_lowercase().contains("tom is the queen"),
+            "the scratch placeholder leaked into the shipped template"
+        );
+        // A template transform drives itself from the template, not from rules.
+        assert!(engineer.rules.is_empty());
+    }
+
+    #[test]
+    fn transform_binding_ids_round_trip() {
+        assert_eq!(transform_binding_id("polish"), "transform.polish");
+        assert_eq!(
+            transform_id_from_binding("transform.polish"),
+            Some("polish")
+        );
+        // Non-transform bindings must not be claimed by the transform dispatcher.
+        assert_eq!(transform_id_from_binding("transcribe"), None);
+        assert_eq!(transform_id_from_binding("cancel"), None);
+        // A bare prefix names no transform.
+        assert_eq!(transform_id_from_binding("transform."), None);
+    }
+
+    #[test]
+    fn transforms_are_opt_in_and_bound_by_default() {
+        let settings = get_default_settings();
+        // The feature must stay dark until the user turns it on.
+        assert!(!settings.transforms_enabled);
+        assert_eq!(settings.transforms.len(), 3);
+
+        // Each default transform has a registered shortcut binding.
+        for transform in &settings.transforms {
+            let binding_id = transform_binding_id(&transform.id);
+            let binding = settings
+                .bindings
+                .get(&binding_id)
+                .unwrap_or_else(|| panic!("no binding registered for {binding_id}"));
+            assert_eq!(binding.current_binding, transform.shortcut);
+        }
     }
 }

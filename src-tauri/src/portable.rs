@@ -2,7 +2,7 @@ use std::path::PathBuf;
 use std::sync::OnceLock;
 use tauri::Manager;
 
-/// Portable mode support for SpeakoFlow.
+/// Portable mode support for ShalomFlow.
 ///
 /// When a file named `portable` exists next to the executable, all user data
 /// (settings, models, recordings, database, logs) is stored in a `Data/`
@@ -11,8 +11,8 @@ use tauri::Manager;
 /// Magic string written into new portable marker files. Reading also accepts
 /// the legacy `"Handy Portable Mode"` string (see `is_valid_portable_marker`)
 /// so portable installs created under the old "Handy" branding keep working
-/// after an update to SpeakoFlow.
-const PORTABLE_MARKER_MAGIC: &str = "SpeakoFlow Portable Mode";
+/// after an update to ShalomFlow.
+const PORTABLE_MARKER_MAGIC: &str = "ShalomFlow Portable Mode";
 
 static PORTABLE_DATA_DIR: OnceLock<Option<PathBuf>> = OnceLock::new();
 
@@ -98,9 +98,9 @@ pub fn store_path(relative: &str) -> PathBuf {
 }
 
 /// Check if a marker file path contains the portable magic string. Accepts
-/// both the current `SpeakoFlow Portable Mode` string and the legacy
+/// both the current `ShalomFlow Portable Mode` string and the legacy
 /// `Handy Portable Mode` string written by portable installs created before
-/// the SpeakoFlow rebrand, so existing portable installs are not broken by
+/// the ShalomFlow rebrand, so existing portable installs are not broken by
 /// an update.
 /// Extracted for testability.
 fn is_valid_portable_marker(path: &std::path::Path) -> bool {
@@ -130,7 +130,7 @@ mod tests {
 
     #[test]
     fn test_legacy_handy_magic_string_still_enables_portable() {
-        // Portable installs created before the SpeakoFlow rebrand wrote the
+        // Portable installs created before the ShalomFlow rebrand wrote the
         // old "Handy Portable Mode" string — must keep working after update.
         let dir = std::env::temp_dir().join("speakoflow_test_legacy_handy");
         std::fs::create_dir_all(&dir).unwrap();

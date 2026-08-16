@@ -1,4 +1,4 @@
-# NixOS module for SpeakoFlow voice assistant
+# NixOS module for ShalomFlow voice assistant
 #
 # Handles system-level configuration that the package wrapper cannot:
 #   - udev rule for /dev/uinput (rdev grab() needs it for virtual input)
@@ -26,12 +26,12 @@ let
 in
 {
   options.programs.speakoflow = {
-    enable = lib.mkEnableOption "SpeakoFlow offline voice assistant";
+    enable = lib.mkEnableOption "ShalomFlow offline voice assistant";
 
     package = lib.mkOption {
       type = lib.types.package;
       defaultText = lib.literalExpression "speakoflow.packages.\${system}.speakoflow";
-      description = "The SpeakoFlow package to use.";
+      description = "The ShalomFlow package to use.";
     };
   };
 

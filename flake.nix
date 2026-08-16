@@ -1,5 +1,5 @@
 {
-  description = "SpeakoFlow - A free, open source, local-first voice assistant (dictation, AI chat panel, screen vision) that works completely offline";
+  description = "ShalomFlow - A free, open source, local-first voice assistant (dictation, AI chat panel, screen vision) that works completely offline";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -238,7 +238,7 @@
             XDG_DATA_DIRS = "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}:${pkgs.hicolor-icon-theme}/share";
 
             shellHook = ''
-              echo "SpeakoFlow development environment"
+              echo "ShalomFlow development environment"
               bun install
               echo "Run 'bun run tauri dev' to start"
             '';

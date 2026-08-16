@@ -1,7 +1,7 @@
 name: "Build"
 
-# Reusable build workflow for SpeakoFlow. Ported from upstream Handy's build.yml
-# and adapted for SpeakoFlow's shape-(b) engine posture (see
+# Reusable build workflow for ShalomFlow. Ported from upstream Handy's build.yml
+# and adapted for ShalomFlow's shape-(b) engine posture (see
 # the engine-migration plan, Session 6):
 #
 #   * transcribe-cpp (GGUF/ggml) is the new engine. Windows x86_64 + Linux ship
@@ -332,10 +332,10 @@ jobs:
           #     codegen), so disabling OpenMP is safe here and avoids linking libomp.
           echo "TRANSCRIBE_CMAKE_ARGS=-DGGML_NATIVE=OFF -DGGML_OPENMP=OFF" >> $env:GITHUB_ENV
 
-      # Bundle the VC++ runtime app-local so SpeakoFlow starts on machines without
+      # Bundle the VC++ runtime app-local so ShalomFlow starts on machines without
       # a current Microsoft redistributable. build.rs stages DLLs from these dirs
       # into transcribe-libs/, using the same VS install that compiled the code.
-      # (SpeakoFlow keeps GGML_OPENMP off, so vcomp140 is not required — the CRT
+      # (ShalomFlow keeps GGML_OPENMP off, so vcomp140 is not required — the CRT
       # dir alone satisfies build.rs's msvcp140/vcruntime140 requirement.)
       - name: Locate VC++ runtime redist for app-local bundling (Windows)
         if: contains(inputs.platform, 'windows')
@@ -475,7 +475,7 @@ jobs:
           '
 
       # ── Intel macOS (x86_64-apple-darwin) ─────────────────────────────────
-      # Intel macOS is the ONE target where SpeakoFlow links ONNX Runtime
+      # Intel macOS is the ONE target where ShalomFlow links ONNX Runtime
       # dynamically. pykeio's `ort` dropped prebuilt x86_64-apple-darwin binaries
       # ("Support for Intel macOS has been dropped following upstream changes to
       # ONNX Runtime & Rust"), so transcribe-rs's `onnx` feature has no static ORT
@@ -530,7 +530,7 @@ jobs:
           echo "ORT_PREFER_DYNAMIC_LINK=1" >> "$GITHUB_ENV"
 
       # Make tauri-bundler copy the staged dylib into
-      # SpeakoFlow.app/Contents/Frameworks. `bundle.macOS.frameworks` accepts a
+      # ShalomFlow.app/Contents/Frameworks. `bundle.macOS.frameworks` accepts a
       # path to a .dylib and copies it there verbatim — it deliberately does not
       # touch install names or rpaths, which the two steps above/around it handle.
       # Patched here rather than committed to tauri.conf.json so the path only
@@ -998,11 +998,11 @@ jobs:
             for appimage in "${BUNDLE_DIR}"/appimage/*.AppImage; do
               echo "Auditing AppImage package: ${appimage}"
               workdir="$(mktemp -d)"
-              cp "$appimage" "${workdir}/SpeakoFlow.AppImage"
-              chmod +x "${workdir}/SpeakoFlow.AppImage"
+              cp "$appimage" "${workdir}/ShalomFlow.AppImage"
+              chmod +x "${workdir}/ShalomFlow.AppImage"
               (
                 cd "$workdir"
-                ./SpeakoFlow.AppImage --appimage-extract >/dev/null
+                ./ShalomFlow.AppImage --appimage-extract >/dev/null
                 require_path "squashfs-root/usr/bin/speakoflow" "AppImage speakoflow binary"
                 require_path "squashfs-root/usr/lib/libtranscribe.so" "AppImage transcribe runtime library"
                 if ! find "squashfs-root/usr/lib" -name 'libggml-cpu*.so*' | grep -q .; then
@@ -1159,7 +1159,7 @@ jobs:
           }
 
           # x64 ships the dynamic transcribe/ggml DLLs; ARM64 is static CPU-only
-          # (only the VC++ runtime is staged). SpeakoFlow keeps ONNX Runtime
+          # (only the VC++ runtime is staged). ShalomFlow keeps ONNX Runtime
           # statically linked via transcribe-rs (shape-(b)), so — unlike upstream
           # Handy — onnxruntime.dll is NOT staged or required. GGML_OPENMP is off,
           # so vcomp140.dll is not required either.

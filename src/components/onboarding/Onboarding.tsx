@@ -27,7 +27,7 @@ const FEATURED = {
 } as const;
 
 /**
- * Step 1 of the welcome flow: "How should SpeakoFlow hear you?"
+ * Step 1 of the welcome flow: "How should ShalomFlow hear you?"
  *
  * Two featured cards do the choosing for a first-timer — a fast English option
  * and a multilingual one — pre-selected by the machine's language. "Download and

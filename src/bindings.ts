@@ -432,6 +432,46 @@ async updateCustomWords(words: string[]) : Promise<Result<null, string>> {
     else return { status: "error", error: e  as any };
 }
 },
+async setTransformsEnabled(enabled: boolean) : Promise<Result<null, string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("set_transforms_enabled", { enabled }) };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
+async setPolishAfterDictation(enabled: boolean) : Promise<Result<null, string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("set_polish_after_dictation", { enabled }) };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
+async setStylePrefs(prefs: StylePrefs) : Promise<Result<null, string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("set_style_prefs", { prefs }) };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
+async setTransformWritingExamples(examples: string[]) : Promise<Result<null, string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("set_transform_writing_examples", { examples }) };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
+async updateTransforms(transforms: Transform[]) : Promise<Result<null, string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("update_transforms", { transforms }) };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
 async changeSpokenEmojisEnabledSetting(enabled: boolean) : Promise<Result<null, string>> {
     try {
     return { status: "ok", data: await TAURI_INVOKE("change_spoken_emojis_enabled_setting", { enabled }) };
@@ -821,6 +861,14 @@ async openAppDataDir() : Promise<Result<null, string>> {
  */
 async checkAppleIntelligenceAvailable() : Promise<boolean> {
     return await TAURI_INVOKE("check_apple_intelligence_available");
+},
+/**
+ * Report whether the Claude Code CLI is available on this machine.
+ * Called by the settings UI to decide between offering the CLI brain and
+ * showing install guidance.
+ */
+async claudeCodeStatus() : Promise<ClaudeCodeStatus> {
+    return await TAURI_INVOKE("claude_code_status");
 },
 /**
  * Try to initialize Enigo (keyboard/mouse simulation).
@@ -2101,8 +2149,10 @@ async assistantDistillMemoryNow() : Promise<Result<null, string>> {
 }
 },
 /**
- * Stub implementation for non-macOS platforms
- * Always returns false since laptop detection is macOS-specific
+ * Checks if the Mac is a laptop by detecting battery presence
+ * 
+ * This uses pmset to check for battery information.
+ * Returns true if a battery is detected (laptop), false otherwise (desktop)
  */
 async isLaptop() : Promise<Result<boolean, string>> {
     try {
@@ -2251,7 +2301,27 @@ flow_phrase?: string;
  * clearly refers to the screen. Separate from the assistant's screen
  * access mode on purpose — the two features are permissioned independently.
  */
-flow_screen_access?: boolean; mute_while_recording?: boolean; append_trailing_space?: boolean; app_language?: string; experimental_enabled?: boolean; lazy_stream_close?: boolean; keyboard_implementation?: KeyboardImplementation; show_tray_icon?: boolean; close_behavior?: CloseBehavior; paste_delay_ms?: number; typing_tool?: TypingTool; external_script_path: string | null; custom_filler_words?: string[] | null; whisper_accelerator?: WhisperAcceleratorSetting; ort_accelerator?: OrtAcceleratorSetting; whisper_gpu_device?: number; extra_recording_buffer_ms?: number; assistant_provider_id?: string; assistant_models?: Partial<{ [key in string]: string }>; assistant_system_prompt?: string; 
+flow_screen_access?: boolean; 
+/**
+ * Master opt-in for Transforms. The feature stays inert until this is on.
+ */
+transforms_enabled?: boolean; transforms?: Transform[];
+/**
+ * Per-context tone presets from the Styles page.
+ */
+style_prefs?: StylePrefs;
+/**
+ * Run the Polish transform over every plain dictation before pasting.
+ * Independent of `transforms_enabled` (that gates only the selection
+ * shortcuts) and skipped when the dictation already used AI Correction,
+ * so a transcript is never rewritten twice.
+ */
+polish_after_dictation?: boolean;
+/**
+ * Samples of the user's own writing, shared across every transform that
+ * opts into the voice profile (`Transform::use_voice_profile`).
+ */
+transform_writing_examples?: string[]; mute_while_recording?: boolean; append_trailing_space?: boolean; app_language?: string; experimental_enabled?: boolean; lazy_stream_close?: boolean; keyboard_implementation?: KeyboardImplementation; show_tray_icon?: boolean; close_behavior?: CloseBehavior; paste_delay_ms?: number; typing_tool?: TypingTool; external_script_path: string | null; custom_filler_words?: string[] | null; whisper_accelerator?: WhisperAcceleratorSetting; ort_accelerator?: OrtAcceleratorSetting; whisper_gpu_device?: number; extra_recording_buffer_ms?: number; assistant_provider_id?: string; assistant_models?: Partial<{ [key in string]: string }>; assistant_system_prompt?: string; 
 /**
  * Controls whether screen capture is off, user-triggered, or agent-decided.
  */
@@ -2605,6 +2675,11 @@ export type ChatMessage = { role: string; content: string;
  * (and text-only turns) simply have an empty list.
  */
 images?: string[] }
+/**
+ * What the settings UI needs to decide between offering this provider and
+ * telling the user how to install it.
+ */
+export type ClaudeCodeStatus = { installed: boolean; path: string | null; version: string | null }
 export type ClipboardHandling = "dont_modify" | "copy_to_clipboard"
 /**
  * What happens when the user closes the main window.
@@ -2891,7 +2966,7 @@ export type ShortcutBinding = { id: string; name: string; description: string; d
 export type SnipRect = { x: number; y: number; width: number; height: number }
 export type SoundTheme = 
 /**
- * SpeakoFlow's own start/stop cues — the default. Ships a matching lock
+ * ShalomFlow's own start/stop cues — the default. Ships a matching lock
  * cue (`popo_lock.wav`) used by every theme for tap-to-lock.
  */
 "dictation" | "marimba" | "pop" | "click" | "custom"
@@ -2901,6 +2976,62 @@ export type SoundTheme =
  * "system") to match the `data-theme` attribute the frontend sets on <html>.
  */
 export type Theme = "light" | "dark" | "system"
+/**
+ * Per-context tone presets chosen on the Styles page. Each field holds the
+ * selected preset id for one writing context (e.g. "formal", "casual"), and
+ * `auto_cleanup` holds "off" | "light" | "aggressive". Presentation-only for
+ * now: the selections persist but are not yet composed into the cleanup
+ * prompt.
+ */
+export type StylePrefs = { personal: string; work: string; email: string; other: string; auto_cleanup: string }
+/**
+ * A saved AI rewrite instruction bound to a global shortcut.
+ */
+export type Transform = { id: string; name: string; 
+/**
+ * Card subtitle on the Transforms page.
+ */
+description: string; 
+/**
+ * Longer blurb shown in the detail view.
+ */
+detail_description: string; 
+/**
+ * Base instruction, or — for a template transform — the output shape.
+ */
+prompt: string; 
+/**
+ * Toggleable rules. Empty for template-driven transforms.
+ */
+rules: TransformRule[]; 
+/**
+ * Free-text additions from the user.
+ */
+custom_instructions: string; 
+/**
+ * Whether the shared writing-example voice profile is applied.
+ */
+use_voice_profile: boolean; 
+/**
+ * Current shortcut, mirrored into the bindings map.
+ */
+shortcut: string; 
+/**
+ * Input used by the in-app live preview.
+ */
+sample_text: string; 
+/**
+ * False for user-created transforms.
+ */
+builtin: boolean }
+/**
+ * One toggleable instruction inside a transform (Polish's rule rows).
+ */
+export type TransformRule = { id: string; label: string; 
+/**
+ * Appended to the composed prompt when `enabled`.
+ */
+instruction: string; enabled: boolean }
 /**
  * A voice option handed to the settings UI for any remote TTS engine, so the
  * user can pick from a loaded list instead of typing an opaque id.

@@ -30,7 +30,7 @@ fn main() {
     // "Stage ONNX Runtime for Intel macOS" step in .github/workflows/build.yml).
     //
     // For a *distributable* .dmg that dylib has to travel inside the bundle, in
-    // `SpeakoFlow.app/Contents/Frameworks` (tauri-bundler puts `bundle.macOS.
+    // `ShalomFlow.app/Contents/Frameworks` (tauri-bundler puts `bundle.macOS.
     // frameworks` entries there). tauri-bundler explicitly does NOT touch load
     // paths — embedding the rpath is the caller's job — so bake it in here.
     //
@@ -54,7 +54,7 @@ fn main() {
     // Must run after transcribe staging because that helper recreates
     // transcribe-libs/. Ships the app-local VC++ runtime on Windows.
     //
-    // NOTE (SpeakoFlow shape-(b) divergence from upstream Handy): we keep
+    // NOTE (ShalomFlow shape-(b) divergence from upstream Handy): we keep
     // `transcribe-rs 0.3.11` with its statically-embedded ONNX Runtime (+
     // `ort-directml` on Windows) rather than converging to Handy's shape-(a)
     // dynamically-linked baseline ORT (see PLAN.md §2 / Session 6). So there is
@@ -153,7 +153,7 @@ fn stage_transcribe_runtime_libs() {
 
 /// Stage the MSVC runtime DLLs into `transcribe-libs/` for app-local deployment.
 ///
-/// SpeakoFlow's native stack (transcribe-cpp's ggml DLLs, and transcribe-rs's
+/// ShalomFlow's native stack (transcribe-cpp's ggml DLLs, and transcribe-rs's
 /// embedded ONNX Runtime) links the VC++ runtime dynamically (/MD). Shipping the
 /// DLLs beside `speakoflow.exe` covers machines with no redistributable
 /// installed and machines whose system redist is older than the CI toolset.
@@ -211,7 +211,7 @@ fn stage_vc_runtime_dlls() {
         if !copied.iter().any(|n| n == required) {
             panic!(
                 "SPEAKOFLOW_VC_REDIST_DIRS is set but {required} was not found in it; \
-                 the app-local VC++ runtime would be incomplete and SpeakoFlow would \
+                 the app-local VC++ runtime would be incomplete and ShalomFlow would \
                  crash on machines without a current redist"
             );
         }

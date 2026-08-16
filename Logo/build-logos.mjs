@@ -123,7 +123,7 @@ for (const v of VARIANTS) {
 console.log("Wrote favicon.ico + favicon-white.ico (16/32/48).");
 
 // ---------------------------------------------------------------------------
-// 5. Wordmark lockup ("SpeakoFlow") -> vector paths, aligned with the icon
+// 5. Wordmark lockup ("ShalomFlow") -> vector paths, aligned with the icon
 // ---------------------------------------------------------------------------
 const fontBuf = fs.readFileSync("fonts/PlusJakartaSans-800.ttf");
 const font = opentype.parse(
@@ -155,7 +155,7 @@ function pathToD(pathObj, dp = 3) {
     throw new Error("wordmark path serialization produced NaN");
   return d;
 }
-const TEXT = "SpeakoFlow";
+const TEXT = "ShalomFlow";
 const FONT_SIZE = 64;
 const LETTER_SPACING = -2; // matches the reference CSS letter-spacing: -2px
 const ICON_H = 88; // reference icon height
@@ -235,7 +235,7 @@ for (const v of VARIANTS) {
 console.log("Wrote wordmark PNGs x2 variants (h64/h128/h256).");
 
 // ---------------------------------------------------------------------------
-// 6. Text-only wordmark ("SpeakoFlow" letters, no icon) - black + white
+// 6. Text-only wordmark ("ShalomFlow" letters, no icon) - black + white
 // ---------------------------------------------------------------------------
 // wordPath baseline is at y=0; wb.y1 is the cap top (negative), wb.y2 the
 // descender bottom (positive). Crop tightly to the letters with a small margin.

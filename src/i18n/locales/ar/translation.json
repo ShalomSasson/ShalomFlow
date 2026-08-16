@@ -31,7 +31,9 @@
     "characters": "الملفات التعريفية",
     "memory": "الذاكرة",
     "collapse": "طيّ الشريط الجانبي",
-    "expand": "توسيع الشريط الجانبي"
+    "expand": "توسيع الشريط الجانبي",
+    "styles": "الأنماط",
+    "transforms": "التحويلات"
   },
   "window": {
     "minimize": "تصغير",
@@ -45,7 +47,8 @@
     "assistant": "أعدّ المساعد، ثم اضبط صوته ورؤية الشاشة والبحث في الويب.",
     "history": "أحدث عمليات الإملاء ونتائج Flow ومحادثات المساعد، مخزَّنة على هذا الجهاز.",
     "about": "الإصدار ولغة التطبيق ومواقع البيانات وشكر المساهمين.",
-    "debug": "أدوات التشخيص وأدوات المطوّرين."
+    "debug": "أدوات التشخيص وأدوات المطوّرين.",
+    "styles": "كيفية تنسيق النص المُملى في كل نوع من التطبيقات."
   },
   "onboarding": {
     "subtitle": "للبدء، اختر نموذج التفريغ الصوتي",
@@ -57,7 +60,7 @@
       "ready": "أنت جاهز"
     },
     "speechToText": {
-      "title": "كيف ينبغي أن يسمعك SpeakoFlow؟",
+      "title": "كيف ينبغي أن يسمعك ShalomFlow؟",
       "subtitle": "يحوّل هذا صوتك إلى نص على جهازك مباشرة. اختر واحدًا، وبدّله في أي وقت.",
       "cards": {
         "fast": {
@@ -113,7 +116,7 @@
       "downloadingVoice": "نموذج الصوت على وشك الوصول. أُنجز {{percentage}}%.",
       "downloadingGeneric": "التنزيل ما زال جاريًا. أُنجز {{percentage}}%.",
       "signOff": "هذا كل شيء. هيّا قل شيئًا.",
-      "openApp": "افتح SpeakoFlow"
+      "openApp": "افتح ShalomFlow"
     },
     "errors": {
       "selectModel": "تعذّر اختيار هذا النموذج. يرجى المحاولة مرة أخرى.",
@@ -245,7 +248,7 @@
     },
     "permissions": {
       "title": "الأذونات المطلوبة",
-      "description": ".يحتاج SpeakoFlow إلى بعض الأذونات ليعمل بشكل صحيح",
+      "description": ".يحتاج ShalomFlow إلى بعض الأذونات ليعمل بشكل صحيح",
       "microphone": {
         "title": "الوصول إلى الميكروفون",
         "description": ".مطلوب لسماع صوتك من أجل التفريغ الصوتي"
@@ -444,6 +447,11 @@
         "info": "أثناء إمساك اختصار التسجيل، انقر هذا المفتاح لتثبيت التسجيل المتواصل فتتمكّن من رفع يدك ومتابعة الحديث. اختر أي مفتاح لا يشكّل جزءًا من اختصار التسجيل، أو امسحه لتعطيل هذه الميزة.",
         "off": "إيقاف",
         "clear": "مسح"
+      },
+      "polishDictation": {
+        "label": "تنقيح الإملاء",
+        "description": "إعادة كتابة كل إملاء بتحويل التنقيح قبل اللصق.",
+        "info": "مستقل عن تفعيل التحويلات، الذي يتحكم فقط في اختصارات التحديد. يستخدم تحويل التنقيح تمامًا كما هو مضبوط في صفحة التحويلات (القواعد والتعليمات المخصصة وأمثلة كتابتك) ونفس مزوّد الذكاء الاصطناعي. يتم تخطيه عندما يستخدم الإملاء تصحيح الذكاء الاصطناعي بالفعل، حتى لا يُعاد كتابة النص مرتين؛ وإذا فشلت إعادة الكتابة، يُلصق النص الخام دون تغيير."
       }
     },
     "models": {
@@ -598,15 +606,15 @@
       },
       "autostart": {
         "label": "التشغيل عند بدء التشغيل",
-        "description": ".بدء تشغيل SpeakoFlow تلقائياً عند تسجيل الدخول إلى جهاز الكمبيوتر الخاص بك"
+        "description": ".بدء تشغيل ShalomFlow تلقائياً عند تسجيل الدخول إلى جهاز الكمبيوتر الخاص بك"
       },
       "showTrayIcon": {
         "label": "إظهار أيقونة شريط النظام",
-        "description": ".عرض أيقونة SpeakoFlow في شريط النظام"
+        "description": ".عرض أيقونة ShalomFlow في شريط النظام"
       },
       "closeBehavior": {
         "label": "الإنهاء عند إغلاق النافذة",
-        "description": "عند الإيقاف، يبقى SpeakoFlow يعمل في شريط النظام بعد إغلاق النافذة لتظلّ اختصاراتك فعّالة. وعند التشغيل، يؤدي إغلاق النافذة إلى إنهاء التطبيق تمامًا."
+        "description": "عند الإيقاف، يبقى ShalomFlow يعمل في شريط النظام بعد إغلاق النافذة لتظلّ اختصاراتك فعّالة. وعند التشغيل، يؤدي إغلاق النافذة إلى إنهاء التطبيق تمامًا."
       },
       "overlayStyle": {
         "title": "التراكب",
@@ -686,8 +694,8 @@
       },
       "customWords": {
         "title": "كلمات مخصصة",
-        "description": "الأسماء والمنتجات والعبارات التي ينبغي أن يكتبها SpeakoFlow بطريقتك.",
-        "info": "مثال: أضف «Kokoro» إذا كتب SpeakoFlow «Coco row».",
+        "description": "الأسماء والمنتجات والعبارات التي ينبغي أن يكتبها ShalomFlow بطريقتك.",
+        "info": "مثال: أضف «Kokoro» إذا كتب ShalomFlow «Coco row».",
         "placeholder": "أضف اسمًا أو مصطلحًا أو عبارة قصيرة",
         "add": "إضافة",
         "empty": "لا توجد كلمات مخصصة بعد.",
@@ -698,7 +706,7 @@
         "title": "استبدال النصوص",
         "description": "استبدل عبارة في نصك المفرَّغ بنص تستخدمه كثيرًا. مثال: «بريدي» تصبح «alex@example.com».",
         "rulesTitle": "قواعد الاستبدال",
-        "rulesHint": "حدّد ما يسمعه SpeakoFlow وما ينبغي أن يُدرجه.",
+        "rulesHint": "حدّد ما يسمعه ShalomFlow وما ينبغي أن يُدرجه.",
         "empty": "أنشئ قاعدة لعبارة تقولها كثيرًا.",
         "addFirst": "إنشاء أول قاعدة",
         "addRule": "إضافة استبدال",
@@ -965,7 +973,7 @@
       },
       "updateChecks": {
         "label": "التحقق من وجود تحديثات",
-        "description": "التحقق تلقائياً من وجود إصدارات جديدة من SpeakoFlow"
+        "description": "التحقق تلقائياً من وجود إصدارات جديدة من ShalomFlow"
       },
       "soundTheme": {
         "label": "سمة الصوت",
@@ -1035,7 +1043,7 @@
       "title": "حول",
       "version": {
         "title": "الإصدار",
-        "description": "الإصدار الحالي من SpeakoFlow"
+        "description": "الإصدار الحالي من ShalomFlow"
       },
       "updates": {
         "title": "التحديثات",
@@ -1047,7 +1055,7 @@
       },
       "appDataDirectory": {
         "title": "مجلد بيانات التطبيق",
-        "description": "الموقع الذي يخزن فيه SpeakoFlow بياناته"
+        "description": "الموقع الذي يخزن فيه ShalomFlow بياناته"
       },
       "sourceCode": {
         "title": "كود المصدر",
@@ -1056,12 +1064,12 @@
       },
       "license": {
         "title": "الترخيص",
-        "description": "SpeakoFlow مفتوح المصدر بموجب ترخيص MIT، ويستند إلى Handy (بترخيص MIT أيضًا) من CJ Pais.",
+        "description": "ShalomFlow مفتوح المصدر بموجب ترخيص MIT، ويستند إلى Handy (بترخيص MIT أيضًا) من CJ Pais.",
         "button": "عرض الترخيص"
       },
       "supportDevelopment": {
         "title": "دعم التطوير",
-        "description": "ساعدنا في مواصلة بناء SpeakoFlow",
+        "description": "ساعدنا في مواصلة بناء ShalomFlow",
         "button": "تبرع"
       }
     },
@@ -1098,11 +1106,21 @@
         "finderSectionTitle": "نماذج أخرى على الجهاز",
         "finderSectionDescription": "ابحث في Hugging Face عندما تحتاج حجمًا أو قدرة مختلفة.",
         "finderTitle": "استعراض Hugging Face",
-        "finderDescription": "ابحث في آلاف نماذج GGUF ونزّل أحدها مباشرةً إلى SpeakoFlow.",
+        "finderDescription": "ابحث في آلاف نماذج GGUF ونزّل أحدها مباشرةً إلى ShalomFlow.",
         "finderAction": "ابحث عن نموذج",
         "huggingFaceTitle": "نماذجك",
         "huggingFaceDescription": "النماذج المنزَّلة والنماذج التي أضفتها من Hugging Face.",
-        "catalogEmpty": "لا توجد نماذج محلية موصى بها في الوقت الحالي."
+        "catalogEmpty": "لا توجد نماذج محلية موصى بها في الوقت الحالي.",
+        "claudeCodeTitle": "Use Claude Code instead",
+        "claudeCodeDescription": "Already have Claude Code installed? Run the assistant through it on your existing Claude plan — no download, no API key.",
+        "claudeCodeCardTitle": "Claude Code CLI",
+        "claudeCodeCardDescription": "Runs through your local Claude Code login. Prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeUseAction": "Use",
+        "claudeCodeActiveBadge": "In use",
+        "claudeCodeSubscriptionBadge": "Uses your Claude plan",
+        "claudeCodeDetected": "Detected v{{version}}",
+        "claudeCodeMissingDescription": "Install Claude Code, or make sure the `claude` command is on this machine's PATH, then check again.",
+        "claudeCodeRecheckAction": "Check again"
       },
       "subpages": {
         "profilesCaption": "غيّر اسم المساعد ودوره وشخصيته.",
@@ -1141,6 +1159,14 @@
         "builtinEnginePreparing": "جارٍ تنزيل المحرّك المحلي…",
         "builtinEngineExtracting": "جارٍ تثبيت المحرّك المحلي…",
         "builtinEngineReady": "المحرّك المحلي جاهز.",
+        "claudeCodeModelLabel": "Claude model",
+        "claudeCodeModelDescription": "Which Claude model the CLI should use for replies.",
+        "claudeCodeNotice": "Runs through your local Claude Code login — prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeModels": {
+          "sonnet": "Sonnet (recommended)",
+          "opus": "Opus (most capable)",
+          "haiku": "Haiku (fastest)"
+        },
         "contextSizeLabel": "نافذة السياق",
         "contextSizeDescription": "مقدار ما يستطيع النموذج المحلي استحضاره في وقت واحد — تعليمات النظام وسجل محادثتك وأي لقطة شاشة (الصورة الواحدة قد تستهلك جزءًا كبيرًا) وردّه. النافذة الأكبر تستوعب أكثر وتجعل رؤية الشاشة والبحث في الويب أكثر موثوقية، لكنها تستهلك ذاكرة أكبر. القيمة الافتراضية 8192؛ و16384 خطوة جيدة للأعلى إذا كانت ذاكرة جهازك تسمح بذلك. ويمكنك تقليلها لاحقًا لتوفير الذاكرة.",
         "unloadTimeoutLabel": "إلغاء التحميل من الذاكرة بعد",
@@ -1245,7 +1271,7 @@
           }
         },
         "screenRecording": {
-          "description": "تحتاج رؤية الشاشة إلى إذن تسجيل الشاشة في macOS. امنحه من إعدادات النظام، ثم أعد تشغيل SpeakoFlow ليصبح ساري المفعول.",
+          "description": "تحتاج رؤية الشاشة إلى إذن تسجيل الشاشة في macOS. امنحه من إعدادات النظام، ثم أعد تشغيل ShalomFlow ليصبح ساري المفعول.",
           "grant": "فتح إعدادات النظام"
         }
       },
@@ -1323,7 +1349,7 @@
         "testButton": "اختبار الصوت",
         "testing": "جارٍ الاختبار…",
         "testOk": "تم التشغيل ✓",
-        "testPhrase": "مرحبًا! هذا اختبار للإخراج الصوتي في SpeakoFlow.",
+        "testPhrase": "مرحبًا! هذا اختبار للإخراج الصوتي في ShalomFlow.",
         "downloadStart": "جارٍ تنزيل صوت Kokoro…",
         "downloadProgress": "جارٍ تنزيل صوت Kokoro… {{progress}}%",
         "downloadReady": "صوت Kokoro جاهز ✓",
@@ -1426,7 +1452,7 @@
   },
   "accessibility": {
     "permissionsRequired": "أذونات إمكانية الوصول مطلوبة",
-    "permissionsDescription": ".يحتاج SpeakoFlow إلى أذونات إمكانية الوصول لكتابة النص المفرغ",
+    "permissionsDescription": ".يحتاج ShalomFlow إلى أذونات إمكانية الوصول لكتابة النص المفرغ",
     "openSettings": "فتح إعدادات النظام",
     "dismiss": "تجاهل"
   },
@@ -1450,7 +1476,7 @@
   },
   "appLanguage": {
     "title": "لغة التطبيق",
-    "description": "تغيير لغة واجهة SpeakoFlow"
+    "description": "تغيير لغة واجهة ShalomFlow"
   },
   "overlay": {
     "preparing": "جارٍ تهيئة الميكروفون…",
@@ -1462,13 +1488,17 @@
     "notices": {
       "flowNotConfigured": "يحتاج Flow إلى نموذج مساعد — تم اللصق كإملاء عادي",
       "flowFailed": "تعذّر التوليد بواسطة Flow — لم يُلصق أي شيء",
-      "flowEmpty": "قل أمرًا بعد عبارة التنشيط"
+      "flowEmpty": "قل أمرًا بعد عبارة التنشيط",
+      "transformNoSelection": "Nothing was captured — select some text and try again (some apps respond slowly)",
+      "transformNoModel": "Set an Assistant model in Settings to use Transforms",
+      "transformFailed": "The transform didn't run — your text was left unchanged"
     },
     "listening": "جارٍ الاستماع…",
     "locked": "تسجيل متواصل — اضغط الاختصار مرة أخرى للإيقاف",
     "cancel": "إلغاء",
     "done": "تم",
-    "askAssistant": "اسأل المساعد بدلًا من كتابة هذا"
+    "askAssistant": "اسأل المساعد بدلًا من كتابة هذا",
+    "transforming": "جارٍ التحويل…"
   },
   "assistant": {
     "title": "المساعد",
@@ -1579,6 +1609,77 @@
       "preparing": "جارٍ إعداد المحرّك المحلي (التشغيل الأول)…",
       "extracting": "جارٍ تثبيت المحرّك المحلي…",
       "short": "جارٍ إعداد المحرّك…"
+    }
+  },
+  "styles": {
+    "beta": "تجريبي",
+    "tabs": {
+      "personal": "رسائل شخصية",
+      "work": "رسائل العمل",
+      "email": "البريد الإلكتروني",
+      "other": "أخرى",
+      "autoCleanup": "تنظيف تلقائي"
+    },
+    "promo": {
+      "personal": "يُطبَّق هذا النمط في تطبيقات المراسلة الشخصية",
+      "work": "يُطبَّق هذا النمط في تطبيقات مراسلة العمل",
+      "email": "يُطبَّق هذا النمط في جميع تطبيقات البريد الإلكتروني الرئيسية",
+      "other": "يُطبَّق هذا النمط في جميع التطبيقات الأخرى",
+      "autoCleanup": "تنظيف تلقائي للكلمات الحشوية والبدايات الخاطئة",
+      "note": "تنسيق النمط يُطبَّق على الإنجليزية فقط. المزيد من اللغات قريبًا."
+    },
+    "presets": {
+      "formal": "رسمي.",
+      "casual": "غير رسمي",
+      "veryCasual": "غير رسمي جدًا",
+      "excited": "متحمس!",
+      "off": "إيقاف",
+      "light": "خفيف",
+      "aggressive": "قوي"
+    },
+    "rules": {
+      "capsPunctuation": "أحرف كبيرة + علامات ترقيم",
+      "capsLessPunctuation": "أحرف كبيرة + علامات ترقيم أقل",
+      "noCapsLessPunctuation": "بدون أحرف كبيرة + علامات ترقيم أقل",
+      "moreExclamations": "علامات تعجب أكثر",
+      "keepRaw": "الاحتفاظ بالنص الخام",
+      "trimFillers": "إزالة الكلمات الحشوية",
+      "trimFillersTighten": "إزالة الكلمات الحشوية + تكثيف"
+    }
+  },
+  "transformsPage": {
+    "beta": "تجريبي",
+    "optIn": "تفعيل",
+    "myTransforms": "تحويلاتي",
+    "resetDefaults": "إعادة التعيين إلى الافتراضي",
+    "createNew": "إنشاء جديد",
+    "createOwn": "أنشئ التحويل الخاص بك",
+    "uploadPrompt": "ارفع الموجّه الخاص بك",
+    "promo": {
+      "title": "التحويل يعمل أينما تكتب",
+      "body": "طبّق تحويلًا لإعادة كتابة النص أو تنظيفه أو إعادة هيكلته بعد الإملاء."
+    },
+    "detail": {
+      "autosave": "الحفظ التلقائي مفعّل",
+      "reset": "إعادة تعيين",
+      "close": "إغلاق",
+      "toUse": "للاستخدام",
+      "chooseShortcut": "اختر اختصار لوحة المفاتيح",
+      "selectRules": "اختر قواعد {{name}}",
+      "customizeNamedPrompt": "خصّص موجّه {{name}} الخاص بك",
+      "customizeTemplatePrompt": "خصّص الموجّه. (هذا ما سيبدو عليه الناتج النهائي للموجّه)",
+      "exampleTitle": "مثال على النص المحوَّل",
+      "seeUpdates": "عرض التحديثات",
+      "addExamples": "أضف أمثلة على كتابتك",
+      "addExamplesHint": "أضف أمثلة على كتابتك لمساعدة ShalomFlow على تعلّم أسلوبك الفريد. كلما زادت العينات، كان التطابق مع صوتك أفضل.",
+      "addExample": "أضف مثالًا",
+      "removeExample": "إزالة المثال",
+      "createTitle": "أنشئ التحويل الخاص بك",
+      "createSubtitle": "اضبط اختصار لوحة مفاتيح لتطبيق هذا التحويل.",
+      "nameLabel": "سمِّ اختصار التحويل الخاص بك",
+      "namePlaceholder": "وضع المدير",
+      "customizePrompt": "خصّص الموجّه",
+      "promptPlaceholder": "كيف تريد أن يغيّر هذا التحويل نصك؟"
     }
   }
 }

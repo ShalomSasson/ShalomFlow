@@ -31,7 +31,9 @@
     "characters": "Profile",
     "memory": "Gedächtnis",
     "collapse": "Seitenleiste einklappen",
-    "expand": "Seitenleiste ausklappen"
+    "expand": "Seitenleiste ausklappen",
+    "styles": "Stile",
+    "transforms": "Transformationen"
   },
   "window": {
     "minimize": "Minimieren",
@@ -45,7 +47,8 @@
     "assistant": "Richte den Assistenten ein und stelle dann Stimme, Bildschirmansicht und Websuche ein.",
     "history": "Deine letzten Diktate, Flow-Ergebnisse und Assistenten-Chats, gespeichert auf diesem Gerät.",
     "about": "Version, App-Sprache, Datenspeicherorte und Danksagungen.",
-    "debug": "Diagnose und Entwicklerwerkzeuge."
+    "debug": "Diagnose und Entwicklerwerkzeuge.",
+    "styles": "Wie dein diktierter Text in den einzelnen App-Typen formatiert wird."
   },
   "onboarding": {
     "subtitle": "Wähle ein Transkriptionsmodell, um loszulegen",
@@ -57,7 +60,7 @@
       "ready": "Alles bereit"
     },
     "speechToText": {
-      "title": "Wie soll SpeakoFlow dich hören?",
+      "title": "Wie soll ShalomFlow dich hören?",
       "subtitle": "Das wandelt deine Stimme direkt auf deinem Rechner in Text um. Wähle eins, wechsle jederzeit.",
       "cards": {
         "fast": {
@@ -113,7 +116,7 @@
       "downloadingVoice": "Dein Sprachmodell landet gerade. {{percentage}}% erledigt.",
       "downloadingGeneric": "Download läuft noch. {{percentage}}% erledigt.",
       "signOff": "Das war's. Sag etwas.",
-      "openApp": "SpeakoFlow öffnen"
+      "openApp": "ShalomFlow öffnen"
     },
     "errors": {
       "selectModel": "Dieses Modell konnte nicht ausgewählt werden. Bitte erneut versuchen.",
@@ -245,7 +248,7 @@
     },
     "permissions": {
       "title": "Berechtigungen erforderlich",
-      "description": "SpeakoFlow benötigt einige Berechtigungen, um richtig zu funktionieren.",
+      "description": "ShalomFlow benötigt einige Berechtigungen, um richtig zu funktionieren.",
       "microphone": {
         "title": "Mikrofonzugriff",
         "description": "Erforderlich, um deine Stimme für die Transkription zu hören."
@@ -444,6 +447,11 @@
         "info": "Tippe diese Taste an, während du dein Aufnahme-Tastenkürzel hältst, um die freihändige Aufnahme festzustellen — dann kannst du loslassen und weitersprechen. Wähle eine Taste, die nicht Teil deines Aufnahme-Tastenkürzels ist, oder lösche sie, um das abzuschalten.",
         "off": "Aus",
         "clear": "Löschen"
+      },
+      "polishDictation": {
+        "label": "Diktat polieren",
+        "description": "Schreibt jedes Diktat vor dem Einfügen mit der Polieren-Transformation um.",
+        "info": "Unabhängig vom Transformations-Opt-in, das nur die Auswahl-Shortcuts steuert. Verwendet die Polieren-Transformation genau wie auf der Transformationen-Seite konfiguriert (Regeln, eigene Anweisungen und deine Schreibbeispiele) und denselben KI-Anbieter. Wird übersprungen, wenn ein Diktat bereits die KI-Korrektur durchlaufen hat, damit Text nie zweimal umgeschrieben wird; schlägt das Umschreiben fehl, wird das rohe Transkript unverändert eingefügt."
       }
     },
     "models": {
@@ -598,15 +606,15 @@
       },
       "autostart": {
         "label": "Beim Start ausführen",
-        "description": "SpeakoFlow automatisch beim Anmelden starten."
+        "description": "ShalomFlow automatisch beim Anmelden starten."
       },
       "showTrayIcon": {
         "label": "Taskleistensymbol anzeigen",
-        "description": "Das SpeakoFlow-Symbol in der Taskleiste anzeigen."
+        "description": "Das ShalomFlow-Symbol in der Taskleiste anzeigen."
       },
       "closeBehavior": {
         "label": "Beenden, wenn ich das Fenster schließe",
-        "description": "Wenn aus, läuft SpeakoFlow nach dem Schließen des Fensters in der Taskleiste weiter, damit deine Tastenkürzel weiter funktionieren. Wenn an, beendet das Schließen des Fensters die App vollständig."
+        "description": "Wenn aus, läuft ShalomFlow nach dem Schließen des Fensters in der Taskleiste weiter, damit deine Tastenkürzel weiter funktionieren. Wenn an, beendet das Schließen des Fensters die App vollständig."
       },
       "overlayStyle": {
         "title": "Overlay",
@@ -686,8 +694,8 @@
       },
       "customWords": {
         "title": "Benutzerdefinierte Wörter",
-        "description": "Namen, Produkte und Wendungen, die SpeakoFlow so schreiben soll, wie du es willst.",
-        "info": "Beispiel: Füge „Kokoro“ hinzu, wenn SpeakoFlow „Coco row“ schreibt.",
+        "description": "Namen, Produkte und Wendungen, die ShalomFlow so schreiben soll, wie du es willst.",
+        "info": "Beispiel: Füge „Kokoro“ hinzu, wenn ShalomFlow „Coco row“ schreibt.",
         "placeholder": "Namen, Begriff oder kurze Wendung hinzufügen",
         "add": "Hinzufügen",
         "empty": "Noch keine benutzerdefinierten Wörter.",
@@ -698,7 +706,7 @@
         "title": "Textersetzungen",
         "description": "Ersetze eine Wortfolge in deinem Transkript durch Text, den du häufig brauchst. Beispiel: „meine E-Mail“ wird zu „alex@example.com“.",
         "rulesTitle": "Ersetzungsregeln",
-        "rulesHint": "Lege fest, was SpeakoFlow hört und was es einfügen soll.",
+        "rulesHint": "Lege fest, was ShalomFlow hört und was es einfügen soll.",
         "empty": "Erstelle eine Regel für eine Wortfolge, die du oft sagst.",
         "addFirst": "Erste Regel erstellen",
         "addRule": "Ersetzung hinzufügen",
@@ -965,7 +973,7 @@
       },
       "updateChecks": {
         "label": "Nach Updates suchen",
-        "description": "Automatisch nach neuen Versionen von SpeakoFlow suchen"
+        "description": "Automatisch nach neuen Versionen von ShalomFlow suchen"
       },
       "soundTheme": {
         "label": "Sound-Thema",
@@ -1035,7 +1043,7 @@
       "title": "Info",
       "version": {
         "title": "Version",
-        "description": "Aktuelle Version von SpeakoFlow"
+        "description": "Aktuelle Version von ShalomFlow"
       },
       "updates": {
         "title": "Updates",
@@ -1047,7 +1055,7 @@
       },
       "appDataDirectory": {
         "title": "App-Datenverzeichnis",
-        "description": "Speicherort der SpeakoFlow-Daten"
+        "description": "Speicherort der ShalomFlow-Daten"
       },
       "sourceCode": {
         "title": "Quellcode",
@@ -1056,12 +1064,12 @@
       },
       "license": {
         "title": "Lizenz",
-        "description": "SpeakoFlow ist Open Source unter der MIT-Lizenz und baut auf Handy (ebenfalls MIT) von CJ Pais auf.",
+        "description": "ShalomFlow ist Open Source unter der MIT-Lizenz und baut auf Handy (ebenfalls MIT) von CJ Pais auf.",
         "button": "Lizenz ansehen"
       },
       "supportDevelopment": {
         "title": "Entwicklung unterstützen",
-        "description": "Hilf uns, SpeakoFlow weiterzuentwickeln",
+        "description": "Hilf uns, ShalomFlow weiterzuentwickeln",
         "button": "Spenden"
       }
     },
@@ -1098,11 +1106,21 @@
         "finderSectionTitle": "Weitere Modelle für dieses Gerät",
         "finderSectionDescription": "Suche auf Hugging Face, wenn du eine andere Modellgröße oder Fähigkeit brauchst.",
         "finderTitle": "Hugging Face durchsuchen",
-        "finderDescription": "Durchsuche tausende GGUF-Modelle und lade eines direkt in SpeakoFlow herunter.",
+        "finderDescription": "Durchsuche tausende GGUF-Modelle und lade eines direkt in ShalomFlow herunter.",
         "finderAction": "Modell finden",
         "huggingFaceTitle": "Deine Modelle",
         "huggingFaceDescription": "Heruntergeladene Modelle und Modelle, die du von Hugging Face hinzugefügt hast.",
-        "catalogEmpty": "Derzeit sind keine empfohlenen lokalen Modelle verfügbar."
+        "catalogEmpty": "Derzeit sind keine empfohlenen lokalen Modelle verfügbar.",
+        "claudeCodeTitle": "Use Claude Code instead",
+        "claudeCodeDescription": "Already have Claude Code installed? Run the assistant through it on your existing Claude plan — no download, no API key.",
+        "claudeCodeCardTitle": "Claude Code CLI",
+        "claudeCodeCardDescription": "Runs through your local Claude Code login. Prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeUseAction": "Use",
+        "claudeCodeActiveBadge": "In use",
+        "claudeCodeSubscriptionBadge": "Uses your Claude plan",
+        "claudeCodeDetected": "Detected v{{version}}",
+        "claudeCodeMissingDescription": "Install Claude Code, or make sure the `claude` command is on this machine's PATH, then check again.",
+        "claudeCodeRecheckAction": "Check again"
       },
       "subpages": {
         "profilesCaption": "Wechsle Name, Rolle und Persönlichkeit des Assistenten.",
@@ -1141,6 +1159,14 @@
         "builtinEnginePreparing": "Lokale Engine wird heruntergeladen…",
         "builtinEngineExtracting": "Lokale Engine wird installiert…",
         "builtinEngineReady": "Lokale Engine bereit.",
+        "claudeCodeModelLabel": "Claude model",
+        "claudeCodeModelDescription": "Which Claude model the CLI should use for replies.",
+        "claudeCodeNotice": "Runs through your local Claude Code login — prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeModels": {
+          "sonnet": "Sonnet (recommended)",
+          "opus": "Opus (most capable)",
+          "haiku": "Haiku (fastest)"
+        },
         "contextSizeLabel": "Kontextfenster",
         "contextSizeDescription": "Wie viel das lokale Modell gleichzeitig im Blick behalten kann — die Systemanweisungen, dein Chatverlauf, ein etwaiger Screenshot (ein einzelnes Bild kann viel Platz belegen) und die Antwort. Größer behält mehr und hält Bildschirmansicht und Websuche zuverlässig, braucht aber mehr Speicher. Standard ist 8192; 16384 ist ein guter Schritt nach oben, wenn dein Rechner den RAM übrig hat. Du kannst den Wert später senken, um Speicher zu sparen.",
         "unloadTimeoutLabel": "Aus dem Speicher entladen nach",
@@ -1245,7 +1271,7 @@
           }
         },
         "screenRecording": {
-          "description": "Die Bildschirmansicht benötigt unter macOS die Berechtigung zur Bildschirmaufnahme. Erteile sie in den Systemeinstellungen und starte SpeakoFlow dann neu, damit sie wirksam wird.",
+          "description": "Die Bildschirmansicht benötigt unter macOS die Berechtigung zur Bildschirmaufnahme. Erteile sie in den Systemeinstellungen und starte ShalomFlow dann neu, damit sie wirksam wird.",
           "grant": "Systemeinstellungen öffnen"
         }
       },
@@ -1323,7 +1349,7 @@
         "testButton": "Stimme testen",
         "testing": "Wird getestet…",
         "testOk": "Abgespielt ✓",
-        "testPhrase": "Hallo! Das ist ein Test der Sprachausgabe von SpeakoFlow.",
+        "testPhrase": "Hallo! Das ist ein Test der Sprachausgabe von ShalomFlow.",
         "downloadStart": "Kokoro-Stimme wird heruntergeladen…",
         "downloadProgress": "Kokoro-Stimme wird heruntergeladen… {{progress}}%",
         "downloadReady": "Kokoro-Stimme bereit ✓",
@@ -1426,7 +1452,7 @@
   },
   "accessibility": {
     "permissionsRequired": "Bedienungshilfen-Berechtigungen erforderlich",
-    "permissionsDescription": "SpeakoFlow benötigt Bedienungshilfen-Berechtigungen, um transkribierten Text einzugeben.",
+    "permissionsDescription": "ShalomFlow benötigt Bedienungshilfen-Berechtigungen, um transkribierten Text einzugeben.",
     "openSettings": "Systemeinstellungen öffnen",
     "dismiss": "Schließen"
   },
@@ -1450,7 +1476,7 @@
   },
   "appLanguage": {
     "title": "Anwendungssprache",
-    "description": "Sprache der SpeakoFlow-Oberfläche ändern"
+    "description": "Sprache der ShalomFlow-Oberfläche ändern"
   },
   "overlay": {
     "preparing": "Mikrofon wird vorbereitet…",
@@ -1462,13 +1488,17 @@
     "notices": {
       "flowNotConfigured": "Flow braucht ein Assistenzmodell — als Diktat eingefügt",
       "flowFailed": "Flow konnte nichts generieren — es wurde nichts eingefügt",
-      "flowEmpty": "Sage nach der Aktivierungsphrase einen Befehl"
+      "flowEmpty": "Sage nach der Aktivierungsphrase einen Befehl",
+      "transformNoSelection": "Nothing was captured — select some text and try again (some apps respond slowly)",
+      "transformNoModel": "Set an Assistant model in Settings to use Transforms",
+      "transformFailed": "The transform didn't run — your text was left unchanged"
     },
     "listening": "Hört zu…",
     "locked": "Freihändige Aufnahme — drücke das Tastenkürzel erneut zum Stoppen",
     "cancel": "Abbrechen",
     "done": "Fertig",
-    "askAssistant": "Den Assistenten fragen, statt das zu tippen"
+    "askAssistant": "Den Assistenten fragen, statt das zu tippen",
+    "transforming": "Transformiere…"
   },
   "assistant": {
     "title": "Assistent",
@@ -1579,6 +1609,77 @@
       "preparing": "Lokale Engine wird eingerichtet (erster Start)…",
       "extracting": "Lokale Engine wird installiert…",
       "short": "Engine wird eingerichtet…"
+    }
+  },
+  "styles": {
+    "beta": "Beta",
+    "tabs": {
+      "personal": "Private Nachrichten",
+      "work": "Arbeitsnachrichten",
+      "email": "E-Mail",
+      "other": "Sonstiges",
+      "autoCleanup": "Auto-Bereinigung"
+    },
+    "promo": {
+      "personal": "Dieser Stil gilt in privaten Messengern",
+      "work": "Dieser Stil gilt in Arbeits-Messengern",
+      "email": "Dieser Stil gilt in allen gängigen E-Mail-Apps",
+      "other": "Dieser Stil gilt in allen anderen Apps",
+      "autoCleanup": "Automatisches Entfernen von Füllwörtern und Fehlstarts",
+      "note": "Stil-Formatierung gilt nur für Englisch. Weitere Sprachen folgen bald."
+    },
+    "presets": {
+      "formal": "Formell.",
+      "casual": "Locker",
+      "veryCasual": "sehr locker",
+      "excited": "Begeistert!",
+      "off": "Aus",
+      "light": "Leicht",
+      "aggressive": "Aggressiv"
+    },
+    "rules": {
+      "capsPunctuation": "Großschreibung + Interpunktion",
+      "capsLessPunctuation": "Großschreibung + weniger Interpunktion",
+      "noCapsLessPunctuation": "Keine Großschreibung + weniger Interpunktion",
+      "moreExclamations": "Mehr Ausrufezeichen",
+      "keepRaw": "Rohes Transkript behalten",
+      "trimFillers": "Füllwörter entfernen",
+      "trimFillersTighten": "Füllwörter entfernen + straffen"
+    }
+  },
+  "transformsPage": {
+    "beta": "Beta",
+    "optIn": "Aktivieren",
+    "myTransforms": "Meine Transformationen",
+    "resetDefaults": "Auf Standard zurücksetzen",
+    "createNew": "Neu erstellen",
+    "createOwn": "Eigene erstellen",
+    "uploadPrompt": "Eigenen Prompt hochladen",
+    "promo": {
+      "title": "Transformationen funktionieren überall, wo du schreibst",
+      "body": "Wende eine Transformation an, um Text nach dem Diktieren umzuschreiben, zu bereinigen oder neu zu strukturieren."
+    },
+    "detail": {
+      "autosave": "Autospeichern an",
+      "reset": "Zurücksetzen",
+      "close": "Schließen",
+      "toUse": "zum Verwenden",
+      "chooseShortcut": "Tastenkürzel wählen",
+      "selectRules": "Regeln für {{name}} auswählen",
+      "customizeNamedPrompt": "{{name}}-Prompt anpassen",
+      "customizeTemplatePrompt": "Prompt anpassen. (So wird die endgültige Ausgabe des Prompts aussehen)",
+      "exampleTitle": "Beispiel für transformierten Text",
+      "seeUpdates": "Änderungen ansehen",
+      "addExamples": "Schreibbeispiele hinzufügen",
+      "addExamplesHint": "Füge Beispiele deiner Texte hinzu, damit ShalomFlow deinen einzigartigen Stil lernt. Je mehr Beispiele, desto besser trifft es deine Stimme.",
+      "addExample": "Beispiel hinzufügen",
+      "removeExample": "Beispiel entfernen",
+      "createTitle": "Eigene erstellen",
+      "createSubtitle": "Richte ein Tastenkürzel ein, um diese Transformation anzuwenden.",
+      "nameLabel": "Benenne dein Transformations-Kürzel",
+      "namePlaceholder": "Boss-Modus",
+      "customizePrompt": "Prompt anpassen",
+      "promptPlaceholder": "Wie soll diese Transformation deinen Text verändern?"
     }
   }
 }

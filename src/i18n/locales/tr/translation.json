@@ -31,7 +31,9 @@
     "characters": "Profiller",
     "memory": "Hafıza",
     "collapse": "Kenar çubuğunu daralt",
-    "expand": "Kenar çubuğunu genişlet"
+    "expand": "Kenar çubuğunu genişlet",
+    "styles": "Stiller",
+    "transforms": "Dönüşümler"
   },
   "window": {
     "minimize": "Küçült",
@@ -45,7 +47,8 @@
     "assistant": "Asistanı kurun, ardından sesini, ekran görüşünü ve web aramasını ayarlayın.",
     "history": "Bu cihazda saklanan son dikteleriniz, Flow üretimleriniz ve asistan sohbetleriniz.",
     "about": "Sürüm, uygulama dili, veri konumları ve katkı sağlayanlar.",
-    "debug": "Tanılama ve geliştirici araçları."
+    "debug": "Tanılama ve geliştirici araçları.",
+    "styles": "Dikte edilen metnin her uygulama türünde nasıl biçimlendirileceği."
   },
   "onboarding": {
     "subtitle": "Başlamak için bir transkripsiyon modeli seçin",
@@ -57,7 +60,7 @@
       "ready": "Hazırsınız"
     },
     "speechToText": {
-      "title": "SpeakoFlow sizi nasıl duysun?",
+      "title": "ShalomFlow sizi nasıl duysun?",
       "subtitle": "Bu, sesinizi doğrudan makinenizde metne dönüştürür. Birini seçin, istediğiniz zaman değiştirin.",
       "cards": {
         "fast": {
@@ -113,7 +116,7 @@
       "downloadingVoice": "Ses modeliniz iniyor. %{{percentage}} tamamlandı.",
       "downloadingGeneric": "İndirme sürüyor. %{{percentage}} tamamlandı.",
       "signOff": "Hepsi bu. Hadi bir şeyler söyleyin.",
-      "openApp": "SpeakoFlow'u aç"
+      "openApp": "ShalomFlow'u aç"
     },
     "errors": {
       "selectModel": "Bu model seçilemedi. Lütfen tekrar deneyin.",
@@ -245,7 +248,7 @@
     },
     "permissions": {
       "title": "İzinler Gerekli",
-      "description": "SpeakoFlow'nin düzgün çalışabilmesi için birkaç izne ihtiyacı var.",
+      "description": "ShalomFlow'nin düzgün çalışabilmesi için birkaç izne ihtiyacı var.",
       "microphone": {
         "title": "Mikrofon Erişimi",
         "description": "Sesinizi transkripsiyon için alabilmek için gereklidir."
@@ -444,6 +447,11 @@
         "info": "Kayıt kısayolunuzu basılı tutarken bu tuşa dokunarak eller serbest kaydı kilitleyin; böylece tuşu bırakıp konuşmaya devam edebilirsiniz. Kayıt kısayolunuzun parçası olmayan herhangi bir tuşu seçin veya kapatmak için temizleyin.",
         "off": "Kapalı",
         "clear": "Temizle"
+      },
+      "polishDictation": {
+        "label": "Dikteyi cilala",
+        "description": "Yapıştırmadan önce her dikteyi Cilala dönüşümüyle yeniden yazar.",
+        "info": "Yalnızca seçim kısayollarını denetleyen Dönüşümler etkinleştirmesinden bağımsızdır. Cilala dönüşümünü Dönüşümler sayfasında yapılandırıldığı şekliyle (kurallar, özel talimatlar ve yazı örnekleriniz) ve aynı yapay zeka sağlayıcısıyla kullanır. Dikte zaten yapay zeka düzeltmesi kullandıysa atlanır, böylece metin asla iki kez yeniden yazılmaz; yeniden yazma başarısız olursa ham döküm değiştirilmeden yapıştırılır."
       }
     },
     "models": {
@@ -598,15 +606,15 @@
       },
       "autostart": {
         "label": "Başlangıçta Çalıştır",
-        "description": "Bilgisayara giriş yaptığınızda SpeakoFlow otomatik olarak başlatılır."
+        "description": "Bilgisayara giriş yaptığınızda ShalomFlow otomatik olarak başlatılır."
       },
       "showTrayIcon": {
         "label": "Tepsi simgesini göster",
-        "description": "SpeakoFlow simgesini sistem tepsisinde göster."
+        "description": "ShalomFlow simgesini sistem tepsisinde göster."
       },
       "closeBehavior": {
         "label": "Pencereyi kapattığımda uygulamadan çık",
-        "description": "Kapalıyken pencereyi kapatmak SpeakoFlow'u tepside çalışır durumda tutar, böylece kısayollarınız çalışmaya devam eder. Açıkken pencereyi kapatmak uygulamayı tamamen kapatır."
+        "description": "Kapalıyken pencereyi kapatmak ShalomFlow'u tepside çalışır durumda tutar, böylece kısayollarınız çalışmaya devam eder. Açıkken pencereyi kapatmak uygulamayı tamamen kapatır."
       },
       "overlayStyle": {
         "title": "Kaplama",
@@ -686,8 +694,8 @@
       },
       "customWords": {
         "title": "Özel Kelimeler",
-        "description": "SpeakoFlow'un sizin istediğiniz gibi yazması gereken adlar, ürünler ve ifadeler.",
-        "info": "Örnek: SpeakoFlow “Coco row” yazıyorsa “Kokoro” ekleyin.",
+        "description": "ShalomFlow'un sizin istediğiniz gibi yazması gereken adlar, ürünler ve ifadeler.",
+        "info": "Örnek: ShalomFlow “Coco row” yazıyorsa “Kokoro” ekleyin.",
         "placeholder": "Bir ad, terim veya kısa ifade ekleyin",
         "add": "Ekle",
         "empty": "Henüz özel kelime yok.",
@@ -698,7 +706,7 @@
         "title": "Metin değiştirmeleri",
         "description": "Transkriptinizdeki bir ifadeyi, sık kullandığınız bir metinle değiştirin. Örnek: “e-postam” ifadesi “alex@example.com” olur.",
         "rulesTitle": "Değiştirme kuralları",
-        "rulesHint": "SpeakoFlow'un ne duyacağını ve ne ekleyeceğini seçin.",
+        "rulesHint": "ShalomFlow'un ne duyacağını ve ne ekleyeceğini seçin.",
         "empty": "Sık söylediğiniz bir ifade için kural oluşturun.",
         "addFirst": "İlk kuralı oluştur",
         "addRule": "Değiştirme ekle",
@@ -965,7 +973,7 @@
       },
       "updateChecks": {
         "label": "Güncellemeleri Kontrol Et",
-        "description": "SpeakoFlow için yeni sürümleri otomatik olarak kontrol eder"
+        "description": "ShalomFlow için yeni sürümleri otomatik olarak kontrol eder"
       },
       "soundTheme": {
         "label": "Ses Teması",
@@ -1035,7 +1043,7 @@
       "title": "Hakkında",
       "version": {
         "title": "Sürüm",
-        "description": "SpeakoFlow'nin mevcut sürümü"
+        "description": "ShalomFlow'nin mevcut sürümü"
       },
       "updates": {
         "title": "Güncellemeler",
@@ -1047,7 +1055,7 @@
       },
       "appDataDirectory": {
         "title": "Uygulama Veri Dizini",
-        "description": "SpeakoFlow'nin verilerini sakladığı konum"
+        "description": "ShalomFlow'nin verilerini sakladığı konum"
       },
       "sourceCode": {
         "title": "Kaynak Kodu",
@@ -1056,12 +1064,12 @@
       },
       "license": {
         "title": "Lisans",
-        "description": "SpeakoFlow, MIT Lisansı altında açık kaynaktır ve CJ Pais'in Handy (o da MIT) projesi üzerine kuruludur.",
+        "description": "ShalomFlow, MIT Lisansı altında açık kaynaktır ve CJ Pais'in Handy (o da MIT) projesi üzerine kuruludur.",
         "button": "Lisansı görüntüle"
       },
       "supportDevelopment": {
         "title": "Geliştirmeyi Destekle",
-        "description": "SpeakoFlow'yi geliştirmeye devam etmemize yardımcı olun",
+        "description": "ShalomFlow'yi geliştirmeye devam etmemize yardımcı olun",
         "button": "Bağış Yap"
       }
     },
@@ -1098,11 +1106,21 @@
         "finderSectionTitle": "Daha fazla cihaz içi model",
         "finderSectionDescription": "Farklı bir model boyutuna veya yeteneğine ihtiyaç duyduğunuzda Hugging Face'te arayın.",
         "finderTitle": "Hugging Face'e göz at",
-        "finderDescription": "Binlerce GGUF modeli arasında arama yapın ve birini doğrudan SpeakoFlow'a indirin.",
+        "finderDescription": "Binlerce GGUF modeli arasında arama yapın ve birini doğrudan ShalomFlow'a indirin.",
         "finderAction": "Model bul",
         "huggingFaceTitle": "Modelleriniz",
         "huggingFaceDescription": "İndirdiğiniz modeller ve Hugging Face'ten eklediğiniz modeller.",
-        "catalogEmpty": "Şu anda önerilen bir yerel model yok."
+        "catalogEmpty": "Şu anda önerilen bir yerel model yok.",
+        "claudeCodeTitle": "Use Claude Code instead",
+        "claudeCodeDescription": "Already have Claude Code installed? Run the assistant through it on your existing Claude plan — no download, no API key.",
+        "claudeCodeCardTitle": "Claude Code CLI",
+        "claudeCodeCardDescription": "Runs through your local Claude Code login. Prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeUseAction": "Use",
+        "claudeCodeActiveBadge": "In use",
+        "claudeCodeSubscriptionBadge": "Uses your Claude plan",
+        "claudeCodeDetected": "Detected v{{version}}",
+        "claudeCodeMissingDescription": "Install Claude Code, or make sure the `claude` command is on this machine's PATH, then check again.",
+        "claudeCodeRecheckAction": "Check again"
       },
       "subpages": {
         "profilesCaption": "Asistanın adını, rolünü ve kişiliğini değiştirin.",
@@ -1141,6 +1159,14 @@
         "builtinEnginePreparing": "Yerel motor indiriliyor…",
         "builtinEngineExtracting": "Yerel motor kuruluyor…",
         "builtinEngineReady": "Yerel motor hazır.",
+        "claudeCodeModelLabel": "Claude model",
+        "claudeCodeModelDescription": "Which Claude model the CLI should use for replies.",
+        "claudeCodeNotice": "Runs through your local Claude Code login — prompts are processed by Anthropic and count toward your plan.",
+        "claudeCodeModels": {
+          "sonnet": "Sonnet (recommended)",
+          "opus": "Opus (most capable)",
+          "haiku": "Haiku (fastest)"
+        },
         "contextSizeLabel": "Bağlam penceresi",
         "contextSizeDescription": "Yerel modelin bir seferde akılda tutabileceği miktar — sistem talimatları, sohbet geçmişiniz, varsa ekran görüntüsü (tek bir görüntü büyük bir bölümü yiyebilir) ve modelin yanıtı. Daha büyüğü daha fazlasını tutar, ekran görüşünü ve web aramasını güvenilir kılar, ancak daha fazla bellek kullanır. Varsayılan 8192'dir; makinenizin ayıracak RAM'i varsa 16384 iyi bir üst adımdır. Bellekten tasarruf etmek için sonradan düşürebilirsiniz.",
         "unloadTimeoutLabel": "Şu süre sonra bellekten boşalt",
@@ -1245,7 +1271,7 @@
           }
         },
         "screenRecording": {
-          "description": "Ekran görüşü, macOS Ekran Kaydı iznine ihtiyaç duyar. İzni Sistem Ayarları'ndan verin, ardından etkili olması için SpeakoFlow'u yeniden başlatın.",
+          "description": "Ekran görüşü, macOS Ekran Kaydı iznine ihtiyaç duyar. İzni Sistem Ayarları'ndan verin, ardından etkili olması için ShalomFlow'u yeniden başlatın.",
           "grant": "Sistem Ayarları'nı aç"
         }
       },
@@ -1323,7 +1349,7 @@
         "testButton": "Sesi test et",
         "testing": "Test ediliyor…",
         "testOk": "Çalındı ✓",
-        "testPhrase": "Merhaba! Bu, SpeakoFlow'un ses çıkışı testidir.",
+        "testPhrase": "Merhaba! Bu, ShalomFlow'un ses çıkışı testidir.",
         "downloadStart": "Kokoro sesi indiriliyor…",
         "downloadProgress": "Kokoro sesi indiriliyor… %{{progress}}",
         "downloadReady": "Kokoro sesi hazır ✓",
@@ -1426,7 +1452,7 @@
   },
   "accessibility": {
     "permissionsRequired": "Erişilebilirlik İzinleri Gerekli",
-    "permissionsDescription": "SpeakoFlow, transkribe edilen metni yazabilmek için erişilebilirlik izinlerine ihtiyaç duyar.",
+    "permissionsDescription": "ShalomFlow, transkribe edilen metni yazabilmek için erişilebilirlik izinlerine ihtiyaç duyar.",
     "openSettings": "Sistem Ayarlarını Aç",
     "dismiss": "Yoksay"
   },
@@ -1450,7 +1476,7 @@
   },
   "appLanguage": {
     "title": "Uygulama Dili",
-    "description": "SpeakoFlow arayüzünün dilini değiştirin"
+    "description": "ShalomFlow arayüzünün dilini değiştirin"
   },
   "overlay": {
     "preparing": "Mikrofon hazırlanıyor…",
@@ -1462,13 +1488,17 @@
     "notices": {
       "flowNotConfigured": "Flow bir asistan modeline ihtiyaç duyuyor — dikte olarak yapıştırıldı",
       "flowFailed": "Flow oluşturamadı — hiçbir şey yapıştırılmadı",
-      "flowEmpty": "Etkinleştirme ifadesinden sonra bir komut söyleyin"
+      "flowEmpty": "Etkinleştirme ifadesinden sonra bir komut söyleyin",
+      "transformNoSelection": "Nothing was captured — select some text and try again (some apps respond slowly)",
+      "transformNoModel": "Set an Assistant model in Settings to use Transforms",
+      "transformFailed": "The transform didn't run — your text was left unchanged"
     },
     "listening": "Dinleniyor…",
     "locked": "Eller serbest kaydediliyor — durdurmak için kısayola tekrar basın",
     "cancel": "İptal",
     "done": "Bitti",
-    "askAssistant": "Bunu yazmak yerine asistana sor"
+    "askAssistant": "Bunu yazmak yerine asistana sor",
+    "transforming": "Dönüştürülüyor…"
   },
   "assistant": {
     "title": "Asistan",
@@ -1579,6 +1609,77 @@
       "preparing": "Yerel motor hazırlanıyor (ilk çalıştırma)…",
       "extracting": "Yerel motor kuruluyor…",
       "short": "Motor hazırlanıyor…"
+    }
+  },
+  "styles": {
+    "beta": "Beta",
+    "tabs": {
+      "personal": "Kişisel mesajlar",
+      "work": "İş mesajları",
+      "email": "E-posta",
+      "other": "Diğer",
+      "autoCleanup": "Otomatik Temizleme"
+    },
+    "promo": {
+      "personal": "Bu stil kişisel mesajlaşma uygulamalarında geçerlidir",
+      "work": "Bu stil iş yeri mesajlaşma uygulamalarında geçerlidir",
+      "email": "Bu stil tüm popüler e-posta uygulamalarında geçerlidir",
+      "other": "Bu stil diğer tüm uygulamalarda geçerlidir",
+      "autoCleanup": "Dolgu sözcüklerinin ve yanlış başlangıçların otomatik temizlenmesi",
+      "note": "Stil biçimlendirmesi yalnızca İngilizce için geçerlidir. Yakında daha fazla dil."
+    },
+    "presets": {
+      "formal": "Resmî.",
+      "casual": "Gündelik",
+      "veryCasual": "çok gündelik",
+      "excited": "Heyecanlı!",
+      "off": "Kapalı",
+      "light": "Hafif",
+      "aggressive": "Agresif"
+    },
+    "rules": {
+      "capsPunctuation": "Büyük harf + noktalama",
+      "capsLessPunctuation": "Büyük harf + daha az noktalama",
+      "noCapsLessPunctuation": "Büyük harf yok + daha az noktalama",
+      "moreExclamations": "Daha çok ünlem",
+      "keepRaw": "Ham dökümü koru",
+      "trimFillers": "Dolgu sözcüklerini kaldır",
+      "trimFillersTighten": "Dolgu sözcüklerini kaldır + sıkılaştır"
+    }
+  },
+  "transformsPage": {
+    "beta": "Beta",
+    "optIn": "Etkinleştir",
+    "myTransforms": "Dönüşümlerim",
+    "resetDefaults": "Varsayılanlara sıfırla",
+    "createNew": "Yeni Oluştur",
+    "createOwn": "Kendinizinkini oluşturun",
+    "uploadPrompt": "Kendi isteminizi yükleyin",
+    "promo": {
+      "title": "Dönüşümler yazdığınız her yerde çalışır",
+      "body": "Dikte ettikten sonra metni yeniden yazmak, temizlemek veya yapılandırmak için bir dönüşüm uygulayın."
+    },
+    "detail": {
+      "autosave": "Otomatik kayıt açık",
+      "reset": "Sıfırla",
+      "close": "Kapat",
+      "toUse": "kullanmak için",
+      "chooseShortcut": "Bir klavye kısayolu seçin",
+      "selectRules": "{{name}} için kurallar seçin",
+      "customizeNamedPrompt": "{{name}} isteminizi özelleştirin",
+      "customizeTemplatePrompt": "İstemi özelleştirin. (İstemin nihai çıktısı böyle görünecek)",
+      "exampleTitle": "Dönüştürülmüş metin örneği",
+      "seeUpdates": "Güncellemeleri gör",
+      "addExamples": "Yazı örnekleri ekleyin",
+      "addExamplesHint": "ShalomFlow'un benzersiz tarzınızı öğrenmesi için yazı örnekleri ekleyin. Ne kadar çok örnek verirseniz sesinizi o kadar iyi yakalar.",
+      "addExample": "Örnek ekle",
+      "removeExample": "Örneği kaldır",
+      "createTitle": "Kendinizinkini oluşturun",
+      "createSubtitle": "Bu dönüşümü uygulamak için bir klavye kısayolu ayarlayın.",
+      "nameLabel": "Dönüşüm kısayolunuza ad verin",
+      "namePlaceholder": "Patron Modu",
+      "customizePrompt": "İstemi özelleştir",
+      "promptPlaceholder": "Bu dönüşüm metninizi nasıl değiştirsin?"
     }
   }
 }

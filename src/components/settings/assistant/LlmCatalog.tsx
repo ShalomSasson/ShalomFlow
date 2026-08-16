@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { ask } from "@tauri-apps/plugin-dialog";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
@@ -15,7 +15,7 @@ import {
   Search,
   Trash2,
 } from "lucide-react";
-import { commands, type ModelInfo } from "@/bindings";
+import { commands, type ClaudeCodeStatus, type ModelInfo } from "@/bindings";
 import { formatModelSize } from "@/lib/utils/format";
 import { getModelCategory } from "@/lib/utils/modelCategory";
 import { extractQuant } from "@/lib/utils/modelQuant";
@@ -33,6 +33,9 @@ import type { ModelCardStatus } from "../../onboarding/ModelCard";
 
 /** The built-in (local) llama.cpp provider id, mirrored from the backend. */
 const BUILTIN_PROVIDER_ID = "builtin";
+
+/** The Claude Code CLI provider id, mirrored from the backend. */
+const CLAUDE_CODE_PROVIDER_ID = "claude_code";
 
 /**
  * A deliberately small, conversation-first set. The recommendation is an
@@ -293,6 +296,8 @@ export const LlmCatalog: React.FC = () => {
   const { t } = useTranslation();
   const { settings, refreshSettings } = useSettings();
   const [addDialogOpen, setAddDialogOpen] = useState(false);
+  const [claudeCode, setClaudeCode] = useState<ClaudeCodeStatus | null>(null);
+  const [claudeCodeChecking, setClaudeCodeChecking] = useState(false);
   const [hardware, setHardware] = useState<{
     acceleratorName?: string;
     acceleratorKind?: string;
@@ -401,6 +406,33 @@ export const LlmCatalog: React.FC = () => {
     if (!providerIsBuiltin) {
       await commands.setAssistantProvider(BUILTIN_PROVIDER_ID);
     }
+    await refreshSettings();
+  };
+
+  const refreshClaudeCode = useCallback(async () => {
+    setClaudeCodeChecking(true);
+    try {
+      setClaudeCode(await commands.claudeCodeStatus());
+    } finally {
+      setClaudeCodeChecking(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    void refreshClaudeCode();
+  }, [refreshClaudeCode]);
+
+  const claudeCodeActive =
+    settings?.assistant_provider_id === CLAUDE_CODE_PROVIDER_ID;
+
+  // Same wiring as a local model, pointed at the CLI provider with the default
+  // alias. The Sonnet/Opus/Haiku picker lives in AssistantSettings.
+  const useClaudeCode = async () => {
+    await commands.changeAssistantModelSetting(
+      CLAUDE_CODE_PROVIDER_ID,
+      "sonnet",
+    );
+    await commands.setAssistantProvider(CLAUDE_CODE_PROVIDER_ID);
     await refreshSettings();
   };
 
@@ -555,6 +587,70 @@ export const LlmCatalog: React.FC = () => {
             )}
           </div>
         )}
+      </section>
+
+      <section aria-labelledby="claude-code-brain" className="space-y-3">
+        <div className="px-1">
+          <h2
+            id="claude-code-brain"
+            className="text-[13.5px] font-semibold tracking-tight text-ink"
+          >
+            {t("settings.assistant.brain.claudeCodeTitle")}
+          </h2>
+          <p className="mt-0.5 max-w-[62ch] text-xs leading-relaxed text-muted">
+            {t("settings.assistant.brain.claudeCodeDescription")}
+          </p>
+        </div>
+
+        <div className="flex items-center gap-4 rounded-2xl border border-hairline-strong bg-surface px-4 py-4">
+          <div className="min-w-0 flex-1">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-[13px] font-semibold text-ink">
+                {t("settings.assistant.brain.claudeCodeCardTitle")}
+              </span>
+              {claudeCodeActive && (
+                <Badge variant="active">
+                  {t("settings.assistant.brain.claudeCodeActiveBadge")}
+                </Badge>
+              )}
+            </div>
+            <p className="mt-1 max-w-[62ch] text-xs leading-relaxed text-muted">
+              {claudeCode?.installed
+                ? t("settings.assistant.brain.claudeCodeCardDescription")
+                : t("settings.assistant.brain.claudeCodeMissingDescription")}
+            </p>
+            <div className="mt-2 flex flex-wrap items-center gap-2">
+              <span className="inline-flex items-center rounded-lg border border-hairline bg-surface px-2 py-1 text-[11px] font-medium text-muted">
+                {t("settings.assistant.brain.claudeCodeSubscriptionBadge")}
+              </span>
+              {claudeCode?.installed && claudeCode.version && (
+                <span className="inline-flex items-center rounded-lg border border-hairline bg-surface px-2 py-1 text-[11px] font-medium tabular-nums text-muted">
+                  {t("settings.assistant.brain.claudeCodeDetected", {
+                    version: claudeCode.version,
+                  })}
+                </span>
+              )}
+            </div>
+          </div>
+
+          {claudeCode?.installed ? (
+            <Button
+              variant="primary"
+              disabled={claudeCodeActive}
+              onClick={() => void useClaudeCode()}
+            >
+              {t("settings.assistant.brain.claudeCodeUseAction")}
+            </Button>
+          ) : (
+            <Button
+              variant="secondary"
+              disabled={claudeCodeChecking}
+              onClick={() => void refreshClaudeCode()}
+            >
+              {t("settings.assistant.brain.claudeCodeRecheckAction")}
+            </Button>
+          )}
+        </div>
       </section>
 
       <section aria-labelledby="hugging-face-finder" className="space-y-3">
