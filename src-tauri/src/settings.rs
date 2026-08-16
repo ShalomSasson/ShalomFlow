@@ -1718,31 +1718,33 @@ fn default_post_process_providers() -> Vec<PostProcessProvider> {
 }
 
 fn polish_rules() -> Vec<TransformRule> {
+    // Instruction wordings ported verbatim from the reference implementation
+    // (Sha.My.Whisper TransformPromptBuilder.polishInstruction).
     let rules = [
         (
             "concise",
             "Make more concise",
-            "Cut redundancy and filler so the text is as short as it can be without losing meaning.",
+            "Make it concise: remove filler and redundancy.",
         ),
         (
             "clarity",
             "Reword for clarity",
-            "Replace vague or awkward phrasing with plain, direct wording.",
+            "Improve clarity: prefer plain, direct phrasing.",
         ),
         (
             "reorder",
             "Reorder for readability",
-            "Reorder sentences so the main point comes first and related ideas sit together.",
+            "Reorder ideas where it improves the flow of the argument.",
         ),
         (
             "structure",
             "Add structure for readability",
-            "Add paragraph breaks, and use lists only where the content is genuinely a list.",
+            "Improve structure: split run-ons; use paragraphs or lists where natural.",
         ),
         (
             "tone",
             "Maintain your tone",
-            "Preserve the author's voice, register, and level of formality. Do not make casual writing sound corporate.",
+            "Harmonize the tone so the text reads consistently.",
         ),
     ];
     rules
@@ -1778,31 +1780,38 @@ fn prompt_engineer_template() -> String {
     .join("\n\n")
 }
 
-/// The exact name and base prompt each built-in transform shipped with
-/// before the "Template" rename and prompt-form rewrite. Retained only so an
-/// untouched built-in can be upgraded safely at load time (same pattern as
-/// the legacy post-process prompt below); any other text is a user edit and
-/// is never overwritten.
-fn legacy_transform_shipped(id: &str) -> Option<(&'static str, String)> {
+/// The exact names and base prompts each built-in transform shipped with in
+/// earlier releases. Retained only so an untouched built-in can be upgraded
+/// safely at load time (same pattern as the legacy post-process prompt
+/// below); any other text is a user edit and is never overwritten.
+fn legacy_transform_shipped(id: &str) -> Option<(&'static str, Vec<String>)> {
     match id {
         "polish" => Some((
             "Polish",
-            "You rewrite the user's text so it reads better, while keeping their meaning \
-             and their voice. Apply the rules below."
-                .to_string(),
+            vec![
+                "You rewrite the user's text so it reads better, while keeping their meaning \
+                 and their voice. Apply the rules below."
+                    .to_string(),
+                "Goal: rewrite the user's text so it reads clearly and naturally while \
+                 preserving exactly what they meant and how they sound.\n\nYou are a careful \
+                 editor. Rewrite the text according to the rules below. Improve only the \
+                 wording — never the meaning: keep every fact, question, request, and hedge, \
+                 and keep the author's voice and register."
+                    .to_string(),
+            ],
         )),
         "prompt_engineer" => Some((
             "Prompt Engineer",
-            format!(
+            vec![format!(
                 "Convert the user's rough, spoken notes into a single well-structured AI prompt. \
                  Fill in only the sections the notes actually support; omit a section entirely \
                  rather than inventing content for it. Use exactly this shape:\n\n{}",
                 prompt_engineer_template()
-            ),
+            )],
         )),
         "goal" => Some((
             "Goal",
-            format!(
+            vec![format!(
                 "Convert the user's rough, spoken notes into a single well-structured goal \
                  definition. Fill in only the sections the notes actually support; omit a \
                  section entirely rather than inventing content for it. Never add commitments, \
@@ -1810,9 +1819,31 @@ fn legacy_transform_shipped(id: &str) -> Option<(&'static str, String)> {
                  level — a \"maybe\" stays a maybe. Write the content in the same language as \
                  the input; keep the section headers as they are. Use exactly this shape:\n\n{}",
                 goal_template()
-            ),
+            )],
         )),
         _ => None,
+    }
+}
+
+/// Earlier shipped instruction texts for the Polish rules, keyed by rule id.
+/// Used by the same untouched-only upgrade: a stored instruction matching any
+/// entry moves to the current wording; edited instructions are left alone.
+fn legacy_rule_instructions(rule_id: &str) -> &'static [&'static str] {
+    match rule_id {
+        "concise" => &[
+            "Cut redundancy and filler so the text is as short as it can be without losing meaning.",
+        ],
+        "clarity" => &["Replace vague or awkward phrasing with plain, direct wording."],
+        "reorder" => &[
+            "Reorder sentences so the main point comes first and related ideas sit together.",
+        ],
+        "structure" => &[
+            "Add paragraph breaks, and use lists only where the content is genuinely a list.",
+        ],
+        "tone" => &[
+            "Preserve the author's voice, register, and level of formality. Do not make casual writing sound corporate.",
+        ],
+        _ => &[],
     }
 }
 
@@ -1840,11 +1871,8 @@ pub fn default_transforms() -> Vec<Transform> {
             description: "Improve clarity and conciseness".to_string(),
             detail_description: "Polish rewrites your text to sound clearer, in your voice."
                 .to_string(),
-            prompt: "Goal: rewrite the user's text so it reads clearly and naturally while \
-                     preserving exactly what they meant and how they sound.\n\nYou are a careful \
-                     editor. Rewrite the text according to the rules below. Improve only the \
-                     wording — never the meaning: keep every fact, question, request, and hedge, \
-                     and keep the author's voice and register."
+            prompt: "You polish written text. Rewrite the user's text according to the goals \
+                     below."
                 .to_string(),
             rules: polish_rules(),
             custom_instructions: String::new(),
@@ -3608,7 +3636,7 @@ pub fn load_or_create_app_settings(app: &AppHandle) -> AppSettings {
         // user edit and is left alone. Rules, custom instructions, and
         // shortcuts are never rewritten here.
         for default_transform in default_transforms() {
-            let Some((legacy_name, legacy_prompt)) =
+            let Some((legacy_name, legacy_prompts)) =
                 legacy_transform_shipped(&default_transform.id)
             else {
                 continue;
@@ -3623,11 +3651,32 @@ pub fn load_or_create_app_settings(app: &AppHandle) -> AppSettings {
                     existing.name = default_transform.name.clone();
                     updated = true;
                 }
-                if existing.prompt == legacy_prompt && existing.prompt != default_transform.prompt
+                if existing.prompt != default_transform.prompt
+                    && legacy_prompts.iter().any(|old| existing.prompt == *old)
                 {
                     debug!("Upgrading built-in transform prompt: {}", existing.id);
                     existing.prompt = default_transform.prompt.clone();
                     updated = true;
+                }
+                // Rule instruction texts upgrade the same way; the user's
+                // enabled/disabled choices are theirs and stay untouched.
+                for rule in &mut existing.rules {
+                    let Some(default_rule) = default_transform
+                        .rules
+                        .iter()
+                        .find(|candidate| candidate.id == rule.id)
+                    else {
+                        continue;
+                    };
+                    if rule.instruction != default_rule.instruction
+                        && legacy_rule_instructions(&rule.id)
+                            .iter()
+                            .any(|old| rule.instruction == *old)
+                    {
+                        debug!("Upgrading rule instruction: {}.{}", existing.id, rule.id);
+                        rule.instruction = default_rule.instruction.clone();
+                        updated = true;
+                    }
                 }
             }
         }
