@@ -8,6 +8,8 @@ individually.
 
 ## [Unreleased]
 
+- feat(history): lifetime usage stats card; rename Transforms to Prompts in the UI (25a7663)
+- feat(transforms): port the reference Polish prompt and output sanitizer (26ab22e)
 - feat(transforms): record executions in History; treat the selection as data (e40c530)
 - feat(transforms): rename built-ins to Templates and rewrite prompts in prompt form (5e17013)
 - build(macos): dev re-sign script for stable Accessibility grants (2adbcdc)
