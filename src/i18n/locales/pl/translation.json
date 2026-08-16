@@ -33,7 +33,7 @@
     "collapse": "Zwiń panel boczny",
     "expand": "Rozwiń panel boczny",
     "styles": "Style",
-    "transforms": "Transformacje"
+    "transforms": "Prompty"
   },
   "window": {
     "minimize": "Minimalizuj",
@@ -450,8 +450,8 @@
       },
       "polishDictation": {
         "label": "Dopracuj dyktowanie",
-        "description": "Przepisuje każde dyktowanie transformacją Dopracuj przed wklejeniem.",
-        "info": "Niezależne od włączenia Transformacji, które steruje tylko skrótami zaznaczenia. Używa transformacji Dopracuj dokładnie tak, jak skonfigurowano na stronie Transformacje (reguły, własne instrukcje i przykłady pisania) oraz tego samego dostawcy AI. Pomijane, gdy dyktowanie przeszło już korektę AI, więc tekst nigdy nie jest przepisywany dwukrotnie; jeśli przepisanie się nie powiedzie, wklejana jest surowa transkrypcja bez zmian."
+        "description": "Przepisuje każde dyktowanie promptem Dopracuj przed wklejeniem.",
+        "info": "Niezależne od włączenia Promptów, które steruje tylko skrótami zaznaczenia. Używa szablonu Dopracuj dokładnie tak, jak skonfigurowano na stronie Prompty (cele, własne instrukcje i przykłady pisania) oraz tego samego dostawcy AI. Pomijane, gdy dyktowanie przeszło już korektę AI, więc tekst nigdy nie jest przepisywany dwukrotnie; jeśli przepisanie się nie powiedzie, wklejana jest surowa transkrypcja bez zmian."
       }
     },
     "models": {
@@ -924,7 +924,7 @@
         "recordings": "Recordings",
         "flow": "Flow",
         "assistant": "Rozmowy z asystentem",
-        "transforms": "Transformacje"
+        "transforms": "Prompty"
       },
       "openFolder": "Otwórz folder nagrań",
       "loading": "Wczytywanie historii…",
@@ -962,7 +962,12 @@
       "messageCount_other": "{{count}} wiadomości",
       "deleteAssistantError": "Nie udało się usunąć rozmowy. Spróbuj ponownie.",
       "transformInputLabel": "Tekst oryginalny",
-      "transformOutputLabel": "Tekst przekształcony"
+      "transformOutputLabel": "Tekst przekształcony",
+      "stats": {
+        "totalWords": "słów łącznie",
+        "wpm": "słów/min",
+        "dayStreak": "dni z rzędu"
+      }
     },
     "debug": {
       "title": "Debugowanie",
@@ -1653,14 +1658,14 @@
   "transformsPage": {
     "beta": "Beta",
     "optIn": "Włącz",
-    "myTransforms": "Moje transformacje",
+    "myTransforms": "Moje prompty",
     "resetDefaults": "Przywróć domyślne",
     "createNew": "Utwórz nową",
     "createOwn": "Stwórz własną",
     "uploadPrompt": "Prześlij własny prompt",
     "promo": {
-      "title": "Transformacje działają wszędzie tam, gdzie piszesz",
-      "body": "Zastosuj transformację, aby przepisać, oczyścić lub przeorganizować tekst po dyktowaniu."
+      "title": "Prompty działają wszędzie tam, gdzie piszesz",
+      "body": "Zastosuj prompt, aby przepisać, oczyścić lub przeorganizować tekst po dyktowaniu."
     },
     "detail": {
       "autosave": "Autozapis włączony",
@@ -1678,11 +1683,11 @@
       "addExample": "Dodaj przykład",
       "removeExample": "Usuń przykład",
       "createTitle": "Stwórz własną",
-      "createSubtitle": "Ustaw skrót klawiszowy, aby zastosować tę transformację.",
-      "nameLabel": "Nazwij swoją transformację",
+      "createSubtitle": "Ustaw skrót klawiszowy, aby zastosować ten prompt.",
+      "nameLabel": "Nazwij swój prompt",
       "namePlaceholder": "Tryb szefa",
       "customizePrompt": "Dostosuj prompt",
-      "promptPlaceholder": "Jak ta transformacja ma zmieniać Twój tekst?"
+      "promptPlaceholder": "Jak ten prompt ma zmieniać Twój tekst?"
     }
   }
 }

@@ -33,7 +33,7 @@
     "collapse": "Fäll in sidofältet",
     "expand": "Fäll ut sidofältet",
     "styles": "Stilar",
-    "transforms": "Transformationer"
+    "transforms": "Prompter"
   },
   "window": {
     "minimize": "Minimera",
@@ -450,8 +450,8 @@
       },
       "polishDictation": {
         "label": "Polera diktering",
-        "description": "Skriver om varje diktering med Polera-transformationen innan den klistras in.",
-        "info": "Oberoende av Transformations-aktiveringen, som bara styr markeringsgenvägarna. Använder Polera-transformationen exakt som den är inställd på Transformationer-sidan (regler, egna instruktioner och dina skrivexempel) och samma AI-leverantör. Hoppas över när dikteringen redan använt AI-korrigering, så text skrivs aldrig om två gånger; misslyckas omskrivningen klistras den råa transkriptionen in oförändrad."
+        "description": "Skriver om varje diktering med Polera-prompten innan den klistras in.",
+        "info": "Oberoende av Prompts-aktiveringen, som bara styr markeringsgenvägarna. Använder Polera-mallen exakt som den är inställd på Prompts-sidan (mål, egna instruktioner och dina skrivexempel) och samma AI-leverantör. Hoppas över när dikteringen redan använt AI-korrigering, så text skrivs aldrig om två gånger; misslyckas omskrivningen klistras den råa transkriptionen in oförändrad."
       }
     },
     "models": {
@@ -924,7 +924,7 @@
         "recordings": "Recordings",
         "flow": "Flow",
         "assistant": "Assistentchattar",
-        "transforms": "Transformationer"
+        "transforms": "Prompter"
       },
       "openFolder": "Öppna mapp för inspelningar",
       "loading": "Laddar historik…",
@@ -962,7 +962,12 @@
       "messageCount_other": "{{count}} meddelanden",
       "deleteAssistantError": "Kunde inte ta bort konversationen. Försök igen.",
       "transformInputLabel": "Ursprunglig text",
-      "transformOutputLabel": "Transformerad text"
+      "transformOutputLabel": "Transformerad text",
+      "stats": {
+        "totalWords": "ord totalt",
+        "wpm": "ord/min",
+        "dayStreak": "dagar i rad"
+      }
     },
     "debug": {
       "title": "Felsökning",
@@ -1653,14 +1658,14 @@
   "transformsPage": {
     "beta": "Beta",
     "optIn": "Aktivera",
-    "myTransforms": "Mina transformationer",
+    "myTransforms": "Mina prompter",
     "resetDefaults": "Återställ till standard",
     "createNew": "Skapa ny",
     "createOwn": "Skapa din egen",
     "uploadPrompt": "Ladda upp din egen prompt",
     "promo": {
-      "title": "Transformationer fungerar överallt där du skriver",
-      "body": "Använd en transformation för att skriva om, städa upp eller strukturera om text efter diktering."
+      "title": "Prompter fungerar överallt där du skriver",
+      "body": "Använd en prompt för att skriva om, städa upp eller strukturera om text efter diktering."
     },
     "detail": {
       "autosave": "Autospar på",
@@ -1678,11 +1683,11 @@
       "addExample": "Lägg till exempel",
       "removeExample": "Ta bort exempel",
       "createTitle": "Skapa din egen",
-      "createSubtitle": "Ställ in ett kortkommando för att använda den här transformationen.",
-      "nameLabel": "Namnge din transformation",
+      "createSubtitle": "Ställ in ett kortkommando för att använda den här prompten.",
+      "nameLabel": "Namnge din prompt",
       "namePlaceholder": "Bossläge",
       "customizePrompt": "Anpassa prompt",
-      "promptPlaceholder": "Hur vill du att den här transformationen ska ändra din text?"
+      "promptPlaceholder": "Hur vill du att den här prompten ska ändra din text?"
     }
   }
 }

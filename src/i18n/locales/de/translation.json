@@ -33,7 +33,7 @@
     "collapse": "Seitenleiste einklappen",
     "expand": "Seitenleiste ausklappen",
     "styles": "Stile",
-    "transforms": "Transformationen"
+    "transforms": "Prompts"
   },
   "window": {
     "minimize": "Minimieren",
@@ -450,8 +450,8 @@
       },
       "polishDictation": {
         "label": "Diktat polieren",
-        "description": "Schreibt jedes Diktat vor dem Einfügen mit der Polieren-Transformation um.",
-        "info": "Unabhängig vom Transformations-Opt-in, das nur die Auswahl-Shortcuts steuert. Verwendet die Polieren-Transformation genau wie auf der Transformationen-Seite konfiguriert (Regeln, eigene Anweisungen und deine Schreibbeispiele) und denselben KI-Anbieter. Wird übersprungen, wenn ein Diktat bereits die KI-Korrektur durchlaufen hat, damit Text nie zweimal umgeschrieben wird; schlägt das Umschreiben fehl, wird das rohe Transkript unverändert eingefügt."
+        "description": "Schreibt jedes Diktat vor dem Einfügen mit dem Polieren-Prompt um.",
+        "info": "Unabhängig vom Prompts-Opt-in, das nur die Auswahl-Shortcuts steuert. Verwendet das Polieren-Template genau wie auf der Prompts-Seite konfiguriert (Ziele, eigene Anweisungen und deine Schreibbeispiele) und denselben KI-Anbieter. Wird übersprungen, wenn ein Diktat bereits die KI-Korrektur durchlaufen hat, damit Text nie zweimal umgeschrieben wird; schlägt das Umschreiben fehl, wird das rohe Transkript unverändert eingefügt."
       }
     },
     "models": {
@@ -924,7 +924,7 @@
         "recordings": "Recordings",
         "flow": "Flow",
         "assistant": "Assistenten-Chats",
-        "transforms": "Transformationen"
+        "transforms": "Prompts"
       },
       "openFolder": "Aufnahmeordner öffnen",
       "loading": "Verlauf wird geladen…",
@@ -962,7 +962,12 @@
       "messageCount_other": "{{count}} Nachrichten",
       "deleteAssistantError": "Das Gespräch konnte nicht gelöscht werden. Bitte versuche es erneut.",
       "transformInputLabel": "Ursprünglicher Text",
-      "transformOutputLabel": "Transformierter Text"
+      "transformOutputLabel": "Transformierter Text",
+      "stats": {
+        "totalWords": "Wörter insgesamt",
+        "wpm": "WpM",
+        "dayStreak": "Tage in Folge"
+      }
     },
     "debug": {
       "title": "Debug",
@@ -1653,14 +1658,14 @@
   "transformsPage": {
     "beta": "Beta",
     "optIn": "Aktivieren",
-    "myTransforms": "Meine Transformationen",
+    "myTransforms": "Meine Prompts",
     "resetDefaults": "Auf Standard zurücksetzen",
     "createNew": "Neu erstellen",
     "createOwn": "Eigene erstellen",
     "uploadPrompt": "Eigenen Prompt hochladen",
     "promo": {
-      "title": "Transformationen funktionieren überall, wo du schreibst",
-      "body": "Wende eine Transformation an, um Text nach dem Diktieren umzuschreiben, zu bereinigen oder neu zu strukturieren."
+      "title": "Prompts funktionieren überall, wo du schreibst",
+      "body": "Wende einen Prompt an, um Text nach dem Diktieren umzuschreiben, zu bereinigen oder neu zu strukturieren."
     },
     "detail": {
       "autosave": "Autospeichern an",
@@ -1678,11 +1683,11 @@
       "addExample": "Beispiel hinzufügen",
       "removeExample": "Beispiel entfernen",
       "createTitle": "Eigene erstellen",
-      "createSubtitle": "Richte ein Tastenkürzel ein, um diese Transformation anzuwenden.",
-      "nameLabel": "Benenne dein Transformations-Kürzel",
+      "createSubtitle": "Richte ein Tastenkürzel ein, um diesen Prompt anzuwenden.",
+      "nameLabel": "Benenne dein Prompt-Kürzel",
       "namePlaceholder": "Boss-Modus",
       "customizePrompt": "Prompt anpassen",
-      "promptPlaceholder": "Wie soll diese Transformation deinen Text verändern?"
+      "promptPlaceholder": "Wie soll dieser Prompt deinen Text verändern?"
     }
   }
 }

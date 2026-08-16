@@ -1153,6 +1153,20 @@ impl ShortcutAction for TranscribeAction {
                                 transcription
                             );
 
+                            // Lifetime usage stats (History page): spoken
+                            // words + speech time, counted once per dictation
+                            // regardless of where the transcript is delivered.
+                            if !transcription.trim().is_empty() {
+                                let words = transcription.split_whitespace().count() as i64;
+                                let speech_ms = (sample_count as i64).saturating_mul(1000)
+                                    / i64::from(
+                                        crate::audio_toolkit::constants::WHISPER_SAMPLE_RATE,
+                                    );
+                                if let Err(err) = hm.record_usage(words, speech_ms) {
+                                    warn!("Failed to record usage stats: {err}");
+                                }
+                            }
+
                             // Rerouted to the assistant (the overlay's Ask-
                             // Assistant button): hand the transcript to the
                             // assistant instead of pasting it anywhere.

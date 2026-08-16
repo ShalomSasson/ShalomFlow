@@ -1202,6 +1202,14 @@ async unloadModelManually() : Promise<Result<null, string>> {
     else return { status: "error", error: e  as any };
 }
 },
+async getUsageStats() : Promise<Result<UsageStats, string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("get_usage_stats") };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
 async getHistoryEntries(cursor: number | null, limit: number | null) : Promise<Result<PaginatedHistory, string>> {
     try {
     return { status: "ok", data: await TAURI_INVOKE("get_history_entries", { cursor, limit }) };
@@ -2875,6 +2883,16 @@ export type OverlayPosition = "none" | "top" | "bottom"
 export type OverlayStyle = "auto" | "none" | "minimal" | "live"
 export type PaginatedAssistantHistory = { entries: AssistantHistoryEntry[]; has_more: boolean }
 export type PaginatedHistory = { entries: HistoryEntry[]; has_more: boolean }
+/**
+ * Lifetime dictation stats shown on the History page. Independent of the
+ * stored history rows so retention pruning never shrinks the numbers.
+ */
+export type UsageStats = { total_words: number; total_speech_ms: number; streak_days: number;
+/**
+ * Local-timezone YYYY-MM-DD of the last counted dictation; the frontend
+ * shows the streak as 0 when this is older than yesterday.
+ */
+last_active_day: string }
 export type PasteMethod = "ctrl_v" | "direct" | "none" | "shift_insert" | "ctrl_shift_v" | "external_script"
 export type PermissionAccess = "allowed" | "denied" | "unknown"
 /**

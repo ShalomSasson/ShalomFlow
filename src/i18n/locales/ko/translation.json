@@ -33,7 +33,7 @@
     "collapse": "사이드바 접기",
     "expand": "사이드바 펼치기",
     "styles": "스타일",
-    "transforms": "트랜스폼"
+    "transforms": "프롬프트"
   },
   "window": {
     "minimize": "최소화",
@@ -450,8 +450,8 @@
       },
       "polishDictation": {
         "label": "받아쓰기 다듬기",
-        "description": "붙여넣기 전에 모든 받아쓰기를 다듬기 트랜스폼으로 다시 씁니다.",
-        "info": "트랜스폼 사용 설정과 무관하며, 그 설정은 선택 단축키에만 적용됩니다. 트랜스폼 페이지에 구성된 다듬기 트랜스폼(규칙, 사용자 지침, 글쓰기 예시)과 동일한 AI 공급자를 사용합니다. AI 교정을 이미 사용한 받아쓰기에는 건너뛰어 텍스트가 두 번 다시 쓰이지 않으며, 다시 쓰기가 실패하면 원본 그대로 붙여넣습니다."
+        "description": "붙여넣기 전에 모든 받아쓰기를 다듬기 프롬프트로 다시 씁니다.",
+        "info": "프롬프트 사용 설정과 무관하며, 그 설정은 선택 단축키에만 적용됩니다. 프롬프트 페이지에 구성된 다듬기 템플릿(목표, 사용자 지침, 글쓰기 예시)과 동일한 AI 공급자를 사용합니다. AI 교정을 이미 사용한 받아쓰기에는 건너뛰어 텍스트가 두 번 다시 쓰이지 않으며, 다시 쓰기가 실패하면 원본 그대로 붙여넣습니다."
       }
     },
     "models": {
@@ -924,7 +924,7 @@
         "recordings": "Recordings",
         "flow": "Flow",
         "assistant": "어시스턴트 대화",
-        "transforms": "트랜스폼"
+        "transforms": "프롬프트"
       },
       "openFolder": "녹음 폴더 열기",
       "loading": "히스토리 로딩 중…",
@@ -962,7 +962,12 @@
       "messageCount_other": "메시지 {{count}}개",
       "deleteAssistantError": "대화를 삭제할 수 없습니다. 다시 시도해주세요.",
       "transformInputLabel": "원본 텍스트",
-      "transformOutputLabel": "변환된 텍스트"
+      "transformOutputLabel": "변환된 텍스트",
+      "stats": {
+        "totalWords": "총 단어 수",
+        "wpm": "분당 단어",
+        "dayStreak": "일 연속"
+      }
     },
     "debug": {
       "title": "디버그",
@@ -1653,14 +1658,14 @@
   "transformsPage": {
     "beta": "베타",
     "optIn": "사용 설정",
-    "myTransforms": "내 트랜스폼",
+    "myTransforms": "내 프롬프트",
     "resetDefaults": "기본값으로 재설정",
     "createNew": "새로 만들기",
     "createOwn": "직접 만들기",
     "uploadPrompt": "나만의 프롬프트 업로드",
     "promo": {
-      "title": "트랜스폼은 어디서나 작동합니다",
-      "body": "받아쓰기 후 트랜스폼을 적용해 텍스트를 다시 쓰거나 정리하거나 재구성하세요."
+      "title": "프롬프트는 어디서나 작동합니다",
+      "body": "받아쓰기 후 프롬프트를 적용해 텍스트를 다시 쓰거나 정리하거나 재구성하세요."
     },
     "detail": {
       "autosave": "자동 저장 켜짐",
@@ -1678,11 +1683,11 @@
       "addExample": "예시 추가",
       "removeExample": "예시 제거",
       "createTitle": "직접 만들기",
-      "createSubtitle": "이 트랜스폼을 적용할 키보드 단축키를 설정하세요.",
-      "nameLabel": "트랜스폼 단축키 이름 지정",
+      "createSubtitle": "이 프롬프트를 적용할 키보드 단축키를 설정하세요.",
+      "nameLabel": "프롬프트 단축키 이름 지정",
       "namePlaceholder": "보스 모드",
       "customizePrompt": "프롬프트 사용자 지정",
-      "promptPlaceholder": "이 트랜스폼이 텍스트를 어떻게 바꾸길 원하나요?"
+      "promptPlaceholder": "이 프롬프트가 텍스트를 어떻게 바꾸길 원하나요?"
     }
   }
 }

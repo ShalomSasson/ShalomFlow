@@ -263,6 +263,7 @@
       "settings.general.groups.updates",
       "settings.general.language.auto",
       "settings.history.filters.flow",
+      "settings.history.filters.transforms",
       "settings.history.flowLabel",
       "settings.postProcessing.api.apiKey.placeholder",
       "settings.postProcessing.api.appleIntelligence.title",
@@ -270,6 +271,7 @@
       "settings.postProcessing.api.model.placeholderApple",
       "settings.postProcessing.prompts.title",
       "sidebar.debug",
+      "sidebar.transforms",
       "styles.beta",
       "transformsPage.beta"
     ],
@@ -336,6 +338,7 @@
       "settings.dictation.flow.phrasePlaceholder",
       "settings.general.title",
       "settings.history.filters.flow",
+      "settings.history.filters.transforms",
       "settings.history.flowLabel",
       "settings.postProcessing.api.apiKey.placeholder",
       "settings.postProcessing.api.appleIntelligence.title",
@@ -344,6 +347,7 @@
       "settings.postProcessing.prompts.title",
       "settings.postProcessing.tone.options.formal",
       "sidebar.general",
+      "sidebar.transforms",
       "styles.beta",
       "styles.presets.formal",
       "transformsPage.beta"
@@ -416,6 +420,7 @@
       "settings.dictation.flow.phrasePlaceholder",
       "settings.general.language.auto",
       "settings.history.filters.flow",
+      "settings.history.filters.transforms",
       "settings.history.flowLabel",
       "settings.history.messageCount_one",
       "settings.history.messageCount_other",
@@ -433,7 +438,8 @@
       "settings.sound.microphone.title",
       "settings.sound.volume.title",
       "sidebar.assistant",
-      "sidebar.styles"
+      "sidebar.styles",
+      "sidebar.transforms"
     ],
     "englishFromOtherKey": [
       "onboarding.steps.speechToText"
@@ -582,7 +588,10 @@
       "transformsPage.beta",
       "tray.home"
     ],
-    "englishFromOtherKey": []
+    "englishFromOtherKey": [
+      "settings.history.filters.transforms",
+      "sidebar.transforms"
+    ]
   },
   "ja": {
     "sameAsEnglish": [
@@ -840,6 +849,7 @@
       "settings.dictation.flow.phrasePlaceholder",
       "settings.general.language.auto",
       "settings.history.filters.flow",
+      "settings.history.filters.transforms",
       "settings.history.flowLabel",
       "settings.models.customModel.downloads",
       "settings.postProcessing.api.apiKey.placeholder",
@@ -850,6 +860,7 @@
       "settings.postProcessing.tone.options.casual",
       "settings.postProcessing.tone.options.formal",
       "settings.sound.volume.title",
+      "sidebar.transforms",
       "styles.beta",
       "styles.presets.casual",
       "styles.presets.formal",
@@ -1193,7 +1204,10 @@
       "styles.tabs.email",
       "transformsPage.beta"
     ],
-    "englishFromOtherKey": []
+    "englishFromOtherKey": [
+      "settings.history.filters.transforms",
+      "sidebar.transforms"
+    ]
   },
   "zh": {
     "sameAsEnglish": [

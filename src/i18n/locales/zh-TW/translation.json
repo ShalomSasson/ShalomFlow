@@ -33,7 +33,7 @@
     "collapse": "收合側邊欄",
     "expand": "展開側邊欄",
     "styles": "風格",
-    "transforms": "轉換"
+    "transforms": "提示詞"
   },
   "window": {
     "minimize": "最小化",
@@ -450,8 +450,8 @@
       },
       "polishDictation": {
         "label": "潤飾聽寫",
-        "description": "貼上前用潤飾轉換重寫每次聽寫。",
-        "info": "獨立於轉換的啟用開關，後者只控制選取文字的快速鍵。使用轉換頁面中設定的潤飾轉換（規則、自訂指令和你的寫作範例）以及同一個 AI 供應商。已使用 AI 校正的聽寫會被跳過，文字絕不會被重寫兩次；若重寫失敗，將原樣貼上原始轉錄。"
+        "description": "貼上前用潤飾提示詞重寫每次聽寫。",
+        "info": "獨立於提示詞的啟用開關，後者只控制選取文字的快速鍵。使用提示詞頁面中設定的潤飾範本（目標、自訂指令和你的寫作範例）以及同一個 AI 供應商。已使用 AI 校正的聽寫會被跳過，文字絕不會被重寫兩次；若重寫失敗，將原樣貼上原始轉錄。"
       }
     },
     "models": {
@@ -924,7 +924,7 @@
         "recordings": "Recordings",
         "flow": "Flow",
         "assistant": "助理對話",
-        "transforms": "轉換"
+        "transforms": "提示詞"
       },
       "openFolder": "開啟錄音資料夾",
       "loading": "載入歷史紀錄中…",
@@ -962,7 +962,12 @@
       "messageCount_other": "{{count}} 則訊息",
       "deleteAssistantError": "無法刪除這段對話，請重試。",
       "transformInputLabel": "原始文字",
-      "transformOutputLabel": "轉換後文字"
+      "transformOutputLabel": "轉換後文字",
+      "stats": {
+        "totalWords": "總字數",
+        "wpm": "字/分鐘",
+        "dayStreak": "天連續"
+      }
     },
     "debug": {
       "title": "偵錯",
@@ -1653,14 +1658,14 @@
   "transformsPage": {
     "beta": "測試版",
     "optIn": "啟用",
-    "myTransforms": "我的轉換",
+    "myTransforms": "我的提示詞",
     "resetDefaults": "重設為預設",
     "createNew": "新增",
     "createOwn": "建立你自己的",
     "uploadPrompt": "上傳你自己的提示詞",
     "promo": {
-      "title": "轉換可在任何書寫位置使用",
-      "body": "聽寫後套用轉換來重寫、清理或重組文字。"
+      "title": "提示詞可在任何書寫位置使用",
+      "body": "聽寫後套用提示詞來重寫、清理或重組文字。"
     },
     "detail": {
       "autosave": "自動儲存已開啟",
@@ -1678,11 +1683,11 @@
       "addExample": "新增範例",
       "removeExample": "移除範例",
       "createTitle": "建立你自己的",
-      "createSubtitle": "設定鍵盤快速鍵來套用此轉換。",
-      "nameLabel": "為你的轉換快速鍵命名",
+      "createSubtitle": "設定鍵盤快速鍵來套用此提示詞。",
+      "nameLabel": "為你的提示詞快速鍵命名",
       "namePlaceholder": "老闆模式",
       "customizePrompt": "自訂提示詞",
-      "promptPlaceholder": "你希望此轉換如何改變你的文字？"
+      "promptPlaceholder": "你希望此提示詞如何改變你的文字？"
     }
   }
 }

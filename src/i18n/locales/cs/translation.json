@@ -33,7 +33,7 @@
     "collapse": "Sbalit postranní panel",
     "expand": "Rozbalit postranní panel",
     "styles": "Styly",
-    "transforms": "Transformace"
+    "transforms": "Prompty"
   },
   "window": {
     "minimize": "Minimalizovat",
@@ -450,8 +450,8 @@
       },
       "polishDictation": {
         "label": "Vylepšit diktát",
-        "description": "Před vložením přepíše každý diktát transformací Vylepšit.",
-        "info": "Nezávislé na zapnutí Transformací, které řídí jen zkratky pro výběr. Používá transformaci Vylepšit přesně tak, jak je nastavena na stránce Transformace (pravidla, vlastní pokyny a vaše ukázky psaní) a stejného poskytovatele AI. Přeskočí se, pokud diktát už prošel AI korekcí, takže text se nikdy nepřepisuje dvakrát; při selhání se vloží surový přepis beze změny."
+        "description": "Před vložením přepíše každý diktát promptem Vylepšit.",
+        "info": "Nezávislé na zapnutí Promptů, které řídí jen zkratky pro výběr. Používá šablonu Vylepšit přesně tak, jak je nastavena na stránce Prompty (cíle, vlastní pokyny a vaše ukázky psaní) a stejného poskytovatele AI. Přeskočí se, pokud diktát už prošel AI korekcí, takže text se nikdy nepřepisuje dvakrát; při selhání se vloží surový přepis beze změny."
       }
     },
     "models": {
@@ -924,7 +924,7 @@
         "recordings": "Recordings",
         "flow": "Flow",
         "assistant": "Chaty s asistentem",
-        "transforms": "Transformace"
+        "transforms": "Prompty"
       },
       "openFolder": "Otevřít složku nahrávek",
       "loading": "Načítám historii…",
@@ -962,7 +962,12 @@
       "messageCount_other": "{{count}} zpráv",
       "deleteAssistantError": "Konverzaci se nepodařilo smazat. Zkuste to prosím znovu.",
       "transformInputLabel": "Původní text",
-      "transformOutputLabel": "Transformovaný text"
+      "transformOutputLabel": "Transformovaný text",
+      "stats": {
+        "totalWords": "slov celkem",
+        "wpm": "slov/min",
+        "dayStreak": "dní v řadě"
+      }
     },
     "debug": {
       "title": "Ladění",
@@ -1653,14 +1658,14 @@
   "transformsPage": {
     "beta": "Beta",
     "optIn": "Zapnout",
-    "myTransforms": "Moje transformace",
+    "myTransforms": "Moje prompty",
     "resetDefaults": "Obnovit výchozí",
     "createNew": "Vytvořit novou",
     "createOwn": "Vytvořte si vlastní",
     "uploadPrompt": "Nahrajte vlastní prompt",
     "promo": {
-      "title": "Transformace fungují všude, kde píšete",
-      "body": "Použijte transformaci k přepsání, vyčištění nebo přeuspořádání textu po diktování."
+      "title": "Prompty fungují všude, kde píšete",
+      "body": "Použijte prompt k přepsání, vyčištění nebo přeuspořádání textu po diktování."
     },
     "detail": {
       "autosave": "Automatické ukládání zapnuto",
@@ -1678,11 +1683,11 @@
       "addExample": "Přidat ukázku",
       "removeExample": "Odebrat ukázku",
       "createTitle": "Vytvořte si vlastní",
-      "createSubtitle": "Nastavte klávesovou zkratku pro použití této transformace.",
-      "nameLabel": "Pojmenujte svou transformaci",
+      "createSubtitle": "Nastavte klávesovou zkratku pro použití tohoto promptu.",
+      "nameLabel": "Pojmenujte svůj prompt",
       "namePlaceholder": "Režim šéfa",
       "customizePrompt": "Přizpůsobit prompt",
-      "promptPlaceholder": "Jak má tato transformace měnit váš text?"
+      "promptPlaceholder": "Jak má tento prompt měnit váš text?"
     }
   }
 }

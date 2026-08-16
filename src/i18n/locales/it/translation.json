@@ -33,7 +33,7 @@
     "collapse": "Comprimi barra laterale",
     "expand": "Espandi barra laterale",
     "styles": "Stili",
-    "transforms": "Trasformazioni"
+    "transforms": "Prompt"
   },
   "window": {
     "minimize": "Riduci a icona",
@@ -450,8 +450,8 @@
       },
       "polishDictation": {
         "label": "Rifinisci la dettatura",
-        "description": "Riscrive ogni dettatura con la trasformazione Rifinisci prima di incollare.",
-        "info": "Indipendente dall'attivazione delle Trasformazioni, che riguarda solo le scorciatoie di selezione. Usa la trasformazione Rifinisci esattamente come configurata nella pagina Trasformazioni (regole, istruzioni personalizzate e i tuoi esempi di scrittura) e lo stesso provider IA. Saltata quando la dettatura ha già usato la correzione IA, così il testo non viene mai riscritto due volte; se la riscrittura fallisce, viene incollata la trascrizione grezza invariata."
+        "description": "Riscrive ogni dettatura con il prompt Rifinisci prima di incollare.",
+        "info": "Indipendente dall'attivazione dei Prompt, che riguarda solo le scorciatoie di selezione. Usa il template Rifinisci esattamente come configurato nella pagina Prompt (obiettivi, istruzioni personalizzate e i tuoi esempi di scrittura) e lo stesso provider IA. Saltata quando la dettatura ha già usato la correzione IA, così il testo non viene mai riscritto due volte; se la riscrittura fallisce, viene incollata la trascrizione grezza invariata."
       }
     },
     "models": {
@@ -924,7 +924,7 @@
         "recordings": "Recordings",
         "flow": "Flow",
         "assistant": "Chat con l'assistente",
-        "transforms": "Trasformazioni"
+        "transforms": "Prompt"
       },
       "openFolder": "Apri la cartella delle registrazioni",
       "loading": "Caricamento cronologia…",
@@ -962,7 +962,12 @@
       "messageCount_other": "{{count}} messaggi",
       "deleteAssistantError": "Impossibile eliminare la conversazione. Riprova.",
       "transformInputLabel": "Testo originale",
-      "transformOutputLabel": "Testo trasformato"
+      "transformOutputLabel": "Testo trasformato",
+      "stats": {
+        "totalWords": "parole totali",
+        "wpm": "parole/min",
+        "dayStreak": "giorni di fila"
+      }
     },
     "debug": {
       "title": "Debug",
@@ -1653,14 +1658,14 @@
   "transformsPage": {
     "beta": "Beta",
     "optIn": "Attiva",
-    "myTransforms": "Le mie trasformazioni",
+    "myTransforms": "I miei prompt",
     "resetDefaults": "Ripristina predefiniti",
     "createNew": "Crea nuova",
     "createOwn": "Creane una tua",
     "uploadPrompt": "Carica il tuo prompt",
     "promo": {
-      "title": "Le trasformazioni funzionano ovunque scrivi",
-      "body": "Applica una trasformazione per riscrivere, ripulire o ristrutturare il testo dopo la dettatura."
+      "title": "I prompt funzionano ovunque scrivi",
+      "body": "Applica un prompt per riscrivere, ripulire o ristrutturare il testo dopo la dettatura."
     },
     "detail": {
       "autosave": "Salvataggio automatico attivo",
@@ -1678,11 +1683,11 @@
       "addExample": "Aggiungi un esempio",
       "removeExample": "Rimuovi esempio",
       "createTitle": "Creane una tua",
-      "createSubtitle": "Imposta una scorciatoia da tastiera per applicare questa trasformazione.",
-      "nameLabel": "Dai un nome alla tua trasformazione",
+      "createSubtitle": "Imposta una scorciatoia da tastiera per applicare questo prompt.",
+      "nameLabel": "Dai un nome al tuo prompt",
       "namePlaceholder": "Modalità capo",
       "customizePrompt": "Personalizza il prompt",
-      "promptPlaceholder": "Come vuoi che questa trasformazione modifichi il tuo testo?"
+      "promptPlaceholder": "Come vuoi che questo prompt modifichi il tuo testo?"
     }
   }
 }

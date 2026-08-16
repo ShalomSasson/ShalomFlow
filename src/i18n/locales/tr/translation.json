@@ -33,7 +33,7 @@
     "collapse": "Kenar çubuğunu daralt",
     "expand": "Kenar çubuğunu genişlet",
     "styles": "Stiller",
-    "transforms": "Dönüşümler"
+    "transforms": "İstemler"
   },
   "window": {
     "minimize": "Küçült",
@@ -450,8 +450,8 @@
       },
       "polishDictation": {
         "label": "Dikteyi cilala",
-        "description": "Yapıştırmadan önce her dikteyi Cilala dönüşümüyle yeniden yazar.",
-        "info": "Yalnızca seçim kısayollarını denetleyen Dönüşümler etkinleştirmesinden bağımsızdır. Cilala dönüşümünü Dönüşümler sayfasında yapılandırıldığı şekliyle (kurallar, özel talimatlar ve yazı örnekleriniz) ve aynı yapay zeka sağlayıcısıyla kullanır. Dikte zaten yapay zeka düzeltmesi kullandıysa atlanır, böylece metin asla iki kez yeniden yazılmaz; yeniden yazma başarısız olursa ham döküm değiştirilmeden yapıştırılır."
+        "description": "Yapıştırmadan önce her dikteyi Cilala istemiyle yeniden yazar.",
+        "info": "Yalnızca seçim kısayollarını denetleyen İstemler etkinleştirmesinden bağımsızdır. Cilala şablonunu İstemler sayfasında yapılandırıldığı şekliyle (hedefler, özel talimatlar ve yazı örnekleriniz) ve aynı yapay zeka sağlayıcısıyla kullanır. Dikte zaten yapay zeka düzeltmesi kullandıysa atlanır, böylece metin asla iki kez yeniden yazılmaz; yeniden yazma başarısız olursa ham döküm değiştirilmeden yapıştırılır."
       }
     },
     "models": {
@@ -924,7 +924,7 @@
         "recordings": "Recordings",
         "flow": "Flow",
         "assistant": "Asistan sohbetleri",
-        "transforms": "Dönüşümler"
+        "transforms": "İstemler"
       },
       "openFolder": "Kayıtlar Klasörünü Aç",
       "loading": "Geçmiş yükleniyor…",
@@ -962,7 +962,12 @@
       "messageCount_other": "{{count}} mesaj",
       "deleteAssistantError": "Konuşma silinemedi. Lütfen tekrar deneyin.",
       "transformInputLabel": "Özgün metin",
-      "transformOutputLabel": "Dönüştürülmüş metin"
+      "transformOutputLabel": "Dönüştürülmüş metin",
+      "stats": {
+        "totalWords": "toplam kelime",
+        "wpm": "kelime/dk",
+        "dayStreak": "günlük seri"
+      }
     },
     "debug": {
       "title": "Hata Ayıklama",
@@ -1653,14 +1658,14 @@
   "transformsPage": {
     "beta": "Beta",
     "optIn": "Etkinleştir",
-    "myTransforms": "Dönüşümlerim",
+    "myTransforms": "İstemlerim",
     "resetDefaults": "Varsayılanlara sıfırla",
     "createNew": "Yeni Oluştur",
     "createOwn": "Kendinizinkini oluşturun",
     "uploadPrompt": "Kendi isteminizi yükleyin",
     "promo": {
-      "title": "Dönüşümler yazdığınız her yerde çalışır",
-      "body": "Dikte ettikten sonra metni yeniden yazmak, temizlemek veya yapılandırmak için bir dönüşüm uygulayın."
+      "title": "İstemler yazdığınız her yerde çalışır",
+      "body": "Dikte ettikten sonra metni yeniden yazmak, temizlemek veya yapılandırmak için bir istem uygulayın."
     },
     "detail": {
       "autosave": "Otomatik kayıt açık",
@@ -1678,11 +1683,11 @@
       "addExample": "Örnek ekle",
       "removeExample": "Örneği kaldır",
       "createTitle": "Kendinizinkini oluşturun",
-      "createSubtitle": "Bu dönüşümü uygulamak için bir klavye kısayolu ayarlayın.",
-      "nameLabel": "Dönüşüm kısayolunuza ad verin",
+      "createSubtitle": "Bu istemi uygulamak için bir klavye kısayolu ayarlayın.",
+      "nameLabel": "İstem kısayolunuza ad verin",
       "namePlaceholder": "Patron Modu",
       "customizePrompt": "İstemi özelleştir",
-      "promptPlaceholder": "Bu dönüşüm metninizi nasıl değiştirsin?"
+      "promptPlaceholder": "Bu istem metninizi nasıl değiştirsin?"
     }
   }
 }

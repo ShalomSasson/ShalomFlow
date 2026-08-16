@@ -34,6 +34,7 @@ import {
   type AssistantHistoryEntry,
   type HistoryEntry,
   type HistoryUpdatePayload,
+  type UsageStats,
 } from "@/bindings";
 import { useOsType } from "@/hooks/useOsType";
 import { formatDateTime } from "@/utils/dateFormat";
@@ -68,6 +69,57 @@ const isTransformHistoryEntry = (entry: HistoryEntry): boolean =>
 
 const transformEntryName = (entry: HistoryEntry): string =>
   entry.post_process_prompt?.slice(TRANSFORM_HISTORY_PREFIX.length) ?? "";
+
+/** Compact stat numeral: 55432 -> "55.4K", 1200000 -> "1.2M". */
+const formatStatNumber = (value: number): string => {
+  if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(1)}M`;
+  if (value >= 1_000) return `${(value / 1_000).toFixed(1)}K`;
+  return `${value}`;
+};
+
+/** Local-timezone YYYY-MM-DD, matching what the backend stores. */
+const localDayString = (date: Date): string => {
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const d = String(date.getDate()).padStart(2, "0");
+  return `${y}-${m}-${d}`;
+};
+
+/** Lifetime dictation stats — big serif-style numerals, one row per stat. */
+const UsageStatsCard: React.FC<{ stats: UsageStats }> = ({ stats }) => {
+  const { t } = useTranslation();
+
+  const minutes = stats.total_speech_ms / 60_000;
+  const wpm = minutes > 0 ? Math.round(stats.total_words / minutes) : 0;
+
+  // A streak is only alive if the last dictation was today or yesterday.
+  const now = new Date();
+  const yesterday = new Date(now);
+  yesterday.setDate(now.getDate() - 1);
+  const streakAlive =
+    stats.last_active_day === localDayString(now) ||
+    stats.last_active_day === localDayString(yesterday);
+  const streak = streakAlive ? stats.streak_days : 0;
+
+  const rows: [string, string][] = [
+    [formatStatNumber(stats.total_words), t("settings.history.stats.totalWords")],
+    [String(wpm), t("settings.history.stats.wpm")],
+    [String(streak), t("settings.history.stats.dayStreak")],
+  ];
+
+  return (
+    <div className="flex h-full flex-col justify-center gap-5 rounded-2xl border border-hairline bg-surface px-6 py-6">
+      {rows.map(([value, label]) => (
+        <div key={label} className="flex items-baseline gap-2.5">
+          <span className="font-display text-3xl leading-none text-ink">
+            {value}
+          </span>
+          <span className="text-sm text-body">{label}</span>
+        </div>
+      ))}
+    </div>
+  );
+};
 
 /** Strip the attachment markers the backend appends to stored user messages,
  *  returning the clean text plus what rode along (screen capture / files). */
@@ -283,8 +335,21 @@ export const HistorySettings: React.FC = () => {
   const osType = useOsType();
   const { getSetting } = useSettings();
   const [entries, setEntries] = useState<HistoryEntry[]>([]);
+  const [usageStats, setUsageStats] = useState<UsageStats | null>(null);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<HistoryFilter>("all");
+
+  // Lifetime stats card — refreshed whenever the feed changes so a fresh
+  // dictation bumps the numbers without reopening the page.
+  useEffect(() => {
+    let cancelled = false;
+    void commands.getUsageStats().then((result) => {
+      if (!cancelled && result.status === "ok") setUsageStats(result.data);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [entries.length]);
   const [hasMore, setHasMore] = useState(true);
   const sentinelRef = useRef<HTMLDivElement>(null);
   const entriesRef = useRef<HistoryEntry[]>([]);
@@ -675,19 +740,30 @@ export const HistorySettings: React.FC = () => {
         description={t("sectionSubtitles.history")}
       />
       {/* Storage settings live above the feed — with a long history the list
-          scrolls forever, so anything below it is effectively unreachable. */}
-      <SettingsGroup
-        title={t("settings.history.storage.title")}
-        description={t("settings.history.storage.description")}
-      >
-        <RecordingRetentionPeriodSelector
-          descriptionMode="tooltip"
-          grouped={true}
-        />
-        {getSetting("recording_retention_period") === "preserve_limit" && (
-          <HistoryLimit descriptionMode="tooltip" grouped={true} />
+          scrolls forever, so anything below it is effectively unreachable.
+          The lifetime stats card sits beside them (right), 75:25 width ratio,
+          so both are visible in one row. */}
+      <div className="flex items-stretch gap-4">
+        <div className="min-w-0 flex-[75]">
+          <SettingsGroup
+            title={t("settings.history.storage.title")}
+            description={t("settings.history.storage.description")}
+          >
+            <RecordingRetentionPeriodSelector
+              descriptionMode="tooltip"
+              grouped={true}
+            />
+            {getSetting("recording_retention_period") === "preserve_limit" && (
+              <HistoryLimit descriptionMode="tooltip" grouped={true} />
+            )}
+          </SettingsGroup>
+        </div>
+        {usageStats && (
+          <div className="min-w-0 flex-[25]">
+            <UsageStatsCard stats={usageStats} />
+          </div>
         )}
-      </SettingsGroup>
+      </div>
       <div className="space-y-2">
         <div className="flex items-center justify-between gap-3">
           <div

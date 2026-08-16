@@ -47,6 +47,20 @@ static MIGRATIONS: &[M] = &[
             messages TEXT NOT NULL
         );",
     ),
+    // Lifetime usage stats for the History page (total words, speaking time,
+    // day streak). A single-row table rather than aggregating history rows:
+    // recordings are pruned by the retention limit, so lifetime numbers must
+    // survive their source rows. `last_active_day` is a local-timezone
+    // YYYY-MM-DD string used for the streak.
+    M::up(
+        "CREATE TABLE IF NOT EXISTS usage_stats (
+            id INTEGER PRIMARY KEY CHECK (id = 1),
+            total_words INTEGER NOT NULL DEFAULT 0,
+            total_speech_ms INTEGER NOT NULL DEFAULT 0,
+            streak_days INTEGER NOT NULL DEFAULT 0,
+            last_active_day TEXT NOT NULL DEFAULT ''
+        );",
+    ),
 ];
 
 #[derive(Clone, Debug, Serialize, Deserialize, Type)]
@@ -100,6 +114,18 @@ pub struct HistoryEntry {
     pub post_processed_text: Option<String>,
     pub post_process_prompt: Option<String>,
     pub post_process_requested: bool,
+}
+
+/// Lifetime dictation stats shown on the History page. Independent of the
+/// stored history rows so retention pruning never shrinks the numbers.
+#[derive(Clone, Debug, Serialize, Deserialize, Type)]
+pub struct UsageStats {
+    pub total_words: i64,
+    pub total_speech_ms: i64,
+    pub streak_days: i64,
+    /// Local-timezone YYYY-MM-DD of the last counted dictation; the frontend
+    /// shows the streak as 0 when this is older than yesterday.
+    pub last_active_day: String,
 }
 
 pub struct HistoryManager {
@@ -253,6 +279,61 @@ impl HistoryManager {
 
     /// Save a new history entry to the database.
     /// The WAV file should already have been written to the recordings directory.
+    /// Add one dictation's words and speech time to the lifetime stats and
+    /// advance the day streak (same day: unchanged; consecutive day: +1;
+    /// gap: reset to 1). Days use the machine's local timezone.
+    pub fn record_usage(&self, words: i64, speech_ms: i64) -> Result<()> {
+        let now = Local::now();
+        let today = now.format("%Y-%m-%d").to_string();
+        let yesterday = (now - chrono::Duration::days(1))
+            .format("%Y-%m-%d")
+            .to_string();
+
+        let conn = self.get_connection()?;
+        conn.execute("INSERT OR IGNORE INTO usage_stats (id) VALUES (1)", [])?;
+        let (streak, last_day): (i64, String) = conn.query_row(
+            "SELECT streak_days, last_active_day FROM usage_stats WHERE id = 1",
+            [],
+            |row| Ok((row.get(0)?, row.get(1)?)),
+        )?;
+        let new_streak = if last_day == today {
+            streak.max(1)
+        } else if last_day == yesterday {
+            streak + 1
+        } else {
+            1
+        };
+        conn.execute(
+            "UPDATE usage_stats
+             SET total_words = total_words + ?1,
+                 total_speech_ms = total_speech_ms + ?2,
+                 streak_days = ?3,
+                 last_active_day = ?4
+             WHERE id = 1",
+            params![words, speech_ms, new_streak, &today],
+        )?;
+        Ok(())
+    }
+
+    pub fn get_usage_stats(&self) -> Result<UsageStats> {
+        let conn = self.get_connection()?;
+        conn.execute("INSERT OR IGNORE INTO usage_stats (id) VALUES (1)", [])?;
+        let stats = conn.query_row(
+            "SELECT total_words, total_speech_ms, streak_days, last_active_day
+             FROM usage_stats WHERE id = 1",
+            [],
+            |row| {
+                Ok(UsageStats {
+                    total_words: row.get(0)?,
+                    total_speech_ms: row.get(1)?,
+                    streak_days: row.get(2)?,
+                    last_active_day: row.get(3)?,
+                })
+            },
+        )?;
+        Ok(stats)
+    }
+
     pub fn save_entry(
         &self,
         file_name: String,

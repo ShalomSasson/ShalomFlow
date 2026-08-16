@@ -33,7 +33,7 @@
     "collapse": "收起侧边栏",
     "expand": "展开侧边栏",
     "styles": "风格",
-    "transforms": "转换"
+    "transforms": "提示词"
   },
   "window": {
     "minimize": "最小化",
@@ -450,8 +450,8 @@
       },
       "polishDictation": {
         "label": "润色听写",
-        "description": "粘贴前用润色转换重写每次听写。",
-        "info": "独立于转换的启用开关，后者只控制选中文本的快捷键。使用转换页面中配置的润色转换（规则、自定义指令和你的写作示例）以及同一个 AI 提供商。已使用 AI 纠正的听写会被跳过，文本绝不会被重写两次；若重写失败，将原样粘贴原始转录。"
+        "description": "粘贴前用润色提示词重写每次听写。",
+        "info": "独立于提示词的启用开关，后者只控制选中文本的快捷键。使用提示词页面中配置的润色模板（目标、自定义指令和你的写作示例）以及同一个 AI 提供商。已使用 AI 纠正的听写会被跳过，文本绝不会被重写两次；若重写失败，将原样粘贴原始转录。"
       }
     },
     "models": {
@@ -924,7 +924,7 @@
         "recordings": "Recordings",
         "flow": "Flow",
         "assistant": "助手聊天",
-        "transforms": "转换"
+        "transforms": "提示词"
       },
       "openFolder": "打开录音文件夹",
       "loading": "加载历史记录中…",
@@ -962,7 +962,12 @@
       "messageCount_other": "{{count}} 条消息",
       "deleteAssistantError": "无法删除该对话。请重试。",
       "transformInputLabel": "原始文本",
-      "transformOutputLabel": "转换后文本"
+      "transformOutputLabel": "转换后文本",
+      "stats": {
+        "totalWords": "总字数",
+        "wpm": "字/分钟",
+        "dayStreak": "天连续"
+      }
     },
     "debug": {
       "title": "调试",
@@ -1653,14 +1658,14 @@
   "transformsPage": {
     "beta": "测试版",
     "optIn": "启用",
-    "myTransforms": "我的转换",
+    "myTransforms": "我的提示词",
     "resetDefaults": "重置为默认",
     "createNew": "新建",
     "createOwn": "创建你自己的",
     "uploadPrompt": "上传你自己的提示词",
     "promo": {
-      "title": "转换可在任何书写位置使用",
-      "body": "听写后应用转换来重写、清理或重组文本。"
+      "title": "提示词可在任何书写位置使用",
+      "body": "听写后应用提示词来重写、清理或重组文本。"
     },
     "detail": {
       "autosave": "自动保存已开启",
@@ -1678,11 +1683,11 @@
       "addExample": "添加示例",
       "removeExample": "移除示例",
       "createTitle": "创建你自己的",
-      "createSubtitle": "设置键盘快捷键来应用此转换。",
-      "nameLabel": "为你的转换快捷键命名",
+      "createSubtitle": "设置键盘快捷键来应用此提示词。",
+      "nameLabel": "为你的提示词快捷键命名",
       "namePlaceholder": "老板模式",
       "customizePrompt": "自定义提示词",
-      "promptPlaceholder": "你希望此转换如何改变你的文本？"
+      "promptPlaceholder": "你希望此提示词如何改变你的文本？"
     }
   }
 }

@@ -33,7 +33,7 @@
     "collapse": "Recolher barra lateral",
     "expand": "Expandir barra lateral",
     "styles": "Estilos",
-    "transforms": "Transformações"
+    "transforms": "Prompts"
   },
   "window": {
     "minimize": "Minimizar",
@@ -450,8 +450,8 @@
       },
       "polishDictation": {
         "label": "Polir o ditado",
-        "description": "Reescreve cada ditado com a transformação Polir antes de colar.",
-        "info": "Independente da ativação das Transformações, que controla apenas os atalhos de seleção. Usa a transformação Polir exatamente como configurada na página Transformações (regras, instruções personalizadas e seus exemplos de escrita) e o mesmo provedor de IA. Ignorado quando o ditado já usou a correção por IA, para nunca reescrever o texto duas vezes; se a reescrita falhar, a transcrição bruta é colada sem alterações."
+        "description": "Reescreve cada ditado com o prompt Polir antes de colar.",
+        "info": "Independente da ativação de Prompts, que controla apenas os atalhos de seleção. Usa o template Polir exatamente como configurado na página Prompts (objetivos, instruções personalizadas e seus exemplos de escrita) e o mesmo provedor de IA. Ignorado quando o ditado já usou a correção por IA, para nunca reescrever o texto duas vezes; se a reescrita falhar, a transcrição bruta é colada sem alterações."
       }
     },
     "models": {
@@ -924,7 +924,7 @@
         "recordings": "Recordings",
         "flow": "Flow",
         "assistant": "Conversas com o assistente",
-        "transforms": "Transformações"
+        "transforms": "Prompts"
       },
       "openFolder": "Abrir Pasta de Gravações",
       "loading": "Carregando histórico…",
@@ -962,7 +962,12 @@
       "messageCount_other": "{{count}} mensagens",
       "deleteAssistantError": "Não foi possível excluir a conversa. Tente novamente.",
       "transformInputLabel": "Texto original",
-      "transformOutputLabel": "Texto transformado"
+      "transformOutputLabel": "Texto transformado",
+      "stats": {
+        "totalWords": "palavras no total",
+        "wpm": "ppm",
+        "dayStreak": "dias seguidos"
+      }
     },
     "debug": {
       "title": "Depuração",
@@ -1653,14 +1658,14 @@
   "transformsPage": {
     "beta": "Beta",
     "optIn": "Ativar",
-    "myTransforms": "Minhas transformações",
+    "myTransforms": "Meus prompts",
     "resetDefaults": "Restaurar padrões",
     "createNew": "Criar nova",
     "createOwn": "Crie a sua",
     "uploadPrompt": "Envie seu próprio prompt",
     "promo": {
-      "title": "As transformações funcionam onde você escreve",
-      "body": "Aplique uma transformação para reescrever, limpar ou reestruturar o texto após ditar."
+      "title": "Os prompts funcionam onde você escreve",
+      "body": "Aplique um prompt para reescrever, limpar ou reestruturar o texto após ditar."
     },
     "detail": {
       "autosave": "Salvamento automático ativado",
@@ -1678,11 +1683,11 @@
       "addExample": "Adicionar exemplo",
       "removeExample": "Remover exemplo",
       "createTitle": "Crie a sua",
-      "createSubtitle": "Configure um atalho de teclado para aplicar esta transformação.",
-      "nameLabel": "Nomeie seu atalho de transformação",
+      "createSubtitle": "Configure um atalho de teclado para aplicar este prompt.",
+      "nameLabel": "Nomeie seu atalho de prompt",
       "namePlaceholder": "Modo chefe",
       "customizePrompt": "Personalizar prompt",
-      "promptPlaceholder": "Como você quer que esta transformação altere seu texto?"
+      "promptPlaceholder": "Como você quer que este prompt altere seu texto?"
     }
   }
 }

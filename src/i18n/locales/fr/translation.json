@@ -33,7 +33,7 @@
     "collapse": "Réduire la barre latérale",
     "expand": "Développer la barre latérale",
     "styles": "Styles",
-    "transforms": "Transformations"
+    "transforms": "Prompts"
   },
   "window": {
     "minimize": "Réduire",
@@ -450,8 +450,8 @@
       },
       "polishDictation": {
         "label": "Peaufiner la dictée",
-        "description": "Réécrit chaque dictée avec la transformation Peaufiner avant de coller.",
-        "info": "Indépendant de l'activation des Transformations, qui ne concerne que les raccourcis de sélection. Utilise la transformation Peaufiner exactement comme configurée sur la page Transformations (règles, instructions personnalisées et vos exemples d'écriture) et le même fournisseur d'IA. Ignoré quand la dictée a déjà utilisé la correction IA, pour ne jamais réécrire le texte deux fois ; si la réécriture échoue, la transcription brute est collée telle quelle."
+        "description": "Réécrit chaque dictée avec le prompt Peaufiner avant de coller.",
+        "info": "Indépendant de l'activation des Prompts, qui ne concerne que les raccourcis de sélection. Utilise le template Peaufiner exactement comme configuré sur la page Prompts (objectifs, instructions personnalisées et vos exemples d'écriture) et le même fournisseur d'IA. Ignoré quand la dictée a déjà utilisé la correction IA, pour ne jamais réécrire le texte deux fois ; si la réécriture échoue, la transcription brute est collée telle quelle."
       }
     },
     "models": {
@@ -924,7 +924,7 @@
         "recordings": "Recordings",
         "flow": "Flow",
         "assistant": "Conversations de l'assistant",
-        "transforms": "Transformations"
+        "transforms": "Prompts"
       },
       "openFolder": "Ouvrir le dossier des enregistrements",
       "loading": "Chargement de l'historique…",
@@ -962,7 +962,12 @@
       "messageCount_other": "{{count}} messages",
       "deleteAssistantError": "Impossible de supprimer la conversation. Veuillez réessayer.",
       "transformInputLabel": "Texte original",
-      "transformOutputLabel": "Texte transformé"
+      "transformOutputLabel": "Texte transformé",
+      "stats": {
+        "totalWords": "mots au total",
+        "wpm": "mots/min",
+        "dayStreak": "jours d'affilée"
+      }
     },
     "debug": {
       "title": "Débogage",
@@ -1653,14 +1658,14 @@
   "transformsPage": {
     "beta": "Bêta",
     "optIn": "Activer",
-    "myTransforms": "Mes transformations",
+    "myTransforms": "Mes prompts",
     "resetDefaults": "Réinitialiser",
     "createNew": "Créer",
     "createOwn": "Créez la vôtre",
     "uploadPrompt": "Importez votre propre prompt",
     "promo": {
-      "title": "Les transformations fonctionnent partout où vous écrivez",
-      "body": "Appliquez une transformation pour réécrire, nettoyer ou restructurer le texte après la dictée."
+      "title": "Les prompts fonctionnent partout où vous écrivez",
+      "body": "Appliquez un prompt pour réécrire, nettoyer ou restructurer le texte après la dictée."
     },
     "detail": {
       "autosave": "Sauvegarde auto activée",
@@ -1678,11 +1683,11 @@
       "addExample": "Ajouter un exemple",
       "removeExample": "Supprimer l'exemple",
       "createTitle": "Créez la vôtre",
-      "createSubtitle": "Configurez un raccourci clavier pour appliquer cette transformation.",
-      "nameLabel": "Nommez votre raccourci de transformation",
+      "createSubtitle": "Configurez un raccourci clavier pour appliquer ce prompt.",
+      "nameLabel": "Nommez votre raccourci de prompt",
       "namePlaceholder": "Mode patron",
       "customizePrompt": "Personnaliser le prompt",
-      "promptPlaceholder": "Comment cette transformation doit-elle modifier votre texte ?"
+      "promptPlaceholder": "Comment ce prompt doit-il modifier votre texte ?"
     }
   }
 }
