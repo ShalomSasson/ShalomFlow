@@ -1778,6 +1778,44 @@ fn prompt_engineer_template() -> String {
     .join("\n\n")
 }
 
+/// The exact name and base prompt each built-in transform shipped with
+/// before the "Template" rename and prompt-form rewrite. Retained only so an
+/// untouched built-in can be upgraded safely at load time (same pattern as
+/// the legacy post-process prompt below); any other text is a user edit and
+/// is never overwritten.
+fn legacy_transform_shipped(id: &str) -> Option<(&'static str, String)> {
+    match id {
+        "polish" => Some((
+            "Polish",
+            "You rewrite the user's text so it reads better, while keeping their meaning \
+             and their voice. Apply the rules below."
+                .to_string(),
+        )),
+        "prompt_engineer" => Some((
+            "Prompt Engineer",
+            format!(
+                "Convert the user's rough, spoken notes into a single well-structured AI prompt. \
+                 Fill in only the sections the notes actually support; omit a section entirely \
+                 rather than inventing content for it. Use exactly this shape:\n\n{}",
+                prompt_engineer_template()
+            ),
+        )),
+        "goal" => Some((
+            "Goal",
+            format!(
+                "Convert the user's rough, spoken notes into a single well-structured goal \
+                 definition. Fill in only the sections the notes actually support; omit a \
+                 section entirely rather than inventing content for it. Never add commitments, \
+                 dates, or numbers that were not in the notes. Preserve the user's certainty \
+                 level — a \"maybe\" stays a maybe. Write the content in the same language as \
+                 the input; keep the section headers as they are. Use exactly this shape:\n\n{}",
+                goal_template()
+            ),
+        )),
+        _ => None,
+    }
+}
+
 /// The Goal output template.
 fn goal_template() -> String {
     [
@@ -1798,12 +1836,15 @@ pub fn default_transforms() -> Vec<Transform> {
     vec![
         Transform {
             id: "polish".to_string(),
-            name: "Polish".to_string(),
+            name: "Polish Template".to_string(),
             description: "Improve clarity and conciseness".to_string(),
             detail_description: "Polish rewrites your text to sound clearer, in your voice."
                 .to_string(),
-            prompt: "You rewrite the user's text so it reads better, while keeping their meaning \
-                     and their voice. Apply the rules below."
+            prompt: "Goal: rewrite the user's text so it reads clearly and naturally while \
+                     preserving exactly what they meant and how they sound.\n\nYou are a careful \
+                     editor. Rewrite the text according to the rules below. Improve only the \
+                     wording — never the meaning: keep every fact, question, request, and hedge, \
+                     and keep the author's voice and register."
                 .to_string(),
             rules: polish_rules(),
             custom_instructions: String::new(),
@@ -1819,15 +1860,18 @@ pub fn default_transforms() -> Vec<Transform> {
         },
         Transform {
             id: "prompt_engineer".to_string(),
-            name: "Prompt Engineer".to_string(),
+            name: "Prompt Engineer Template".to_string(),
             description: "Turn messy thoughts into a clean, optimized AI prompt".to_string(),
             detail_description: "Prompt Engineer takes messy, spoken, unstructured thoughts and \
                                  converts them into a clean, optimized AI prompt."
                 .to_string(),
             prompt: format!(
-                "Convert the user's rough, spoken notes into a single well-structured AI prompt. \
-                 Fill in only the sections the notes actually support; omit a section entirely \
-                 rather than inventing content for it. Use exactly this shape:\n\n{}",
+                "Goal: convert the user's rough, spoken notes into one clean, well-structured AI \
+                 prompt that is ready to paste into any AI assistant.\n\nYou are an expert prompt \
+                 engineer. Restructure the user's notes into the template below. Fill in only the \
+                 sections the notes actually support — omit a section entirely rather than \
+                 inventing content for it. Preserve the user's intent, constraints, and examples \
+                 exactly. Use exactly this shape:\n\n{}",
                 prompt_engineer_template()
             ),
             rules: Vec::new(),
@@ -1841,18 +1885,20 @@ pub fn default_transforms() -> Vec<Transform> {
         },
         Transform {
             id: "goal".to_string(),
-            name: "Goal".to_string(),
+            name: "Goal Template".to_string(),
             description: "Turn rough thoughts into a structured goal".to_string(),
             detail_description: "Goal converts rough, spoken notes about something you want to \
                                  achieve into a structured, actionable goal definition."
                 .to_string(),
             prompt: format!(
-                "Convert the user's rough, spoken notes into a single well-structured goal \
-                 definition. Fill in only the sections the notes actually support; omit a \
-                 section entirely rather than inventing content for it. Never add commitments, \
-                 dates, or numbers that were not in the notes. Preserve the user's certainty \
-                 level — a \"maybe\" stays a maybe. Write the content in the same language as \
-                 the input; keep the section headers as they are. Use exactly this shape:\n\n{}",
+                "Goal: turn the user's rough, spoken notes into a structured, actionable goal \
+                 definition they can execute against.\n\nYou are a planning assistant. \
+                 Restructure the user's notes into the template below. Fill in only the sections \
+                 the notes actually support — omit a section entirely rather than inventing \
+                 content for it. Never add commitments, dates, or numbers that were not in the \
+                 notes. Preserve the user's certainty level — a \"maybe\" stays a maybe. Write \
+                 the content in the same language as the input; keep the section headers as they \
+                 are. Use exactly this shape:\n\n{}",
                 goal_template()
             ),
             rules: Vec::new(),
@@ -3553,6 +3599,36 @@ pub fn load_or_create_app_settings(app: &AppHandle) -> AppSettings {
                 debug!("Adding missing built-in transform: {}", transform.id);
                 settings.transforms.push(transform);
                 updated = true;
+            }
+        }
+
+        // Upgrade built-in transform names/prompts the user never touched:
+        // a stored value that still exactly matches what an older release
+        // shipped is safe to move to the current wording; anything else is a
+        // user edit and is left alone. Rules, custom instructions, and
+        // shortcuts are never rewritten here.
+        for default_transform in default_transforms() {
+            let Some((legacy_name, legacy_prompt)) =
+                legacy_transform_shipped(&default_transform.id)
+            else {
+                continue;
+            };
+            if let Some(existing) = settings
+                .transforms
+                .iter_mut()
+                .find(|t| t.builtin && t.id == default_transform.id)
+            {
+                if existing.name == legacy_name && existing.name != default_transform.name {
+                    debug!("Upgrading built-in transform name: {}", existing.id);
+                    existing.name = default_transform.name.clone();
+                    updated = true;
+                }
+                if existing.prompt == legacy_prompt && existing.prompt != default_transform.prompt
+                {
+                    debug!("Upgrading built-in transform prompt: {}", existing.id);
+                    existing.prompt = default_transform.prompt.clone();
+                    updated = true;
+                }
             }
         }
 
