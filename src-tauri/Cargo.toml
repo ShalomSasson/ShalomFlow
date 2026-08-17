@@ -119,6 +119,8 @@ windows = { version = "0.61.3", features = [
   # is killed on crash/force-kill (orphan-process cleanup, see local_llm.rs).
   "Win32_System_JobObjects",
   "Win32_Security",
+  # QueryFullProcessImageNameW: foreground app name for the Insights page.
+  "Win32_System_Threading",
 ] }
 winreg = "0.55"
 
@@ -158,6 +160,12 @@ transcribe-cpp = { version = "0.1.2", default-features = false }
 # be turned back off for one architecture.
 [target.'cfg(target_os = "macos")'.dependencies]
 tauri-nspanel = { git = "https://github.com/ahkohd/tauri-nspanel", branch = "v2.1" }
+# NSWorkspace.frontmostApplication: which app a dictation lands in (Insights
+# page). Already in the tree via tauri/tao — this only makes it direct.
+objc2-app-kit = { version = "0.3.2", features = [
+  "NSWorkspace",
+  "NSRunningApplication",
+] }
 # Secure API-key storage via the macOS Keychain. `apple-native` uses the
 # system Security framework (no extra C/system build dependency).
 keyring = { version = "3", features = ["apple-native"] }

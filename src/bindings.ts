@@ -1210,6 +1210,17 @@ async getUsageStats() : Promise<Result<UsageStats, string>> {
     else return { status: "error", error: e  as any };
 }
 },
+/**
+ * Everything the Insights page shows, in one call.
+ */
+async getInsightsStats() : Promise<Result<InsightsStats, string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("get_insights_stats") };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
 async getHistoryEntries(cursor: number | null, limit: number | null) : Promise<Result<PaginatedHistory, string>> {
     try {
     return { status: "ok", data: await TAURI_INVOKE("get_history_entries", { cursor, limit }) };
@@ -2798,6 +2809,58 @@ export type ImplementationChangeResult = { success: boolean;
  * List of binding IDs that were reset to defaults due to incompatibility
  */
 reset_bindings: string[] }
+/**
+ * Dictations grouped by the application they were pasted into.
+ * `name` is '' for dictations whose target app is unknown (Linux, or rows
+ * recorded before app tracking existed) — the frontend labels those "Other".
+ */
+export type InsightsAppUsage = { name: string; count: number;
+/**
+ * Share of all dictations, 0...100.
+ */
+percent: number }
+/**
+ * One calendar day's dictation activity, for the streak heatmap tooltip.
+ */
+export type InsightsDay = {
+/**
+ * Local-timezone YYYY-MM-DD.
+ */
+day: string; dictations: number; words: number;
+/**
+ * Distinct named target apps that day.
+ */
+apps: number;
+/**
+ * Most-used named target app that day, None when none was recorded.
+ */
+top_app: string | null }
+/**
+ * Everything the Insights page shows. Computed from the pruning-proof
+ * aggregates (usage_stats + daily_usage), never from the history rows.
+ */
+export type InsightsStats = { average_wpm: number; total_words: number; words_this_month: number;
+/**
+ * Words this month vs the previous month, as a percent change;
+ * None when the previous month had no dictations.
+ */
+month_change_percent: number | null;
+/**
+ * Dictations where AI cleanup changed the raw transcript.
+ */
+cleaned_transcripts: number;
+/**
+ * Words in the cleaned texts that do not appear in their raw transcripts.
+ */
+words_changed: number; app_usage: InsightsAppUsage[];
+/**
+ * Distinct named target apps.
+ */
+total_apps: number; day_streak: number; longest_streak: number;
+/**
+ * Recent per-day activity for the heatmap (oldest first).
+ */
+daily: InsightsDay[] }
 export type KeyboardImplementation = "tauri" | "handy_keys"
 export type LLMPrompt = { id: string; name: string; prompt: string }
 export type LocalLlmStatus = { 

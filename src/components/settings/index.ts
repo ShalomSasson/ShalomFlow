@@ -2,6 +2,7 @@
 export { GeneralSettings } from "./general/GeneralSettings";
 export { DebugSettings } from "./debug/DebugSettings";
 export { HistorySettings } from "./history/HistorySettings";
+export { InsightsSettings } from "./insights/InsightsSettings";
 export { AboutSettings } from "./about/AboutSettings";
 export { ModelsSettings } from "./models/ModelsSettings";
 export { DictationSettings } from "./dictation/DictationSettings";

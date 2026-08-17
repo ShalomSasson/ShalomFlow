@@ -135,3 +135,61 @@ pub fn is_kde_plasma() -> bool {
 pub fn is_kde_wayland() -> bool {
     is_wayland() && is_kde_plasma()
 }
+
+/// Name of the application currently in the foreground — the app a dictation
+/// is about to be pasted into (Insights → App usage). Needs no extra
+/// permissions; NSWorkspace is documented thread-safe.
+#[cfg(target_os = "macos")]
+pub fn frontmost_app_name() -> Option<String> {
+    use objc2_app_kit::NSWorkspace;
+    let workspace = NSWorkspace::sharedWorkspace();
+    let app = workspace.frontmostApplication()?;
+    app.localizedName().map(|name| name.to_string())
+}
+
+/// Name of the application currently in the foreground — the app a dictation
+/// is about to be pasted into (Insights → App usage). The foreground
+/// window's executable name, without the `.exe` extension.
+#[cfg(target_os = "windows")]
+pub fn frontmost_app_name() -> Option<String> {
+    use windows::core::PWSTR;
+    use windows::Win32::Foundation::CloseHandle;
+    use windows::Win32::System::Threading::{
+        OpenProcess, QueryFullProcessImageNameW, PROCESS_NAME_WIN32,
+        PROCESS_QUERY_LIMITED_INFORMATION,
+    };
+    use windows::Win32::UI::WindowsAndMessaging::{GetForegroundWindow, GetWindowThreadProcessId};
+
+    unsafe {
+        let hwnd = GetForegroundWindow();
+        if hwnd.is_invalid() {
+            return None;
+        }
+        let mut pid = 0u32;
+        GetWindowThreadProcessId(hwnd, Some(&mut pid));
+        if pid == 0 {
+            return None;
+        }
+        let handle = OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, false, pid).ok()?;
+        let mut buffer = [0u16; 1024];
+        let mut length = buffer.len() as u32;
+        let result = QueryFullProcessImageNameW(
+            handle,
+            PROCESS_NAME_WIN32,
+            PWSTR(buffer.as_mut_ptr()),
+            &mut length,
+        );
+        let _ = CloseHandle(handle);
+        result.ok()?;
+        let path = String::from_utf16_lossy(&buffer[..length as usize]);
+        let name = std::path::Path::new(&path).file_stem()?.to_str()?;
+        (!name.is_empty()).then(|| name.to_string())
+    }
+}
+
+/// No portable frontmost-window API on Linux (Wayland forbids it); these
+/// dictations group under "Other" in the Insights app-usage card.
+#[cfg(target_os = "linux")]
+pub fn frontmost_app_name() -> Option<String> {
+    None
+}

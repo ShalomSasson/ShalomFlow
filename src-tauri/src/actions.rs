@@ -1162,7 +1162,14 @@ impl ShortcutAction for TranscribeAction {
                                     / i64::from(
                                         crate::audio_toolkit::constants::WHISPER_SAMPLE_RATE,
                                     );
-                                if let Err(err) = hm.record_usage(words, speech_ms) {
+                                // The app the dictation lands in (Insights →
+                                // App usage). Captured here, right before the
+                                // transcript is delivered; None on platforms
+                                // without a frontmost-app API.
+                                let target_app = crate::utils::frontmost_app_name();
+                                if let Err(err) =
+                                    hm.record_usage(words, speech_ms, target_app.as_deref())
+                                {
                                     warn!("Failed to record usage stats: {err}");
                                 }
                             }
@@ -1373,6 +1380,21 @@ impl ShortcutAction for TranscribeAction {
                             let processed =
                                 process_transcription_output(&ah, &transcription, post_process)
                                     .await;
+
+                            // Insights: count transcripts the AI cleanup
+                            // actually changed (lifetime counters — the
+                            // history rows below are pruned by retention).
+                            if let Some(cleaned) = processed.post_processed_text.as_deref() {
+                                if cleaned != transcription {
+                                    let changed = crate::managers::history::changed_word_count(
+                                        &transcription,
+                                        cleaned,
+                                    ) as i64;
+                                    if let Err(err) = hm.record_ai_fix(changed) {
+                                        warn!("Failed to record AI fix stats: {err}");
+                                    }
+                                }
+                            }
 
                             // Save to history if WAV was saved
                             if wav_saved {

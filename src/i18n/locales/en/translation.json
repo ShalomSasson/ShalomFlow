@@ -26,6 +26,8 @@
     "dictation": "Dictation",
     "assistant": "Assistant",
     "history": "History",
+    "insights": "Insights",
+    "settings": "Settings",
     "about": "About",
     "debug": "Debug",
     "characters": "Profiles",
@@ -46,6 +48,7 @@
     "dictation": "The model that turns your voice into text, and how it's cleaned up.",
     "assistant": "Set up the assistant, then tune its voice, screen vision, and web search.",
     "history": "Your recent dictations, Flow generations, and assistant chats, stored on this device.",
+    "insights": "Your dictation habits — speed, volume, streaks, and where you dictate. Computed on this device.",
     "about": "Version, app language, data locations, and credits.",
     "debug": "Diagnostics and developer tools.",
     "styles": "How your dictated text is formatted in each kind of app."
@@ -451,7 +454,7 @@
       "polishDictation": {
         "label": "Polish dictation",
         "description": "Rewrite every dictation with the Polish Template prompt before pasting.",
-        "info": "Independent of the Prompts opt-in, which only gates the selection shortcuts. Uses the Polish Template exactly as configured on the Prompts page (goals, custom instructions, and your writing examples) and the same AI provider. Skipped when a dictation already used AI Correction, so text is never rewritten twice; if the rewrite fails, the raw transcript is pasted unchanged."
+        "info": "Independent of the Prompts opt-in, which only gates the selection shortcuts. Uses the Polish Template exactly as configured on the Prompts page (goals, custom instructions, and your writing examples) and the same AI provider. While enabled, Polish is the only prompt applied to dictation — the AI-Correction shortcut also uses it instead of the selected cleanup prompt, so text is never rewritten twice; if the rewrite fails, the raw transcript is pasted unchanged."
       }
     },
     "models": {
@@ -967,7 +970,33 @@
         "totalWords": "total words",
         "wpm": "wpm",
         "dayStreak": "day streak"
+      },
+      "search": {
+        "placeholder": "Search history…",
+        "noResults": "No entries match your search."
       }
+    },
+    "insights": {
+      "wpmCaption": "Words per minute",
+      "wpmTarget": "of ~{{target}}",
+      "fixesCaption": "Fixes made by AI",
+      "transcriptsCleaned": "{{value}} transcripts cleaned",
+      "wordsChanged": "{{value}} words changed",
+      "totalWordsCaption": "Total words dictated",
+      "monthChange": "{{value}}% this month",
+      "wordsThisMonth": "{{value}} words this month",
+      "appUsage": "App usage",
+      "totalApps": "Total apps | {{value}}",
+      "otherApp": "Other",
+      "dayStreak": "{{value}} day streak",
+      "longestStreak": "Longest streak | {{value}} days",
+      "more": "More",
+      "less": "Less",
+      "empty": "No dictations yet.",
+      "tooltipDictations": "Dictations",
+      "tooltipWords": "Total words",
+      "tooltipApps": "Total apps used",
+      "tooltipTopApp": "Top app"
     },
     "debug": {
       "title": "Debug",
