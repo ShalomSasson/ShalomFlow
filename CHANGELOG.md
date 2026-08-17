@@ -8,6 +8,12 @@ individually.
 
 ## [Unreleased]
 
+- feat(history): search the feed and group it by day (fba817d)
+- feat(prompts): retune the Polish template for dictation accuracy (47dcbdd)
+- fix(transforms): isolate the selection from tooling-injected context (b03bc17)
+- feat(dictation): make Polish the only prompt applied to dictation (27bd612)
+- feat(ui): lead with Insights and group the settings sections (649d17d)
+- feat(insights): usage analytics computed from on-device aggregates (e46a6a4)
 - feat(history): lifetime usage stats card; rename Transforms to Prompts in the UI (25a7663)
 - feat(transforms): port the reference Polish prompt and output sanitizer (26ab22e)
 - feat(transforms): record executions in History; treat the selection as data (e40c530)
