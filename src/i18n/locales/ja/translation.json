@@ -967,6 +967,10 @@
         "totalWords": "合計単語数",
         "wpm": "語/分",
         "dayStreak": "日連続"
+      },
+      "search": {
+        "placeholder": "履歴を検索…",
+        "noResults": "検索に一致する項目はありません。"
       }
     },
     "debug": {

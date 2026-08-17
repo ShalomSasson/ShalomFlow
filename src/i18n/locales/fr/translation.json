@@ -967,6 +967,10 @@
         "totalWords": "mots au total",
         "wpm": "mots/min",
         "dayStreak": "jours d'affilée"
+      },
+      "search": {
+        "placeholder": "Rechercher dans l'historique…",
+        "noResults": "Aucune entrée ne correspond à votre recherche."
       }
     },
     "debug": {

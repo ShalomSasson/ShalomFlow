@@ -20,6 +20,7 @@ import {
   MessageSquarePlus,
   Mic,
   RotateCcw,
+  Search,
   Sparkles,
   Star,
   Trash2,
@@ -69,6 +70,51 @@ const isTransformHistoryEntry = (entry: HistoryEntry): boolean =>
 
 const transformEntryName = (entry: HistoryEntry): string =>
   entry.post_process_prompt?.slice(TRANSFORM_HISTORY_PREFIX.length) ?? "";
+
+/** Wrap every occurrence of `query` (case-insensitive) in a highlight mark. */
+const highlightMatches = (text: string, query: string): React.ReactNode => {
+  const q = query.trim();
+  if (!q) return text;
+  const lower = text.toLowerCase();
+  const needle = q.toLowerCase();
+  const parts: React.ReactNode[] = [];
+  let pos = 0;
+  let idx = lower.indexOf(needle, pos);
+  while (idx !== -1) {
+    if (idx > pos) parts.push(text.slice(pos, idx));
+    parts.push(
+      <mark
+        key={`${idx}`}
+        className="rounded-sm bg-accent/25 px-0.5 text-inherit"
+      >
+        {text.slice(idx, idx + q.length)}
+      </mark>,
+    );
+    pos = idx + q.length;
+    idx = lower.indexOf(needle, pos);
+  }
+  if (pos < text.length) parts.push(text.slice(pos));
+  return parts;
+};
+
+/** Day header for the feed ("14 August 2026" style, day first). */
+const formatDayHeader = (tsSeconds: number, locale: string): string => {
+  const date = new Date(tsSeconds * 1000);
+  const month = date.toLocaleDateString(locale, { month: "long" });
+  return `${date.getDate()} ${month} ${date.getFullYear()}`;
+};
+
+/** Local YYYY-MM-DD bucket key for grouping the feed by day. */
+const dayKeyOf = (tsSeconds: number): string =>
+  localDayString(new Date(tsSeconds * 1000));
+
+/** Gutter time ("16:55") shown at the start of each feed row. */
+const formatEntryTime = (tsSeconds: number, locale: string): string =>
+  new Date(tsSeconds * 1000).toLocaleTimeString(locale, {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
 
 /** Compact stat numeral: 55432 -> "55.4K", 1200000 -> "1.2M". */
 const formatStatNumber = (value: number): string => {
@@ -331,13 +377,14 @@ type FeedItem =
 type HistoryFilter = "all" | "recordings" | "flow" | "transforms" | "assistant";
 
 export const HistorySettings: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const osType = useOsType();
   const { getSetting } = useSettings();
   const [entries, setEntries] = useState<HistoryEntry[]>([]);
   const [usageStats, setUsageStats] = useState<UsageStats | null>(null);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<HistoryFilter>("all");
+  const [searchQuery, setSearchQuery] = useState("");
 
   // Lifetime stats card — refreshed whenever the feed changes so a fresh
   // dictation bumps the numbers without reopening the page.
@@ -644,32 +691,55 @@ export const HistorySettings: React.FC = () => {
     return items;
   }, [entries, assistantSessions]);
 
-  const filteredFeed = useMemo(
-    () =>
-      feed.filter((item) => {
-        if (filter === "recordings") {
-          return (
-            item.kind === "transcription" &&
-            !isFlowHistoryEntry(item.entry) &&
-            !isTransformHistoryEntry(item.entry)
-          );
-        }
-        if (filter === "flow") {
-          return (
-            item.kind === "transcription" && isFlowHistoryEntry(item.entry)
-          );
-        }
-        if (filter === "transforms") {
-          return (
-            item.kind === "transcription" &&
-            isTransformHistoryEntry(item.entry)
-          );
-        }
-        if (filter === "assistant") return item.kind === "assistant";
-        return true;
-      }),
-    [feed, filter],
-  );
+  const filteredFeed = useMemo(() => {
+    const byTab = feed.filter((item) => {
+      if (filter === "recordings") {
+        return (
+          item.kind === "transcription" &&
+          !isFlowHistoryEntry(item.entry) &&
+          !isTransformHistoryEntry(item.entry)
+        );
+      }
+      if (filter === "flow") {
+        return item.kind === "transcription" && isFlowHistoryEntry(item.entry);
+      }
+      if (filter === "transforms") {
+        return (
+          item.kind === "transcription" && isTransformHistoryEntry(item.entry)
+        );
+      }
+      if (filter === "assistant") return item.kind === "assistant";
+      return true;
+    });
+    const query = searchQuery.trim().toLowerCase();
+    if (!query) return byTab;
+    return byTab.filter((item) =>
+      item.kind === "transcription"
+        ? item.entry.transcription_text.toLowerCase().includes(query) ||
+          (item.entry.post_processed_text ?? "")
+            .toLowerCase()
+            .includes(query)
+        : item.session.title.toLowerCase().includes(query) ||
+          item.session.messages.some((message) =>
+            message.content.toLowerCase().includes(query),
+          ),
+    );
+  }, [feed, filter, searchQuery]);
+
+  /** Feed grouped into day sections (feed is already sorted newest-first). */
+  const groupedFeed = useMemo(() => {
+    const groups: { day: string; headerTime: number; items: FeedItem[] }[] = [];
+    for (const item of filteredFeed) {
+      const day = dayKeyOf(item.sortTime);
+      const last = groups[groups.length - 1];
+      if (last && last.day === day) {
+        last.items.push(item);
+      } else {
+        groups.push({ day, headerTime: item.sortTime, items: [item] });
+      }
+    }
+    return groups;
+  }, [filteredFeed]);
 
   let content: React.ReactNode;
 
@@ -680,8 +750,9 @@ export const HistorySettings: React.FC = () => {
       </div>
     );
   } else if (filteredFeed.length === 0) {
-    const emptyKey =
-      filter === "recordings"
+    const emptyKey = searchQuery.trim()
+      ? "settings.history.search.noResults"
+      : filter === "recordings"
         ? "settings.history.emptyRecordings"
         : filter === "flow"
           ? "settings.history.emptyFlow"
@@ -689,44 +760,73 @@ export const HistorySettings: React.FC = () => {
             ? "settings.history.emptyAssistant"
             : "settings.history.empty";
     content = (
-      <div className="px-4 py-8 text-center text-sm text-muted">
+      <div className="rounded-xl border border-hairline bg-surface px-4 py-8 text-center text-sm text-muted">
         {t(emptyKey)}
       </div>
     );
   } else {
     content = (
       <>
-        <div className="divide-y divide-hairline">
-          {filteredFeed.map((item) =>
-            item.kind === "transcription" ? (
-              <HistoryEntryComponent
-                key={`t-${item.entry.id}`}
-                entry={item.entry}
-                onToggleSaved={() => toggleSaved(item.entry.id)}
-                onCopyText={() =>
-                  copyToClipboard(
-                    item.entry.post_processed_text?.trim()
-                      ? item.entry.post_processed_text
-                      : item.entry.transcription_text,
-                  )
-                }
-                getAudioUrl={getAudioUrl}
-                deleteAudio={deleteAudioEntry}
-                retryTranscription={retryHistoryEntry}
-              />
-            ) : (
-              <AssistantHistoryEntryComponent
-                key={`a-${item.session.id}`}
-                session={item.session}
-                expanded={expandedAssistant.has(item.session.id)}
-                onToggleExpand={() => toggleExpandAssistant(item.session.id)}
-                onCopyConversation={() => copyConversation(item.session)}
-                onDelete={() => deleteAssistantSession(item.session.id)}
-                onResume={() => void resumeAssistantSession(item.session.id)}
-              />
-            ),
-          )}
-        </div>
+        {/* One section per day: a quiet uppercase date header, then that
+            day's entries in a card. Each row gets a time gutter on the
+            left; the entry itself keeps its existing content and takes the
+            remaining ~90% of the width. */}
+        {groupedFeed.map((group) => (
+          <div key={group.day} className="space-y-2">
+            <div className="px-1 text-xs font-semibold uppercase tracking-wider text-muted">
+              {formatDayHeader(group.headerTime, i18n.language)}
+            </div>
+            <div className="divide-y divide-hairline rounded-xl border border-hairline bg-surface overflow-visible">
+              {group.items.map((item) => (
+                <div
+                  key={
+                    item.kind === "transcription"
+                      ? `t-${item.entry.id}`
+                      : `a-${item.session.id}`
+                  }
+                  className="flex"
+                >
+                  <div className="w-[10%] min-w-[56px] shrink-0 px-3 pt-4 text-[13px] tabular-nums text-muted">
+                    {formatEntryTime(item.sortTime, i18n.language)}
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    {item.kind === "transcription" ? (
+                      <HistoryEntryComponent
+                        entry={item.entry}
+                        highlightQuery={searchQuery}
+                        onToggleSaved={() => toggleSaved(item.entry.id)}
+                        onCopyText={() =>
+                          copyToClipboard(
+                            item.entry.post_processed_text?.trim()
+                              ? item.entry.post_processed_text
+                              : item.entry.transcription_text,
+                          )
+                        }
+                        getAudioUrl={getAudioUrl}
+                        deleteAudio={deleteAudioEntry}
+                        retryTranscription={retryHistoryEntry}
+                      />
+                    ) : (
+                      <AssistantHistoryEntryComponent
+                        session={item.session}
+                        highlightQuery={searchQuery}
+                        expanded={expandedAssistant.has(item.session.id)}
+                        onToggleExpand={() =>
+                          toggleExpandAssistant(item.session.id)
+                        }
+                        onCopyConversation={() => copyConversation(item.session)}
+                        onDelete={() => deleteAssistantSession(item.session.id)}
+                        onResume={() =>
+                          void resumeAssistantSession(item.session.id)
+                        }
+                      />
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
         {/* Pagination belongs to recordings; assistant sessions are loaded in one page. */}
         {filter !== "assistant" && <div ref={sentinelRef} className="h-1" />}
       </>
@@ -795,14 +895,29 @@ export const HistorySettings: React.FC = () => {
               </button>
             ))}
           </div>
-          <OpenRecordingsButton
-            onClick={openRecordingsFolder}
-            label={t("settings.history.openFolder")}
-          />
+          <div className="flex items-center gap-2">
+            <div className="relative">
+              <Search
+                width={13}
+                height={13}
+                className="pointer-events-none absolute start-2.5 top-1/2 -translate-y-1/2 text-muted-soft"
+              />
+              <input
+                type="search"
+                value={searchQuery}
+                onChange={(event) => setSearchQuery(event.target.value)}
+                placeholder={t("settings.history.search.placeholder")}
+                className="h-8 w-44 rounded-lg border border-hairline bg-surface pe-2 ps-8 text-[13px] text-ink placeholder:text-muted-soft focus:border-accent focus:outline-none"
+              />
+            </div>
+            <OpenRecordingsButton
+              onClick={openRecordingsFolder}
+              label={t("settings.history.openFolder")}
+            />
+          </div>
         </div>
-        <div className="bg-surface border border-hairline rounded-xl overflow-visible">
-          {content}
-        </div>
+        {/* Day sections carry their own cards; this is just vertical rhythm. */}
+        <div className="space-y-6">{content}</div>
       </div>
     </div>
   );
@@ -810,6 +925,8 @@ export const HistorySettings: React.FC = () => {
 
 interface HistoryEntryProps {
   entry: HistoryEntry;
+  /** Active search text — occurrences are highlighted in the entry body. */
+  highlightQuery?: string;
   onToggleSaved: () => void;
   onCopyText: () => void;
   getAudioUrl: (fileName: string) => Promise<string | null>;
@@ -819,6 +936,7 @@ interface HistoryEntryProps {
 
 const HistoryEntryComponent: React.FC<HistoryEntryProps> = ({
   entry,
+  highlightQuery = "",
   onToggleSaved,
   onCopyText,
   getAudioUrl,
@@ -925,7 +1043,7 @@ const HistoryEntryComponent: React.FC<HistoryEntryProps> = ({
           {retrying
             ? t("settings.history.transcribing")
             : hasTranscription
-              ? entry.transcription_text
+              ? highlightMatches(entry.transcription_text, highlightQuery)
               : t("settings.history.transcriptionFailed")}
         </p>
 
@@ -942,7 +1060,7 @@ const HistoryEntryComponent: React.FC<HistoryEntryProps> = ({
               )}
             </div>
             <p className="select-text whitespace-pre-wrap break-words text-[13px] leading-relaxed text-ink">
-              {secondaryText}
+              {highlightMatches(secondaryText, highlightQuery)}
             </p>
           </div>
         ) : flowEntry ? (
@@ -1048,6 +1166,8 @@ const HistoryEntryComponent: React.FC<HistoryEntryProps> = ({
 
 interface AssistantHistoryEntryProps {
   session: AssistantHistoryEntry;
+  /** Active search text — occurrences are highlighted in title and messages. */
+  highlightQuery?: string;
   expanded: boolean;
   onToggleExpand: () => void;
   onCopyConversation: () => void;
@@ -1063,6 +1183,7 @@ interface AssistantHistoryEntryProps {
  */
 const AssistantHistoryEntryComponent: React.FC<AssistantHistoryEntryProps> = ({
   session,
+  highlightQuery = "",
   expanded,
   onToggleExpand,
   onCopyConversation,
@@ -1116,7 +1237,7 @@ const AssistantHistoryEntryComponent: React.FC<AssistantHistoryEntryProps> = ({
             expanded ? "" : "line-clamp-2"
           }`}
         >
-          {session.title}
+          {highlightMatches(session.title, highlightQuery)}
         </span>
       </button>
 
@@ -1187,8 +1308,10 @@ const AssistantHistoryEntryComponent: React.FC<AssistantHistoryEntryProps> = ({
                   }
                 >
                   {isUser ? (
-                    text
+                    highlightMatches(text, highlightQuery)
                   ) : (
+                    /* Markdown bodies can't take highlight nodes — the match
+                       still counts for filtering, it just isn't marked here. */
                     <ReactMarkdown components={assistantMarkdown}>
                       {text}
                     </ReactMarkdown>

@@ -967,6 +967,10 @@
         "totalWords": "總字數",
         "wpm": "字/分鐘",
         "dayStreak": "天連續"
+      },
+      "search": {
+        "placeholder": "搜尋歷史記錄…",
+        "noResults": "沒有與搜尋相符的項目。"
       }
     },
     "debug": {

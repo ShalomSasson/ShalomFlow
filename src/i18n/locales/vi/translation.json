@@ -967,6 +967,10 @@
         "totalWords": "tổng số từ",
         "wpm": "từ/phút",
         "dayStreak": "ngày liên tiếp"
+      },
+      "search": {
+        "placeholder": "Tìm trong lịch sử…",
+        "noResults": "Không có mục nào khớp với tìm kiếm."
       }
     },
     "debug": {

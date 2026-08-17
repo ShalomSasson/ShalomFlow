@@ -967,6 +967,10 @@
         "totalWords": "ord totalt",
         "wpm": "ord/min",
         "dayStreak": "dagar i rad"
+      },
+      "search": {
+        "placeholder": "Sök i historiken…",
+        "noResults": "Inga poster matchar din sökning."
       }
     },
     "debug": {

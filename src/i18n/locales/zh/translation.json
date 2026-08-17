@@ -967,6 +967,10 @@
         "totalWords": "总字数",
         "wpm": "字/分钟",
         "dayStreak": "天连续"
+      },
+      "search": {
+        "placeholder": "搜索历史记录…",
+        "noResults": "没有与搜索匹配的条目。"
       }
     },
     "debug": {

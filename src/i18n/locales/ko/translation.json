@@ -967,6 +967,10 @@
         "totalWords": "총 단어 수",
         "wpm": "분당 단어",
         "dayStreak": "일 연속"
+      },
+      "search": {
+        "placeholder": "기록 검색…",
+        "noResults": "검색과 일치하는 항목이 없습니다."
       }
     },
     "debug": {

@@ -967,6 +967,10 @@
         "totalWords": "slov celkem",
         "wpm": "slov/min",
         "dayStreak": "dní v řadě"
+      },
+      "search": {
+        "placeholder": "Hledat v historii…",
+        "noResults": "Hledání neodpovídají žádné záznamy."
       }
     },
     "debug": {

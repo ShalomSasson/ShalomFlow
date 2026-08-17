@@ -967,6 +967,10 @@
         "totalWords": "toplam kelime",
         "wpm": "kelime/dk",
         "dayStreak": "günlük seri"
+      },
+      "search": {
+        "placeholder": "Geçmişte ara…",
+        "noResults": "Aramanızla eşleşen kayıt yok."
       }
     },
     "debug": {

@@ -967,6 +967,10 @@
         "totalWords": "palavras no total",
         "wpm": "ppm",
         "dayStreak": "dias seguidos"
+      },
+      "search": {
+        "placeholder": "Pesquisar no histórico…",
+        "noResults": "Nenhuma entrada corresponde à sua pesquisa."
       }
     },
     "debug": {

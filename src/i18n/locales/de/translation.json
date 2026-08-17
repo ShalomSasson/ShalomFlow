@@ -967,6 +967,10 @@
         "totalWords": "Wörter insgesamt",
         "wpm": "WpM",
         "dayStreak": "Tage in Folge"
+      },
+      "search": {
+        "placeholder": "Verlauf durchsuchen…",
+        "noResults": "Keine Einträge entsprechen deiner Suche."
       }
     },
     "debug": {

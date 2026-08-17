@@ -967,6 +967,10 @@
         "totalWords": "parole totali",
         "wpm": "parole/min",
         "dayStreak": "giorni di fila"
+      },
+      "search": {
+        "placeholder": "Cerca nella cronologia…",
+        "noResults": "Nessuna voce corrisponde alla ricerca."
       }
     },
     "debug": {
