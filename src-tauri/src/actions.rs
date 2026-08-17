@@ -750,7 +750,10 @@ pub(crate) async fn process_transcription_output(
         final_text = converted_text;
     }
 
-    if uses_ai_cleanup(post_process) {
+    // Polish dictation owns the rewrite while it is enabled: every dictation
+    // — including the AI-Correction binding — uses the Polish prompt and no
+    // other prompt runs (see the Polish block below).
+    if uses_ai_cleanup(post_process) && !settings.polish_after_dictation {
         let started = Instant::now();
         let timeout = Duration::from_secs(settings.post_process_timeout_secs.max(1) as u64);
         let deadline = TokioInstant::now() + timeout;
@@ -810,11 +813,12 @@ pub(crate) async fn process_transcription_output(
     }
 
     // === Polish after dictation ===========================================
-    // Independent of the Transforms opt-in, and skipped when AI Correction
-    // already rewrote this dictation (one rewrite pass, never two). Runs
-    // before spoken emojis and text replacements so those deterministic
-    // fix-ups keep final authority, exactly like AI cleanup above.
-    if !uses_ai_cleanup(post_process) && settings.polish_after_dictation {
+    // Independent of the Transforms opt-in. While enabled, Polish is the ONLY
+    // rewrite for every dictation: the AI-Correction pass above is skipped
+    // even on its own binding, so no other prompt can touch the transcript
+    // (still one rewrite pass, never two). Runs before spoken emojis and text
+    // replacements so those deterministic fix-ups keep final authority.
+    if settings.polish_after_dictation {
         let started = Instant::now();
         match crate::transforms::polish_transcript(&settings, &final_text).await {
             Some(polished) => {
