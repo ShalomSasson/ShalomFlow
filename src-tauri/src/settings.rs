@@ -1718,33 +1718,48 @@ fn default_post_process_providers() -> Vec<PostProcessProvider> {
 }
 
 fn polish_rules() -> Vec<TransformRule> {
-    // Instruction wordings ported verbatim from the reference implementation
-    // (Sha.My.Whisper TransformPromptBuilder.polishInstruction).
+    // Polish is the dictation-accuracy pass (it auto-runs on every dictation
+    // when "Polish dictation" is on), so its goals prioritize transcription
+    // fidelity over style. Wordings adapted from the app's own
+    // IMPROVE_TRANSCRIPTIONS_PROMPT, the most-iterated cleanup text we ship.
     let rules = [
         (
-            "concise",
-            "Make more concise",
-            "Make it concise: remove filler and redundancy.",
+            "fillers",
+            "Remove fillers & false starts",
+            "Remove fillers (um, uh, er, ah), stutters, false starts, and accidental repeated \
+             words.",
         ),
         (
-            "clarity",
-            "Reword for clarity",
-            "Improve clarity: prefer plain, direct phrasing.",
+            "self_corrections",
+            "Apply self-corrections",
+            "For explicit self-corrections ('wait, no', 'I mean', 'scratch that'), keep only \
+             the corrected version.",
         ),
         (
-            "reorder",
-            "Reorder for readability",
-            "Reorder ideas where it improves the flow of the argument.",
+            "punctuation",
+            "Fix punctuation & sentences",
+            "Fix spelling, capitalization, punctuation, and spacing; split run-on sentences \
+             and add paragraph breaks where natural.",
         ),
         (
-            "structure",
-            "Add structure for readability",
-            "Improve structure: split run-ons; use paragraphs or lists where natural.",
+            "spoken_formatting",
+            "Spoken punctuation & numbers",
+            "Apply spoken formatting when it is clearly meant as a command: 'period', 'comma', \
+             'question mark' become punctuation; 'new line' becomes a line break; 'new \
+             paragraph' a blank line; 'bullet point' starts a dash list item. Write numbers, \
+             dates, times, and money the normal written way.",
         ),
         (
-            "tone",
-            "Maintain your tone",
-            "Harmonize the tone so the text reads consistently.",
+            "mishears",
+            "Fix misheard words",
+            "Correct obvious speech-recognition mistakes only when the context makes the \
+             intended word unambiguous; otherwise keep the word exactly as transcribed.",
+        ),
+        (
+            "condense",
+            "Condense repetition",
+            "When the speaker repeats or restates the same point, keep a single clear \
+             version. Never summarize away detail.",
         ),
     ];
     rules
@@ -1798,6 +1813,11 @@ fn legacy_transform_shipped(id: &str) -> Option<(&'static str, Vec<String>)> {
                  wording — never the meaning: keep every fact, question, request, and hedge, \
                  and keep the author's voice and register."
                     .to_string(),
+                // The style-era base prompt, shipped until Polish became the
+                // dictation-accuracy pass.
+                "You polish written text. Rewrite the user's text according to the goals \
+                 below."
+                    .to_string(),
             ],
         )),
         "prompt_engineer" => Some((
@@ -1847,6 +1867,74 @@ fn legacy_rule_instructions(rule_id: &str) -> &'static [&'static str] {
     }
 }
 
+/// The style-era Polish goal set (id, label, instruction), exactly as last
+/// shipped before Polish became the dictation-accuracy pass. Used only by
+/// [`upgrade_polish_goal_set`] to recognize a still-shipped set.
+fn legacy_polish_style_rules() -> [(&'static str, &'static str, &'static str); 5] {
+    [
+        (
+            "concise",
+            "Make more concise",
+            "Make it concise: remove filler and redundancy.",
+        ),
+        (
+            "clarity",
+            "Reword for clarity",
+            "Improve clarity: prefer plain, direct phrasing.",
+        ),
+        (
+            "reorder",
+            "Reorder for readability",
+            "Reorder ideas where it improves the flow of the argument.",
+        ),
+        (
+            "structure",
+            "Add structure for readability",
+            "Improve structure: split run-ons; use paragraphs or lists where natural.",
+        ),
+        (
+            "tone",
+            "Maintain your tone",
+            "Harmonize the tone so the text reads consistently.",
+        ),
+    ]
+}
+
+/// One-time goal-set swap for the Polish template. When Polish became the
+/// dictation-accuracy pass its goals changed wholesale (style rewriting →
+/// transcription fidelity), and the old rule ids have no counterparts the
+/// per-rule instruction upgrade could map onto. Replace the whole set, but
+/// only while it is still exactly the shipped style set — same ids, labels,
+/// and instructions in order (an instruction may also match an older shipped
+/// wording). Toggle states don't carry over: the old goals no longer exist.
+/// Any edited id, label, or instruction means the user customized the set,
+/// and it is left alone.
+fn upgrade_polish_goal_set(transform: &mut Transform) -> bool {
+    if transform.id != "polish" || !transform.builtin {
+        return false;
+    }
+    let legacy = legacy_polish_style_rules();
+    let still_shipped = transform.rules.len() == legacy.len()
+        && transform
+            .rules
+            .iter()
+            .zip(legacy.iter())
+            .all(|(rule, (id, label, instruction))| {
+                rule.id == *id
+                    && rule.label == *label
+                    && (rule.instruction == *instruction
+                        || legacy_rule_instructions(id)
+                            .iter()
+                            .any(|old| rule.instruction == *old))
+            });
+    if !still_shipped {
+        return false;
+    }
+    debug!("Upgrading built-in Polish goal set to the dictation-accuracy goals");
+    transform.rules = polish_rules();
+    true
+}
+
 /// The Goal output template.
 fn goal_template() -> String {
     [
@@ -1868,11 +1956,15 @@ pub fn default_transforms() -> Vec<Transform> {
         Transform {
             id: "polish".to_string(),
             name: "Polish Template".to_string(),
-            description: "Improve clarity and conciseness".to_string(),
-            detail_description: "Polish rewrites your text to sound clearer, in your voice."
+            description: "Accurate cleanup of dictated speech".to_string(),
+            detail_description: "Polish turns raw dictation into exactly what you meant to \
+                                 write — cleaned up, not rewritten."
                 .to_string(),
-            prompt: "You polish written text. Rewrite the user's text according to the goals \
-                     below."
+            prompt: "You clean up dictated speech into accurate written text. The text was \
+                     spoken aloud and transcribed by speech recognition. Rewrite it as the \
+                     words the speaker meant to write, according to the goals below. Accuracy \
+                     comes first: stay close to the speaker's own words and order, and never \
+                     add, invent, or answer anything."
                 .to_string(),
             rules: polish_rules(),
             custom_instructions: String::new(),
@@ -3678,6 +3770,9 @@ pub fn load_or_create_app_settings(app: &AppHandle) -> AppSettings {
                         updated = true;
                     }
                 }
+                if upgrade_polish_goal_set(existing) {
+                    updated = true;
+                }
             }
         }
 
@@ -4757,13 +4852,20 @@ mod tests {
     }
 
     #[test]
-    fn polish_ships_five_rules_all_enabled() {
+    fn polish_ships_six_accuracy_rules_all_enabled() {
         let transforms = default_transforms();
         let polish = transforms.iter().find(|t| t.id == "polish").unwrap();
         let rule_ids: Vec<&str> = polish.rules.iter().map(|r| r.id.as_str()).collect();
         assert_eq!(
             rule_ids,
-            vec!["concise", "clarity", "reorder", "structure", "tone"]
+            vec![
+                "fillers",
+                "self_corrections",
+                "punctuation",
+                "spoken_formatting",
+                "mishears",
+                "condense"
+            ]
         );
         assert!(polish.rules.iter().all(|r| r.enabled));
         // Each rule must carry a real instruction — an empty one would silently
@@ -4772,6 +4874,45 @@ mod tests {
         // The voice-profile rule is the one that consumes writing examples.
         assert!(polish.use_voice_profile);
         assert!(!polish.sample_text.trim().is_empty());
+    }
+
+    #[test]
+    fn polish_goal_set_upgrades_only_the_untouched_shipped_style_set() {
+        let mut polish = default_transforms().into_iter().next().unwrap();
+        assert_eq!(polish.id, "polish");
+
+        // A fresh default already carries the accuracy goals: no-op.
+        assert!(!upgrade_polish_goal_set(&mut polish));
+
+        // The exact style-era set (with one toggle flipped — toggles don't
+        // protect the set, since the old goals have no counterparts).
+        polish.rules = legacy_polish_style_rules()
+            .iter()
+            .map(|(id, label, instruction)| TransformRule {
+                id: id.to_string(),
+                label: label.to_string(),
+                instruction: instruction.to_string(),
+                enabled: *id != "reorder",
+            })
+            .collect();
+        assert!(upgrade_polish_goal_set(&mut polish));
+        assert_eq!(polish.rules.len(), 6);
+        assert!(polish.rules.iter().all(|r| r.enabled));
+
+        // An edited instruction marks the set as user-customized: left alone.
+        polish.rules = legacy_polish_style_rules()
+            .iter()
+            .map(|(id, label, instruction)| TransformRule {
+                id: id.to_string(),
+                label: label.to_string(),
+                instruction: instruction.to_string(),
+                enabled: true,
+            })
+            .collect();
+        polish.rules[0].instruction = "My own wording.".to_string();
+        assert!(!upgrade_polish_goal_set(&mut polish));
+        assert_eq!(polish.rules.len(), 5);
+        assert_eq!(polish.rules[0].instruction, "My own wording.");
     }
 
     #[test]

@@ -558,13 +558,13 @@ mod tests {
     fn disabled_rules_contribute_nothing() {
         let mut transform = polish();
         for rule in &mut transform.rules {
-            rule.enabled = rule.id == "concise";
+            rule.enabled = rule.id == "fillers";
         }
         let prompt = compose_system_prompt(&transform, &[]);
 
-        let concise = transform.rules.iter().find(|r| r.id == "concise").unwrap();
-        assert!(prompt.contains(&concise.instruction));
-        for rule in transform.rules.iter().filter(|r| r.id != "concise") {
+        let fillers = transform.rules.iter().find(|r| r.id == "fillers").unwrap();
+        assert!(prompt.contains(&fillers.instruction));
+        for rule in transform.rules.iter().filter(|r| r.id != "fillers") {
             assert!(
                 !prompt.contains(&rule.instruction),
                 "disabled rule {} leaked into the prompt",
