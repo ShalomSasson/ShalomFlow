@@ -26,6 +26,8 @@
     "dictation": "Dyktowanie",
     "assistant": "Asystent",
     "history": "Historia",
+    "insights": "Statystyki",
+    "settings": "Ustawienia",
     "about": "O programie",
     "debug": "Debugowanie",
     "characters": "Profile",
@@ -46,6 +48,7 @@
     "dictation": "Model, który zamienia Twój głos na tekst, i sposób czyszczenia wyniku.",
     "assistant": "Skonfiguruj asystenta, a potem dostosuj jego głos, podgląd ekranu i wyszukiwanie w sieci.",
     "history": "Twoje ostatnie dyktowania, wyniki z Flow i rozmowy z asystentem, przechowywane na tym urządzeniu.",
+    "insights": "Twoje nawyki dyktowania — tempo, ilość, serie i miejsca, w których dyktujesz. Liczone na tym urządzeniu.",
     "about": "Wersja, język aplikacji, lokalizacje danych i podziękowania.",
     "debug": "Diagnostyka i narzędzia dla programistów.",
     "styles": "Jak dyktowany tekst jest formatowany w poszczególnych rodzajach aplikacji."
@@ -973,6 +976,28 @@
         "noResults": "Brak wpisów pasujących do wyszukiwania."
       }
     },
+    "insights": {
+      "wpmCaption": "Słów na minutę",
+      "wpmTarget": "z ~{{target}}",
+      "fixesCaption": "Poprawki wprowadzone przez AI",
+      "transcriptsCleaned": "Oczyszczone transkrypcje: {{value}}",
+      "wordsChanged": "Zmienione słowa: {{value}}",
+      "totalWordsCaption": "Łącznie podyktowanych słów",
+      "monthChange": "{{value}}% w tym miesiącu",
+      "wordsThisMonth": "{{value}} słów w tym miesiącu",
+      "appUsage": "Użycie aplikacji",
+      "totalApps": "Wszystkich aplikacji | {{value}}",
+      "otherApp": "Inne",
+      "dayStreak": "Seria {{value}} dni",
+      "longestStreak": "Najdłuższa seria | {{value}} dni",
+      "more": "Więcej",
+      "less": "Mniej",
+      "empty": "Jeszcze brak dyktowań.",
+      "tooltipDictations": "Dyktowania",
+      "tooltipWords": "Łącznie słów",
+      "tooltipApps": "Łącznie użytych aplikacji",
+      "tooltipTopApp": "Najczęstsza aplikacja"
+    },
     "debug": {
       "title": "Debugowanie",
       "logDirectory": {
@@ -1078,6 +1103,11 @@
         "title": "Licencja",
         "description": "ShalomFlow to oprogramowanie open source na licencji MIT, oparte na projekcie Handy (również MIT) autorstwa CJ Pais.",
         "button": "Zobacz licencję"
+      },
+      "credits": {
+        "title": "Podziękowania",
+        "description": "ShalomFlow to fork projektu SpeakoFlow autorstwa Abhisheka Baraliego (MIT), który opiera się na silniku dyktowania Handy autorstwa CJ Paisa.",
+        "button": "Zobacz SpeakoFlow"
       },
       "supportDevelopment": {
         "title": "Wspieraj rozwój",

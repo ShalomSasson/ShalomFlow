@@ -26,6 +26,8 @@
     "dictation": "Diktování",
     "assistant": "Asistent",
     "history": "Historie",
+    "insights": "Statistiky",
+    "settings": "Nastavení",
     "about": "O aplikaci",
     "debug": "Ladění",
     "characters": "Profily",
@@ -46,6 +48,7 @@
     "dictation": "Model, který převádí váš hlas na text, a jak se výsledek čistí.",
     "assistant": "Nastavte asistenta a pak vylaďte jeho hlas, zobrazení obrazovky a vyhledávání na webu.",
     "history": "Vaše nedávná diktování, generování pomocí Flow a chaty s asistentem, uložené na tomto zařízení.",
+    "insights": "Tvé diktovací zvyky — rychlost, objem, série a kde diktuješ. Spočítáno na tomto zařízení.",
     "about": "Verze, jazyk aplikace, umístění dat a poděkování.",
     "debug": "Diagnostika a nástroje pro vývojáře.",
     "styles": "Jak je diktovaný text formátován v jednotlivých typech aplikací."
@@ -973,6 +976,28 @@
         "noResults": "Hledání neodpovídají žádné záznamy."
       }
     },
+    "insights": {
+      "wpmCaption": "Slov za minutu",
+      "wpmTarget": "z ~{{target}}",
+      "fixesCaption": "Opravy od AI",
+      "transcriptsCleaned": "{{value}} vyčištěných přepisů",
+      "wordsChanged": "{{value}} změněných slov",
+      "totalWordsCaption": "Celkem nadiktovaných slov",
+      "monthChange": "{{value}} % tento měsíc",
+      "wordsThisMonth": "{{value}} slov tento měsíc",
+      "appUsage": "Využití aplikací",
+      "totalApps": "Aplikací celkem | {{value}}",
+      "otherApp": "Ostatní",
+      "dayStreak": "Série {{value}} dní",
+      "longestStreak": "Nejdelší série | {{value}} dní",
+      "more": "Více",
+      "less": "Méně",
+      "empty": "Zatím žádné diktáty.",
+      "tooltipDictations": "Diktáty",
+      "tooltipWords": "Celkem slov",
+      "tooltipApps": "Celkem použitých aplikací",
+      "tooltipTopApp": "Nejčastější aplikace"
+    },
     "debug": {
       "title": "Ladění",
       "logDirectory": {
@@ -1078,6 +1103,11 @@
         "title": "Licence",
         "description": "ShalomFlow je open source pod licencí MIT a staví na projektu Handy (také MIT) od CJ Paise.",
         "button": "Zobrazit licenci"
+      },
+      "credits": {
+        "title": "Poděkování",
+        "description": "ShalomFlow je fork projektu SpeakoFlow od Abhisheka Baraliho (MIT), který staví na diktovacím jádru Handy od CJ Paise.",
+        "button": "Zobrazit SpeakoFlow"
       },
       "supportDevelopment": {
         "title": "Podpořte vývoj",

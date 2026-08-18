@@ -26,6 +26,8 @@
     "dictation": "語音輸入",
     "assistant": "助理",
     "history": "歷史紀錄",
+    "insights": "統計",
+    "settings": "設定",
     "about": "關於",
     "debug": "偵錯",
     "characters": "角色",
@@ -46,6 +48,7 @@
     "dictation": "將您的語音轉成文字的模型，以及文字的整理方式。",
     "assistant": "設定助理，再調整語音、螢幕視覺與網路搜尋。",
     "history": "您最近的語音輸入、Flow 生成與助理對話，都儲存在這台裝置上。",
+    "insights": "你的語音輸入習慣——速度、字數、連續天數，以及在哪裡輸入。全部在本機計算。",
     "about": "版本、應用程式語言、資料位置與致謝。",
     "debug": "診斷資訊與開發者工具。",
     "styles": "聽寫文字在各類應用程式中的格式設定。"
@@ -973,6 +976,28 @@
         "noResults": "沒有與搜尋相符的項目。"
       }
     },
+    "insights": {
+      "wpmCaption": "每分鐘字數",
+      "wpmTarget": "目標約 {{target}}",
+      "fixesCaption": "AI 的修正",
+      "transcriptsCleaned": "已整理 {{value}} 則轉寫",
+      "wordsChanged": "已修改 {{value}} 個詞",
+      "totalWordsCaption": "累計輸入字數",
+      "monthChange": "本月 {{value}}%",
+      "wordsThisMonth": "本月 {{value}} 個詞",
+      "appUsage": "應用程式使用情況",
+      "totalApps": "應用程式總數 | {{value}}",
+      "otherApp": "其他",
+      "dayStreak": "連續 {{value}} 天",
+      "longestStreak": "最長連續 | {{value}} 天",
+      "more": "多",
+      "less": "少",
+      "empty": "還沒有語音輸入記錄。",
+      "tooltipDictations": "語音輸入次數",
+      "tooltipWords": "總詞數",
+      "tooltipApps": "使用過的應用程式總數",
+      "tooltipTopApp": "最常用的應用程式"
+    },
     "debug": {
       "title": "偵錯",
       "logDirectory": {
@@ -1078,6 +1103,11 @@
         "title": "授權",
         "description": "ShalomFlow 以 MIT 授權開放原始碼，並以 CJ Pais 的 Handy（同為 MIT 授權）為基礎。",
         "button": "檢視授權"
+      },
+      "credits": {
+        "title": "致謝",
+        "description": "ShalomFlow 是 Abhishek Barali 的 SpeakoFlow（MIT 授權）的分支，而 SpeakoFlow 建立在 CJ Pais 的語音輸入核心 Handy 之上。",
+        "button": "查看 SpeakoFlow"
       },
       "supportDevelopment": {
         "title": "支持開發",

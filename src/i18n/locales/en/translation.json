@@ -1104,6 +1104,11 @@
         "description": "ShalomFlow is open source under the MIT License, building on Handy (also MIT) by CJ Pais.",
         "button": "View license"
       },
+      "credits": {
+        "title": "Credits",
+        "description": "ShalomFlow is a fork of SpeakoFlow by Abhishek Barali (MIT), which builds on the Handy dictation core by CJ Pais.",
+        "button": "View SpeakoFlow"
+      },
       "supportDevelopment": {
         "title": "Support development",
         "description": "Help us keep building ShalomFlow",

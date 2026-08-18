@@ -27,6 +27,12 @@
 
 </div>
 
+> **A fork.** ShalomFlow is a personal fork of
+> [SpeakoFlow](https://github.com/AbhishekBarali/SpeakoFlow) by Abhishek Barali,
+> used under the MIT licence. Everything the app does comes from there; this fork
+> adds its own Prompts, Styles, Insights, and history work. For releases, docs,
+> and support, go upstream.
+
 > **Get told when there's a new version:** click **Watch → Custom → Releases** at
 > the top of this page.
 
@@ -384,10 +390,17 @@ Released under the [MIT License](LICENSE).
 
 ## Credits
 
-ShalomFlow builds on the dictation core from [Handy](https://github.com/cjpais/Handy)
-by CJ Pais, used under the MIT licence. Thanks to CJ for making it open. The
-assistant, screen vision, Generate with Flow, translation, text-to-speech, and
-memory layers are ShalomFlow's own.
+ShalomFlow is a clone of [SpeakoFlow](https://github.com/AbhishekBarali/SpeakoFlow)
+by [Abhishek Barali](https://github.com/AbhishekBarali), used under the MIT
+licence, with modifications on top. Thanks to Abhishek for building it in the
+open — the dictation, assistant, screen vision, Generate with Flow, translation,
+text-to-speech, and memory layers are all upstream work. What this fork adds is
+the Prompts and Styles pages, the Insights analytics, and the searchable,
+day-grouped history.
+
+SpeakoFlow in turn builds on the dictation core from
+[Handy](https://github.com/cjpais/Handy) by CJ Pais, also MIT. Thanks to CJ for
+making it open.
 
 Thanks also to [Tauri](https://tauri.app), whisper.cpp, llama.cpp, Silero VAD, and
 [Kokoro](https://github.com/hexgrad/kokoro).

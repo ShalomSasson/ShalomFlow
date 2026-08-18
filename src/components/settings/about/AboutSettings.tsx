@@ -106,6 +106,22 @@ export const AboutSettings: React.FC = () => {
             {t("settings.about.license.button")}
           </Button>
         </SettingContainer>
+
+        <SettingContainer
+          title={t("settings.about.credits.title")}
+          description={t("settings.about.credits.description")}
+          grouped={true}
+        >
+          <Button
+            variant="secondary"
+            size="md"
+            onClick={() =>
+              openUrl("https://github.com/AbhishekBarali/SpeakoFlow")
+            }
+          >
+            {t("settings.about.credits.button")}
+          </Button>
+        </SettingContainer>
       </SettingsGroup>
 
       <SettingsGroup title={t("settings.about.folders.title")}>

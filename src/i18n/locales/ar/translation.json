@@ -26,6 +26,8 @@
     "dictation": "الإملاء",
     "assistant": "المساعد",
     "history": "السجل",
+    "insights": "إحصاءات",
+    "settings": "الإعدادات",
     "about": "حول",
     "debug": "تصحيح الأخطاء",
     "characters": "الملفات التعريفية",
@@ -46,6 +48,7 @@
     "dictation": "النموذج الذي يحوّل صوتك إلى نص، وكيفية تنظيف النتيجة.",
     "assistant": "أعدّ المساعد، ثم اضبط صوته ورؤية الشاشة والبحث في الويب.",
     "history": "أحدث عمليات الإملاء ونتائج Flow ومحادثات المساعد، مخزَّنة على هذا الجهاز.",
+    "insights": "عاداتك في الإملاء — السرعة والحجم والتتابع وأماكن الإملاء. تُحسب على هذا الجهاز.",
     "about": "الإصدار ولغة التطبيق ومواقع البيانات وشكر المساهمين.",
     "debug": "أدوات التشخيص وأدوات المطوّرين.",
     "styles": "كيفية تنسيق النص المُملى في كل نوع من التطبيقات."
@@ -973,6 +976,28 @@
         "noResults": "لا توجد إدخالات مطابقة لبحثك."
       }
     },
+    "insights": {
+      "wpmCaption": "كلمات في الدقيقة",
+      "wpmTarget": "من ~{{target}}",
+      "fixesCaption": "تصحيحات أجراها الذكاء الاصطناعي",
+      "transcriptsCleaned": "{{value}} نسخة تم تنظيفها",
+      "wordsChanged": "{{value}} كلمة تم تغييرها",
+      "totalWordsCaption": "إجمالي الكلمات المُملاة",
+      "monthChange": "{{value}}% هذا الشهر",
+      "wordsThisMonth": "{{value}} كلمة هذا الشهر",
+      "appUsage": "استخدام التطبيقات",
+      "totalApps": "إجمالي التطبيقات | {{value}}",
+      "otherApp": "أخرى",
+      "dayStreak": "تتابع {{value}} يوم",
+      "longestStreak": "أطول تتابع | {{value}} يوم",
+      "more": "أكثر",
+      "less": "أقل",
+      "empty": "لا توجد إملاءات بعد.",
+      "tooltipDictations": "الإملاءات",
+      "tooltipWords": "إجمالي الكلمات",
+      "tooltipApps": "إجمالي التطبيقات المستخدمة",
+      "tooltipTopApp": "التطبيق الأكثر استخدامًا"
+    },
     "debug": {
       "title": "تصحيح الأخطاء",
       "logDirectory": {
@@ -1078,6 +1103,11 @@
         "title": "الترخيص",
         "description": "ShalomFlow مفتوح المصدر بموجب ترخيص MIT، ويستند إلى Handy (بترخيص MIT أيضًا) من CJ Pais.",
         "button": "عرض الترخيص"
+      },
+      "credits": {
+        "title": "شكر وتقدير",
+        "description": "ShalomFlow نسخة معدّلة من SpeakoFlow بواسطة Abhishek Barali (رخصة MIT)، والذي يعتمد على نواة الإملاء Handy بواسطة CJ Pais.",
+        "button": "عرض SpeakoFlow"
       },
       "supportDevelopment": {
         "title": "دعم التطوير",

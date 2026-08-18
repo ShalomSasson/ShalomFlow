@@ -26,6 +26,8 @@
     "dictation": "Dikte",
     "assistant": "Asistan",
     "history": "Geçmiş",
+    "insights": "İstatistikler",
+    "settings": "Ayarlar",
     "about": "Hakkında",
     "debug": "Hata Ayıklama",
     "characters": "Profiller",
@@ -46,6 +48,7 @@
     "dictation": "Sesinizi metne dönüştüren model ve metnin nasıl temizlendiği.",
     "assistant": "Asistanı kurun, ardından sesini, ekran görüşünü ve web aramasını ayarlayın.",
     "history": "Bu cihazda saklanan son dikteleriniz, Flow üretimleriniz ve asistan sohbetleriniz.",
+    "insights": "Dikte alışkanlıklarınız — hız, hacim, seriler ve nerede dikte ettiğiniz. Bu cihazda hesaplanır.",
     "about": "Sürüm, uygulama dili, veri konumları ve katkı sağlayanlar.",
     "debug": "Tanılama ve geliştirici araçları.",
     "styles": "Dikte edilen metnin her uygulama türünde nasıl biçimlendirileceği."
@@ -973,6 +976,28 @@
         "noResults": "Aramanızla eşleşen kayıt yok."
       }
     },
+    "insights": {
+      "wpmCaption": "Dakikadaki kelime",
+      "wpmTarget": "hedef ~{{target}}",
+      "fixesCaption": "Yapay zekânın yaptığı düzeltmeler",
+      "transcriptsCleaned": "{{value}} döküm temizlendi",
+      "wordsChanged": "{{value}} kelime değişti",
+      "totalWordsCaption": "Toplam dikte edilen kelime",
+      "monthChange": "Bu ay %{{value}}",
+      "wordsThisMonth": "Bu ay {{value}} kelime",
+      "appUsage": "Uygulama kullanımı",
+      "totalApps": "Toplam uygulama | {{value}}",
+      "otherApp": "Diğer",
+      "dayStreak": "{{value}} günlük seri",
+      "longestStreak": "En uzun seri | {{value}} gün",
+      "more": "Daha fazla",
+      "less": "Daha az",
+      "empty": "Henüz dikte yok.",
+      "tooltipDictations": "Dikteler",
+      "tooltipWords": "Toplam kelime",
+      "tooltipApps": "Kullanılan toplam uygulama",
+      "tooltipTopApp": "En çok kullanılan uygulama"
+    },
     "debug": {
       "title": "Hata Ayıklama",
       "logDirectory": {
@@ -1078,6 +1103,11 @@
         "title": "Lisans",
         "description": "ShalomFlow, MIT Lisansı altında açık kaynaktır ve CJ Pais'in Handy (o da MIT) projesi üzerine kuruludur.",
         "button": "Lisansı görüntüle"
+      },
+      "credits": {
+        "title": "Katkılar",
+        "description": "ShalomFlow, Abhishek Barali'nin SpeakoFlow projesinin (MIT) bir fork'udur; SpeakoFlow ise CJ Pais'in Handy dikte çekirdeği üzerine kuruludur.",
+        "button": "SpeakoFlow'u görüntüle"
       },
       "supportDevelopment": {
         "title": "Geliştirmeyi Destekle",

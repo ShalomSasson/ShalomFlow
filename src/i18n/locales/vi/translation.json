@@ -26,6 +26,8 @@
     "dictation": "Đọc chính tả",
     "assistant": "Trợ lý",
     "history": "Lịch sử",
+    "insights": "Thống kê",
+    "settings": "Cài đặt",
     "about": "Giới thiệu",
     "debug": "Gỡ lỗi",
     "characters": "Hồ sơ",
@@ -46,6 +48,7 @@
     "dictation": "Mô hình biến giọng nói của bạn thành văn bản, và cách văn bản được dọn dẹp.",
     "assistant": "Thiết lập trợ lý, rồi tinh chỉnh giọng nói, khả năng xem màn hình và tìm kiếm web.",
     "history": "Các nội dung đọc chính tả, nội dung do Flow tạo và trò chuyện với trợ lý gần đây của bạn, được lưu trên thiết bị này.",
+    "insights": "Thói quen đọc chính tả của bạn — tốc độ, khối lượng, chuỗi ngày và nơi bạn đọc. Được tính trên thiết bị này.",
     "about": "Phiên bản, ngôn ngữ ứng dụng, vị trí dữ liệu và ghi công.",
     "debug": "Công cụ chẩn đoán và dành cho nhà phát triển.",
     "styles": "Cách văn bản đọc chính tả được định dạng trong từng loại ứng dụng."
@@ -973,6 +976,28 @@
         "noResults": "Không có mục nào khớp với tìm kiếm."
       }
     },
+    "insights": {
+      "wpmCaption": "Từ mỗi phút",
+      "wpmTarget": "mục tiêu ~{{target}}",
+      "fixesCaption": "Chỉnh sửa bởi AI",
+      "transcriptsCleaned": "Đã dọn {{value}} bản ghi",
+      "wordsChanged": "Đã đổi {{value}} từ",
+      "totalWordsCaption": "Tổng số từ đã đọc",
+      "monthChange": "{{value}}% tháng này",
+      "wordsThisMonth": "{{value}} từ trong tháng này",
+      "appUsage": "Ứng dụng đã dùng",
+      "totalApps": "Tổng ứng dụng | {{value}}",
+      "otherApp": "Khác",
+      "dayStreak": "Chuỗi {{value}} ngày",
+      "longestStreak": "Chuỗi dài nhất | {{value}} ngày",
+      "more": "Nhiều",
+      "less": "Ít",
+      "empty": "Chưa có bản đọc nào.",
+      "tooltipDictations": "Lần đọc",
+      "tooltipWords": "Tổng số từ",
+      "tooltipApps": "Tổng ứng dụng đã dùng",
+      "tooltipTopApp": "Ứng dụng hàng đầu"
+    },
     "debug": {
       "title": "Gỡ lỗi",
       "logDirectory": {
@@ -1078,6 +1103,11 @@
         "title": "Giấy phép",
         "description": "ShalomFlow là mã nguồn mở theo Giấy phép MIT, dựa trên Handy (cũng MIT) của CJ Pais.",
         "button": "Xem giấy phép"
+      },
+      "credits": {
+        "title": "Ghi công",
+        "description": "ShalomFlow là bản fork của SpeakoFlow do Abhishek Barali phát triển (giấy phép MIT), dựa trên nhân đọc chính tả Handy của CJ Pais.",
+        "button": "Xem SpeakoFlow"
       },
       "supportDevelopment": {
         "title": "Hỗ trợ phát triển",

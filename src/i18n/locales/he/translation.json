@@ -26,6 +26,8 @@
     "dictation": "הכתבה",
     "assistant": "עוזר",
     "history": "היסטוריה",
+    "insights": "תובנות",
+    "settings": "הגדרות",
     "about": "אודות",
     "debug": "ניפוי שגיאות",
     "characters": "פרופילים",
@@ -46,6 +48,7 @@
     "dictation": "המודל שהופך את הקול שלך לטקסט, ואיך הטקסט עובר ניקוי.",
     "assistant": "הגדר את העוזר, ואז כוונן את הקול שלו, את ראיית המסך ואת החיפוש באינטרנט.",
     "history": "ההכתבות האחרונות שלך, היצירות של Flow והשיחות עם העוזר, שמורות במכשיר הזה.",
+    "insights": "הרגלי ההכתבה שלך — מהירות, נפח, רצפים ומקומות ההכתבה. מחושב במכשיר הזה.",
     "about": "גרסה, שפת האפליקציה, מיקומי נתונים וקרדיטים.",
     "debug": "אבחון וכלי פיתוח.",
     "styles": "איך הטקסט המוכתב מעוצב בכל סוג של אפליקציה."
@@ -973,6 +976,28 @@
         "noResults": "אין רשומות התואמות לחיפוש."
       }
     },
+    "insights": {
+      "wpmCaption": "מילים בדקה",
+      "wpmTarget": "מתוך ~{{target}}",
+      "fixesCaption": "תיקונים של ה-AI",
+      "transcriptsCleaned": "{{value}} תמלולים נוקו",
+      "wordsChanged": "{{value}} מילים שונו",
+      "totalWordsCaption": "סך המילים שהוכתבו",
+      "monthChange": "{{value}}% החודש",
+      "wordsThisMonth": "{{value}} מילים החודש",
+      "appUsage": "שימוש באפליקציות",
+      "totalApps": "סך האפליקציות | {{value}}",
+      "otherApp": "אחר",
+      "dayStreak": "רצף של {{value}} ימים",
+      "longestStreak": "הרצף הארוך ביותר | {{value}} ימים",
+      "more": "יותר",
+      "less": "פחות",
+      "empty": "אין עדיין הכתבות.",
+      "tooltipDictations": "הכתבות",
+      "tooltipWords": "סך המילים",
+      "tooltipApps": "סך האפליקציות בשימוש",
+      "tooltipTopApp": "האפליקציה המובילה"
+    },
     "debug": {
       "title": "ניפוי שגיאות",
       "logDirectory": {
@@ -1078,6 +1103,11 @@
         "title": "רישיון",
         "description": "ShalomFlow הוא קוד פתוח תחת רישיון MIT, ומבוסס על Handy (גם הוא MIT) מאת CJ Pais.",
         "button": "הצג את הרישיון"
+      },
+      "credits": {
+        "title": "תודות",
+        "description": "ShalomFlow הוא פורק של SpeakoFlow מאת Abhishek Barali (רישיון MIT), שנבנה על גרעין ההכתבה Handy מאת CJ Pais.",
+        "button": "הצג את SpeakoFlow"
       },
       "supportDevelopment": {
         "title": "תמיכה בפיתוח",

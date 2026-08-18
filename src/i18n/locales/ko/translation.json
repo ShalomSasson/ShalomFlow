@@ -26,6 +26,8 @@
     "dictation": "받아쓰기",
     "assistant": "어시스턴트",
     "history": "히스토리",
+    "insights": "분석",
+    "settings": "설정",
     "about": "정보",
     "debug": "디버그",
     "characters": "프로필",
@@ -46,6 +48,7 @@
     "dictation": "음성을 텍스트로 바꾸는 모델과 그 결과를 정리하는 방식입니다.",
     "assistant": "어시스턴트를 설정하고, 음성과 화면 인식, 웹 검색을 조정하세요.",
     "history": "이 기기에 저장된 최근 받아쓰기, Flow 생성, 어시스턴트 대화입니다.",
+    "insights": "받아쓰기 습관 — 속도, 분량, 연속 기록, 그리고 어디에 입력하는지. 이 기기에서 계산됩니다.",
     "about": "버전, 앱 언어, 데이터 위치, 크레딧입니다.",
     "debug": "진단 정보와 개발자 도구입니다.",
     "styles": "앱 종류별로 받아쓴 텍스트의 서식을 설정합니다."
@@ -973,6 +976,28 @@
         "noResults": "검색과 일치하는 항목이 없습니다."
       }
     },
+    "insights": {
+      "wpmCaption": "분당 단어 수",
+      "wpmTarget": "목표 약 {{target}}",
+      "fixesCaption": "AI가 고친 부분",
+      "transcriptsCleaned": "기록 {{value}}개 정리됨",
+      "wordsChanged": "단어 {{value}}개 수정됨",
+      "totalWordsCaption": "총 입력한 단어",
+      "monthChange": "이번 달 {{value}}%",
+      "wordsThisMonth": "이번 달 {{value}}개 단어",
+      "appUsage": "앱 사용량",
+      "totalApps": "전체 앱 | {{value}}",
+      "otherApp": "기타",
+      "dayStreak": "{{value}}일 연속",
+      "longestStreak": "최장 연속 | {{value}}일",
+      "more": "많음",
+      "less": "적음",
+      "empty": "아직 받아쓰기가 없습니다.",
+      "tooltipDictations": "받아쓰기",
+      "tooltipWords": "총 단어",
+      "tooltipApps": "사용한 앱 수",
+      "tooltipTopApp": "가장 많이 쓴 앱"
+    },
     "debug": {
       "title": "디버그",
       "logDirectory": {
@@ -1078,6 +1103,11 @@
         "title": "라이선스",
         "description": "ShalomFlow는 MIT 라이선스로 공개된 오픈 소스이며, CJ Pais의 Handy(역시 MIT)를 기반으로 합니다.",
         "button": "라이선스 보기"
+      },
+      "credits": {
+        "title": "크레딧",
+        "description": "ShalomFlow는 Abhishek Barali의 SpeakoFlow(MIT)를 포크한 것이며, SpeakoFlow는 CJ Pais의 받아쓰기 코어 Handy를 기반으로 합니다.",
+        "button": "SpeakoFlow 보기"
       },
       "supportDevelopment": {
         "title": "개발 지원",

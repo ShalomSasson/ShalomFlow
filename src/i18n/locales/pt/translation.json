@@ -26,6 +26,8 @@
     "dictation": "Ditado",
     "assistant": "Assistente",
     "history": "Histórico",
+    "insights": "Estatísticas",
+    "settings": "Configurações",
     "about": "Sobre",
     "debug": "Depuração",
     "characters": "Perfis",
@@ -46,6 +48,7 @@
     "dictation": "O modelo que transforma sua voz em texto e como esse texto é limpo.",
     "assistant": "Configure o assistente e ajuste sua voz, a visão de tela e a busca na web.",
     "history": "Seus ditados, gerações do Flow e conversas com o assistente mais recentes, armazenados neste dispositivo.",
+    "insights": "Seus hábitos de ditado — velocidade, volume, sequências e onde você dita. Calculado neste dispositivo.",
     "about": "Versão, idioma do app, locais dos dados e créditos.",
     "debug": "Diagnósticos e ferramentas de desenvolvimento.",
     "styles": "Como o texto ditado é formatado em cada tipo de aplicativo."
@@ -973,6 +976,28 @@
         "noResults": "Nenhuma entrada corresponde à sua pesquisa."
       }
     },
+    "insights": {
+      "wpmCaption": "Palavras por minuto",
+      "wpmTarget": "de ~{{target}}",
+      "fixesCaption": "Correções feitas pela IA",
+      "transcriptsCleaned": "{{value}} transcrições limpas",
+      "wordsChanged": "{{value}} palavras alteradas",
+      "totalWordsCaption": "Total de palavras ditadas",
+      "monthChange": "{{value}}% neste mês",
+      "wordsThisMonth": "{{value}} palavras neste mês",
+      "appUsage": "Uso de apps",
+      "totalApps": "Total de apps | {{value}}",
+      "otherApp": "Outros",
+      "dayStreak": "Sequência de {{value}} dias",
+      "longestStreak": "Maior sequência | {{value}} dias",
+      "more": "Mais",
+      "less": "Menos",
+      "empty": "Nenhum ditado ainda.",
+      "tooltipDictations": "Ditados",
+      "tooltipWords": "Total de palavras",
+      "tooltipApps": "Total de apps usados",
+      "tooltipTopApp": "App principal"
+    },
     "debug": {
       "title": "Depuração",
       "logDirectory": {
@@ -1078,6 +1103,11 @@
         "title": "Licença",
         "description": "O ShalomFlow é código aberto sob a Licença MIT, construído sobre o Handy (também MIT), de CJ Pais.",
         "button": "Ver licença"
+      },
+      "credits": {
+        "title": "Créditos",
+        "description": "O ShalomFlow é um fork do SpeakoFlow, de Abhishek Barali (MIT), que por sua vez se baseia no núcleo de ditado Handy, de CJ Pais.",
+        "button": "Ver o SpeakoFlow"
       },
       "supportDevelopment": {
         "title": "Apoiar o Desenvolvimento",

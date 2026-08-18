@@ -26,6 +26,8 @@
     "dictation": "Diktat",
     "assistant": "Assistent",
     "history": "Verlauf",
+    "insights": "Statistiken",
+    "settings": "Einstellungen",
     "about": "Info",
     "debug": "Debug",
     "characters": "Profile",
@@ -46,6 +48,7 @@
     "dictation": "Das Modell, das deine Stimme in Text verwandelt, und wie der Text bereinigt wird.",
     "assistant": "Richte den Assistenten ein und stelle dann Stimme, Bildschirmansicht und Websuche ein.",
     "history": "Deine letzten Diktate, Flow-Ergebnisse und Assistenten-Chats, gespeichert auf diesem Gerät.",
+    "insights": "Deine Diktiergewohnheiten — Geschwindigkeit, Umfang, Serien und wo du diktierst. Auf diesem Gerät berechnet.",
     "about": "Version, App-Sprache, Datenspeicherorte und Danksagungen.",
     "debug": "Diagnose und Entwicklerwerkzeuge.",
     "styles": "Wie dein diktierter Text in den einzelnen App-Typen formatiert wird."
@@ -973,6 +976,28 @@
         "noResults": "Keine Einträge entsprechen deiner Suche."
       }
     },
+    "insights": {
+      "wpmCaption": "Wörter pro Minute",
+      "wpmTarget": "von ~{{target}}",
+      "fixesCaption": "Von der KI korrigiert",
+      "transcriptsCleaned": "{{value}} Transkripte bereinigt",
+      "wordsChanged": "{{value}} Wörter geändert",
+      "totalWordsCaption": "Diktierte Wörter insgesamt",
+      "monthChange": "{{value}} % diesen Monat",
+      "wordsThisMonth": "{{value}} Wörter diesen Monat",
+      "appUsage": "App-Nutzung",
+      "totalApps": "Apps insgesamt | {{value}}",
+      "otherApp": "Andere",
+      "dayStreak": "{{value}} Tage Serie",
+      "longestStreak": "Längste Serie | {{value}} Tage",
+      "more": "Mehr",
+      "less": "Weniger",
+      "empty": "Noch keine Diktate.",
+      "tooltipDictations": "Diktate",
+      "tooltipWords": "Wörter insgesamt",
+      "tooltipApps": "Genutzte Apps insgesamt",
+      "tooltipTopApp": "Top-App"
+    },
     "debug": {
       "title": "Debug",
       "logDirectory": {
@@ -1078,6 +1103,11 @@
         "title": "Lizenz",
         "description": "ShalomFlow ist Open Source unter der MIT-Lizenz und baut auf Handy (ebenfalls MIT) von CJ Pais auf.",
         "button": "Lizenz ansehen"
+      },
+      "credits": {
+        "title": "Danksagungen",
+        "description": "ShalomFlow ist ein Fork von SpeakoFlow von Abhishek Barali (MIT), das auf dem Diktierkern Handy von CJ Pais aufbaut.",
+        "button": "SpeakoFlow ansehen"
       },
       "supportDevelopment": {
         "title": "Entwicklung unterstützen",
