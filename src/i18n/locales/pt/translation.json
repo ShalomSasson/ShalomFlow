@@ -987,6 +987,8 @@
       "wordsThisMonth": "{{value}} palavras neste mês",
       "appUsage": "Uso de apps",
       "totalApps": "Total de apps | {{value}}",
+      "powerUsage": "Uso intenso",
+      "powerUsageWords": "{{value}} palavras",
       "otherApp": "Outros",
       "dayStreak": "Sequência de {{value}} dias",
       "longestStreak": "Maior sequência | {{value}} dias",

@@ -987,6 +987,8 @@
       "wordsThisMonth": "이번 달 {{value}}개 단어",
       "appUsage": "앱 사용량",
       "totalApps": "전체 앱 | {{value}}",
+      "powerUsage": "집중 사용",
+      "powerUsageWords": "{{value}}개 단어",
       "otherApp": "기타",
       "dayStreak": "{{value}}일 연속",
       "longestStreak": "최장 연속 | {{value}}일",

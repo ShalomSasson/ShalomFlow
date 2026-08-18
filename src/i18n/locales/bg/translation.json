@@ -987,6 +987,8 @@
       "wordsThisMonth": "{{value}} думи този месец",
       "appUsage": "Използване на приложения",
       "totalApps": "Общо приложения | {{value}}",
+      "powerUsage": "Интензивно ползване",
+      "powerUsageWords": "{{value}} думи",
       "otherApp": "Други",
       "dayStreak": "Серия от {{value}} дни",
       "longestStreak": "Най-дълга серия | {{value}} дни",

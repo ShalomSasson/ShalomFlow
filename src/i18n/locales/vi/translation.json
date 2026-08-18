@@ -987,6 +987,8 @@
       "wordsThisMonth": "{{value}} từ trong tháng này",
       "appUsage": "Ứng dụng đã dùng",
       "totalApps": "Tổng ứng dụng | {{value}}",
+      "powerUsage": "Dùng nhiều",
+      "powerUsageWords": "{{value}} từ",
       "otherApp": "Khác",
       "dayStreak": "Chuỗi {{value}} ngày",
       "longestStreak": "Chuỗi dài nhất | {{value}} ngày",

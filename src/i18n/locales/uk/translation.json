@@ -987,6 +987,8 @@
       "wordsThisMonth": "{{value}} слів цього місяця",
       "appUsage": "Використання застосунків",
       "totalApps": "Усього застосунків | {{value}}",
+      "powerUsage": "Активне використання",
+      "powerUsageWords": "{{value}} слів",
       "otherApp": "Інше",
       "dayStreak": "Серія: {{value}} днів",
       "longestStreak": "Найдовша серія | {{value}} днів",

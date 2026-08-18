@@ -987,6 +987,8 @@
       "wordsThisMonth": "{{value}} ord den här månaden",
       "appUsage": "Appanvändning",
       "totalApps": "Appar totalt | {{value}}",
+      "powerUsage": "Intensiv användning",
+      "powerUsageWords": "{{value}} ord",
       "otherApp": "Övriga",
       "dayStreak": "{{value}} dagars streak",
       "longestStreak": "Längsta streak | {{value}} dagar",

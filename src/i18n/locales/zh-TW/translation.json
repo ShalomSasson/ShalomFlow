@@ -987,6 +987,8 @@
       "wordsThisMonth": "本月 {{value}} 個詞",
       "appUsage": "應用程式使用情況",
       "totalApps": "應用程式總數 | {{value}}",
+      "powerUsage": "高頻使用",
+      "powerUsageWords": "{{value}} 個詞",
       "otherApp": "其他",
       "dayStreak": "連續 {{value}} 天",
       "longestStreak": "最長連續 | {{value}} 天",

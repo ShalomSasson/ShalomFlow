@@ -987,6 +987,8 @@
       "wordsThisMonth": "Bu ay {{value}} kelime",
       "appUsage": "Uygulama kullanımı",
       "totalApps": "Toplam uygulama | {{value}}",
+      "powerUsage": "Yoğun kullanım",
+      "powerUsageWords": "{{value}} kelime",
       "otherApp": "Diğer",
       "dayStreak": "{{value}} günlük seri",
       "longestStreak": "En uzun seri | {{value}} gün",

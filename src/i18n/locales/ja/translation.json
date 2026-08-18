@@ -987,6 +987,8 @@
       "wordsThisMonth": "今月{{value}}語",
       "appUsage": "アプリの利用状況",
       "totalApps": "アプリ合計 | {{value}}",
+      "powerUsage": "ヘビーユース",
+      "powerUsageWords": "{{value}}語",
       "otherApp": "その他",
       "dayStreak": "{{value}}日連続",
       "longestStreak": "最長連続 | {{value}}日",

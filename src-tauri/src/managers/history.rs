@@ -153,6 +153,8 @@ pub struct InsightsAppUsage {
     pub count: i64,
     /// Share of all dictations, 0...100.
     pub percent: i64,
+    /// Words dictated into this app.
+    pub words: i64,
 }
 
 /// One calendar day's dictation activity, for the streak heatmap tooltip.
@@ -554,25 +556,33 @@ impl HistoryManager {
 
         // Per-app usage across all recorded days.
         let mut stmt = conn.prepare(
-            "SELECT app, SUM(dictations) AS count
+            "SELECT app, SUM(dictations) AS count, SUM(words) AS words
              FROM daily_usage GROUP BY app ORDER BY count DESC, app ASC",
         )?;
         let by_app = stmt
             .query_map([], |row| {
-                Ok((row.get::<_, String>(0)?, row.get::<_, i64>(1)?))
+                Ok((
+                    row.get::<_, String>(0)?,
+                    row.get::<_, i64>(1)?,
+                    row.get::<_, i64>(2)?,
+                ))
             })?
             .collect::<std::result::Result<Vec<_>, _>>()?;
-        let total_dictations: i64 = by_app.iter().map(|(_, count)| count).sum();
+        let total_dictations: i64 = by_app.iter().map(|(_, count, _)| count).sum();
         let app_usage = by_app
             .iter()
-            .map(|(name, count)| InsightsAppUsage {
+            .map(|(name, count, words)| InsightsAppUsage {
                 name: name.clone(),
                 count: *count,
                 percent: ((*count as f64) / (total_dictations.max(1) as f64) * 100.0).round()
                     as i64,
+                words: *words,
             })
             .collect();
-        let total_apps = by_app.iter().filter(|(name, _)| !name.is_empty()).count() as i64;
+        let total_apps = by_app
+            .iter()
+            .filter(|(name, _, _)| !name.is_empty())
+            .count() as i64;
 
         // Per-day details for the heatmap, plus the day set for streaks.
         let mut stmt = conn.prepare(
@@ -1650,18 +1660,18 @@ mod tests {
         assert_eq!(stats.words_changed, 42);
 
         // Sorted by count desc, then name asc; '' groups as its own row.
-        let names: Vec<(&str, i64, i64)> = stats
+        let names: Vec<(&str, i64, i64, i64)> = stats
             .app_usage
             .iter()
-            .map(|usage| (usage.name.as_str(), usage.count, usage.percent))
+            .map(|usage| (usage.name.as_str(), usage.count, usage.percent, usage.words))
             .collect();
         assert_eq!(
             names,
             vec![
-                ("Slack", 9, 45),
-                ("Code", 6, 30),
-                ("Chrome", 3, 15),
-                ("", 2, 10),
+                ("Slack", 9, 45, 310),
+                ("Code", 6, 30, 300),
+                ("Chrome", 3, 15, 90),
+                ("", 2, 10, 100),
             ]
         );
         assert_eq!(stats.total_apps, 3);

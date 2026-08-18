@@ -2818,7 +2818,11 @@ export type InsightsAppUsage = { name: string; count: number;
 /**
  * Share of all dictations, 0...100.
  */
-percent: number }
+percent: number;
+/**
+ * Words dictated into this app.
+ */
+words: number }
 /**
  * One calendar day's dictation activity, for the streak heatmap tooltip.
  */

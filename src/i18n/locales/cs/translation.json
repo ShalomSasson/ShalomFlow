@@ -987,6 +987,8 @@
       "wordsThisMonth": "{{value}} slov tento měsíc",
       "appUsage": "Využití aplikací",
       "totalApps": "Aplikací celkem | {{value}}",
+      "powerUsage": "Intenzivní využití",
+      "powerUsageWords": "{{value}} slov",
       "otherApp": "Ostatní",
       "dayStreak": "Série {{value}} dní",
       "longestStreak": "Nejdelší série | {{value}} dní",

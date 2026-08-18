@@ -987,6 +987,8 @@
       "wordsThisMonth": "{{value}} слов за этот месяц",
       "appUsage": "Использование приложений",
       "totalApps": "Всего приложений | {{value}}",
+      "powerUsage": "Активное использование",
+      "powerUsageWords": "{{value}} слов",
       "otherApp": "Другое",
       "dayStreak": "Серия: {{value}} дней",
       "longestStreak": "Самая длинная серия | {{value}} дней",

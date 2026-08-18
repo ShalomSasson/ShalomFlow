@@ -266,6 +266,8 @@ const StreakHeatmap: React.FC<{ daily: InsightsDay[] }> = ({ daily }) => {
 export const InsightsSettings: React.FC = () => {
   const { t, i18n } = useTranslation();
   const [stats, setStats] = useState<InsightsStats | null>(null);
+  /** App-usage row whose words popup is showing, keyed by app name. */
+  const [hoveredApp, setHoveredApp] = useState<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -403,16 +405,43 @@ export const InsightsSettings: React.FC = () => {
                         <AppWindow className="h-4 w-4 shrink-0 text-muted" />
                         <div className="flex min-w-0 flex-1 items-center gap-3">
                           <div
-                            className={`flex h-[26px] shrink-0 items-center justify-center rounded-md ${
-                              BAR_TONES[Math.min(rank, BAR_TONES.length - 1)]
-                            }`}
+                            className="relative h-[26px] shrink-0"
                             style={{
                               width: `${Math.max(14, Math.round(fraction * 55))}%`,
                             }}
+                            onMouseEnter={() => setHoveredApp(usage.name)}
+                            onMouseLeave={() => setHoveredApp(null)}
                           >
-                            <span className="text-[11px] font-semibold text-on-primary">
-                              {`${usage.percent}%`}
-                            </span>
+                            <div
+                              className={`flex h-full items-center justify-center rounded-md ${
+                                BAR_TONES[Math.min(rank, BAR_TONES.length - 1)]
+                              }`}
+                            >
+                              <span className="text-[11px] font-semibold text-on-primary">
+                                {`${usage.percent}%`}
+                              </span>
+                            </div>
+                            {hoveredApp === usage.name && (
+                              <div className="pointer-events-none absolute bottom-full left-1/2 z-10 mb-2 -translate-x-1/2">
+                                <div className="rounded-xl bg-ink px-3.5 py-2.5 shadow-lg">
+                                  <div className="whitespace-nowrap text-[13px] font-semibold text-surface">
+                                    {`🚀 ${t("settings.insights.powerUsage")}`}
+                                  </div>
+                                  <div className="whitespace-nowrap text-xs text-surface/80">
+                                    {t("settings.insights.powerUsageWords", {
+                                      value: numberFormat.format(usage.words),
+                                    })}
+                                  </div>
+                                </div>
+                                {/* Caret pointing back down at the bar. */}
+                                <div
+                                  className="mx-auto h-2 w-3 bg-ink"
+                                  style={{
+                                    clipPath: "polygon(0 0, 100% 0, 50% 100%)",
+                                  }}
+                                />
+                              </div>
+                            )}
                           </div>
                           <span className="truncate text-[11px] font-medium uppercase tracking-wide text-muted">
                             {`${numberFormat.format(usage.count)} · ${name}`}

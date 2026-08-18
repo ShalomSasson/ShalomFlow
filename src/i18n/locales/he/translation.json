@@ -987,6 +987,8 @@
       "wordsThisMonth": "{{value}} מילים החודש",
       "appUsage": "שימוש באפליקציות",
       "totalApps": "סך האפליקציות | {{value}}",
+      "powerUsage": "שימוש מוגבר",
+      "powerUsageWords": "{{value}} מילים",
       "otherApp": "אחר",
       "dayStreak": "רצף של {{value}} ימים",
       "longestStreak": "הרצף הארוך ביותר | {{value}} ימים",

@@ -987,6 +987,8 @@
       "wordsThisMonth": "{{value}} كلمة هذا الشهر",
       "appUsage": "استخدام التطبيقات",
       "totalApps": "إجمالي التطبيقات | {{value}}",
+      "powerUsage": "استخدام مكثّف",
+      "powerUsageWords": "{{value}} كلمة",
       "otherApp": "أخرى",
       "dayStreak": "تتابع {{value}} يوم",
       "longestStreak": "أطول تتابع | {{value}} يوم",
