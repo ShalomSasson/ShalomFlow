@@ -8,6 +8,7 @@ individually.
 
 ## [Unreleased]
 
+- i18n: complete the Insights translations, and credit SpeakoFlow upstream (967095d)
 - feat(history): search the feed and group it by day (fba817d)
 - feat(prompts): retune the Polish template for dictation accuracy (47dcbdd)
 - fix(transforms): isolate the selection from tooling-injected context (b03bc17)
