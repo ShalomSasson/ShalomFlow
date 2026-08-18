@@ -8,6 +8,8 @@ individually.
 
 ## [Unreleased]
 
+- feat(history): give the lifetime stats card a color per metric (42c0404)
+- feat(insights): show a power-usage popup on the app bars (00c0cea)
 - i18n: complete the Insights translations, and credit SpeakoFlow upstream (967095d)
 - feat(history): search the feed and group it by day (fba817d)
 - feat(prompts): retune the Polish template for dictation accuracy (47dcbdd)
