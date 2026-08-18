@@ -750,7 +750,10 @@ pub(crate) async fn process_transcription_output(
         final_text = converted_text;
     }
 
-    if uses_ai_cleanup(post_process) {
+    // Polish dictation owns the rewrite while it is enabled: every dictation
+    // — including the AI-Correction binding — uses the Polish prompt and no
+    // other prompt runs (see the Polish block below).
+    if uses_ai_cleanup(post_process) && !settings.polish_after_dictation {
         let started = Instant::now();
         let timeout = Duration::from_secs(settings.post_process_timeout_secs.max(1) as u64);
         let deadline = TokioInstant::now() + timeout;
@@ -810,11 +813,12 @@ pub(crate) async fn process_transcription_output(
     }
 
     // === Polish after dictation ===========================================
-    // Independent of the Transforms opt-in, and skipped when AI Correction
-    // already rewrote this dictation (one rewrite pass, never two). Runs
-    // before spoken emojis and text replacements so those deterministic
-    // fix-ups keep final authority, exactly like AI cleanup above.
-    if !uses_ai_cleanup(post_process) && settings.polish_after_dictation {
+    // Independent of the Transforms opt-in. While enabled, Polish is the ONLY
+    // rewrite for every dictation: the AI-Correction pass above is skipped
+    // even on its own binding, so no other prompt can touch the transcript
+    // (still one rewrite pass, never two). Runs before spoken emojis and text
+    // replacements so those deterministic fix-ups keep final authority.
+    if settings.polish_after_dictation {
         let started = Instant::now();
         match crate::transforms::polish_transcript(&settings, &final_text).await {
             Some(polished) => {
@@ -1153,6 +1157,27 @@ impl ShortcutAction for TranscribeAction {
                                 transcription
                             );
 
+                            // Lifetime usage stats (History page): spoken
+                            // words + speech time, counted once per dictation
+                            // regardless of where the transcript is delivered.
+                            if !transcription.trim().is_empty() {
+                                let words = transcription.split_whitespace().count() as i64;
+                                let speech_ms = (sample_count as i64).saturating_mul(1000)
+                                    / i64::from(
+                                        crate::audio_toolkit::constants::WHISPER_SAMPLE_RATE,
+                                    );
+                                // The app the dictation lands in (Insights →
+                                // App usage). Captured here, right before the
+                                // transcript is delivered; None on platforms
+                                // without a frontmost-app API.
+                                let target_app = crate::utils::frontmost_app_name();
+                                if let Err(err) =
+                                    hm.record_usage(words, speech_ms, target_app.as_deref())
+                                {
+                                    warn!("Failed to record usage stats: {err}");
+                                }
+                            }
+
                             // Rerouted to the assistant (the overlay's Ask-
                             // Assistant button): hand the transcript to the
                             // assistant instead of pasting it anywhere.
@@ -1359,6 +1384,21 @@ impl ShortcutAction for TranscribeAction {
                             let processed =
                                 process_transcription_output(&ah, &transcription, post_process)
                                     .await;
+
+                            // Insights: count transcripts the AI cleanup
+                            // actually changed (lifetime counters — the
+                            // history rows below are pruned by retention).
+                            if let Some(cleaned) = processed.post_processed_text.as_deref() {
+                                if cleaned != transcription {
+                                    let changed = crate::managers::history::changed_word_count(
+                                        &transcription,
+                                        cleaned,
+                                    ) as i64;
+                                    if let Err(err) = hm.record_ai_fix(changed) {
+                                        warn!("Failed to record AI fix stats: {err}");
+                                    }
+                                }
+                            }
 
                             // Save to history if WAV was saved
                             if wav_saved {

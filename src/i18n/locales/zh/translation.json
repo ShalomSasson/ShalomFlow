@@ -26,6 +26,8 @@
     "dictation": "语音输入",
     "assistant": "助手",
     "history": "历史记录",
+    "insights": "统计",
+    "settings": "设置",
     "about": "关于",
     "debug": "调试",
     "characters": "角色",
@@ -33,7 +35,7 @@
     "collapse": "收起侧边栏",
     "expand": "展开侧边栏",
     "styles": "风格",
-    "transforms": "转换"
+    "transforms": "提示词"
   },
   "window": {
     "minimize": "最小化",
@@ -46,6 +48,7 @@
     "dictation": "将语音转为文字的模型，以及文字的清理方式。",
     "assistant": "先设置助手，再调整它的语音、屏幕视觉和网络搜索。",
     "history": "您最近的语音输入、Flow 生成和助手聊天，都保存在本设备上。",
+    "insights": "你的语音输入习惯——速度、字数、连续天数，以及在哪里输入。全部在本设备上计算。",
     "about": "版本、应用语言、数据位置和致谢。",
     "debug": "诊断与开发者工具。",
     "styles": "听写文本在各类应用中的格式设置。"
@@ -450,8 +453,8 @@
       },
       "polishDictation": {
         "label": "润色听写",
-        "description": "粘贴前用润色转换重写每次听写。",
-        "info": "独立于转换的启用开关，后者只控制选中文本的快捷键。使用转换页面中配置的润色转换（规则、自定义指令和你的写作示例）以及同一个 AI 提供商。已使用 AI 纠正的听写会被跳过，文本绝不会被重写两次；若重写失败，将原样粘贴原始转录。"
+        "description": "粘贴前用润色提示词重写每次听写。",
+        "info": "独立于提示词的启用开关，后者只控制选中文本的快捷键。使用提示词页面中配置的润色模板（目标、自定义指令和你的写作示例）以及同一个 AI 提供商。已使用 AI 纠正的听写会被跳过，文本绝不会被重写两次；若重写失败，将原样粘贴原始转录。"
       }
     },
     "models": {
@@ -923,7 +926,8 @@
         "all": "全部",
         "recordings": "Recordings",
         "flow": "Flow",
-        "assistant": "助手聊天"
+        "assistant": "助手聊天",
+        "transforms": "提示词"
       },
       "openFolder": "打开录音文件夹",
       "loading": "加载历史记录中…",
@@ -959,7 +963,40 @@
       "screenshotAttached": "视觉",
       "messageCount_one": "{{count}} 条消息",
       "messageCount_other": "{{count}} 条消息",
-      "deleteAssistantError": "无法删除该对话。请重试。"
+      "deleteAssistantError": "无法删除该对话。请重试。",
+      "transformInputLabel": "原始文本",
+      "transformOutputLabel": "转换后文本",
+      "stats": {
+        "totalWords": "总字数",
+        "wpm": "字/分钟",
+        "dayStreak": "天连续"
+      },
+      "search": {
+        "placeholder": "搜索历史记录…",
+        "noResults": "没有与搜索匹配的条目。"
+      }
+    },
+    "insights": {
+      "wpmCaption": "每分钟字数",
+      "wpmTarget": "目标约 {{target}}",
+      "fixesCaption": "AI 的修正",
+      "transcriptsCleaned": "已整理 {{value}} 条转写",
+      "wordsChanged": "已修改 {{value}} 个词",
+      "totalWordsCaption": "累计输入字数",
+      "monthChange": "本月 {{value}}%",
+      "wordsThisMonth": "本月 {{value}} 个词",
+      "appUsage": "应用使用情况",
+      "totalApps": "应用总数 | {{value}}",
+      "otherApp": "其他",
+      "dayStreak": "连续 {{value}} 天",
+      "longestStreak": "最长连续 | {{value}} 天",
+      "more": "多",
+      "less": "少",
+      "empty": "还没有语音输入记录。",
+      "tooltipDictations": "语音输入次数",
+      "tooltipWords": "总词数",
+      "tooltipApps": "使用过的应用总数",
+      "tooltipTopApp": "最常用的应用"
     },
     "debug": {
       "title": "调试",
@@ -1066,6 +1103,11 @@
         "title": "许可证",
         "description": "ShalomFlow 基于 MIT 许可证开源，构建于 CJ Pais 的 Handy（同为 MIT 许可）之上。",
         "button": "查看许可证"
+      },
+      "credits": {
+        "title": "致谢",
+        "description": "ShalomFlow 是 Abhishek Barali 的 SpeakoFlow（MIT 许可）的分支，而 SpeakoFlow 基于 CJ Pais 的语音输入内核 Handy。",
+        "button": "查看 SpeakoFlow"
       },
       "supportDevelopment": {
         "title": "支持开发",
@@ -1650,14 +1692,14 @@
   "transformsPage": {
     "beta": "测试版",
     "optIn": "启用",
-    "myTransforms": "我的转换",
+    "myTransforms": "我的提示词",
     "resetDefaults": "重置为默认",
     "createNew": "新建",
     "createOwn": "创建你自己的",
     "uploadPrompt": "上传你自己的提示词",
     "promo": {
-      "title": "转换可在任何书写位置使用",
-      "body": "听写后应用转换来重写、清理或重组文本。"
+      "title": "提示词可在任何书写位置使用",
+      "body": "听写后应用提示词来重写、清理或重组文本。"
     },
     "detail": {
       "autosave": "自动保存已开启",
@@ -1675,11 +1717,11 @@
       "addExample": "添加示例",
       "removeExample": "移除示例",
       "createTitle": "创建你自己的",
-      "createSubtitle": "设置键盘快捷键来应用此转换。",
-      "nameLabel": "为你的转换快捷键命名",
+      "createSubtitle": "设置键盘快捷键来应用此提示词。",
+      "nameLabel": "为你的提示词快捷键命名",
       "namePlaceholder": "老板模式",
       "customizePrompt": "自定义提示词",
-      "promptPlaceholder": "你希望此转换如何改变你的文本？"
+      "promptPlaceholder": "你希望此提示词如何改变你的文本？"
     }
   }
 }

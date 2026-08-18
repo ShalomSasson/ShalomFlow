@@ -26,6 +26,8 @@
     "dictation": "Dictée",
     "assistant": "Assistant",
     "history": "Historique",
+    "insights": "Statistiques",
+    "settings": "Paramètres",
     "about": "À propos",
     "debug": "Débogage",
     "characters": "Profils",
@@ -33,7 +35,7 @@
     "collapse": "Réduire la barre latérale",
     "expand": "Développer la barre latérale",
     "styles": "Styles",
-    "transforms": "Transformations"
+    "transforms": "Prompts"
   },
   "window": {
     "minimize": "Réduire",
@@ -46,6 +48,7 @@
     "dictation": "Le modèle qui transforme votre voix en texte, et la façon dont le texte est nettoyé.",
     "assistant": "Configurez l'assistant, puis réglez sa voix, la vision d'écran et la recherche web.",
     "history": "Vos dictées récentes, vos générations Flow et vos conversations avec l'assistant, conservées sur cet appareil.",
+    "insights": "Vos habitudes de dictée : vitesse, volume, séries et où vous dictez. Calculé sur cet appareil.",
     "about": "Version, langue de l'application, emplacements des données et crédits.",
     "debug": "Diagnostics et outils de développement.",
     "styles": "Comment votre texte dicté est mis en forme dans chaque type d'application."
@@ -450,8 +453,8 @@
       },
       "polishDictation": {
         "label": "Peaufiner la dictée",
-        "description": "Réécrit chaque dictée avec la transformation Peaufiner avant de coller.",
-        "info": "Indépendant de l'activation des Transformations, qui ne concerne que les raccourcis de sélection. Utilise la transformation Peaufiner exactement comme configurée sur la page Transformations (règles, instructions personnalisées et vos exemples d'écriture) et le même fournisseur d'IA. Ignoré quand la dictée a déjà utilisé la correction IA, pour ne jamais réécrire le texte deux fois ; si la réécriture échoue, la transcription brute est collée telle quelle."
+        "description": "Réécrit chaque dictée avec le prompt Peaufiner avant de coller.",
+        "info": "Indépendant de l'activation des Prompts, qui ne concerne que les raccourcis de sélection. Utilise le template Peaufiner exactement comme configuré sur la page Prompts (objectifs, instructions personnalisées et vos exemples d'écriture) et le même fournisseur d'IA. Ignoré quand la dictée a déjà utilisé la correction IA, pour ne jamais réécrire le texte deux fois ; si la réécriture échoue, la transcription brute est collée telle quelle."
       }
     },
     "models": {
@@ -923,7 +926,8 @@
         "all": "Tous",
         "recordings": "Recordings",
         "flow": "Flow",
-        "assistant": "Conversations de l'assistant"
+        "assistant": "Conversations de l'assistant",
+        "transforms": "Prompts"
       },
       "openFolder": "Ouvrir le dossier des enregistrements",
       "loading": "Chargement de l'historique…",
@@ -959,7 +963,40 @@
       "screenshotAttached": "Vision",
       "messageCount_one": "{{count}} message",
       "messageCount_other": "{{count}} messages",
-      "deleteAssistantError": "Impossible de supprimer la conversation. Veuillez réessayer."
+      "deleteAssistantError": "Impossible de supprimer la conversation. Veuillez réessayer.",
+      "transformInputLabel": "Texte original",
+      "transformOutputLabel": "Texte transformé",
+      "stats": {
+        "totalWords": "mots au total",
+        "wpm": "mots/min",
+        "dayStreak": "jours d'affilée"
+      },
+      "search": {
+        "placeholder": "Rechercher dans l'historique…",
+        "noResults": "Aucune entrée ne correspond à votre recherche."
+      }
+    },
+    "insights": {
+      "wpmCaption": "Mots par minute",
+      "wpmTarget": "sur ~{{target}}",
+      "fixesCaption": "Corrections faites par l'IA",
+      "transcriptsCleaned": "{{value}} transcriptions nettoyées",
+      "wordsChanged": "{{value}} mots modifiés",
+      "totalWordsCaption": "Total de mots dictés",
+      "monthChange": "{{value}} % ce mois-ci",
+      "wordsThisMonth": "{{value}} mots ce mois-ci",
+      "appUsage": "Utilisation des apps",
+      "totalApps": "Total d'apps | {{value}}",
+      "otherApp": "Autres",
+      "dayStreak": "Série de {{value}} jours",
+      "longestStreak": "Plus longue série | {{value}} jours",
+      "more": "Plus",
+      "less": "Moins",
+      "empty": "Aucune dictée pour le moment.",
+      "tooltipDictations": "Dictées",
+      "tooltipWords": "Total de mots",
+      "tooltipApps": "Total d'apps utilisées",
+      "tooltipTopApp": "App principale"
     },
     "debug": {
       "title": "Débogage",
@@ -1066,6 +1103,11 @@
         "title": "Licence",
         "description": "ShalomFlow est un logiciel open source sous licence MIT, fondé sur Handy (également sous MIT) de CJ Pais.",
         "button": "Voir la licence"
+      },
+      "credits": {
+        "title": "Crédits",
+        "description": "ShalomFlow est un fork de SpeakoFlow, d'Abhishek Barali (MIT), lui-même bâti sur le cœur de dictée Handy, de CJ Pais.",
+        "button": "Voir SpeakoFlow"
       },
       "supportDevelopment": {
         "title": "Soutenir le développement",
@@ -1650,14 +1692,14 @@
   "transformsPage": {
     "beta": "Bêta",
     "optIn": "Activer",
-    "myTransforms": "Mes transformations",
+    "myTransforms": "Mes prompts",
     "resetDefaults": "Réinitialiser",
     "createNew": "Créer",
     "createOwn": "Créez la vôtre",
     "uploadPrompt": "Importez votre propre prompt",
     "promo": {
-      "title": "Les transformations fonctionnent partout où vous écrivez",
-      "body": "Appliquez une transformation pour réécrire, nettoyer ou restructurer le texte après la dictée."
+      "title": "Les prompts fonctionnent partout où vous écrivez",
+      "body": "Appliquez un prompt pour réécrire, nettoyer ou restructurer le texte après la dictée."
     },
     "detail": {
       "autosave": "Sauvegarde auto activée",
@@ -1675,11 +1717,11 @@
       "addExample": "Ajouter un exemple",
       "removeExample": "Supprimer l'exemple",
       "createTitle": "Créez la vôtre",
-      "createSubtitle": "Configurez un raccourci clavier pour appliquer cette transformation.",
-      "nameLabel": "Nommez votre raccourci de transformation",
+      "createSubtitle": "Configurez un raccourci clavier pour appliquer ce prompt.",
+      "nameLabel": "Nommez votre raccourci de prompt",
       "namePlaceholder": "Mode patron",
       "customizePrompt": "Personnaliser le prompt",
-      "promptPlaceholder": "Comment cette transformation doit-elle modifier votre texte ?"
+      "promptPlaceholder": "Comment ce prompt doit-il modifier votre texte ?"
     }
   }
 }

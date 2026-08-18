@@ -26,6 +26,8 @@
     "dictation": "音声入力",
     "assistant": "アシスタント",
     "history": "履歴",
+    "insights": "分析",
+    "settings": "設定",
     "about": "概要",
     "debug": "デバッグ",
     "characters": "プロフィール",
@@ -33,7 +35,7 @@
     "collapse": "サイドバーを折りたたむ",
     "expand": "サイドバーを展開",
     "styles": "スタイル",
-    "transforms": "トランスフォーム"
+    "transforms": "プロンプト"
   },
   "window": {
     "minimize": "最小化",
@@ -46,6 +48,7 @@
     "dictation": "音声をテキストに変換するモデルと、その整形方法。",
     "assistant": "アシスタントを設定し、音声、画面認識、ウェブ検索を調整します。",
     "history": "このデバイスに保存されている、最近の音声入力、Flowでの生成、アシスタントのチャット。",
+    "insights": "音声入力の傾向 — 速度、量、連続日数、入力先のアプリ。このデバイス上で計算されます。",
     "about": "バージョン、アプリの言語、データの保存場所、クレジット。",
     "debug": "診断と開発者向けツール。",
     "styles": "アプリの種類ごとに、音声入力したテキストの書式を設定します。"
@@ -450,8 +453,8 @@
       },
       "polishDictation": {
         "label": "音声入力をポリッシュ",
-        "description": "貼り付け前に、すべての音声入力をポリッシュトランスフォームで書き直します。",
-        "info": "トランスフォームのオプトインとは独立しており、オプトインは選択ショートカットのみを制御します。トランスフォームページで設定したとおりのポリッシュトランスフォーム（ルール、カスタム指示、文章の例）と同じAIプロバイダーを使用します。AI補正を使った音声入力ではスキップされ、テキストが二重に書き直されることはありません。書き直しに失敗した場合は、生の文字起こしがそのまま貼り付けられます。"
+        "description": "貼り付け前に、すべての音声入力をポリッシュプロンプトで書き直します。",
+        "info": "プロンプトのオプトインとは独立しており、オプトインは選択ショートカットのみを制御します。プロンプトページで設定したとおりのポリッシュテンプレート（ゴール、カスタム指示、文章の例）と同じAIプロバイダーを使用します。AI補正を使った音声入力ではスキップされ、テキストが二重に書き直されることはありません。書き直しに失敗した場合は、生の文字起こしがそのまま貼り付けられます。"
       }
     },
     "models": {
@@ -923,7 +926,8 @@
         "all": "すべて",
         "recordings": "Recordings",
         "flow": "Flow",
-        "assistant": "アシスタントのチャット"
+        "assistant": "アシスタントのチャット",
+        "transforms": "プロンプト"
       },
       "openFolder": "録音フォルダを開く",
       "loading": "履歴を読み込み中…",
@@ -959,7 +963,40 @@
       "screenshotAttached": "画面",
       "messageCount_one": "{{count}}件のメッセージ",
       "messageCount_other": "{{count}}件のメッセージ",
-      "deleteAssistantError": "会話を削除できませんでした。もう一度お試しください。"
+      "deleteAssistantError": "会話を削除できませんでした。もう一度お試しください。",
+      "transformInputLabel": "元のテキスト",
+      "transformOutputLabel": "変換後のテキスト",
+      "stats": {
+        "totalWords": "合計単語数",
+        "wpm": "語/分",
+        "dayStreak": "日連続"
+      },
+      "search": {
+        "placeholder": "履歴を検索…",
+        "noResults": "検索に一致する項目はありません。"
+      }
+    },
+    "insights": {
+      "wpmCaption": "1分あたりの単語数",
+      "wpmTarget": "目標 約{{target}}",
+      "fixesCaption": "AIによる修正",
+      "transcriptsCleaned": "{{value}}件の文字起こしを整えました",
+      "wordsChanged": "{{value}}語を修正しました",
+      "totalWordsCaption": "入力した単語の合計",
+      "monthChange": "今月{{value}}%",
+      "wordsThisMonth": "今月{{value}}語",
+      "appUsage": "アプリの利用状況",
+      "totalApps": "アプリ合計 | {{value}}",
+      "otherApp": "その他",
+      "dayStreak": "{{value}}日連続",
+      "longestStreak": "最長連続 | {{value}}日",
+      "more": "多い",
+      "less": "少ない",
+      "empty": "まだ音声入力がありません。",
+      "tooltipDictations": "音声入力",
+      "tooltipWords": "単語の合計",
+      "tooltipApps": "使用したアプリの合計",
+      "tooltipTopApp": "よく使うアプリ"
     },
     "debug": {
       "title": "デバッグ",
@@ -1066,6 +1103,11 @@
         "title": "ライセンス",
         "description": "ShalomFlowはMITライセンスのオープンソースで、CJ Pais氏によるHandy（同じくMIT）を基にしています。",
         "button": "ライセンスを見る"
+      },
+      "credits": {
+        "title": "クレジット",
+        "description": "ShalomFlow は Abhishek Barali 氏の SpeakoFlow（MIT ライセンス）のフォークで、SpeakoFlow は CJ Pais 氏の音声入力コア Handy を基にしています。",
+        "button": "SpeakoFlow を見る"
       },
       "supportDevelopment": {
         "title": "開発を支援",
@@ -1650,14 +1692,14 @@
   "transformsPage": {
     "beta": "ベータ",
     "optIn": "オプトイン",
-    "myTransforms": "マイトランスフォーム",
+    "myTransforms": "マイプロンプト",
     "resetDefaults": "デフォルトに戻す",
     "createNew": "新規作成",
     "createOwn": "自分だけのものを作成",
     "uploadPrompt": "独自のプロンプトをアップロード",
     "promo": {
-      "title": "トランスフォームは書く場所を選びません",
-      "body": "音声入力後にトランスフォームを適用して、テキストの書き直し・整理・再構成ができます。"
+      "title": "プロンプトは書く場所を選びません",
+      "body": "音声入力後にプロンプトを適用して、テキストの書き直し・整理・再構成ができます。"
     },
     "detail": {
       "autosave": "自動保存オン",
@@ -1675,11 +1717,11 @@
       "addExample": "例を追加",
       "removeExample": "例を削除",
       "createTitle": "自分だけのものを作成",
-      "createSubtitle": "このトランスフォームを適用するキーボードショートカットを設定します。",
-      "nameLabel": "トランスフォームショートカットに名前を付ける",
+      "createSubtitle": "このプロンプトを適用するキーボードショートカットを設定します。",
+      "nameLabel": "プロンプトショートカットに名前を付ける",
       "namePlaceholder": "ボスモード",
       "customizePrompt": "プロンプトをカスタマイズ",
-      "promptPlaceholder": "このトランスフォームでテキストをどのように変えたいですか？"
+      "promptPlaceholder": "このプロンプトでテキストをどのように変えたいですか？"
     }
   }
 }

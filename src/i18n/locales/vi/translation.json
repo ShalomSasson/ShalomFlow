@@ -26,6 +26,8 @@
     "dictation": "Đọc chính tả",
     "assistant": "Trợ lý",
     "history": "Lịch sử",
+    "insights": "Thống kê",
+    "settings": "Cài đặt",
     "about": "Giới thiệu",
     "debug": "Gỡ lỗi",
     "characters": "Hồ sơ",
@@ -33,7 +35,7 @@
     "collapse": "Thu gọn thanh bên",
     "expand": "Mở rộng thanh bên",
     "styles": "Phong cách",
-    "transforms": "Biến đổi"
+    "transforms": "Prompt"
   },
   "window": {
     "minimize": "Thu nhỏ",
@@ -46,6 +48,7 @@
     "dictation": "Mô hình biến giọng nói của bạn thành văn bản, và cách văn bản được dọn dẹp.",
     "assistant": "Thiết lập trợ lý, rồi tinh chỉnh giọng nói, khả năng xem màn hình và tìm kiếm web.",
     "history": "Các nội dung đọc chính tả, nội dung do Flow tạo và trò chuyện với trợ lý gần đây của bạn, được lưu trên thiết bị này.",
+    "insights": "Thói quen đọc chính tả của bạn — tốc độ, khối lượng, chuỗi ngày và nơi bạn đọc. Được tính trên thiết bị này.",
     "about": "Phiên bản, ngôn ngữ ứng dụng, vị trí dữ liệu và ghi công.",
     "debug": "Công cụ chẩn đoán và dành cho nhà phát triển.",
     "styles": "Cách văn bản đọc chính tả được định dạng trong từng loại ứng dụng."
@@ -450,8 +453,8 @@
       },
       "polishDictation": {
         "label": "Trau chuốt chính tả",
-        "description": "Viết lại mỗi lần đọc chính tả bằng Biến đổi Trau chuốt trước khi dán.",
-        "info": "Độc lập với việc bật Biến đổi, vốn chỉ điều khiển các phím tắt cho vùng chọn. Dùng Biến đổi Trau chuốt đúng như cấu hình trên trang Biến đổi (quy tắc, hướng dẫn tùy chỉnh và ví dụ văn phong của bạn) cùng nhà cung cấp AI đó. Bỏ qua khi lần đọc chính tả đã dùng Sửa lỗi AI, nên văn bản không bao giờ bị viết lại hai lần; nếu viết lại thất bại, bản ghi thô được dán nguyên vẹn."
+        "description": "Viết lại mỗi lần đọc chính tả bằng prompt Trau chuốt trước khi dán.",
+        "info": "Độc lập với việc bật Prompt, vốn chỉ điều khiển các phím tắt cho vùng chọn. Dùng mẫu Trau chuốt đúng như cấu hình trên trang Prompt (mục tiêu, hướng dẫn tùy chỉnh và ví dụ văn phong của bạn) cùng nhà cung cấp AI đó. Bỏ qua khi lần đọc chính tả đã dùng Sửa lỗi AI, nên văn bản không bao giờ bị viết lại hai lần; nếu viết lại thất bại, bản ghi thô được dán nguyên vẹn."
       }
     },
     "models": {
@@ -923,7 +926,8 @@
         "all": "Tất cả",
         "recordings": "Recordings",
         "flow": "Flow",
-        "assistant": "Trò chuyện với trợ lý"
+        "assistant": "Trò chuyện với trợ lý",
+        "transforms": "Prompt"
       },
       "openFolder": "Mở thư mục ghi âm",
       "loading": "Đang tải lịch sử…",
@@ -959,7 +963,40 @@
       "screenshotAttached": "Màn hình",
       "messageCount_one": "{{count}} tin nhắn",
       "messageCount_other": "{{count}} tin nhắn",
-      "deleteAssistantError": "Không thể xóa cuộc trò chuyện. Vui lòng thử lại."
+      "deleteAssistantError": "Không thể xóa cuộc trò chuyện. Vui lòng thử lại.",
+      "transformInputLabel": "Văn bản gốc",
+      "transformOutputLabel": "Văn bản đã biến đổi",
+      "stats": {
+        "totalWords": "tổng số từ",
+        "wpm": "từ/phút",
+        "dayStreak": "ngày liên tiếp"
+      },
+      "search": {
+        "placeholder": "Tìm trong lịch sử…",
+        "noResults": "Không có mục nào khớp với tìm kiếm."
+      }
+    },
+    "insights": {
+      "wpmCaption": "Từ mỗi phút",
+      "wpmTarget": "mục tiêu ~{{target}}",
+      "fixesCaption": "Chỉnh sửa bởi AI",
+      "transcriptsCleaned": "Đã dọn {{value}} bản ghi",
+      "wordsChanged": "Đã đổi {{value}} từ",
+      "totalWordsCaption": "Tổng số từ đã đọc",
+      "monthChange": "{{value}}% tháng này",
+      "wordsThisMonth": "{{value}} từ trong tháng này",
+      "appUsage": "Ứng dụng đã dùng",
+      "totalApps": "Tổng ứng dụng | {{value}}",
+      "otherApp": "Khác",
+      "dayStreak": "Chuỗi {{value}} ngày",
+      "longestStreak": "Chuỗi dài nhất | {{value}} ngày",
+      "more": "Nhiều",
+      "less": "Ít",
+      "empty": "Chưa có bản đọc nào.",
+      "tooltipDictations": "Lần đọc",
+      "tooltipWords": "Tổng số từ",
+      "tooltipApps": "Tổng ứng dụng đã dùng",
+      "tooltipTopApp": "Ứng dụng hàng đầu"
     },
     "debug": {
       "title": "Gỡ lỗi",
@@ -1066,6 +1103,11 @@
         "title": "Giấy phép",
         "description": "ShalomFlow là mã nguồn mở theo Giấy phép MIT, dựa trên Handy (cũng MIT) của CJ Pais.",
         "button": "Xem giấy phép"
+      },
+      "credits": {
+        "title": "Ghi công",
+        "description": "ShalomFlow là bản fork của SpeakoFlow do Abhishek Barali phát triển (giấy phép MIT), dựa trên nhân đọc chính tả Handy của CJ Pais.",
+        "button": "Xem SpeakoFlow"
       },
       "supportDevelopment": {
         "title": "Hỗ trợ phát triển",
@@ -1650,14 +1692,14 @@
   "transformsPage": {
     "beta": "Beta",
     "optIn": "Bật",
-    "myTransforms": "Biến đổi của tôi",
+    "myTransforms": "Prompt của tôi",
     "resetDefaults": "Đặt lại mặc định",
     "createNew": "Tạo mới",
     "createOwn": "Tự tạo của riêng bạn",
     "uploadPrompt": "Tải lên prompt của riêng bạn",
     "promo": {
-      "title": "Biến đổi hoạt động ở mọi nơi bạn viết",
-      "body": "Áp dụng Biến đổi để viết lại, dọn dẹp hoặc sắp xếp lại văn bản sau khi đọc chính tả."
+      "title": "Prompt hoạt động ở mọi nơi bạn viết",
+      "body": "Áp dụng Prompt để viết lại, dọn dẹp hoặc sắp xếp lại văn bản sau khi đọc chính tả."
     },
     "detail": {
       "autosave": "Tự động lưu bật",
@@ -1675,11 +1717,11 @@
       "addExample": "Thêm ví dụ",
       "removeExample": "Xóa ví dụ",
       "createTitle": "Tự tạo của riêng bạn",
-      "createSubtitle": "Thiết lập phím tắt để áp dụng Biến đổi này.",
-      "nameLabel": "Đặt tên cho phím tắt Biến đổi",
+      "createSubtitle": "Thiết lập phím tắt để áp dụng Prompt này.",
+      "nameLabel": "Đặt tên cho phím tắt Prompt",
       "namePlaceholder": "Chế độ sếp",
       "customizePrompt": "Tùy chỉnh prompt",
-      "promptPlaceholder": "Bạn muốn Biến đổi này thay đổi văn bản như thế nào?"
+      "promptPlaceholder": "Bạn muốn Prompt này thay đổi văn bản như thế nào?"
     }
   }
 }

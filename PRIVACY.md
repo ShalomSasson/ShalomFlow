@@ -57,6 +57,9 @@ The following is stored **locally on your computer** and never sent to us:
   (on your CPU or GPU) using local models. Your audio never leaves the device for
   transcription.
 - **Transcription history** and any "Flow" generations.
+- **Usage statistics** (the Insights screen): daily dictation counts, word
+  totals, and the name of the application each dictation was pasted into.
+  Computed and stored on-device only, never transmitted.
 - **Personal memory** (an optional feature that is **off by default**): notes the
   assistant learns about how you like to work. It is stored on-device, fully
   viewable and editable by you, and can be exported or erased in

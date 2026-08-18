@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Plus, Undo2 } from "lucide-react";
-import Badge from "../../ui/Badge";
 import { Button } from "../../ui/Button";
 import { SectionHeader } from "../../ui/SectionHeader";
 import { useSettings } from "../../../hooks/useSettings";
@@ -71,10 +70,7 @@ export const TransformsSettings: React.FC = () => {
   return (
     <div className="max-w-4xl w-full mx-auto space-y-6">
       <div className="flex items-start justify-between gap-4">
-        <div className="flex items-center gap-2.5">
-          <SectionHeader title={t("sidebar.transforms")} />
-          <Badge variant="active">{t("transformsPage.beta")}</Badge>
-        </div>
+        <SectionHeader title={t("sidebar.transforms")} />
         {/* Master opt-in — shortcuts only fire while this is on. Same
             checkbox/peer switch markup as ui/ToggleSwitch, without the row. */}
         <label

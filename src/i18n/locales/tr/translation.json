@@ -26,6 +26,8 @@
     "dictation": "Dikte",
     "assistant": "Asistan",
     "history": "Geçmiş",
+    "insights": "İstatistikler",
+    "settings": "Ayarlar",
     "about": "Hakkında",
     "debug": "Hata Ayıklama",
     "characters": "Profiller",
@@ -33,7 +35,7 @@
     "collapse": "Kenar çubuğunu daralt",
     "expand": "Kenar çubuğunu genişlet",
     "styles": "Stiller",
-    "transforms": "Dönüşümler"
+    "transforms": "İstemler"
   },
   "window": {
     "minimize": "Küçült",
@@ -46,6 +48,7 @@
     "dictation": "Sesinizi metne dönüştüren model ve metnin nasıl temizlendiği.",
     "assistant": "Asistanı kurun, ardından sesini, ekran görüşünü ve web aramasını ayarlayın.",
     "history": "Bu cihazda saklanan son dikteleriniz, Flow üretimleriniz ve asistan sohbetleriniz.",
+    "insights": "Dikte alışkanlıklarınız — hız, hacim, seriler ve nerede dikte ettiğiniz. Bu cihazda hesaplanır.",
     "about": "Sürüm, uygulama dili, veri konumları ve katkı sağlayanlar.",
     "debug": "Tanılama ve geliştirici araçları.",
     "styles": "Dikte edilen metnin her uygulama türünde nasıl biçimlendirileceği."
@@ -450,8 +453,8 @@
       },
       "polishDictation": {
         "label": "Dikteyi cilala",
-        "description": "Yapıştırmadan önce her dikteyi Cilala dönüşümüyle yeniden yazar.",
-        "info": "Yalnızca seçim kısayollarını denetleyen Dönüşümler etkinleştirmesinden bağımsızdır. Cilala dönüşümünü Dönüşümler sayfasında yapılandırıldığı şekliyle (kurallar, özel talimatlar ve yazı örnekleriniz) ve aynı yapay zeka sağlayıcısıyla kullanır. Dikte zaten yapay zeka düzeltmesi kullandıysa atlanır, böylece metin asla iki kez yeniden yazılmaz; yeniden yazma başarısız olursa ham döküm değiştirilmeden yapıştırılır."
+        "description": "Yapıştırmadan önce her dikteyi Cilala istemiyle yeniden yazar.",
+        "info": "Yalnızca seçim kısayollarını denetleyen İstemler etkinleştirmesinden bağımsızdır. Cilala şablonunu İstemler sayfasında yapılandırıldığı şekliyle (hedefler, özel talimatlar ve yazı örnekleriniz) ve aynı yapay zeka sağlayıcısıyla kullanır. Dikte zaten yapay zeka düzeltmesi kullandıysa atlanır, böylece metin asla iki kez yeniden yazılmaz; yeniden yazma başarısız olursa ham döküm değiştirilmeden yapıştırılır."
       }
     },
     "models": {
@@ -923,7 +926,8 @@
         "all": "Tümü",
         "recordings": "Recordings",
         "flow": "Flow",
-        "assistant": "Asistan sohbetleri"
+        "assistant": "Asistan sohbetleri",
+        "transforms": "İstemler"
       },
       "openFolder": "Kayıtlar Klasörünü Aç",
       "loading": "Geçmiş yükleniyor…",
@@ -959,7 +963,40 @@
       "screenshotAttached": "Görüş",
       "messageCount_one": "{{count}} mesaj",
       "messageCount_other": "{{count}} mesaj",
-      "deleteAssistantError": "Konuşma silinemedi. Lütfen tekrar deneyin."
+      "deleteAssistantError": "Konuşma silinemedi. Lütfen tekrar deneyin.",
+      "transformInputLabel": "Özgün metin",
+      "transformOutputLabel": "Dönüştürülmüş metin",
+      "stats": {
+        "totalWords": "toplam kelime",
+        "wpm": "kelime/dk",
+        "dayStreak": "günlük seri"
+      },
+      "search": {
+        "placeholder": "Geçmişte ara…",
+        "noResults": "Aramanızla eşleşen kayıt yok."
+      }
+    },
+    "insights": {
+      "wpmCaption": "Dakikadaki kelime",
+      "wpmTarget": "hedef ~{{target}}",
+      "fixesCaption": "Yapay zekânın yaptığı düzeltmeler",
+      "transcriptsCleaned": "{{value}} döküm temizlendi",
+      "wordsChanged": "{{value}} kelime değişti",
+      "totalWordsCaption": "Toplam dikte edilen kelime",
+      "monthChange": "Bu ay %{{value}}",
+      "wordsThisMonth": "Bu ay {{value}} kelime",
+      "appUsage": "Uygulama kullanımı",
+      "totalApps": "Toplam uygulama | {{value}}",
+      "otherApp": "Diğer",
+      "dayStreak": "{{value}} günlük seri",
+      "longestStreak": "En uzun seri | {{value}} gün",
+      "more": "Daha fazla",
+      "less": "Daha az",
+      "empty": "Henüz dikte yok.",
+      "tooltipDictations": "Dikteler",
+      "tooltipWords": "Toplam kelime",
+      "tooltipApps": "Kullanılan toplam uygulama",
+      "tooltipTopApp": "En çok kullanılan uygulama"
     },
     "debug": {
       "title": "Hata Ayıklama",
@@ -1066,6 +1103,11 @@
         "title": "Lisans",
         "description": "ShalomFlow, MIT Lisansı altında açık kaynaktır ve CJ Pais'in Handy (o da MIT) projesi üzerine kuruludur.",
         "button": "Lisansı görüntüle"
+      },
+      "credits": {
+        "title": "Katkılar",
+        "description": "ShalomFlow, Abhishek Barali'nin SpeakoFlow projesinin (MIT) bir fork'udur; SpeakoFlow ise CJ Pais'in Handy dikte çekirdeği üzerine kuruludur.",
+        "button": "SpeakoFlow'u görüntüle"
       },
       "supportDevelopment": {
         "title": "Geliştirmeyi Destekle",
@@ -1650,14 +1692,14 @@
   "transformsPage": {
     "beta": "Beta",
     "optIn": "Etkinleştir",
-    "myTransforms": "Dönüşümlerim",
+    "myTransforms": "İstemlerim",
     "resetDefaults": "Varsayılanlara sıfırla",
     "createNew": "Yeni Oluştur",
     "createOwn": "Kendinizinkini oluşturun",
     "uploadPrompt": "Kendi isteminizi yükleyin",
     "promo": {
-      "title": "Dönüşümler yazdığınız her yerde çalışır",
-      "body": "Dikte ettikten sonra metni yeniden yazmak, temizlemek veya yapılandırmak için bir dönüşüm uygulayın."
+      "title": "İstemler yazdığınız her yerde çalışır",
+      "body": "Dikte ettikten sonra metni yeniden yazmak, temizlemek veya yapılandırmak için bir istem uygulayın."
     },
     "detail": {
       "autosave": "Otomatik kayıt açık",
@@ -1675,11 +1717,11 @@
       "addExample": "Örnek ekle",
       "removeExample": "Örneği kaldır",
       "createTitle": "Kendinizinkini oluşturun",
-      "createSubtitle": "Bu dönüşümü uygulamak için bir klavye kısayolu ayarlayın.",
-      "nameLabel": "Dönüşüm kısayolunuza ad verin",
+      "createSubtitle": "Bu istemi uygulamak için bir klavye kısayolu ayarlayın.",
+      "nameLabel": "İstem kısayolunuza ad verin",
       "namePlaceholder": "Patron Modu",
       "customizePrompt": "İstemi özelleştir",
-      "promptPlaceholder": "Bu dönüşüm metninizi nasıl değiştirsin?"
+      "promptPlaceholder": "Bu istem metninizi nasıl değiştirsin?"
     }
   }
 }

@@ -12,11 +12,70 @@
 pub(crate) fn sanitize_model_output(raw: &str) -> Option<String> {
     let text = strip_reasoning_blocks(raw.trim());
     let text = unwrap_full_code_fence(text.trim());
+    let text = strip_label_prefix(text.trim());
+    let text = unwrap_symmetric_quotes(text.trim());
     let text = text.trim();
     if text.is_empty() {
         return None;
     }
     Some(text.to_string())
+}
+
+/// Small LLMs sometimes ignore "no label" instructions and return e.g.
+/// `Improved transcript: "..."`. Strip a known leading label deterministically
+/// (ported from the reference implementation's sanitizer, incl. the Hebrew
+/// labels its Whisper models tend to emit).
+fn strip_label_prefix(text: &str) -> &str {
+    const LABELS: &[&str] = &[
+        "improved transcript",
+        "cleaned transcript",
+        "cleaned text",
+        "transformed text",
+        "polished text",
+        "rewritten text",
+        "transcript",
+        "output",
+        "תמלול נקי",
+        "תמלול",
+        "טקסט נקי",
+    ];
+    let lower = text.to_lowercase();
+    for label in LABELS {
+        if let Some(rest) = lower.strip_prefix(label) {
+            if rest.starts_with(':') {
+                // Offsets are computed on `lower`, whose length can differ
+                // from `text` for non-ASCII; recompute on the original by
+                // finding the first ':' — safe because the label match
+                // guarantees the colon is the delimiter.
+                if let Some(colon) = text.find(':') {
+                    return text[colon + 1..].trim_start();
+                }
+            }
+        }
+    }
+    text
+}
+
+/// Unwrap output the model wrapped in one symmetric pair of quotes (straight,
+/// curly, or gershayim) — same pairs the reference sanitizer strips.
+fn unwrap_symmetric_quotes(text: &str) -> &str {
+    const PAIRS: &[(char, char)] = &[
+        ('"', '"'),
+        ('\u{201C}', '\u{201D}'),
+        ('\u{2018}', '\u{2019}'),
+        ('\u{05F4}', '\u{05F4}'),
+    ];
+    if text.chars().count() < 2 {
+        return text;
+    }
+    let first = text.chars().next().unwrap();
+    let last = text.chars().next_back().unwrap();
+    for (open, close) in PAIRS {
+        if first == *open && last == *close {
+            return text[first.len_utf8()..text.len() - last.len_utf8()].trim();
+        }
+    }
+    text
 }
 
 /// Remove leaked reasoning blocks (`<think>`, `<thinking>`, `<reasoning>`,

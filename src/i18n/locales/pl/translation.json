@@ -26,6 +26,8 @@
     "dictation": "Dyktowanie",
     "assistant": "Asystent",
     "history": "Historia",
+    "insights": "Statystyki",
+    "settings": "Ustawienia",
     "about": "O programie",
     "debug": "Debugowanie",
     "characters": "Profile",
@@ -33,7 +35,7 @@
     "collapse": "Zwiń panel boczny",
     "expand": "Rozwiń panel boczny",
     "styles": "Style",
-    "transforms": "Transformacje"
+    "transforms": "Prompty"
   },
   "window": {
     "minimize": "Minimalizuj",
@@ -46,6 +48,7 @@
     "dictation": "Model, który zamienia Twój głos na tekst, i sposób czyszczenia wyniku.",
     "assistant": "Skonfiguruj asystenta, a potem dostosuj jego głos, podgląd ekranu i wyszukiwanie w sieci.",
     "history": "Twoje ostatnie dyktowania, wyniki z Flow i rozmowy z asystentem, przechowywane na tym urządzeniu.",
+    "insights": "Twoje nawyki dyktowania — tempo, ilość, serie i miejsca, w których dyktujesz. Liczone na tym urządzeniu.",
     "about": "Wersja, język aplikacji, lokalizacje danych i podziękowania.",
     "debug": "Diagnostyka i narzędzia dla programistów.",
     "styles": "Jak dyktowany tekst jest formatowany w poszczególnych rodzajach aplikacji."
@@ -450,8 +453,8 @@
       },
       "polishDictation": {
         "label": "Dopracuj dyktowanie",
-        "description": "Przepisuje każde dyktowanie transformacją Dopracuj przed wklejeniem.",
-        "info": "Niezależne od włączenia Transformacji, które steruje tylko skrótami zaznaczenia. Używa transformacji Dopracuj dokładnie tak, jak skonfigurowano na stronie Transformacje (reguły, własne instrukcje i przykłady pisania) oraz tego samego dostawcy AI. Pomijane, gdy dyktowanie przeszło już korektę AI, więc tekst nigdy nie jest przepisywany dwukrotnie; jeśli przepisanie się nie powiedzie, wklejana jest surowa transkrypcja bez zmian."
+        "description": "Przepisuje każde dyktowanie promptem Dopracuj przed wklejeniem.",
+        "info": "Niezależne od włączenia Promptów, które steruje tylko skrótami zaznaczenia. Używa szablonu Dopracuj dokładnie tak, jak skonfigurowano na stronie Prompty (cele, własne instrukcje i przykłady pisania) oraz tego samego dostawcy AI. Pomijane, gdy dyktowanie przeszło już korektę AI, więc tekst nigdy nie jest przepisywany dwukrotnie; jeśli przepisanie się nie powiedzie, wklejana jest surowa transkrypcja bez zmian."
       }
     },
     "models": {
@@ -923,7 +926,8 @@
         "all": "Wszystkie",
         "recordings": "Recordings",
         "flow": "Flow",
-        "assistant": "Rozmowy z asystentem"
+        "assistant": "Rozmowy z asystentem",
+        "transforms": "Prompty"
       },
       "openFolder": "Otwórz folder nagrań",
       "loading": "Wczytywanie historii…",
@@ -959,7 +963,40 @@
       "screenshotAttached": "Ekran",
       "messageCount_one": "{{count}} wiadomość",
       "messageCount_other": "{{count}} wiadomości",
-      "deleteAssistantError": "Nie udało się usunąć rozmowy. Spróbuj ponownie."
+      "deleteAssistantError": "Nie udało się usunąć rozmowy. Spróbuj ponownie.",
+      "transformInputLabel": "Tekst oryginalny",
+      "transformOutputLabel": "Tekst przekształcony",
+      "stats": {
+        "totalWords": "słów łącznie",
+        "wpm": "słów/min",
+        "dayStreak": "dni z rzędu"
+      },
+      "search": {
+        "placeholder": "Szukaj w historii…",
+        "noResults": "Brak wpisów pasujących do wyszukiwania."
+      }
+    },
+    "insights": {
+      "wpmCaption": "Słów na minutę",
+      "wpmTarget": "z ~{{target}}",
+      "fixesCaption": "Poprawki wprowadzone przez AI",
+      "transcriptsCleaned": "Oczyszczone transkrypcje: {{value}}",
+      "wordsChanged": "Zmienione słowa: {{value}}",
+      "totalWordsCaption": "Łącznie podyktowanych słów",
+      "monthChange": "{{value}}% w tym miesiącu",
+      "wordsThisMonth": "{{value}} słów w tym miesiącu",
+      "appUsage": "Użycie aplikacji",
+      "totalApps": "Wszystkich aplikacji | {{value}}",
+      "otherApp": "Inne",
+      "dayStreak": "Seria {{value}} dni",
+      "longestStreak": "Najdłuższa seria | {{value}} dni",
+      "more": "Więcej",
+      "less": "Mniej",
+      "empty": "Jeszcze brak dyktowań.",
+      "tooltipDictations": "Dyktowania",
+      "tooltipWords": "Łącznie słów",
+      "tooltipApps": "Łącznie użytych aplikacji",
+      "tooltipTopApp": "Najczęstsza aplikacja"
     },
     "debug": {
       "title": "Debugowanie",
@@ -1066,6 +1103,11 @@
         "title": "Licencja",
         "description": "ShalomFlow to oprogramowanie open source na licencji MIT, oparte na projekcie Handy (również MIT) autorstwa CJ Pais.",
         "button": "Zobacz licencję"
+      },
+      "credits": {
+        "title": "Podziękowania",
+        "description": "ShalomFlow to fork projektu SpeakoFlow autorstwa Abhisheka Baraliego (MIT), który opiera się na silniku dyktowania Handy autorstwa CJ Paisa.",
+        "button": "Zobacz SpeakoFlow"
       },
       "supportDevelopment": {
         "title": "Wspieraj rozwój",
@@ -1650,14 +1692,14 @@
   "transformsPage": {
     "beta": "Beta",
     "optIn": "Włącz",
-    "myTransforms": "Moje transformacje",
+    "myTransforms": "Moje prompty",
     "resetDefaults": "Przywróć domyślne",
     "createNew": "Utwórz nową",
     "createOwn": "Stwórz własną",
     "uploadPrompt": "Prześlij własny prompt",
     "promo": {
-      "title": "Transformacje działają wszędzie tam, gdzie piszesz",
-      "body": "Zastosuj transformację, aby przepisać, oczyścić lub przeorganizować tekst po dyktowaniu."
+      "title": "Prompty działają wszędzie tam, gdzie piszesz",
+      "body": "Zastosuj prompt, aby przepisać, oczyścić lub przeorganizować tekst po dyktowaniu."
     },
     "detail": {
       "autosave": "Autozapis włączony",
@@ -1675,11 +1717,11 @@
       "addExample": "Dodaj przykład",
       "removeExample": "Usuń przykład",
       "createTitle": "Stwórz własną",
-      "createSubtitle": "Ustaw skrót klawiszowy, aby zastosować tę transformację.",
-      "nameLabel": "Nazwij swoją transformację",
+      "createSubtitle": "Ustaw skrót klawiszowy, aby zastosować ten prompt.",
+      "nameLabel": "Nazwij swój prompt",
       "namePlaceholder": "Tryb szefa",
       "customizePrompt": "Dostosuj prompt",
-      "promptPlaceholder": "Jak ta transformacja ma zmieniać Twój tekst?"
+      "promptPlaceholder": "Jak ten prompt ma zmieniać Twój tekst?"
     }
   }
 }

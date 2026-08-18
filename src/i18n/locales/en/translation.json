@@ -26,6 +26,8 @@
     "dictation": "Dictation",
     "assistant": "Assistant",
     "history": "History",
+    "insights": "Insights",
+    "settings": "Settings",
     "about": "About",
     "debug": "Debug",
     "characters": "Profiles",
@@ -33,7 +35,7 @@
     "collapse": "Collapse sidebar",
     "expand": "Expand sidebar",
     "styles": "Styles",
-    "transforms": "Transforms"
+    "transforms": "Prompts"
   },
   "window": {
     "minimize": "Minimize",
@@ -46,6 +48,7 @@
     "dictation": "The model that turns your voice into text, and how it's cleaned up.",
     "assistant": "Set up the assistant, then tune its voice, screen vision, and web search.",
     "history": "Your recent dictations, Flow generations, and assistant chats, stored on this device.",
+    "insights": "Your dictation habits — speed, volume, streaks, and where you dictate. Computed on this device.",
     "about": "Version, app language, data locations, and credits.",
     "debug": "Diagnostics and developer tools.",
     "styles": "How your dictated text is formatted in each kind of app."
@@ -450,8 +453,8 @@
       },
       "polishDictation": {
         "label": "Polish dictation",
-        "description": "Rewrite every dictation with the Polish transform before pasting.",
-        "info": "Independent of the Transforms opt-in, which only gates the selection shortcuts. Uses the Polish transform exactly as configured on the Transforms page (rules, custom instructions, and your writing examples) and the same AI provider. Skipped when a dictation already used AI Correction, so text is never rewritten twice; if the rewrite fails, the raw transcript is pasted unchanged."
+        "description": "Rewrite every dictation with the Polish Template prompt before pasting.",
+        "info": "Independent of the Prompts opt-in, which only gates the selection shortcuts. Uses the Polish Template exactly as configured on the Prompts page (goals, custom instructions, and your writing examples) and the same AI provider. While enabled, Polish is the only prompt applied to dictation — the AI-Correction shortcut also uses it instead of the selected cleanup prompt, so text is never rewritten twice; if the rewrite fails, the raw transcript is pasted unchanged."
       }
     },
     "models": {
@@ -923,7 +926,8 @@
         "all": "All",
         "recordings": "Dictations",
         "flow": "Flow",
-        "assistant": "Assistant chats"
+        "assistant": "Assistant chats",
+        "transforms": "Prompts"
       },
       "openFolder": "Open recordings folder",
       "loading": "Loading history…",
@@ -959,7 +963,40 @@
       "screenshotAttached": "Vision",
       "messageCount_one": "{{count}} message",
       "messageCount_other": "{{count}} messages",
-      "deleteAssistantError": "Couldn't delete the conversation. Please try again."
+      "deleteAssistantError": "Couldn't delete the conversation. Please try again.",
+      "transformInputLabel": "Original text",
+      "transformOutputLabel": "Transformed text",
+      "stats": {
+        "totalWords": "total words",
+        "wpm": "wpm",
+        "dayStreak": "day streak"
+      },
+      "search": {
+        "placeholder": "Search history…",
+        "noResults": "No entries match your search."
+      }
+    },
+    "insights": {
+      "wpmCaption": "Words per minute",
+      "wpmTarget": "of ~{{target}}",
+      "fixesCaption": "Fixes made by AI",
+      "transcriptsCleaned": "{{value}} transcripts cleaned",
+      "wordsChanged": "{{value}} words changed",
+      "totalWordsCaption": "Total words dictated",
+      "monthChange": "{{value}}% this month",
+      "wordsThisMonth": "{{value}} words this month",
+      "appUsage": "App usage",
+      "totalApps": "Total apps | {{value}}",
+      "otherApp": "Other",
+      "dayStreak": "{{value}} day streak",
+      "longestStreak": "Longest streak | {{value}} days",
+      "more": "More",
+      "less": "Less",
+      "empty": "No dictations yet.",
+      "tooltipDictations": "Dictations",
+      "tooltipWords": "Total words",
+      "tooltipApps": "Total apps used",
+      "tooltipTopApp": "Top app"
     },
     "debug": {
       "title": "Debug",
@@ -1066,6 +1103,11 @@
         "title": "License",
         "description": "ShalomFlow is open source under the MIT License, building on Handy (also MIT) by CJ Pais.",
         "button": "View license"
+      },
+      "credits": {
+        "title": "Credits",
+        "description": "ShalomFlow is a fork of SpeakoFlow by Abhishek Barali (MIT), which builds on the Handy dictation core by CJ Pais.",
+        "button": "View SpeakoFlow"
       },
       "supportDevelopment": {
         "title": "Support development",
@@ -1650,14 +1692,14 @@
   "transformsPage": {
     "beta": "Beta",
     "optIn": "Opt in",
-    "myTransforms": "My Transforms",
+    "myTransforms": "My Prompts",
     "resetDefaults": "Reset to defaults",
     "createNew": "Create New",
     "createOwn": "Create your own",
     "uploadPrompt": "Upload your own prompt",
     "promo": {
-      "title": "Transform works anywhere you write",
-      "body": "Apply a Transform to rewrite, clean up, or restructure text after you dictate."
+      "title": "Prompts work anywhere you write",
+      "body": "Apply a Prompt to rewrite, clean up, or restructure text after you dictate."
     },
     "detail": {
       "autosave": "Autosave On",
@@ -1675,11 +1717,11 @@
       "addExample": "Add an example",
       "removeExample": "Remove example",
       "createTitle": "Create your own",
-      "createSubtitle": "Set up a keyboard shortcut to apply this Transform.",
-      "nameLabel": "Name your Transform shortcut",
+      "createSubtitle": "Set up a keyboard shortcut to apply this Prompt.",
+      "nameLabel": "Name your Prompt shortcut",
       "namePlaceholder": "Boss Mode",
       "customizePrompt": "Customize prompt",
-      "promptPlaceholder": "How do you want this Transform to change your text?"
+      "promptPlaceholder": "How do you want this Prompt to change your text?"
     }
   }
 }

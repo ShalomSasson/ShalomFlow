@@ -26,6 +26,8 @@
     "dictation": "Dettatura",
     "assistant": "Assistente",
     "history": "Cronologia",
+    "insights": "Statistiche",
+    "settings": "Impostazioni",
     "about": "Informazioni",
     "debug": "Debug",
     "characters": "Profili",
@@ -33,7 +35,7 @@
     "collapse": "Comprimi barra laterale",
     "expand": "Espandi barra laterale",
     "styles": "Stili",
-    "transforms": "Trasformazioni"
+    "transforms": "Prompt"
   },
   "window": {
     "minimize": "Riduci a icona",
@@ -46,6 +48,7 @@
     "dictation": "Il modello che trasforma la tua voce in testo e come viene ripulito.",
     "assistant": "Configura l'assistente, poi regola voce, visione dello schermo e ricerca web.",
     "history": "Le tue dettature recenti, le generazioni con Flow e le chat con l'assistente, conservate su questo dispositivo.",
+    "insights": "Le tue abitudini di dettatura: velocità, volume, serie e dove detti. Calcolato su questo dispositivo.",
     "about": "Versione, lingua dell'app, percorsi dei dati e riconoscimenti.",
     "debug": "Diagnostica e strumenti per sviluppatori.",
     "styles": "Come viene formattato il testo dettato in ogni tipo di app."
@@ -450,8 +453,8 @@
       },
       "polishDictation": {
         "label": "Rifinisci la dettatura",
-        "description": "Riscrive ogni dettatura con la trasformazione Rifinisci prima di incollare.",
-        "info": "Indipendente dall'attivazione delle Trasformazioni, che riguarda solo le scorciatoie di selezione. Usa la trasformazione Rifinisci esattamente come configurata nella pagina Trasformazioni (regole, istruzioni personalizzate e i tuoi esempi di scrittura) e lo stesso provider IA. Saltata quando la dettatura ha già usato la correzione IA, così il testo non viene mai riscritto due volte; se la riscrittura fallisce, viene incollata la trascrizione grezza invariata."
+        "description": "Riscrive ogni dettatura con il prompt Rifinisci prima di incollare.",
+        "info": "Indipendente dall'attivazione dei Prompt, che riguarda solo le scorciatoie di selezione. Usa il template Rifinisci esattamente come configurato nella pagina Prompt (obiettivi, istruzioni personalizzate e i tuoi esempi di scrittura) e lo stesso provider IA. Saltata quando la dettatura ha già usato la correzione IA, così il testo non viene mai riscritto due volte; se la riscrittura fallisce, viene incollata la trascrizione grezza invariata."
       }
     },
     "models": {
@@ -923,7 +926,8 @@
         "all": "Tutto",
         "recordings": "Recordings",
         "flow": "Flow",
-        "assistant": "Chat con l'assistente"
+        "assistant": "Chat con l'assistente",
+        "transforms": "Prompt"
       },
       "openFolder": "Apri la cartella delle registrazioni",
       "loading": "Caricamento cronologia…",
@@ -959,7 +963,40 @@
       "screenshotAttached": "Visione",
       "messageCount_one": "{{count}} messaggio",
       "messageCount_other": "{{count}} messaggi",
-      "deleteAssistantError": "Impossibile eliminare la conversazione. Riprova."
+      "deleteAssistantError": "Impossibile eliminare la conversazione. Riprova.",
+      "transformInputLabel": "Testo originale",
+      "transformOutputLabel": "Testo trasformato",
+      "stats": {
+        "totalWords": "parole totali",
+        "wpm": "parole/min",
+        "dayStreak": "giorni di fila"
+      },
+      "search": {
+        "placeholder": "Cerca nella cronologia…",
+        "noResults": "Nessuna voce corrisponde alla ricerca."
+      }
+    },
+    "insights": {
+      "wpmCaption": "Parole al minuto",
+      "wpmTarget": "su ~{{target}}",
+      "fixesCaption": "Correzioni fatte dall'IA",
+      "transcriptsCleaned": "{{value}} trascrizioni ripulite",
+      "wordsChanged": "{{value}} parole modificate",
+      "totalWordsCaption": "Parole dettate in totale",
+      "monthChange": "{{value}} % questo mese",
+      "wordsThisMonth": "{{value}} parole questo mese",
+      "appUsage": "Utilizzo delle app",
+      "totalApps": "App totali | {{value}}",
+      "otherApp": "Altre",
+      "dayStreak": "Serie di {{value}} giorni",
+      "longestStreak": "Serie più lunga | {{value}} giorni",
+      "more": "Più",
+      "less": "Meno",
+      "empty": "Nessuna dettatura ancora.",
+      "tooltipDictations": "Dettature",
+      "tooltipWords": "Parole totali",
+      "tooltipApps": "Totale app usate",
+      "tooltipTopApp": "App principale"
     },
     "debug": {
       "title": "Debug",
@@ -1066,6 +1103,11 @@
         "title": "Licenza",
         "description": "ShalomFlow è open source con licenza MIT e si basa su Handy (anch'esso MIT) di CJ Pais.",
         "button": "Visualizza la licenza"
+      },
+      "credits": {
+        "title": "Riconoscimenti",
+        "description": "ShalomFlow è un fork di SpeakoFlow di Abhishek Barali (MIT), che si basa sul motore di dettatura Handy di CJ Pais.",
+        "button": "Vedi SpeakoFlow"
       },
       "supportDevelopment": {
         "title": "Supporta lo Sviluppo",
@@ -1650,14 +1692,14 @@
   "transformsPage": {
     "beta": "Beta",
     "optIn": "Attiva",
-    "myTransforms": "Le mie trasformazioni",
+    "myTransforms": "I miei prompt",
     "resetDefaults": "Ripristina predefiniti",
     "createNew": "Crea nuova",
     "createOwn": "Creane una tua",
     "uploadPrompt": "Carica il tuo prompt",
     "promo": {
-      "title": "Le trasformazioni funzionano ovunque scrivi",
-      "body": "Applica una trasformazione per riscrivere, ripulire o ristrutturare il testo dopo la dettatura."
+      "title": "I prompt funzionano ovunque scrivi",
+      "body": "Applica un prompt per riscrivere, ripulire o ristrutturare il testo dopo la dettatura."
     },
     "detail": {
       "autosave": "Salvataggio automatico attivo",
@@ -1675,11 +1717,11 @@
       "addExample": "Aggiungi un esempio",
       "removeExample": "Rimuovi esempio",
       "createTitle": "Creane una tua",
-      "createSubtitle": "Imposta una scorciatoia da tastiera per applicare questa trasformazione.",
-      "nameLabel": "Dai un nome alla tua trasformazione",
+      "createSubtitle": "Imposta una scorciatoia da tastiera per applicare questo prompt.",
+      "nameLabel": "Dai un nome al tuo prompt",
       "namePlaceholder": "Modalità capo",
       "customizePrompt": "Personalizza il prompt",
-      "promptPlaceholder": "Come vuoi che questa trasformazione modifichi il tuo testo?"
+      "promptPlaceholder": "Come vuoi che questo prompt modifichi il tuo testo?"
     }
   }
 }

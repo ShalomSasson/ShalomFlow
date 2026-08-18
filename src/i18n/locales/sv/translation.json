@@ -26,6 +26,8 @@
     "dictation": "Diktering",
     "assistant": "Assistent",
     "history": "Historik",
+    "insights": "Statistik",
+    "settings": "Inställningar",
     "about": "Om",
     "debug": "Felsökning",
     "characters": "Profiler",
@@ -33,7 +35,7 @@
     "collapse": "Fäll in sidofältet",
     "expand": "Fäll ut sidofältet",
     "styles": "Stilar",
-    "transforms": "Transformationer"
+    "transforms": "Prompter"
   },
   "window": {
     "minimize": "Minimera",
@@ -46,6 +48,7 @@
     "dictation": "Modellen som omvandlar din röst till text, och hur texten rensas upp.",
     "assistant": "Ställ in assistenten och finjustera sedan dess röst, skärmvisning och webbsökning.",
     "history": "Dina senaste dikteringar, Flow-genereringar och assistentchattar, lagrade på den här enheten.",
+    "insights": "Dina dikteringsvanor — hastighet, mängd, streak och var du dikterar. Beräknas på den här enheten.",
     "about": "Version, appspråk, dataplatser och tack till.",
     "debug": "Diagnostik och utvecklarverktyg.",
     "styles": "Hur din dikterade text formateras i varje typ av app."
@@ -450,8 +453,8 @@
       },
       "polishDictation": {
         "label": "Polera diktering",
-        "description": "Skriver om varje diktering med Polera-transformationen innan den klistras in.",
-        "info": "Oberoende av Transformations-aktiveringen, som bara styr markeringsgenvägarna. Använder Polera-transformationen exakt som den är inställd på Transformationer-sidan (regler, egna instruktioner och dina skrivexempel) och samma AI-leverantör. Hoppas över när dikteringen redan använt AI-korrigering, så text skrivs aldrig om två gånger; misslyckas omskrivningen klistras den råa transkriptionen in oförändrad."
+        "description": "Skriver om varje diktering med Polera-prompten innan den klistras in.",
+        "info": "Oberoende av Prompts-aktiveringen, som bara styr markeringsgenvägarna. Använder Polera-mallen exakt som den är inställd på Prompts-sidan (mål, egna instruktioner och dina skrivexempel) och samma AI-leverantör. Hoppas över när dikteringen redan använt AI-korrigering, så text skrivs aldrig om två gånger; misslyckas omskrivningen klistras den råa transkriptionen in oförändrad."
       }
     },
     "models": {
@@ -923,7 +926,8 @@
         "all": "Alla",
         "recordings": "Recordings",
         "flow": "Flow",
-        "assistant": "Assistentchattar"
+        "assistant": "Assistentchattar",
+        "transforms": "Prompter"
       },
       "openFolder": "Öppna mapp för inspelningar",
       "loading": "Laddar historik…",
@@ -959,7 +963,40 @@
       "screenshotAttached": "Skärmvisning",
       "messageCount_one": "{{count}} meddelande",
       "messageCount_other": "{{count}} meddelanden",
-      "deleteAssistantError": "Kunde inte ta bort konversationen. Försök igen."
+      "deleteAssistantError": "Kunde inte ta bort konversationen. Försök igen.",
+      "transformInputLabel": "Ursprunglig text",
+      "transformOutputLabel": "Transformerad text",
+      "stats": {
+        "totalWords": "ord totalt",
+        "wpm": "ord/min",
+        "dayStreak": "dagar i rad"
+      },
+      "search": {
+        "placeholder": "Sök i historiken…",
+        "noResults": "Inga poster matchar din sökning."
+      }
+    },
+    "insights": {
+      "wpmCaption": "Ord per minut",
+      "wpmTarget": "av ~{{target}}",
+      "fixesCaption": "Rättningar gjorda av AI",
+      "transcriptsCleaned": "{{value}} transkriberingar städade",
+      "wordsChanged": "{{value}} ord ändrade",
+      "totalWordsCaption": "Totalt dikterade ord",
+      "monthChange": "{{value}} % den här månaden",
+      "wordsThisMonth": "{{value}} ord den här månaden",
+      "appUsage": "Appanvändning",
+      "totalApps": "Appar totalt | {{value}}",
+      "otherApp": "Övriga",
+      "dayStreak": "{{value}} dagars streak",
+      "longestStreak": "Längsta streak | {{value}} dagar",
+      "more": "Mer",
+      "less": "Mindre",
+      "empty": "Inga dikteringar än.",
+      "tooltipDictations": "Dikteringar",
+      "tooltipWords": "Totalt antal ord",
+      "tooltipApps": "Totalt antal använda appar",
+      "tooltipTopApp": "Vanligaste appen"
     },
     "debug": {
       "title": "Felsökning",
@@ -1066,6 +1103,11 @@
         "title": "Licens",
         "description": "ShalomFlow är öppen källkod under MIT-licensen och bygger på Handy (också MIT) av CJ Pais.",
         "button": "Visa licensen"
+      },
+      "credits": {
+        "title": "Tack till",
+        "description": "ShalomFlow är en fork av SpeakoFlow av Abhishek Barali (MIT), som i sin tur bygger på dikteringskärnan Handy av CJ Pais.",
+        "button": "Visa SpeakoFlow"
       },
       "supportDevelopment": {
         "title": "Stöd utvecklingen",
@@ -1650,14 +1692,14 @@
   "transformsPage": {
     "beta": "Beta",
     "optIn": "Aktivera",
-    "myTransforms": "Mina transformationer",
+    "myTransforms": "Mina prompter",
     "resetDefaults": "Återställ till standard",
     "createNew": "Skapa ny",
     "createOwn": "Skapa din egen",
     "uploadPrompt": "Ladda upp din egen prompt",
     "promo": {
-      "title": "Transformationer fungerar överallt där du skriver",
-      "body": "Använd en transformation för att skriva om, städa upp eller strukturera om text efter diktering."
+      "title": "Prompter fungerar överallt där du skriver",
+      "body": "Använd en prompt för att skriva om, städa upp eller strukturera om text efter diktering."
     },
     "detail": {
       "autosave": "Autospar på",
@@ -1675,11 +1717,11 @@
       "addExample": "Lägg till exempel",
       "removeExample": "Ta bort exempel",
       "createTitle": "Skapa din egen",
-      "createSubtitle": "Ställ in ett kortkommando för att använda den här transformationen.",
-      "nameLabel": "Namnge din transformation",
+      "createSubtitle": "Ställ in ett kortkommando för att använda den här prompten.",
+      "nameLabel": "Namnge din prompt",
       "namePlaceholder": "Bossläge",
       "customizePrompt": "Anpassa prompt",
-      "promptPlaceholder": "Hur vill du att den här transformationen ska ändra din text?"
+      "promptPlaceholder": "Hur vill du att den här prompten ska ändra din text?"
     }
   }
 }

@@ -26,6 +26,8 @@
     "dictation": "Dictado",
     "assistant": "Asistente",
     "history": "Historial",
+    "insights": "Estadísticas",
+    "settings": "Ajustes",
     "about": "Acerca de",
     "debug": "Depuración",
     "characters": "Perfiles",
@@ -33,7 +35,7 @@
     "collapse": "Contraer barra lateral",
     "expand": "Expandir barra lateral",
     "styles": "Estilos",
-    "transforms": "Transformaciones"
+    "transforms": "Prompts"
   },
   "window": {
     "minimize": "Minimizar",
@@ -46,6 +48,7 @@
     "dictation": "El modelo que convierte tu voz en texto y cómo se limpia el resultado.",
     "assistant": "Configura el asistente y luego ajusta su voz, la visión de pantalla y la búsqueda web.",
     "history": "Tus dictados recientes, las generaciones de Flow y los chats del asistente, guardados en este dispositivo.",
+    "insights": "Tus hábitos de dictado: velocidad, volumen, rachas y dónde dictas. Calculado en este dispositivo.",
     "about": "Versión, idioma de la aplicación, ubicación de los datos y créditos.",
     "debug": "Diagnóstico y herramientas para desarrolladores.",
     "styles": "Cómo se formatea el texto dictado en cada tipo de aplicación."
@@ -450,8 +453,8 @@
       },
       "polishDictation": {
         "label": "Pulir el dictado",
-        "description": "Reescribe cada dictado con la transformación Pulir antes de pegar.",
-        "info": "Independiente de la activación de Transformaciones, que solo controla los atajos de selección. Usa la transformación Pulir tal como está configurada en la página Transformaciones (reglas, instrucciones personalizadas y tus ejemplos de escritura) y el mismo proveedor de IA. Se omite cuando el dictado ya usó la corrección con IA, para no reescribir el texto dos veces; si la reescritura falla, se pega la transcripción sin cambios."
+        "description": "Reescribe cada dictado con el prompt Pulir antes de pegar.",
+        "info": "Independiente de la activación de Prompts, que solo controla los atajos de selección. Usa la plantilla Pulir tal como está configurada en la página Prompts (objetivos, instrucciones personalizadas y tus ejemplos de escritura) y el mismo proveedor de IA. Se omite cuando el dictado ya usó la corrección con IA, para no reescribir el texto dos veces; si la reescritura falla, se pega la transcripción sin cambios."
       }
     },
     "models": {
@@ -923,7 +926,8 @@
         "all": "Todo",
         "recordings": "Recordings",
         "flow": "Flow",
-        "assistant": "Chats del asistente"
+        "assistant": "Chats del asistente",
+        "transforms": "Prompts"
       },
       "openFolder": "Abrir Carpeta de Grabaciones",
       "loading": "Cargando historial…",
@@ -959,7 +963,40 @@
       "screenshotAttached": "Visión",
       "messageCount_one": "{{count}} mensaje",
       "messageCount_other": "{{count}} mensajes",
-      "deleteAssistantError": "No se pudo eliminar la conversación. Inténtalo de nuevo."
+      "deleteAssistantError": "No se pudo eliminar la conversación. Inténtalo de nuevo.",
+      "transformInputLabel": "Texto original",
+      "transformOutputLabel": "Texto transformado",
+      "stats": {
+        "totalWords": "palabras en total",
+        "wpm": "ppm",
+        "dayStreak": "días seguidos"
+      },
+      "search": {
+        "placeholder": "Buscar en el historial…",
+        "noResults": "Ninguna entrada coincide con tu búsqueda."
+      }
+    },
+    "insights": {
+      "wpmCaption": "Palabras por minuto",
+      "wpmTarget": "de ~{{target}}",
+      "fixesCaption": "Correcciones hechas por la IA",
+      "transcriptsCleaned": "{{value}} transcripciones limpiadas",
+      "wordsChanged": "{{value}} palabras cambiadas",
+      "totalWordsCaption": "Palabras dictadas en total",
+      "monthChange": "{{value}} % este mes",
+      "wordsThisMonth": "{{value}} palabras este mes",
+      "appUsage": "Uso de apps",
+      "totalApps": "Apps en total | {{value}}",
+      "otherApp": "Otras",
+      "dayStreak": "Racha de {{value}} días",
+      "longestStreak": "Racha más larga | {{value}} días",
+      "more": "Más",
+      "less": "Menos",
+      "empty": "Aún no hay dictados.",
+      "tooltipDictations": "Dictados",
+      "tooltipWords": "Palabras en total",
+      "tooltipApps": "Total de apps usadas",
+      "tooltipTopApp": "App principal"
     },
     "debug": {
       "title": "Depuración",
@@ -1066,6 +1103,11 @@
         "title": "Licencia",
         "description": "ShalomFlow es de código abierto bajo la Licencia MIT y se basa en Handy (también MIT) de CJ Pais.",
         "button": "Ver la licencia"
+      },
+      "credits": {
+        "title": "Créditos",
+        "description": "ShalomFlow es un fork de SpeakoFlow, de Abhishek Barali (MIT), que a su vez se basa en el núcleo de dictado Handy, de CJ Pais.",
+        "button": "Ver SpeakoFlow"
       },
       "supportDevelopment": {
         "title": "Apoyar el Desarrollo",
@@ -1650,14 +1692,14 @@
   "transformsPage": {
     "beta": "Beta",
     "optIn": "Activar",
-    "myTransforms": "Mis transformaciones",
+    "myTransforms": "Mis prompts",
     "resetDefaults": "Restablecer valores predeterminados",
     "createNew": "Crear nueva",
     "createOwn": "Crea la tuya",
     "uploadPrompt": "Sube tu propio prompt",
     "promo": {
-      "title": "Las transformaciones funcionan donde sea que escribas",
-      "body": "Aplica una transformación para reescribir, limpiar o reestructurar el texto después de dictar."
+      "title": "Los prompts funcionan donde sea que escribas",
+      "body": "Aplica un prompt para reescribir, limpiar o reestructurar el texto después de dictar."
     },
     "detail": {
       "autosave": "Autoguardado activado",
@@ -1675,11 +1717,11 @@
       "addExample": "Añadir un ejemplo",
       "removeExample": "Eliminar ejemplo",
       "createTitle": "Crea la tuya",
-      "createSubtitle": "Configura un atajo de teclado para aplicar esta transformación.",
-      "nameLabel": "Nombra tu atajo de transformación",
+      "createSubtitle": "Configura un atajo de teclado para aplicar este prompt.",
+      "nameLabel": "Nombra tu atajo de prompt",
       "namePlaceholder": "Modo jefe",
       "customizePrompt": "Personalizar prompt",
-      "promptPlaceholder": "¿Cómo quieres que esta transformación cambie tu texto?"
+      "promptPlaceholder": "¿Cómo quieres que este prompt cambie tu texto?"
     }
   }
 }

@@ -12,9 +12,10 @@ interface PolishDictationToggleProps {
 }
 
 /**
- * Runs the Polish transform over every plain dictation before pasting.
- * Independent of the Transforms opt-in (which gates only the selection
- * shortcuts) and skipped when AI Correction already rewrote the dictation.
+ * Runs the Polish transform over every dictation before pasting. Independent
+ * of the Transforms opt-in (which gates only the selection shortcuts). While
+ * enabled it owns the rewrite: the AI-Correction pass is skipped even on its
+ * own shortcut, so the Polish prompt is the only prompt applied to dictation.
  */
 export const PolishDictation: React.FC<PolishDictationToggleProps> =
   React.memo(({ descriptionMode = "tooltip", grouped = false, icon, tone }) => {
