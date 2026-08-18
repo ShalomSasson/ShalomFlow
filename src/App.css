@@ -53,6 +53,15 @@
   --color-success: #15803d;
   --color-error: #dc2626;
 
+  /* === Metric hues (the lifetime numbers on History) ===
+   * The three stats each get their own hue so the card reads at a glance.
+   * Teal is the brand accent; violet and amber are tuned to pass AA as small
+   * text on the light surface. Only this card uses them, so the accent stays
+   * the app's single signature color. */
+  --color-metric-words: #0f766e;
+  --color-metric-speed: #6d28d9;
+  --color-metric-streak: #b45309;
+
   /* === On-color text === */
   --color-on-primary: #ffffff; /* text on accent fills */
 
@@ -173,6 +182,12 @@
 
   --color-on-primary: #04302b;
 
+  /* Metric hues lift to luminous tints so they read as color, not mud, on the
+   * near-black card. */
+  --color-metric-words: #3dd6c3;
+  --color-metric-speed: #c4b5fd;
+  --color-metric-streak: #fbbf24;
+
   /* Success reads as a luminous green on the near-black surfaces (the flat
    * `#15803d` from light mode is too dark to register here). */
   --color-success: #4ade80;
@@ -225,6 +240,10 @@
     --color-accent-strong: #63e0d0;
 
     --color-on-primary: #053b34;
+
+    --color-metric-words: #3dd6c3;
+    --color-metric-speed: #c4b5fd;
+    --color-metric-streak: #fbbf24;
 
     --color-success: #4ade80;
 

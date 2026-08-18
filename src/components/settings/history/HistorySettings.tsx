@@ -20,8 +20,11 @@ import {
   MessageSquarePlus,
   Mic,
   RotateCcw,
+  Flame,
+  Gauge,
   Search,
   Sparkles,
+  Type,
   Star,
   Trash2,
   Wand2,
@@ -132,6 +135,29 @@ const localDayString = (date: Date): string => {
 };
 
 /** Lifetime dictation stats — big serif-style numerals, one row per stat. */
+/** One hue per lifetime stat, so the card reads as a dashboard rather than a
+ *  column of numbers. Static classes keep Tailwind's scanner happy. */
+const STAT_TONES = [
+  {
+    icon: Type,
+    row: "bg-metric-words/8",
+    badge: "bg-metric-words/15 text-metric-words",
+    value: "text-metric-words",
+  },
+  {
+    icon: Gauge,
+    row: "bg-metric-speed/8",
+    badge: "bg-metric-speed/15 text-metric-speed",
+    value: "text-metric-speed",
+  },
+  {
+    icon: Flame,
+    row: "bg-metric-streak/8",
+    badge: "bg-metric-streak/15 text-metric-streak",
+    value: "text-metric-streak",
+  },
+];
+
 const UsageStatsCard: React.FC<{ stats: UsageStats }> = ({ stats }) => {
   const { t } = useTranslation();
 
@@ -148,21 +174,40 @@ const UsageStatsCard: React.FC<{ stats: UsageStats }> = ({ stats }) => {
   const streak = streakAlive ? stats.streak_days : 0;
 
   const rows: [string, string][] = [
-    [formatStatNumber(stats.total_words), t("settings.history.stats.totalWords")],
+    [
+      formatStatNumber(stats.total_words),
+      t("settings.history.stats.totalWords"),
+    ],
     [String(wpm), t("settings.history.stats.wpm")],
     [String(streak), t("settings.history.stats.dayStreak")],
   ];
 
   return (
-    <div className="flex h-full flex-col justify-center gap-5 rounded-2xl border border-hairline bg-surface px-6 py-6">
-      {rows.map(([value, label]) => (
-        <div key={label} className="flex items-baseline gap-2.5">
-          <span className="font-display text-3xl leading-none text-ink">
-            {value}
-          </span>
-          <span className="text-sm text-body">{label}</span>
-        </div>
-      ))}
+    <div className="flex h-full flex-col justify-center gap-2.5 rounded-2xl border border-hairline bg-surface p-4">
+      {rows.map(([value, label], index) => {
+        const tone = STAT_TONES[index];
+        const Icon = tone.icon;
+        return (
+          <div
+            key={label}
+            className={`flex items-center gap-3 rounded-xl px-3 py-2.5 ${tone.row}`}
+          >
+            <span
+              className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${tone.badge}`}
+            >
+              <Icon className="h-4 w-4" />
+            </span>
+            <div className="min-w-0">
+              <div
+                className={`font-display text-2xl leading-none ${tone.value}`}
+              >
+                {value}
+              </div>
+              <div className="mt-1 text-xs text-muted">{label}</div>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };
@@ -716,9 +761,7 @@ export const HistorySettings: React.FC = () => {
     return byTab.filter((item) =>
       item.kind === "transcription"
         ? item.entry.transcription_text.toLowerCase().includes(query) ||
-          (item.entry.post_processed_text ?? "")
-            .toLowerCase()
-            .includes(query)
+          (item.entry.post_processed_text ?? "").toLowerCase().includes(query)
         : item.session.title.toLowerCase().includes(query) ||
           item.session.messages.some((message) =>
             message.content.toLowerCase().includes(query),
@@ -814,7 +857,9 @@ export const HistorySettings: React.FC = () => {
                         onToggleExpand={() =>
                           toggleExpandAssistant(item.session.id)
                         }
-                        onCopyConversation={() => copyConversation(item.session)}
+                        onCopyConversation={() =>
+                          copyConversation(item.session)
+                        }
                         onDelete={() => deleteAssistantSession(item.session.id)}
                         onResume={() =>
                           void resumeAssistantSession(item.session.id)
